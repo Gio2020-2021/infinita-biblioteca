@@ -112,9 +112,9 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 
 **91 voci.**
 
-- [ ] AUTOMAZIONE
-- [ ] INTELLIGENZA ARTIFICIALE
-- [ ] ROBOTICA
+- [x] AUTOMAZIONE → #pt-automazione (Goliath, R1/Walk-man, droni civili, risoluzione UE sulla robotica)
+- [x] INTELLIGENZA ARTIFICIALE → #pt-ia (Alpha, legge di Moore, TrueNorth, Partnership on AI, Hawking) · #pt-ia-naa (NAA/Moloch/bolle di realtà, il dialogo maieutico su Montauk)
+- [x] ROBOTICA → #pt-automazione (condivisa con Automazione; la voce «Robotica/Bionica» del transumanesimo resta separata, più avanti in questo stesso gruppo)
 - [ ] INGEGNERIA SOCIALE
 - [ ] FINESTRE DI OVERTON
 - [ ] LA RANA DI CHOMSKY
