@@ -8,3 +8,6 @@ sito/locale/
 .DS_Store
 __pycache__/
 *.pyc
+
+# copie di sicurezza della modalità modifica (strumenti/editor.py)
+.storico/

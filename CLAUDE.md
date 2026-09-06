@@ -91,6 +91,7 @@ note/            appunti di lavorazione, sintesi, materiale non ancora assorbito
 strumenti/       costruisci.py sorgente/ → sito/mappa-transurfing.html
                  estrai.py    PDF → testo
                  anteprima.py anteprima locale fedele all'involucro dell'Artifact
+                 editor.py    modalità modifica: matita in hover, scrive in sorgente/
                  verifica.py  controlli di coerenza — eseguirlo SEMPRE prima di pubblicare
                  rinumera.py  rinumera i sommari in progressione continua (01→N)
                  cita.py      verifica ogni citazione sui testi e ne trova la pagina
@@ -166,6 +167,48 @@ Vedere la pagina in locale prima di pubblicare:
 ```bash
 python3 strumenti/anteprima.py --apri
 ```
+
+### La modalità modifica: correggere e ampliare una sezione dalla pagina
+
+```bash
+python3 strumenti/editor.py             # costruisce, avvia il server locale, apre il portale
+python3 strumenti/editor.py --porta 8901
+```
+
+Passando il mouse su una sezione compare una **matita** nella colonna di fianco (quella
+sticky, così non finisce mai sotto la barra fissa). Cliccandola si apre l'editor della
+sezione: a sinistra il testo vero — quello che sta in `sorgente/`, non una copia — a
+destra l'**anteprima dal vivo**, che si aggiorna mentre si scrive. Si corregge quello
+che c'è e si aggiunge quello che manca. `⌘S` salva, `Esc` chiude (e avverte se ci sono
+modifiche non salvate). Quattro bottoni inseriscono lo scheletro dei componenti del
+progetto: voce d'elenco, blocco `.move`, citazione, paragrafo.
+
+**Il salvataggio scrive davvero in `sorgente/`** — nel file della parte a cui la sezione
+appartiene — poi ricostruisce e rilancia `verifica.py`, e la pagina si ricarica sulla
+sezione modificata: quello che si vede dopo il salvataggio è il file ricostruito, non
+un'anteprima. La regola «si modifica `sorgente/`, mai `sito/`» resta quindi intatta:
+l'editor è solo un modo diverso di scrivere quei file.
+
+Quattro reti di sicurezza, in ordine:
+
+1. prima di scrivere, la versione precedente del file finisce in `.storico/` (ignorata
+   da git);
+2. il frammento è controllato prima di toccare il disco: deve cominciare con `<section`,
+   finire con `</section>`, **conservare l'id** (cambiarlo da lì spezzerebbe i rimandi
+   di tutta la biblioteca), avere i tag bilanciati — con la stessa `Bilancia` di
+   `verifica.py`, importata, non ricopiata — e niente `<script>`;
+3. se `costruisci.py` fallisce dopo la scrittura (per esempio un rimando a un'ancora
+   inesistente), il file viene **rimesso com'era** e l'errore compare nell'editor;
+4. `verifica.py` gira comunque e il suo esito si legge in fondo all'editor.
+
+**Quello che l'editor non fa, di proposito: non verifica le citazioni.** Restano la
+regola più importante del progetto — ogni «...» è letterale e va riscontrata sui testi —
+e vanno controllate con `python3 strumenti/cita.py` (~30 s) quando si aggiungono
+virgolette. L'editor abbassa l'attrito della scrittura, non l'asticella della verifica.
+
+Il server ascolta solo su `127.0.0.1` e vive finché resta aperto il terminale (Ctrl+C per
+chiuderlo). La cache delle pagine si rinfresca da sé a ogni salvataggio; se invece si
+modifica `sorgente/` da fuori (a mano, o da una sessione), va fermato e riavviato.
 
 ### Trappola già incontrata: `hidden` e l'involucro
 
