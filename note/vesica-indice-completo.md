@@ -140,7 +140,7 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] FREEDOM OF INFORMACTION ACT(FOIA) → #pt-foia (storia legislativa corretta; il manifesto di John Coleman)
 - [x] SINDROME DI STOCCOLMA → #pt-stoccolma (1973 reale; NAA/razze parassite; Rothschild e Jefferson, due citazioni apocrife documentate)
 - [x] MITO DELLA CAVERNA DI PLATONE → #pt-caverna (Schopenhauer, il Ṛgveda, Jung — la sezione più filologicamente solida di questa parte)
-- [ ] AGENTI INCONSAPEVOLI
+- [ ] AGENTI INCONSAPEVOLI — **in corso**: pagg. 247-252 fatte (→ #pt-agenti-inconsapevoli-1: EuroMomo citata contro se stessa, il PCR, il CDC); il capitolo prosegue per molte altre pagine (mascherine, virus, ridicolizzazione, neuroni specchio) ancora da leggere
 - [ ] SIGNORAGGIO
 - [ ] CREDITO SOCIALE CINESE
 - [ ] TRATTATO DI MAASTRICHT
