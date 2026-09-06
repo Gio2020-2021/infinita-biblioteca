@@ -119,10 +119,10 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] FINESTRE DI OVERTON → #pt-overton
 - [x] LA RANA DI CHOMSKY → #pt-rana-chomsky (la lista è di Sylvain Timsit, non di Chomsky; la metafora è biologicamente falsa)
 - [x] TAVISTOCK INSTITUTE → #pt-tavistock (fondazione 1947 a Londra, non 1921 a Oxford; Kurt Lewin non ne fu mai direttore)
-- [ ] SPIRITUALISMO TAVISTOCK
-- [ ] APERTURA/CHIUSURA MENTALE
-- [ ] FRAME DI PERKINS(FRAME GIORNALISTICO)
-- [ ] PROFLUVIO CULTURALE SCOMPOSTO
+- [x] SPIRITUALISMO TAVISTOCK → #pt-spiritualismo-tavistock (le sei trappole, sempre l'Ascension Glossary; Serge Monast e il Project Blue Beam)
+- [x] APERTURA/CHIUSURA MENTALE → #pt-spiritualismo-tavistock (i fratelli Wright e Sitchin; l'argomento valido che scivola nel suo opposto)
+- [x] FRAME DI PERKINS(FRAME GIORNALISTICO) → #pt-frame-giornalistico (effetto a cascata, il frame, Soros e Gene Sharp non nominato)
+- [x] PROFLUVIO CULTURALE SCOMPOSTO → #pt-frame-giornalistico (James Forrestal/MJ-12, la lista di eroi da Tesla a Sitchin)
 - [ ] NOZIONISMO UNIVERSITARIO: INCULCAZIONE/RIPETIZIONE
 - [ ] DOTTRINA UNIVERSITARIA
 - [ ] SCIENTISMO
