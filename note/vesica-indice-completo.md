@@ -134,10 +134,10 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] OPERAZIONI FALSE FLAG → #pt-false-flag (NAA, Pearl Harbor come tesi minoritaria, il Bataclan con la ritrattazione di Hughes non riportata)
 - [x] 11 SETTEMBRE 2001 → #pt-11-settembre-fonti (Robin Cook, il NIST mai citato, Human Rights Watch, l'oppio afghano) · #pt-11-settembre-prove (il calcolo di probabilità scorretto, i documenti «troppo comodi»)
 - [x] OPERAZIONE NORTWOODS → #pt-false-flag (il documento più solido di questa parte — reale, declassificato, respinto da Kennedy)
-- [ ] INTELLIGENCE MILITARE
-- [ ] CIA/NSA
-- [ ] COMPARTIMENTAZIONE MILITARE
-- [ ] FREEDOM OF INFORMACTION ACT(FOIA)
+- [x] INTELLIGENCE MILITARE → #pt-intelligence-militare (Mockingbird senza nome ufficiale, QAnon senza previsioni avverate, il bilancio nero gonfiato di 24 volte, Al Bielek già screditato)
+- [x] CIA/NSA → #pt-cia-paperclip (fondazione reale, l'Agenzia Gehlen confusa con la CIA stessa, Klaus Barbie e von Bolschwing)
+- [x] COMPARTIMENTAZIONE MILITARE → #pt-cia-paperclip (Progetto Paperclip) · #pt-foia (Manhattan, le piramidi sommerse di Cuba mai confermate)
+- [x] FREEDOM OF INFORMACTION ACT(FOIA) → #pt-foia (storia legislativa corretta; il manifesto di John Coleman)
 - [ ] SINDROME DI STOCCOLMA
 - [ ] MITO DELLA CAVERNA DI PLATONE
 - [ ] AGENTI INCONSAPEVOLI
