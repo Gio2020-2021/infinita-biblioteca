@@ -141,7 +141,7 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] SINDROME DI STOCCOLMA → #pt-stoccolma (1973 reale; NAA/razze parassite; Rothschild e Jefferson, due citazioni apocrife documentate)
 - [x] MITO DELLA CAVERNA DI PLATONE → #pt-caverna (Schopenhauer, il Ṛgveda, Jung — la sezione più filologicamente solida di questa parte)
 - [x] AGENTI INCONSAPEVOLI → #pt-agenti-inconsapevoli-1 (EuroMomo citata contro se stessa, il PCR, il CDC) · #pt-agenti-inconsapevoli-2 (mascherine, negazionismo virale, pandemic bond, Rife) · #pt-agenti-inconsapevoli-3 (Milgram, neuroni specchio, il caso Musso)
-- [ ] SIGNORAGGIO
+- [x] SIGNORAGGIO → #pt-signoraggio (la porta girevole Goldman Sachs documentata, Maastricht, Banca d'Italia 1992-2004, la citazione di Rockefeller quasi certamente fasulla, Cochabamba)
 - [ ] CREDITO SOCIALE CINESE
 - [ ] TRATTATO DI MAASTRICHT
 - [ ] STATO CENTRALIZZATO
