@@ -74,30 +74,36 @@ contro il testo: 289/289 letterali.**
 
 *Propaganda, PNL, manipolazione mediatica: come si dice il libro viene costruita l'opinione pubblica.*
 
-**22 voci.**
+**22 voci — lette e trasferite per intero il 6-9-2026, in
+`sorgente/mappe/vesica/parti/02-consenso.html`, venti sezioni. Tutte le citazioni verificate
+lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con riscontro.**
 
-- [ ] RE-LIGO, VINCOLI RELIGIOSI
-- [ ] OPINIONE PUBBLICA
-- [ ] GNOSEOFOBIA
-- [ ] PUBLICITA'
-- [ ] MATERIALISMO
-- [ ] CORPORATOCRAZIA
-- [ ] GLOBALIZZAZIONE
-- [ ] CAPITALISMO
-- [ ] INFORMAZIONE
-- [ ] CONFLITTO D'INTERESSE
-- [ ] MANIPOLAZIONE MEDIATICA
-- [ ] PROPAGANDA
-- [ ] PROPAGANDA HOLLYWOODISTA
-- [ ] MANIPOLAZIONE
-- [ ] TERRORISMO MEDIATICO
-- [ ] RIDICOLIZZAZIONE
-- [ ] PROGRAMMAZIONE NEUROLINGUISTICA(PNL)
-- [ ] OMISSIONE D'INFORMAZIONE
-- [ ] REVISIONISMO, POST-VERITA'WIKIPEDISTA
-- [ ] COMUNICZIONE SUBLIMINALE
-- [ ] CANE DI PAVLOV
-- [ ] PSYOPS
+> Il blocco corrisponde alle pagg. 76-149 del libro (righe 8358-16595 del testo estratto), più
+> la voce PSYOPS a pag. 235 (riga 26243), che nell'indice appartiene a questo gruppo ma nel
+> corpo compare molto più avanti. Sono ~8.300 righe, poco più del blocco degli strumenti.
+
+- [x] RE-LIGO, VINCOLI RELIGIOSI → #vc-religo (etimologia · tassonomia delle religioni · simboli · cristianesimo · origine «rettiloide» · positivismo · scientismo come gemello)
+- [x] OPINIONE PUBBLICA → #vc-opinione (analfabetismo mediatico · studio Gilens-Page/Sunlight · «la democrazia è uno strumento» · miseria culturale e scarsità programmata)
+- [x] GNOSEOFOBIA → #vc-gnoseofobia (Huxley, libri e fiori · la paura come danno cognitivo · lo «scisma dell'ignoranza» · la certezza come handicap · sapere è potere/Pribram)
+- [x] PUBLICITA' → #vc-disinformazione (McLuhan e la ricerca meglio finanziata del mondo) · #vc-pnl (la voglia al posto del bisogno, i quattro modelli) · #vc-pavlov (la rivoluzione del biscotto)
+- [x] MATERIALISMO → #vc-materialismo (i «Pilastri Controllori» · desiderio e PIL · Sheldrake e l'osmosi intellettuale · la merce)
+- [x] CORPORATOCRAZIA → #vc-economia (la definizione · le porte girevoli · «non è una teoria della cospirazione» · il filtro pubblicitario/Procter & Gamble · Network 1976)
+- [x] GLOBALIZZAZIONE → #vc-economia (Blinder · Stiglitz · Perkins e i sicari dell'economia · da 50 a 6 corporation · Trattato di Lisbona)
+- [x] CAPITALISMO → #vc-economia (liberalizzazione e Giamaica · Chevron/Texaco · le cifre del divario · Zeitgeist · Gomory-Baumol · i Cree · miseria programmata e le agenzie di rating)
+- [x] INFORMAZIONE → #vc-informazione (le cinque vie: credere, pensare, sapere, conoscere, capire · il fact checking come filosofia)
+- [x] CONFLITTO D'INTERESSE → #vc-conflitto (l'argomento del movente · la ZPE · Edison-Tesla · fusione fredda e Mallove · sanità e monopolio alimentare · Tavola Rotonda/RIIA/CFR · la piramide di controllo · TTIP-ISDS-NAFTA) e #vc-scientismo (i tribunali della scienza)
+- [x] MANIPOLAZIONE MEDIATICA → #vc-mediatica (il sillogismo «sapere sul consumatore è potere sul consumatore» · parlarne male è parlarne · che cosa significa «ufficiale»)
+- [x] PROPAGANDA → #vc-propaganda (associazione/bisogni/ripetizione · Le Bon · Bernays e il «governo invisibile» · i quattro modelli pubblicitari · i tre obiettivi dei media · il gaslighting collettivo · la cornice del giornalismo · il quarto potere · flak e anti-terrorismo)
+- [x] PROPAGANDA HOLLYWOODISTA → #vc-hollywood (Bernays 1928 · modus pensandi/operandi · Adorno e Marcuse · Huxley e la terza possibilità · dove l'argomento scivola)
+- [x] MANIPOLAZIONE → #vc-disinformazione (la traslazione dello scenario) · #vc-divide (divide et impera, credibilità fabbricata, Sun Tzu) · #vc-pavlov (gaslighting, tagging)
+- [x] TERRORISMO MEDIATICO → #vc-propaganda (il secondo dei tre obiettivi: generare paura) · #vc-subliminale (l'assuefazione, l'insalata di notizie)
+- [x] RIDICOLIZZAZIONE → #vc-ridicolizzazione (il sarcasmo · lo zimbello che aveva ragione · il lessico della derisione · «non è complottismo, è osservazione della vita»)
+- [x] PROGRAMMAZIONE NEUROLINGUISTICA(PNL) → #vc-pnl (mass media, Lasswell, Huxley 1958, standardizzazione, «finte voci fuori dal coro»)
+- [x] OMISSIONE D'INFORMAZIONE → #vc-omissione (la scacchiera vista per un quarto · «dire la Verità ma non dirla tutta» · la formica sulle piastrelle · la soppressione dei dati)
+- [x] REVISIONISMO, POST-VERITA'WIKIPEDISTA → #vc-wikipedia (studio Halfaker · i numeri delle segnalazioni · «ai dittatori digitali basta qualche clic» · caso Todeschini · caso M5S · fonte ≠ dimostrazione · caso Odessa)
+- [x] COMUNICZIONE SUBLIMINALE → #vc-subliminale (Vicary 1957 · il caso Bush-Gore · lo studio di Nilli Lavie · la tecnica della confusione)
+- [x] CANE DI PAVLOV → #vc-pavlov (l'esperimento · il telecronista antipatico · la memoria traumatica · da Freud a Bernays · la rivoluzione del biscotto)
+- [x] PSYOPS → #vc-psyops (i tre livelli · Fort Bragg e il reachback · Iraqi Freedom · l'ologramma di Allah · la soglia spostata dopo l'11 settembre · «e se invece fosse tutto vero?» · il mito della sicurezza nazionale)
 
 ## Le architetture del potere
 
