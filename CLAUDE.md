@@ -456,6 +456,50 @@ sul contenitore diretto di un marcatore-via-pseudo-elemento più testo misto —
 componente con marcatore + testo, verificarlo aprendo l'anteprima su quella sezione, non fidarsi
 della sola lettura del sorgente: il bug non dà errori né in `verifica.py` né in console.
 
+## Rapporto Vesica — impianto pronto, lettura in corso
+
+Iniziato il 6-9-2026. **2.559 pagine**, strato di testo pulito, ~15,8 MB estratti in
+`testi/rapporto-vesica-v-16-08-2026.txt`. Non ha un sommario tradizionale: ha un **indice di
+468 enunciati** compresso in tre pagine dense (pagg. 8-10, righe 407-887 del testo estratto),
+dove ogni enunciato diventa poi un titolo di paragrafo nel corpo del libro — un'enciclopedia
+in sequenza, non un saggio argomentativo.
+
+**`note/vesica-indice-completo.md` è la checklist canonica**: le 468 voci, raggruppate negli
+otto blocchi tematici sotto, ognuna spuntabile quando viene letta e trasferita in una sezione
+vera. È la fonte di verità sulla copertura — non fidarsi della sola mappa per sapere cosa manca.
+
+Le otto parti (dopo la Parte I «Il libro», che è la sola meta-sezione):
+
+| Parte | Voci | Cosa |
+|---|---|---|
+| II · Gli strumenti d'indagine | 40 | logica, matematica, metodo scientifico |
+| III · La fabbrica del consenso | 22 | propaganda, PNL, manipolazione mediatica |
+| IV · Le architetture del potere | 91 | geopolitica, banche centrali, società segrete |
+| V · DNA, energia e materia | 104 | genetica, fisica quantistica, energia libera |
+| VI · Geometria sacra e luoghi anomali | 37 | piramidi, megaliti, solidi platonici |
+| VII · Ufologia ed esopolitica | 33 | fenomeno UFO, disclosure, razze aliene |
+| VIII · Mitologia e cosmologia perduta | 128 | mitologia greca/sumera, Anunnaki, «Keylontic Science» |
+| IX · Coscienza e responsabilità | 13 | chiusura del trattato, dalla diagnosi all'azione |
+
+**Ogni parte è oggi un elenco, non un riassunto**: una sola sezione (`#<id>-stato`) che
+dichiara «N voci individuate, 0 lette» e le elenca in una `<ul class="checks">`. Si passa da
+elenco a sezione vera **una voce alla volta**, leggendo il testo integrale prima di scrivere
+— stesso principio dei libri di Zeland, mai riassunti a memoria.
+
+**Perché è il perno della biblioteca, in pratica**: quando una voce di Vesica coincide con un
+argomento che un'altra mappa già tratta per esteso (es. propaganda, fisica, mitologia), la
+sezione **non ripete**: usa il rimando `href="transurfing:sezione"` e aggiunge solo ciò che
+Vesica dice in più. Vedi la nota sui rimandi fra mappe più sotto.
+
+**Trappola incontrata e corretta scrivendo questa parte**: la chiusura di `<div class="wrap"
+id="contenuto">` e il divisore `.perf` erano scritti in coda **all'ultima parte di Transurfing**
+invece che in un pezzo del telaio — un'assunzione implicita («chi capita per ultimo chiude il
+contenitore») che si è rotta al primo urto con una mappa diversa: l'ultima parte di Vesica non
+chiudeva nulla, e `verifica.py` (esteso in questa stessa occasione a controllare **tutte** le
+mappe della biblioteca, non solo Transurfing) ha trovato un `<div>` mai chiuso. Ora è un pezzo
+esplicito del telaio, `corpo/03b-contenuto-chiude.html`, inserito da `costruisci.py` dopo
+l'ultima parte di ogni mappa.
+
 ## La regola che viene prima di tutte: Zeland di qua, gli altri di là
 
 Deciso il 6-9-2026 su richiesta dell'utente, dopo aver riletto *Surfare nell'Ologramma*.

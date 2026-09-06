@@ -35,10 +35,74 @@
       "barra": "Il libro",
       "c": "--plum",
       "diagramma": "IL LIBRO"
+    },
+    {
+      "file": "01-strumenti",
+      "id": "strumenti",
+      "n": "II",
+      "barra": "Gli strumenti",
+      "c": "--blue",
+      "diagramma": "GLI STRUMENTI D'INDAGINE"
+    },
+    {
+      "file": "02-consenso",
+      "id": "consenso",
+      "n": "III",
+      "barra": "Il consenso",
+      "c": "--rust",
+      "diagramma": "LA FABBRICA DEL CONSENSO"
+    },
+    {
+      "file": "03-potere",
+      "id": "potere",
+      "n": "IV",
+      "barra": "Il potere",
+      "c": "--rust",
+      "diagramma": "LE ARCHITETTURE DEL POTERE"
+    },
+    {
+      "file": "04-materia",
+      "id": "materia",
+      "n": "V",
+      "barra": "DNA e materia",
+      "c": "--sage",
+      "diagramma": "DNA, ENERGIA E MATERIA"
+    },
+    {
+      "file": "05-geometria",
+      "id": "geometria",
+      "n": "VI",
+      "barra": "Geometria sacra",
+      "c": "--amber",
+      "diagramma": "GEOMETRIA SACRA E LUOGHI ANOMALI"
+    },
+    {
+      "file": "06-ufologia",
+      "id": "ufologia",
+      "n": "VII",
+      "barra": "Ufologia",
+      "c": "--blue",
+      "diagramma": "UFOLOGIA ED ESOPOLITICA"
+    },
+    {
+      "file": "07-mitologia",
+      "id": "mitologia",
+      "n": "VIII",
+      "barra": "Mitologia perduta",
+      "c": "--plum",
+      "diagramma": "MITOLOGIA E COSMOLOGIA PERDUTA"
+    },
+    {
+      "file": "08-coscienza",
+      "id": "coscienza",
+      "n": "IX",
+      "barra": "Coscienza e azione",
+      "c": "--sage",
+      "diagramma": "COSCIENZA E RESPONSABILITÀ"
     }
   ],
-  "stato": "Impianto pronto",
-  "nota_stato": "contenuti in lavorazione",
+  "stato": "Struttura pronta",
+  "nota_stato": "468 voci individuate, 0 lette",
   "chi": "Un solo libro · 2.559 pagine",
-  "descrizione": "La mappa più grande della biblioteca e il suo perno: attraversa troppi argomenti perché una sintesi lineare abbia senso, e dove tocca un tema che un'altra mappa tratta per esteso ci rimanda invece di ripeterlo."
+  "descrizione": "La mappa più grande della biblioteca e il suo perno: 2.559 pagine, un indice di 468 enunciati raggruppato in otto parti tematiche. Ogni parte dichiara la propria lista di ciò che resta da leggere, invece di fingersi completa."
 }

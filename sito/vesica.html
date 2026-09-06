@@ -2024,6 +2024,14 @@
 <nav class="parts" aria-label="Parti della mappa">
   <ul class="rail">
     <li><button type="button" data-part="libro" style="--pc:var(--plum)"><i>I</i>Il libro</button></li>
+    <li><button type="button" data-part="strumenti" style="--pc:var(--blue)"><i>II</i>Gli strumenti</button></li>
+    <li><button type="button" data-part="consenso" style="--pc:var(--rust)"><i>III</i>Il consenso</button></li>
+    <li><button type="button" data-part="potere" style="--pc:var(--rust)"><i>IV</i>Il potere</button></li>
+    <li><button type="button" data-part="materia" style="--pc:var(--sage)"><i>V</i>DNA e materia</button></li>
+    <li><button type="button" data-part="geometria" style="--pc:var(--amber)"><i>VI</i>Geometria sacra</button></li>
+    <li><button type="button" data-part="ufologia" style="--pc:var(--blue)"><i>VII</i>Ufologia</button></li>
+    <li><button type="button" data-part="mitologia" style="--pc:var(--plum)"><i>VIII</i>Mitologia perduta</button></li>
+    <li><button type="button" data-part="coscienza" style="--pc:var(--sage)"><i>IX</i>Coscienza e azione</button></li>
     <li class="rail-cerca"><button type="button" id="ric-apri" aria-haspopup="dialog"><span class="lente-r" aria-hidden="true">⌕</span>Cerca<kbd id="ric-kbd">⌘K</kbd></button>
     </li>
   </ul>
@@ -2038,10 +2046,11 @@
     <div class="part-head">
       <p class="pn">Parte I</p>
       <h2>Il libro</h2>
-      <p class="pd">Che cos'è <i>Rapporto Vesica</i>, come è fatto, e come questa mappa intende trattarlo. Da
-        leggere per prima, perché un'opera di queste dimensioni si può usare solo sapendo dove si sta entrando.</p>
+      <p class="pd">Che cos'è <i>Rapporto Vesica</i>, come è fatto, e come questa mappa intende attraversarlo.
+        Da leggere per prima: un'opera di queste dimensioni si può usare solo sapendo dove si sta entrando.</p>
       <ul class="part-toc">
         <li><a href="#vesica-cosa"><b>01</b>Che cos&#39;è questa mappa</a></li>
+        <li><a href="#vesica-struttura"><b>02</b>Come è organizzata</a></li>
       </ul>
     </div>
 
@@ -2050,24 +2059,875 @@
         <div class="branch-aside">
           <span class="tag" style="color:var(--plum)">La mappa · come è fatta</span>
           <h2>Che cos&#39;è questa mappa</h2>
-          <p class="gist">Duemilacinquecentocinquantanove pagine non si riassumono: si attraversano. Questa pagina
-            è l&#39;impianto per farlo, e dichiara a che punto è.</p>
-          <p class="src">Rapporto Vesica, versione 16-08-2026 — testo integrale</p>
+          <p class="gist">Duemilacinquecentocinquantanove pagine non si riassumono: si attraversano. Questa
+            pagina è l&#39;impianto per farlo, e dichiara sempre a che punto è.</p>
+          <p class="src">Rapporto Vesica, versione 16-08-2026 — testo integrale, 2.559 pagine</p>
         </div>
         <div>
-          <p class="n-d" style="margin:0 0 24px">L&#39;impianto è in piedi: barra delle parti, diagramma, ricerca
-            completa, vocabolario, rimandi verso le altre mappe. I contenuti si aggiungono leggendo, e lo stato di
-            ogni parte è dichiarato: <b>una parte vuota si vede che è vuota</b>, invece di sembrare completa.</p>
+          <p class="n-d" style="margin:0 0 20px">Il libro non ha un sommario tradizionale: ha un <b>indice di
+              circa 470 enunciati</b> compresso in tre pagine dense, in testa al testo (pagg. 8-10). Ogni
+            enunciato diventa poi, nel corpo del libro, un titolo di paragrafo seguito dalla sua trattazione —
+            in pratica un'enciclopedia in sequenza, dove ogni voce vale mediamente cinque o sei pagine.</p>
           <div class="move">
             <h3>Perché è il perno della biblioteca</h3>
-            <p>Il libro attraversa argomenti che altre mappe trattano per esteso. Quando succede, questa mappa
-              <b>non ripete</b>: rimanda alla sezione che già esiste — per esempio a <a href="mappa-transurfing.html#pendoli">I pendoli</a>, e aggiunge solo ciò che Vesica dice in più o
-              di diverso. È la regola che tiene la biblioteca leggibile invece di farne tante copie parziali.</p>
+            <p>Il libro attraversa argomenti che altre mappe della biblioteca trattano per esteso — fisica,
+              mitologia, teorie della cospirazione, tecniche di persuasione. Quando succede, questa mappa
+              <b>non ripete</b>: rimanda alla sezione che già esiste altrove, e aggiunge solo ciò che Vesica dice
+              in più o di diverso. È la regola che tiene la biblioteca leggibile invece di farne tante copie
+              parziali.</p>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="branch" id="vesica-struttura" style="--c:var(--plum)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--plum)">La mappa · il piano</span>
+          <h2>Come è organizzata</h2>
+          <p class="gist">Otto parti tematiche, ricavate dall&#39;indice del libro stesso, nell&#39;ordine in cui
+            il libro le presenta.</p>
+          <p class="src">Indice generale del libro, righe 407-887 del testo estratto</p>
+        </div>
+        <div>
+          <p class="n-d" style="margin:0 0 20px">Le 468 voci dell'indice sono state raggruppate negli otto blocchi
+            tematici che seguono, nello stesso ordine in cui compaiono nel libro. Ogni parte è per ora un
+            <b>elenco di ciò che resta da leggere</b>, non un riassunto: si passa da elenco a sezione vera una
+            voce alla volta, leggendo il testo integrale prima di scrivere. L'elenco completo, con lo stato di
+            avanzamento di ogni singola voce, è tenuto in <code>note/vesica-indice-completo.md</code> — non sulla
+            pagina pubblica, perché lì servirebbe solo a chi lavora sulla mappa.</p>
+          <ul class="tree">
+            <li><span class="n-t">GLI STRUMENTI D&#39;INDAGINE <small>parte II · 40 voci</small></span>
+              <p class="n-d">Logica, matematica, metodo scientifico: gli strumenti con cui il resto del trattato
+                pretende di dimostrare le proprie tesi.</p>
+            </li>
+            <li><span class="n-t">LA FABBRICA DEL CONSENSO <small>parte III · 22 voci</small></span>
+              <p class="n-d">Propaganda, PNL, manipolazione mediatica.</p>
+            </li>
+            <li><span class="n-t">LE ARCHITETTURE DEL POTERE <small>parte IV · 91 voci</small></span>
+              <p class="n-d">Geopolitica, banche centrali, società segrete, sorveglianza.</p>
+            </li>
+            <li><span class="n-t">DNA, ENERGIA E MATERIA <small>parte V · 104 voci</small></span>
+              <p class="n-d">Genetica, fisica quantistica, energia libera.</p>
+            </li>
+            <li><span class="n-t">GEOMETRIA SACRA E LUOGHI ANOMALI <small>parte VI · 37 voci</small></span>
+              <p class="n-d">Piramidi, megaliti, solidi platonici, anomalie geologiche.</p>
+            </li>
+            <li><span class="n-t">UFOLOGIA ED ESOPOLITICA <small>parte VII · 33 voci</small></span>
+              <p class="n-d">Il fenomeno UFO, il disclosure, le razze aliene della letteratura esopolitica.</p>
+            </li>
+            <li><span class="n-t">MITOLOGIA E COSMOLOGIA PERDUTA <small>parte VIII · 128 voci</small></span>
+              <p class="n-d">Il blocco più denso: mitologia greca e sumera, Anunnaki, Atlantide, il vocabolario
+                «Keylontic Science».</p>
+            </li>
+            <li><span class="n-t">COSCIENZA E RESPONSABILITÀ <small>parte IX · 13 voci</small></span>
+              <p class="n-d">La chiusura del trattato: dalla diagnosi all&#39;azione.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </div>
+
+
+  <!-- ============================================================ PARTE · GLI STRUMENTI D'INDAGINE -->
+  <div class="part" id="parte-strumenti" style="--pc:var(--blue)">
+    <div class="part-head">
+      <p class="pn">Parte II</p>
+      <h2>Gli strumenti d'indagine</h2>
+      <p class="pd">Parte I del libro. Logica, matematica, metodo scientifico: gli strumenti con cui il resto del trattato pretende di dimostrare le proprie tesi.</p>
+      <ul class="part-toc">
+        <li><a href="#strumenti-stato"><b>01</b>Stato di questa parte</a></li>
+      </ul>
+    </div>
+
+    <section class="branch" id="strumenti-stato" style="--c:var(--blue)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--blue)">Stato · da leggere</span>
+          <h2>Gli strumenti d'indagine</h2>
+          <p class="gist">40 voci individuate nell'indice del libro, nessuna ancora trasferita in una sezione
+            vera. Questa pagina lo dichiara invece di sembrare completa.</p>
+          <p class="src">Rapporto Vesica, indice generale (pagg. 8-10) — righe di appartenenza a questo gruppo</p>
+        </div>
+        <div>
+          <p class="n-d" style="margin:0 0 20px">Le voci qui sotto sono quelle dell'indice del libro che
+            appartengono a questo gruppo tematico. Non sono ancora sezioni: sono la lista di ciò che va letto e
+            scritto, tenuta apposta visibile invece che nascosta in un file a parte, così anche a metà lavoro si
+            vede cosa manca. L'elenco completo e definitivo, comune a tutta la mappa, è
+            <code>note/vesica-indice-completo.md</code>.</p>
+          <div class="move cool">
+            <h3>Perché è vuota</h3>
+            <p>Rapporto Vesica ha 2.559 pagine e nessun sommario tradizionale: solo un indice di enunciati in
+              testa al libro. Questa mappa lo attraversa un gruppo alla volta, leggendo per intero prima di
+              scrivere. Finché una voce non è stata letta sul testo, non entra in una sezione — anche se il titolo
+              sembra già dire tutto.</p>
+          </div>
+          <ul class="checks">
+              <li>PARTE I</li>
+              <li>INTRODUZIONE</li>
+              <li>ABSTRACT</li>
+              <li>METODO D'INDAGINE, LINEE GUIDA</li>
+              <li>DOCUMENTAZIONE DI CONVALIDA</li>
+              <li>STRUMENTI D'INDAGINE</li>
+              <li>Conoscenze pertinenti per la completa comprensione dei temi trattati nella stesura rapporto</li>
+              <li>LINGUISTICA: ALFABETO GRECO, ETIMOLOGIA, SEMANTICA</li>
+              <li>INSIEMISTICA</li>
+              <li>LOGICA PROPOSIZIONALE</li>
+              <li>LOGICA MATEMATICA</li>
+              <li>LOGICA BOLEANA</li>
+              <li>STRUMENTI MATEMATICI: LOGARITMO, P GRECO, CAMPI DI ESISTENZA(CE)</li>
+              <li>LOGICA DEDUTTIVA: LEGGE DI MORGAN, TAUTOLOGIE</li>
+              <li>INDAGINE STATISTICA: CERTEZZA STATISTICA, CURVA DI GAUSS, NORMA</li>
+              <li>MATEMATICA</li>
+              <li>DIMOSTRAZIONE</li>
+              <li>LOGICA FUZZY: MEDIAZIONE TRA LOGICA MATEMATICA E CONSIDERAZIONI UMANE</li>
+              <li>INDAGINE INTERDISCIPLINARE</li>
+              <li>INFORMAZIONE: FONTI, FEDE, VERITA'</li>
+              <li>PROBLEMA DELLA DEMARCAZIONE</li>
+              <li>INDAGINE SCIENTIFICA</li>
+              <li>PARADOSSO DEL CALABRONE: ARGOMENTUM AB AUCTORITATE</li>
+              <li>TEOREMI DI INCOMPLETEZZA DI GODEL</li>
+              <li>DOTTRINA UFFICIALE/UFFICIALISMO</li>
+              <li>METODO SCIENTIFICO</li>
+              <li>PROBLEMA DELLA DEMARCAZION</li>
+              <li>RASOIO DI OCCAM</li>
+              <li>FALSIFICAZIONISMO</li>
+              <li>FISICA NEWTONIANA/QUANTISTICA A CONFRONTO</li>
+              <li>BIAS COGNITIVI</li>
+              <li>VISIONE A TUNNEL(PERCEZIONE SELETTIVA)</li>
+              <li>FALLACIE LOGICHE</li>
+              <li>MAJEUTICA(METODO MAJEUTICO)</li>
+              <li>GIORNALISMO INVESTIGATIVO</li>
+              <li>DIVULGAZIONE</li>
+              <li>TELECOMUNICAZIONI: SEGNALE ANALOGICO/DIGITALE, CODIFICA,</li>
+              <li>RICETRASMITTENTE</li>
+              <li>INFORMATICA: INPUT/OUTPUT, HARDWARE, SOFTWARE, INTERNET SERVICE</li>
+              <li>PROVIDERS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================================ PARTE · LA FABBRICA DEL CONSENSO -->
+  <div class="part" id="parte-consenso" style="--pc:var(--rust)">
+    <div class="part-head">
+      <p class="pn">Parte III</p>
+      <h2>La fabbrica del consenso</h2>
+      <p class="pd">Propaganda, PNL, manipolazione mediatica: come, secondo il libro, viene costruita l'opinione pubblica.</p>
+      <ul class="part-toc">
+        <li><a href="#consenso-stato"><b>01</b>Stato di questa parte</a></li>
+      </ul>
+    </div>
+
+    <section class="branch" id="consenso-stato" style="--c:var(--rust)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--rust)">Stato · da leggere</span>
+          <h2>La fabbrica del consenso</h2>
+          <p class="gist">22 voci individuate nell'indice del libro, nessuna ancora trasferita in una sezione
+            vera. Questa pagina lo dichiara invece di sembrare completa.</p>
+          <p class="src">Rapporto Vesica, indice generale (pagg. 8-10) — righe di appartenenza a questo gruppo</p>
+        </div>
+        <div>
+          <p class="n-d" style="margin:0 0 20px">Le voci qui sotto sono quelle dell'indice del libro che
+            appartengono a questo gruppo tematico. Non sono ancora sezioni: sono la lista di ciò che va letto e
+            scritto, tenuta apposta visibile invece che nascosta in un file a parte, così anche a metà lavoro si
+            vede cosa manca. L'elenco completo e definitivo, comune a tutta la mappa, è
+            <code>note/vesica-indice-completo.md</code>.</p>
+          <div class="move cool">
+            <h3>Perché è vuota</h3>
+            <p>Rapporto Vesica ha 2.559 pagine e nessun sommario tradizionale: solo un indice di enunciati in
+              testa al libro. Questa mappa lo attraversa un gruppo alla volta, leggendo per intero prima di
+              scrivere. Finché una voce non è stata letta sul testo, non entra in una sezione — anche se il titolo
+              sembra già dire tutto.</p>
+          </div>
+          <ul class="checks">
+              <li>RE-LIGO, VINCOLI RELIGIOSI</li>
+              <li>OPINIONE PUBBLICA</li>
+              <li>GNOSEOFOBIA</li>
+              <li>PUBLICITA'</li>
+              <li>MATERIALISMO</li>
+              <li>CORPORATOCRAZIA</li>
+              <li>GLOBALIZZAZIONE</li>
+              <li>CAPITALISMO</li>
+              <li>INFORMAZIONE</li>
+              <li>CONFLITTO D'INTERESSE</li>
+              <li>MANIPOLAZIONE MEDIATICA</li>
+              <li>PROPAGANDA</li>
+              <li>PROPAGANDA HOLLYWOODISTA</li>
+              <li>MANIPOLAZIONE</li>
+              <li>TERRORISMO MEDIATICO</li>
+              <li>RIDICOLIZZAZIONE</li>
+              <li>PROGRAMMAZIONE NEUROLINGUISTICA(PNL)</li>
+              <li>OMISSIONE D'INFORMAZIONE</li>
+              <li>REVISIONISMO, POST-VERITA'WIKIPEDISTA</li>
+              <li>COMUNICZIONE SUBLIMINALE</li>
+              <li>CANE DI PAVLOV</li>
+              <li>PSYOPS</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================================ PARTE · LE ARCHITETTURE DEL POTERE -->
+  <div class="part" id="parte-potere" style="--pc:var(--rust)">
+    <div class="part-head">
+      <p class="pn">Parte IV</p>
+      <h2>Le architetture del potere</h2>
+      <p class="pd">Geopolitica, banche centrali, società segrete, sorveglianza: la parte più «classicamente cospirazionista» del libro.</p>
+      <ul class="part-toc">
+        <li><a href="#potere-stato"><b>01</b>Stato di questa parte</a></li>
+      </ul>
+    </div>
+
+    <section class="branch" id="potere-stato" style="--c:var(--rust)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--rust)">Stato · da leggere</span>
+          <h2>Le architetture del potere</h2>
+          <p class="gist">91 voci individuate nell'indice del libro, nessuna ancora trasferita in una sezione
+            vera. Questa pagina lo dichiara invece di sembrare completa.</p>
+          <p class="src">Rapporto Vesica, indice generale (pagg. 8-10) — righe di appartenenza a questo gruppo</p>
+        </div>
+        <div>
+          <p class="n-d" style="margin:0 0 20px">Le voci qui sotto sono quelle dell'indice del libro che
+            appartengono a questo gruppo tematico. Non sono ancora sezioni: sono la lista di ciò che va letto e
+            scritto, tenuta apposta visibile invece che nascosta in un file a parte, così anche a metà lavoro si
+            vede cosa manca. L'elenco completo e definitivo, comune a tutta la mappa, è
+            <code>note/vesica-indice-completo.md</code>.</p>
+          <div class="move cool">
+            <h3>Perché è vuota</h3>
+            <p>Rapporto Vesica ha 2.559 pagine e nessun sommario tradizionale: solo un indice di enunciati in
+              testa al libro. Questa mappa lo attraversa un gruppo alla volta, leggendo per intero prima di
+              scrivere. Finché una voce non è stata letta sul testo, non entra in una sezione — anche se il titolo
+              sembra già dire tutto.</p>
+          </div>
+          <ul class="checks">
+              <li>AUTOMAZIONE</li>
+              <li>INTELLIGENZA ARTIFICIALE</li>
+              <li>ROBOTICA</li>
+              <li>INGEGNERIA SOCIALE</li>
+              <li>FINESTRE DI OVERTON</li>
+              <li>LA RANA DI CHOMSKY</li>
+              <li>TAVISTOCK INSTITUTE</li>
+              <li>SPIRITUALISMO TAVISTOCK</li>
+              <li>APERTURA/CHIUSURA MENTALE</li>
+              <li>FRAME DI PERKINS(FRAME GIORNALISTICO)</li>
+              <li>PROFLUVIO CULTURALE SCOMPOSTO</li>
+              <li>NOZIONISMO UNIVERSITARIO: INCULCAZIONE/RIPETIZIONE</li>
+              <li>DOTTRINA UNIVERSITARIA</li>
+              <li>SCIENTISMO</li>
+              <li>GIORDANO BRUNO</li>
+              <li>RICERCA SCIENTIFICA</li>
+              <li>ARCHETIPI</li>
+              <li>MANIPOLAZIONE ARCHETIPICA</li>
+              <li>SICARI ECONOMICI</li>
+              <li>OPERAZIONI FALSE FLAG</li>
+              <li>11 SETTEMBRE 2001</li>
+              <li>OPERAZIONE NORTWOODS</li>
+              <li>INTELLIGENCE MILITARE</li>
+              <li>CIA/NSA</li>
+              <li>COMPARTIMENTAZIONE MILITARE</li>
+              <li>FREEDOM OF INFORMACTION ACT(FOIA)</li>
+              <li>SINDROME DI STOCCOLMA</li>
+              <li>MITO DELLA CAVERNA DI PLATONE</li>
+              <li>AGENTI INCONSAPEVOLI</li>
+              <li>SIGNORAGGIO</li>
+              <li>CREDITO SOCIALE CINESE</li>
+              <li>TRATTATO DI MAASTRICHT</li>
+              <li>STATO CENTRALIZZATO</li>
+              <li>TRATTATO DI LISBONA</li>
+              <li>QUARTO POTERE</li>
+              <li>BANCA CENTRALE EUROPEA</li>
+              <li>MECCANISMO EUROPEO DI STABILITà(MES)</li>
+              <li>DOCUMENTAZIONE PNAC</li>
+              <li>TRATTATO DI VALSEN(EUROGENDFOR)</li>
+              <li>SAVI DI SION</li>
+              <li>MAJESTIC-12</li>
+              <li>SIONISMO</li>
+              <li>B'NAI B'RITH</li>
+              <li>AIPAC/ADL</li>
+              <li>ORDINE DEI GESUITI</li>
+              <li>VATICANO(VATIKA)</li>
+              <li>TORRE DI BABELE</li>
+              <li>TEMPLIO DELLA CORONA</li>
+              <li>BOLLE PALALI(LEGGE DELL'AMMIRAGLIATO)</li>
+              <li>CLUB DELLE ISOLE</li>
+              <li>VACCINO mRNA</li>
+              <li>NANOMATERIALI</li>
+              <li>FULLERENE(CARBON-60)</li>
+              <li>NANOTECNOLOGIA</li>
+              <li>VITA SINTETICA</li>
+              <li>ALLEVAMENTO UMANO</li>
+              <li>CLOUD SEEDING</li>
+              <li>GEOINGEGNERIA</li>
+              <li>MORBO DI MORGELLONS</li>
+              <li>HAARP</li>
+              <li>RADIOSONDE</li>
+              <li>ATTIVITA' CEREBRALE</li>
+              <li>ONDE ELF</li>
+              <li>MEMORIA UMANA</li>
+              <li>EFFETTO MAHARISHI</li>
+              <li>LINEE ASSIATONALI(Axi-A)</li>
+              <li>CHIRURGIA ETERICA</li>
+              <li>PRECIPITAZIONE DELLA MAGNETITE</li>
+              <li>STANDARD ELETTROMAGNETICI</li>
+              <li>PSICOTRONICA: ONDE ELF, MK-ULTRA, MK-DELTA, RHIC-EDOM</li>
+              <li>TECNOLOGIA GWEN(SSSS)</li>
+              <li>PROGETTO MONARCH</li>
+              <li>ROBOTICA/BIONICA</li>
+              <li>TRANSUMANESIMO: SOFT-ROBOT, BIOPRINTING</li>
+              <li>NANOROBOTICA</li>
+              <li>VENUS PROJECT</li>
+              <li>MICROCHIP R-FID</li>
+              <li>GRUPPO BILDERBERG</li>
+              <li>COMMISSIONE TRILATERALE</li>
+              <li>CLUB DI ROMA</li>
+              <li>TAVISTOCK INSTITUTE</li>
+              <li>CLUB DI BUDAPEST</li>
+              <li>CLUB MONDIALISTI</li>
+              <li>FABIAN SOCIETY</li>
+              <li>ORWELL 1984</li>
+              <li>ORDINE MONDIALE UNICO(O.W.O.)</li>
+              <li>MASSONERIA(G)</li>
+              <li>SOCIETA’ TEOSOFICA</li>
+              <li>COMITATO DEI 300</li>
+              <li>CONTROLLO CENTRALIZZATO: G30</li>
+              <li>ILLUMINATI</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================================ PARTE · DNA, ENERGIA E MATERIA -->
+  <div class="part" id="parte-materia" style="--pc:var(--sage)">
+    <div class="part-head">
+      <p class="pn">Parte V</p>
+      <h2>DNA, energia e materia</h2>
+      <p class="pd">Genetica, fisica quantistica, energia libera: il blocco con più terminologia scientifica riconoscibile, mescolata a tecnologie che la scienza ufficiale non riconosce.</p>
+      <ul class="part-toc">
+        <li><a href="#materia-stato"><b>01</b>Stato di questa parte</a></li>
+      </ul>
+    </div>
+
+    <section class="branch" id="materia-stato" style="--c:var(--sage)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--sage)">Stato · da leggere</span>
+          <h2>DNA, energia e materia</h2>
+          <p class="gist">104 voci individuate nell'indice del libro, nessuna ancora trasferita in una sezione
+            vera. Questa pagina lo dichiara invece di sembrare completa.</p>
+          <p class="src">Rapporto Vesica, indice generale (pagg. 8-10) — righe di appartenenza a questo gruppo</p>
+        </div>
+        <div>
+          <p class="n-d" style="margin:0 0 20px">Le voci qui sotto sono quelle dell'indice del libro che
+            appartengono a questo gruppo tematico. Non sono ancora sezioni: sono la lista di ciò che va letto e
+            scritto, tenuta apposta visibile invece che nascosta in un file a parte, così anche a metà lavoro si
+            vede cosa manca. L'elenco completo e definitivo, comune a tutta la mappa, è
+            <code>note/vesica-indice-completo.md</code>.</p>
+          <div class="move cool">
+            <h3>Perché è vuota</h3>
+            <p>Rapporto Vesica ha 2.559 pagine e nessun sommario tradizionale: solo un indice di enunciati in
+              testa al libro. Questa mappa lo attraversa un gruppo alla volta, leggendo per intero prima di
+              scrivere. Finché una voce non è stata letta sul testo, non entra in una sezione — anche se il titolo
+              sembra già dire tutto.</p>
+          </div>
+          <ul class="checks">
+              <li>DNA</li>
+              <li>SEDIMENTO DI SPETTRO DNA</li>
+              <li>EPIGENETICA</li>
+              <li>JUNK DNA</li>
+              <li>MALATTIA MENTALE</li>
+              <li>IPNOSI REGRESSIVA</li>
+              <li>IDEOLOGIA DARWINISTA</li>
+              <li>PANSPERMIA/PACECHO</li>
+              <li>TEORIA DELLA RELATIVITA’</li>
+              <li>TEORIA DELLE STRINGHE(M-Theory)</li>
+              <li>ENTAGLEMENT QUANTISTICO(Teorema di Bell)</li>
+              <li>EFFETTO COMPTON</li>
+              <li>DIAGRAMMA DI GOTT</li>
+              <li>FISICA QUANTISTICA: FORZE FONDAMENTALI</li>
+              <li>COSTANTE DI PLANCK( )ℏ</li>
+              <li>FISICA QUANTISTICA: PRINCIPIO DI NON-LOCALITA'</li>
+              <li>FERMIONI/BOSONI</li>
+              <li>EQUAZIONI DI DIRAC</li>
+              <li>FISICA QUANTISTICA: TOE</li>
+              <li>FISICA QUANRISTICA: SPAZIO DI HILBERT</li>
+              <li>FISICA QUANTISTICA: SUPERPOSIZIONE</li>
+              <li>COLLASSO FUNZIONE D'ONDA</li>
+              <li>QUANTUM CPU(Q-bits)</li>
+              <li>CAMPO UNIFICATO</li>
+              <li>TRASFERIMENTO FARMACOLOGICO FREQUENZIALE (TFF)</li>
+              <li>ENTROPIA/SINTROPIA</li>
+              <li>FRATTALE DI MANDELBROT</li>
+              <li>DIVIDE ET IMPERA(Sintropia)</li>
+              <li>CAUSALITA'(Causa/Ca(s)o/Cao(s)</li>
+              <li>EFFETTO BACKSTER</li>
+              <li>EFFETTO FUJIWARA</li>
+              <li>BIO-QUANTISTICA</li>
+              <li>BIO-FOTONI/ORGONI DI REICH</li>
+              <li>ORGONE</li>
+              <li>BIOMETRO DI BOWIS</li>
+              <li>TRASDUZIONE SENSORIALE</li>
+              <li>SIMULAZIONE DIGITALE</li>
+              <li>OLOGRAFIA DI PRIBRAM</li>
+              <li>RAPPORTO PHI</li>
+              <li>INSERTI OLOGRAFICI</li>
+              <li>MILABS</li>
+              <li>RECINTI DI FREQUENZA</li>
+              <li>SISTEMA PITUITARIO/PINEALE</li>
+              <li>INDUZIONE OTTICA PINEALE</li>
+              <li>TESSUTO CELLULARE UMANO - METRONOMI OSCILLANTI</li>
+              <li>MATRICI DI SHELDRAKE(Campi Morfici)</li>
+              <li>CODICI KEYLON</li>
+              <li>REGISTRI ECKA SHA'</li>
+              <li>ANIMA (S/Ps-M)</li>
+              <li>IDENTITA' BIOLOGICA</li>
+              <li>NEW AGE</li>
+              <li>SOL INVICTUS</li>
+              <li>CODEX LENINGRADENSIS</li>
+              <li>NEPHILIM</li>
+              <li>MONOLITI DI BAALBEK</li>
+              <li>STRUTTURE MEGALITICHE</li>
+              <li>CULTO DEL CARGO</li>
+              <li>LIBRI DI ENOCH</li>
+              <li>SPETTROSCOPIA</li>
+              <li>FUSIONE FREDDA</li>
+              <li>CRISTALLOGRAFIA</li>
+              <li>MICROCLUSTERS</li>
+              <li>SOLIDI PLATONICI</li>
+              <li>CIMATICA</li>
+              <li>COSTANTE DI TOMES</li>
+              <li>TEOREMA DI SHANNON</li>
+              <li>DISTURBARE IL SEGNALE(CENSURA)</li>
+              <li>TRASFORMATE DI FOURIER</li>
+              <li>TRASFERIMENTO FARMACOLOGICO FREQUENZIALE (TFF)</li>
+              <li>RISONANZA/DISSONANZA</li>
+              <li>RISONANZA DI STONEKING</li>
+              <li>CODICI VECA</li>
+              <li>ALTI CODICI VECA(HVC-CC)</li>
+              <li>CAMPO EM/FREQUENZA(Hz)</li>
+              <li>NIKOLA TESLA</li>
+              <li>QUATERNIONI DI MAXWELL (CEM/EE)</li>
+              <li>ONDE SCALARI(NHF)</li>
+              <li>DISPOSITIVI OVERUNITY (COP &gt; 1)</li>
+              <li>GENERATORE A SINGOLO PEZZO DI FARADAY(TAGLIO DI FLUSSO)</li>
+              <li>GENERATORE DI DE PALMA(N-Machine)</li>
+              <li>EFFETTO ASPDEN</li>
+              <li>GENERATORI OMOPOLARI</li>
+              <li>EFFETTO BIEFELD-BROWN</li>
+              <li>ENERGIA DI PUNTO ZERO (ZPE)</li>
+              <li>EFFETTO CASIMIR</li>
+              <li>GENERATORE DI HOHL (COP&gt;1)</li>
+              <li>AMPLIFICATORE DI MOURIER (COP&gt;1)</li>
+              <li>GENERATORE DI ADAMS (COP&gt;1)</li>
+              <li>ANTENNA DI DEYO (COP&gt;1)</li>
+              <li>DISCLOSURE PROJECT(CSETI)</li>
+              <li>ESOPOLITICA(USAPS)</li>
+              <li>TECNOLOGIA SINTROPICA</li>
+              <li>LEGA METALLICA TIALCO-B</li>
+              <li>TRASMUTATORE DI PARTICELLE COSMICHE(CPT)</li>
+              <li>TECNOLOGIA SINTROPICA: NAVE SUPERLUMINALE</li>
+              <li>ONDE TORSIONALI</li>
+              <li>UNITA' DI COSCIENZA(CU-VD)</li>
+              <li>DOMINI DEL VUOTO(CU-VD)</li>
+              <li>SONOLUMINESCENZA</li>
+              <li>FULMINI GLOBULARI</li>
+              <li>DISCO DI SEARL (SEG)</li>
+              <li>TRIANGOLO DELLE BERMUDA</li>
+              <li>ETERE</li>
+              <li>CAMPI TOROIDALI</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================================ PARTE · GEOMETRIA SACRA E LUOGHI ANOMALI -->
+  <div class="part" id="parte-geometria" style="--pc:var(--amber)">
+    <div class="part-head">
+      <p class="pn">Parte VI</p>
+      <h2>Geometria sacra e luoghi anomali</h2>
+      <p class="pd">Piramidi, megaliti, solidi platonici, anomalie geologiche.</p>
+      <ul class="part-toc">
+        <li><a href="#geometria-stato"><b>01</b>Stato di questa parte</a></li>
+      </ul>
+    </div>
+
+    <section class="branch" id="geometria-stato" style="--c:var(--amber)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--amber)">Stato · da leggere</span>
+          <h2>Geometria sacra e luoghi anomali</h2>
+          <p class="gist">37 voci individuate nell'indice del libro, nessuna ancora trasferita in una sezione
+            vera. Questa pagina lo dichiara invece di sembrare completa.</p>
+          <p class="src">Rapporto Vesica, indice generale (pagg. 8-10) — righe di appartenenza a questo gruppo</p>
+        </div>
+        <div>
+          <p class="n-d" style="margin:0 0 20px">Le voci qui sotto sono quelle dell'indice del libro che
+            appartengono a questo gruppo tematico. Non sono ancora sezioni: sono la lista di ciò che va letto e
+            scritto, tenuta apposta visibile invece che nascosta in un file a parte, così anche a metà lavoro si
+            vede cosa manca. L'elenco completo e definitivo, comune a tutta la mappa, è
+            <code>note/vesica-indice-completo.md</code>.</p>
+          <div class="move cool">
+            <h3>Perché è vuota</h3>
+            <p>Rapporto Vesica ha 2.559 pagine e nessun sommario tradizionale: solo un indice di enunciati in
+              testa al libro. Questa mappa lo attraversa un gruppo alla volta, leggendo per intero prima di
+              scrivere. Finché una voce non è stata letta sul testo, non entra in una sezione — anche se il titolo
+              sembra già dire tutto.</p>
+          </div>
+          <ul class="checks">
+              <li>GRANDE PIRAMIDE</li>
+              <li>PIRAMIDI</li>
+              <li>PIRAMIDI BOSNIACHE</li>
+              <li>PIRAMIDI DI CUBA</li>
+              <li>PIRAMIDI DI GOLOD</li>
+              <li>MEGALITI</li>
+              <li>LINEE DI NAZCA:</li>
+              <li>OOPARTS: ARTEFATTI COMPLESSI</li>
+              <li>OOPARTS: ARTEFATTI MEGALITICI</li>
+              <li>LEVITAZIONE ACUSTICA TIBETANA</li>
+              <li>COLONNA DI DJED</li>
+              <li>CONOSCENZE VEDICHE</li>
+              <li>VAIMANIKA SHASTRA</li>
+              <li>ORO(Au)</li>
+              <li>STRATIFICAZIONE DI TEGMARK</li>
+              <li>PLASMA</li>
+              <li>DIMENSIONI(HU-n)</li>
+              <li>MONADE(HU-3, D4-5-6)</li>
+              <li>ALBERO DEL MONDO</li>
+              <li>MATRICE DOLARE(HU-4, D10-11-12, Avatar)</li>
+              <li>LEGGE DELL'UNO (RA Material)</li>
+              <li>RAPPORTO ALLA SORGENTE</li>
+              <li>MANIFESTAZIONE: VELO DI MAYA</li>
+              <li>SEME Azur-A</li>
+              <li>SHA-KA-RA</li>
+              <li>CADUCEO</li>
+              <li>KUNDALINI</li>
+              <li>CORPI HOVA</li>
+              <li>GRAVITA'/ANTI-GRAVITA'</li>
+              <li>EFFETTO CAVITA' STRUTTURALE</li>
+              <li>TETTONICA A PLACCHE</li>
+              <li>CONCAVITA' PLANETARIE</li>
+              <li>DILUVIO UNIVERSALE: CARBONE FOSSILE</li>
+              <li>DERIVA DEI CONTINENTI- SUBDUZIONE CONTINENTALE</li>
+              <li>NUCLEO TERRESTRE</li>
+              <li>ESSA-7</li>
+              <li>EQUAZIONE DI DRAKE</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================================ PARTE · UFOLOGIA ED ESOPOLITICA -->
+  <div class="part" id="parte-ufologia" style="--pc:var(--blue)">
+    <div class="part-head">
+      <p class="pn">Parte VII</p>
+      <h2>Ufologia ed esopolitica</h2>
+      <p class="pd">Il fenomeno UFO, il disclosure, le razze aliene secondo la letteratura esopolitica e ufologica di riferimento.</p>
+      <ul class="part-toc">
+        <li><a href="#ufologia-stato"><b>01</b>Stato di questa parte</a></li>
+      </ul>
+    </div>
+
+    <section class="branch" id="ufologia-stato" style="--c:var(--blue)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--blue)">Stato · da leggere</span>
+          <h2>Ufologia ed esopolitica</h2>
+          <p class="gist">33 voci individuate nell'indice del libro, nessuna ancora trasferita in una sezione
+            vera. Questa pagina lo dichiara invece di sembrare completa.</p>
+          <p class="src">Rapporto Vesica, indice generale (pagg. 8-10) — righe di appartenenza a questo gruppo</p>
+        </div>
+        <div>
+          <p class="n-d" style="margin:0 0 20px">Le voci qui sotto sono quelle dell'indice del libro che
+            appartengono a questo gruppo tematico. Non sono ancora sezioni: sono la lista di ciò che va letto e
+            scritto, tenuta apposta visibile invece che nascosta in un file a parte, così anche a metà lavoro si
+            vede cosa manca. L'elenco completo e definitivo, comune a tutta la mappa, è
+            <code>note/vesica-indice-completo.md</code>.</p>
+          <div class="move cool">
+            <h3>Perché è vuota</h3>
+            <p>Rapporto Vesica ha 2.559 pagine e nessun sommario tradizionale: solo un indice di enunciati in
+              testa al libro. Questa mappa lo attraversa un gruppo alla volta, leggendo per intero prima di
+              scrivere. Finché una voce non è stata letta sul testo, non entra in una sezione — anche se il titolo
+              sembra già dire tutto.</p>
+          </div>
+          <ul class="checks">
+              <li>FENOMENO UFO</li>
+              <li>INCIDENTE DI ROSWELL</li>
+              <li>DISCLOSURE PROJECT(CSETI)</li>
+              <li>ROBERT LAZAR</li>
+              <li>UFO/ETI</li>
+              <li>ETI/EBE</li>
+              <li>EFFETTO BIEFELD-BROWN</li>
+              <li>TECNOLOGIA ZPE</li>
+              <li>ESOPOLITICA</li>
+              <li>COMPARTIMENTAZIONE MILITARE: SDI</li>
+              <li>COMPLESSO MILITARE DULCE</li>
+              <li>ALIEN REPRODUCTION VEICLE (ARV)</li>
+              <li>BLUE BEAM PROJECT</li>
+              <li>SOCIETA' DI THULE(VRIL-YA)</li>
+              <li>UMANOIDE DI ATACAMA</li>
+              <li>RAPPORTO SOM-01</li>
+              <li>COLLETTIVO DI ORIONE(Mintaka)</li>
+              <li>RUTILIA ETI/EBE(Grigi)</li>
+              <li>RIGELIANI(ET)</li>
+              <li>RETICULAM(ET)</li>
+              <li>BLUE PLANET PROJECT(BPP/PP)</li>
+              <li>OMIKRON-ODEDIKRON(Draco)</li>
+              <li>CONSIGLIO DI HATONA</li>
+              <li>ABDUCTION(s)</li>
+              <li>IMPIANTI ALIENI</li>
+              <li>MUTILAZIONE DEL BESTIAME(CM)</li>
+              <li>MAJESTIC-12</li>
+              <li>PAUL BENNEWITZ</li>
+              <li>PIASTRE CDT</li>
+              <li>ORDINE SMERALDO</li>
+              <li>MELCHIZEDEK</li>
+              <li>MELCHIZEDEK CLOISTER EMERALD ORDER(MCEO)</li>
+              <li>UMANI OGM</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================================ PARTE · MITOLOGIA E COSMOLOGIA PERDUTA -->
+  <div class="part" id="parte-mitologia" style="--pc:var(--plum)">
+    <div class="part-head">
+      <p class="pn">Parte VIII</p>
+      <h2>Mitologia e cosmologia perduta</h2>
+      <p class="pd">Il blocco più denso del libro: mitologia greca e sumera, Anunnaki, Atlantide, e il vocabolario «Keylontic Science» — la cosmogonia su cui il trattato costruisce la propria narrazione dell'origine.</p>
+      <ul class="part-toc">
+        <li><a href="#mitologia-stato"><b>01</b>Stato di questa parte</a></li>
+      </ul>
+    </div>
+
+    <section class="branch" id="mitologia-stato" style="--c:var(--plum)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--plum)">Stato · da leggere</span>
+          <h2>Mitologia e cosmologia perduta</h2>
+          <p class="gist">128 voci individuate nell'indice del libro, nessuna ancora trasferita in una sezione
+            vera. Questa pagina lo dichiara invece di sembrare completa.</p>
+          <p class="src">Rapporto Vesica, indice generale (pagg. 8-10) — righe di appartenenza a questo gruppo</p>
+        </div>
+        <div>
+          <p class="n-d" style="margin:0 0 20px">Le voci qui sotto sono quelle dell'indice del libro che
+            appartengono a questo gruppo tematico. Non sono ancora sezioni: sono la lista di ciò che va letto e
+            scritto, tenuta apposta visibile invece che nascosta in un file a parte, così anche a metà lavoro si
+            vede cosa manca. L'elenco completo e definitivo, comune a tutta la mappa, è
+            <code>note/vesica-indice-completo.md</code>.</p>
+          <div class="move cool">
+            <h3>Perché è vuota</h3>
+            <p>Rapporto Vesica ha 2.559 pagine e nessun sommario tradizionale: solo un indice di enunciati in
+              testa al libro. Questa mappa lo attraversa un gruppo alla volta, leggendo per intero prima di
+              scrivere. Finché una voce non è stata letta sul testo, non entra in una sezione — anche se il titolo
+              sembra già dire tutto.</p>
+          </div>
+          <ul class="checks">
+              <li>MITOLOGIA GRECA: FONTI</li>
+              <li>MITOLOGIA GRECA</li>
+              <li>MITOLOGIA GRECA: TITANOMACHIA</li>
+              <li>MITOLOGIA GRECA: EROI</li>
+              <li>MITOLOGIA GRECA: ARGONAUTI</li>
+              <li>MITOLOGIA GRECA: GUERRA DI TROIA</li>
+              <li>MITOLOGIA GRECA: ODISSEA</li>
+              <li>MITO A-TEMPORALE</li>
+              <li>GENE FOXP2 (Starchild)</li>
+              <li>RUTILISMO</li>
+              <li>SUMERI/MITO SUMERO</li>
+              <li>CADUTA DI AZLTAN(Atlantide)</li>
+              <li>FATTORE RHESUS(RH)</li>
+              <li>ANUNNAKI: RAZZA ET-SINTETICA PARASSITA</li>
+              <li>SANGUE BLU</li>
+              <li>QUETZALCOATL</li>
+              <li>NIBIRU</li>
+              <li>TIAMAT</li>
+              <li>MARDUK</li>
+              <li>LEMURIA</li>
+              <li>ZEPHELIUM</li>
+              <li>SCUDO DI SOL-OM-ON</li>
+              <li>AKHENATON</li>
+              <li>ERMETISMO</li>
+              <li>THOT</li>
+              <li>TAVOLE DI SMERALDO</li>
+              <li>MANIFESTAZIONE/INVOLUZIONE</li>
+              <li>POLVERE CELESMIAC/CELESTRON</li>
+              <li>MUTAZIONE A SCACCHIERA(CM - NDC)</li>
+              <li>PRECESSIONE DEGLI EQUINOZI</li>
+              <li>COMPUTO MAYA</li>
+              <li>SPIRALE DI PARKER</li>
+              <li>RISCALDAMENTO SOLARE</li>
+              <li>SHIFT POLARI</li>
+              <li>SPECIAZIONE PRECESSIONALE(ciclo Raup-Sepkoski)</li>
+              <li>MODELLO ATOMICO DI BOHR</li>
+              <li>TRANSIZIONI DI BOHR(Salti Quantici)</li>
+              <li>BIFORCAZIONE QUANTICA</li>
+              <li>TRATTATI DI SIRIO(1992)</li>
+              <li>SISTEMA DUO-DECIMALE</li>
+              <li>COSTANTE DI NINEVEH</li>
+              <li>TEMPO GEOMETRICO</li>
+              <li>CONTINUUM TEMPORALE</li>
+              <li>OSCILLATORE CENTRALE DI CRANE</li>
+              <li>HUNAB-KU MAYA</li>
+              <li>ALGORITMO DI MCKENNA(Timewave Zero)</li>
+              <li>TEMPO-SPAZIO DI LARSON(Tempo-sfera)</li>
+              <li>CASO(CAOS)/CAUSA</li>
+              <li>INTERNET/ONDE RADIO/TELECOMUNICAZIONI</li>
+              <li>ADINKRAS, UNIVERSO DIGITALE</li>
+              <li>COMPUTAZIONE QUANTICA</li>
+              <li>OLOGRAFIA DI PRIBRAM</li>
+              <li>QUARANTENA OLOGRAFICA(Iper-cubo Metatron)</li>
+              <li>MACCHINE BST-GRAVITON</li>
+              <li>TETRACHTYS (Matematica Base-10)</li>
+              <li>MARTE</li>
+              <li>COMPLESSO DI CYDONIA</li>
+              <li>COSTANTE DI TORUN</li>
+              <li>SPIRALE KRISTALLO</li>
+              <li>FIORE DELLA VITA ORIGINALE/ARTIFICIALE</li>
+              <li>SPIRALE FIBONACCI</li>
+              <li>UOMO VITRUVIANO</li>
+              <li>INVERSIONE METATRONICA 55</li>
+              <li>METATRON CELLULARE</li>
+              <li>CARBONIO 666</li>
+              <li>CUBO NERO DI SATURNO</li>
+              <li>RITO(RE-ITERO, RE-UTERO): Il trauma originale ci costringe a comportamenti rituali per cedere energia</li>
+              <li>SACRIFICIO DI SANGUE(Vampirismo, Parassitismo)</li>
+              <li>SATANISMO: Culto del ritualismo e Sacrificio di Sangue</li>
+              <li>ALEISTER CROWLEY</li>
+              <li>TRIANGOLO DI SIERPINSKI/PASCAL</li>
+              <li>GRIGLIA KATHARA</li>
+              <li>QUADRANTI ECKA-VECA(Croce Reuche)</li>
+              <li>Sigilli Geoviani(HD-C)</li>
+              <li>TRASDUZIONE ECKA-VECA: Come l'energia cosciente viene trasformata dal campo sorgente a ciò che esperiamo qui dentro</li>
+              <li>ANUHAZI: LINGUA ELETTRONALE ORIGINALE</li>
+              <li>TRATTATO DI ALTAIR</li>
+              <li>BRENEAU</li>
+              <li>YUNASAI</li>
+              <li>PARTIKI PHASING</li>
+              <li>MUSICA CRISTALLO</li>
+              <li>SENESCENZA CELLULARE</li>
+              <li>MER-KA-BA</li>
+              <li>COMPATTAZIONE MOLECOLARE(Morte)</li>
+              <li>GUERRE ELETTRICHE(Iperborea)</li>
+              <li>TUNNEL WESA/WESEDRAK</li>
+              <li>ARCO DELL'ALLEANZA</li>
+              <li>Bi-Veca/TRI-VECA</li>
+              <li>CONVOLUZIONE DEL CODICE</li>
+              <li>MASSACRI DEGLI ESSENI</li>
+              <li>MATRICE DI SILICATO (DNA-12)</li>
+              <li>FACOLTA' UMANE 12-D</li>
+              <li>IPER-COMUNICAZIONE</li>
+              <li>RANGE ASTRALE</li>
+              <li>SIGILLO ZETA</li>
+              <li>PROIEZIONE ASTRALE (OOBE)</li>
+              <li>SITEMA PINEALE-PITUITARIO</li>
+              <li>BILOCAZIONE</li>
+              <li>IDENTITA' BIOLOGICA</li>
+              <li>TESTIMONIANZA O'DONNELL</li>
+              <li>TESSUTO AD ANELLI AMNESICI ai-ART</li>
+              <li>LUCE CONGELATA(Miasmi Sho-na)</li>
+              <li>SOGGETTI INDACO</li>
+              <li>EVENTI PHI-EX / MONTAUK</li>
+              <li>HETHARO – HETHALON</li>
+              <li>VORTICI DI SANDERSON</li>
+              <li>IONOSFERA</li>
+              <li>ANOMALIE GEOLOGICHE</li>
+              <li>LOGOS PLANETARIO(Magnetosfera)</li>
+              <li>GRIGLIA DI CATHIE</li>
+              <li>GRIGLIA BECKER/HEGENS</li>
+              <li>GRIGLIE AMENTI</li>
+              <li>GRIGLIE TANDEM</li>
+              <li>TERRA INTERNA</li>
+              <li>PORTE-ARK Ay-naan-tì(SG)</li>
+              <li>MATRICE YOD-HAI-VOD-HAY</li>
+              <li>LUNA</li>
+              <li>APOLLO 20</li>
+              <li>HADRON COLLIDER(LHC, CERN)</li>
+              <li>CADUTA DI TARA(Terra 5D)</li>
+              <li>ORAPHIM</li>
+              <li>ALLEANZA DI PALAIDOR</li>
+              <li>CULLA DELLA LYRA(PORTE ARAMATHENA)</li>
+              <li>CADUTA ANGELICA DELL'UOMO</li>
+              <li>CADUTA IN FREQUENZA</li>
+              <li>BRENEAU</li>
+              <li>CADUTA DELLA LYRA: RAY-SA(Razze)</li>
+              <li>RICOSTRUZIONE EVENTI CHIAVE</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+  <!-- ============================================================ PARTE · COSCIENZA E RESPONSABILITÀ -->
+  <div class="part" id="parte-coscienza" style="--pc:var(--sage)">
+    <div class="part-head">
+      <p class="pn">Parte IX</p>
+      <h2>Coscienza e responsabilità</h2>
+      <p class="pd">La chiusura del trattato: dalla diagnosi all'azione — cosa fare, secondo l'autore, una volta «visto come è fatta la prigione».</p>
+      <ul class="part-toc">
+        <li><a href="#coscienza-stato"><b>01</b>Stato di questa parte</a></li>
+      </ul>
+    </div>
+
+    <section class="branch" id="coscienza-stato" style="--c:var(--sage)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--sage)">Stato · da leggere</span>
+          <h2>Coscienza e responsabilità</h2>
+          <p class="gist">13 voci individuate nell'indice del libro, nessuna ancora trasferita in una sezione
+            vera. Questa pagina lo dichiara invece di sembrare completa.</p>
+          <p class="src">Rapporto Vesica, indice generale (pagg. 8-10) — righe di appartenenza a questo gruppo</p>
+        </div>
+        <div>
+          <p class="n-d" style="margin:0 0 20px">Le voci qui sotto sono quelle dell'indice del libro che
+            appartengono a questo gruppo tematico. Non sono ancora sezioni: sono la lista di ciò che va letto e
+            scritto, tenuta apposta visibile invece che nascosta in un file a parte, così anche a metà lavoro si
+            vede cosa manca. L'elenco completo e definitivo, comune a tutta la mappa, è
+            <code>note/vesica-indice-completo.md</code>.</p>
+          <div class="move cool">
+            <h3>Perché è vuota</h3>
+            <p>Rapporto Vesica ha 2.559 pagine e nessun sommario tradizionale: solo un indice di enunciati in
+              testa al libro. Questa mappa lo attraversa un gruppo alla volta, leggendo per intero prima di
+              scrivere. Finché una voce non è stata letta sul testo, non entra in una sezione — anche se il titolo
+              sembra già dire tutto.</p>
+          </div>
+          <ul class="checks">
+              <li>GAMMA-SINCRONIA(Hieros Gamos, Androgino Originale)</li>
+              <li>COSCIENZA KRIST(ALL)O, CRISTA(MEMBRANA MITOCONDRIALE)</li>
+              <li>CROMOSOMI, COSCIENZA/CONSAPEVOLEZZA</li>
+              <li>RES-PONS-ABILITA': DELEGA DECISIONALE</li>
+              <li>RES-PONS-ABILITA': PRO-CREAZIONE/CO-CREAZIONE</li>
+              <li>RES-PONS-ABILITA': CONSENSO INFORMATO/ESTORSIONE DEL CONSENSO</li>
+              <li>RES-PONS-ABILITA': RESISTENZA NON VIOLENTA/NEGARE IL CONSENSO</li>
+              <li>RES-PONS-ABILITA': BOICOTTAGGIO</li>
+              <li>RES-PONS-ABILITA': EPISTOCRAZIA DI BRENNAN</li>
+              <li>RES-PONS-ABILITA': NUOCRAZIA</li>
+              <li>RES-PONS-ABILITA': PRODUZIONE DELLE RISORSE, CANAPA</li>
+              <li>RES-PONS-ABILITA': DIVULGAZIONE, SINTROPIA INFORMAZIONALE</li>
+              <li>RES-PONS-ABILITA': LIBERTA'</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>
+
+<div class="perf" role="presentation"></div>
 
 <footer>
   <div class="wrap">
@@ -2130,7 +2990,15 @@
 
     /* ---------- diagramma radiale ---------- */
     var BRANCHES = [
-      { n: "I", t: "IL LIBRO", id: "parte-libro", c: "--plum" }
+      { n: "I", t: "IL LIBRO", id: "parte-libro", c: "--plum" },
+      { n: "II", t: "GLI STRUMENTI D'INDAGINE", id: "parte-strumenti", c: "--blue" },
+      { n: "III", t: "LA FABBRICA DEL CONSENSO", id: "parte-consenso", c: "--rust" },
+      { n: "IV", t: "LE ARCHITETTURE DEL POTERE", id: "parte-potere", c: "--rust" },
+      { n: "V", t: "DNA, ENERGIA E MATERIA", id: "parte-materia", c: "--sage" },
+      { n: "VI", t: "GEOMETRIA SACRA E LUOGHI ANOMALI", id: "parte-geometria", c: "--amber" },
+      { n: "VII", t: "UFOLOGIA ED ESOPOLITICA", id: "parte-ufologia", c: "--blue" },
+      { n: "VIII", t: "MITOLOGIA E COSMOLOGIA PERDUTA", id: "parte-mitologia", c: "--plum" },
+      { n: "IX", t: "COSCIENZA E RESPONSABILITÀ", id: "parte-coscienza", c: "--sage" }
     ];
     var NS = "http://www.w3.org/2000/svg";
     var gN = document.getElementById("nodes"), gS = document.getElementById("spokes");
@@ -2181,7 +3049,7 @@
     }
 
     /* ---------- commutatore delle parti ---------- */
-    var PARTI = ["libro"];
+    var PARTI = ["libro", "strumenti", "consenso", "potere", "materia", "geometria", "ufologia", "mitologia", "coscienza"];
     var bottoni = Array.prototype.slice.call(document.querySelectorAll("nav.parts button"));
     var barra = document.querySelector("nav.parts");
 

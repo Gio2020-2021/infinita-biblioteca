@@ -129,6 +129,7 @@ def componi(mappa_dir, indice=None, errori=None):
     metti(TELAIO / "corpo" / "03-contenuto-apre.html")
     for p in parti:
         metti(mappa_dir / "parti" / f"{p['file']}.html")
+    metti(TELAIO / "corpo" / "03b-contenuto-chiude.html")
     for nome in cfg.get("coda", []):
         metti(mappa_dir / f"{nome}.html")
     metti(TELAIO / "corpo" / "04-pannelli.html")

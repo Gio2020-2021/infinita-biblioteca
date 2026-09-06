@@ -10,7 +10,7 @@ import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
-FILE = Path(__file__).resolve().parent.parent / "sito" / "mappa-transurfing.html"
+SITO = Path(__file__).resolve().parent.parent / "sito"
 VUOTI = {"br", "hr", "img", "input", "meta", "link", "source", "circle",
          "line", "rect", "path", "use", "col", "area", "track", "wbr"}
 
@@ -46,8 +46,8 @@ class Bilancia(HTMLParser):
         self.pila.pop()
 
 
-def main():
-    testo = FILE.read_text(encoding="utf-8")
+def verifica_un_file(f):
+    testo = f.read_text(encoding="utf-8")
     problemi = []
 
     # 1. id duplicati
@@ -118,14 +118,41 @@ def main():
     if not re.search(r'\[hidden\]\s*\{\s*display\s*:\s*none\s*!important', testo):
         problemi.append("manca la regola [hidden] — il pannello del rituale non si chiuderà in locale")
 
-    print(f"{FILE.name}: {len(testo)//1024} KB · {len(fisico)} parti · {len(tutte)} sezioni")
+    print(f"{f.name}: {len(testo)//1024} KB · {len(fisico)} parti · {len(tutte)} sezioni")
     if problemi:
-        print("\nPROBLEMI:")
+        print("PROBLEMI:")
         for p in problemi:
             print(" ·", p)
-        sys.exit(1)
-    print("tutto coerente.")
+    else:
+        print("tutto coerente.")
+    return not problemi
+
+
+def mappe_da_controllare(argv):
+    scelti = [a for a in argv if not a.startswith("--")]
+    if scelti:
+        return [SITO / (n if n.endswith(".html") else n + ".html") for n in scelti]
+    # ogni pagina generata da costruisci.py, esclusi i mockup e l'usa-e-getta
+    return sorted(f for f in SITO.glob("*.html")
+                  if f.name != "index.html" and not f.name.startswith("mockup-"))
+
+
+def main():
+    file = mappe_da_controllare(sys.argv[1:])
+    if not file:
+        print("nessuna mappa trovata in sito/")
+        return 1
+    ok = True
+    for i, f in enumerate(file):
+        if not f.exists():
+            print(f"{f.name}: NON ESISTE (costruirla con strumenti/costruisci.py)")
+            ok = False
+            continue
+        if i:
+            print()
+        ok = verifica_un_file(f) and ok
+    return 0 if ok else 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
