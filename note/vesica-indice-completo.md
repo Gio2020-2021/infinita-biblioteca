@@ -19,48 +19,48 @@ Totale voci: **468**, in otto gruppi tematici più l'introduzione.
 
 *Parte I del libro. Logica, matematica, metodo scientifico: gli strumenti con cui il resto del trattato pretende di dimostrare le proprie tesi.*
 
-**40 voci.**
+**40 voci — lette e trasferite il 6-9-2026, in `sorgente/mappe/vesica/parti/01-strumenti.html`, sette sezioni.**
 
-- [ ] PARTE I
-- [ ] INTRODUZIONE
-- [ ] ABSTRACT
-- [ ] METODO D'INDAGINE, LINEE GUIDA
-- [ ] DOCUMENTAZIONE DI CONVALIDA
-- [ ] STRUMENTI D'INDAGINE
-- [ ] Conoscenze pertinenti per la completa comprensione dei temi trattati nella stesura rapporto
-- [ ] LINGUISTICA: ALFABETO GRECO, ETIMOLOGIA, SEMANTICA
-- [ ] INSIEMISTICA
-- [ ] LOGICA PROPOSIZIONALE
-- [ ] LOGICA MATEMATICA
-- [ ] LOGICA BOLEANA
-- [ ] STRUMENTI MATEMATICI: LOGARITMO, P GRECO, CAMPI DI ESISTENZA(CE)
-- [ ] LOGICA DEDUTTIVA: LEGGE DI MORGAN, TAUTOLOGIE
-- [ ] INDAGINE STATISTICA: CERTEZZA STATISTICA, CURVA DI GAUSS, NORMA
-- [ ] MATEMATICA
-- [ ] DIMOSTRAZIONE
-- [ ] LOGICA FUZZY: MEDIAZIONE TRA LOGICA MATEMATICA E CONSIDERAZIONI UMANE
-- [ ] INDAGINE INTERDISCIPLINARE
-- [ ] INFORMAZIONE: FONTI, FEDE, VERITA'
-- [ ] PROBLEMA DELLA DEMARCAZIONE
-- [ ] INDAGINE SCIENTIFICA
-- [ ] PARADOSSO DEL CALABRONE: ARGOMENTUM AB AUCTORITATE
-- [ ] TEOREMI DI INCOMPLETEZZA DI GODEL
-- [ ] DOTTRINA UFFICIALE/UFFICIALISMO
-- [ ] METODO SCIENTIFICO
-- [ ] PROBLEMA DELLA DEMARCAZION
-- [ ] RASOIO DI OCCAM
-- [ ] FALSIFICAZIONISMO
-- [ ] FISICA NEWTONIANA/QUANTISTICA A CONFRONTO
-- [ ] BIAS COGNITIVI
-- [ ] VISIONE A TUNNEL(PERCEZIONE SELETTIVA)
-- [ ] FALLACIE LOGICHE
-- [ ] MAJEUTICA(METODO MAJEUTICO)
-- [ ] GIORNALISMO INVESTIGATIVO
-- [ ] DIVULGAZIONE
-- [ ] TELECOMUNICAZIONI: SEGNALE ANALOGICO/DIGITALE, CODIFICA,
-- [ ] RICETRASMITTENTE
-- [ ] INFORMATICA: INPUT/OUTPUT, HARDWARE, SOFTWARE, INTERNET SERVICE
-- [ ] PROVIDERS
+- [x] PARTE I → #vs-linguaggio (introduzione della Parte I del libro, non un enunciato a sé)
+- [x] INTRODUZIONE → #vs-linguaggio
+- [x] ABSTRACT → #vs-linguaggio
+- [x] METODO D'INDAGINE, LINEE GUIDA → #vs-linguaggio
+- [x] DOCUMENTAZIONE DI CONVALIDA → #vs-linguaggio
+- [x] STRUMENTI D'INDAGINE → #vs-linguaggio (titolo della parte)
+- [x] Conoscenze pertinenti per la completa comprensione dei temi trattati nella stesura rapporto → #vs-linguaggio
+- [x] LINGUISTICA: ALFABETO GRECO, ETIMOLOGIA, SEMANTICA → #vs-linguaggio
+- [x] INSIEMISTICA → #vs-linguaggio
+- [x] LOGICA PROPOSIZIONALE → #vs-logica
+- [x] LOGICA MATEMATICA → #vs-logica
+- [x] LOGICA BOLEANA → #vs-logica (algebra di Boole, dentro #vs-logica)
+- [x] STRUMENTI MATEMATICI: LOGARITMO, P GRECO, CAMPI DI ESISTENZA(CE) → #vs-logica
+- [x] LOGICA DEDUTTIVA: LEGGE DI MORGAN, TAUTOLOGIE → #vs-logica
+- [x] INDAGINE STATISTICA: CERTEZZA STATISTICA, CURVA DI GAUSS, NORMA → #vs-statistica
+- [x] MATEMATICA (continuazione della voce precedente, spezzata dall'a-capo del PDF) → #vs-statistica
+- [x] DIMOSTRAZIONE → #vs-logica
+- [x] LOGICA FUZZY: MEDIAZIONE TRA LOGICA MATEMATICA E CONSIDERAZIONI UMANE → #vs-statistica
+- [x] INDAGINE INTERDISCIPLINARE → #vs-calabrone
+- [x] INFORMAZIONE: FONTI, FEDE, VERITA' → #vs-calabrone
+- [x] PROBLEMA DELLA DEMARCAZIONE → #vs-demarcazione
+- [x] INDAGINE SCIENTIFICA → #vs-demarcazione
+- [x] PARADOSSO DEL CALABRONE: ARGOMENTUM AB AUCTORITATE → #vs-calabrone
+- [x] TEOREMI DI INCOMPLETEZZA DI GODEL → #vs-logica
+- [x] DOTTRINA UFFICIALE/UFFICIALISMO → #vs-demarcazione
+- [x] METODO SCIENTIFICO → #vs-demarcazione
+- [x] PROBLEMA DELLA DEMARCAZION → #vs-demarcazione (refuso ripetuto dell'indice)
+- [x] RASOIO DI OCCAM → #vs-demarcazione
+- [x] FALSIFICAZIONISMO → #vs-demarcazione
+- [x] FISICA NEWTONIANA/QUANTISTICA A CONFRONTO → #vs-demarcazione
+- [x] BIAS COGNITIVI → #vs-bias
+- [x] VISIONE A TUNNEL(PERCEZIONE SELETTIVA) → #vs-bias (citato, non sviluppato a parte: assorbito nel bias di conferma)
+- [x] FALLACIE LOGICHE → #vs-bias (catalogo citato per titolo: il libro ne elenca decine, la mappa non le trascrive tutte)
+- [x] MAJEUTICA(METODO MAJEUTICO) → #vs-bias
+- [x] GIORNALISMO INVESTIGATIVO → #vs-divulgazione
+- [x] DIVULGAZIONE → #vs-divulgazione
+- [x] TELECOMUNICAZIONI: SEGNALE ANALOGICO/DIGITALE, CODIFICA, → #vs-divulgazione (manualistica, riassunta)
+- [x] RICETRASMITTENTE (continuazione della voce precedente) → #vs-divulgazione
+- [x] INFORMATICA: INPUT/OUTPUT, HARDWARE, SOFTWARE, INTERNET SERVICE → #vs-divulgazione (manualistica, riassunta)
+- [x] PROVIDERS (continuazione della voce precedente) → #vs-divulgazione
 
 ## La fabbrica del consenso
 

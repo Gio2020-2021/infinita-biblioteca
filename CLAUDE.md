@@ -456,7 +456,7 @@ sul contenitore diretto di un marcatore-via-pseudo-elemento più testo misto —
 componente con marcatore + testo, verificarlo aprendo l'anteprima su quella sezione, non fidarsi
 della sola lettura del sorgente: il bug non dà errori né in `verifica.py` né in console.
 
-## Rapporto Vesica — impianto pronto, lettura in corso
+## Rapporto Vesica — lettura in corso (1/8 parti lette)
 
 Iniziato il 6-9-2026. **2.559 pagine**, strato di testo pulito, ~15,8 MB estratti in
 `testi/rapporto-vesica-v-16-08-2026.txt`. Non ha un sommario tradizionale: ha un **indice di
@@ -472,7 +472,7 @@ Le otto parti (dopo la Parte I «Il libro», che è la sola meta-sezione):
 
 | Parte | Voci | Cosa |
 |---|---|---|
-| II · Gli strumenti d'indagine | 40 | logica, matematica, metodo scientifico |
+| II · Gli strumenti d'indagine | 40 · **letta** | logica, matematica, metodo scientifico — sette sezioni, 45 citazioni verificate |
 | III · La fabbrica del consenso | 22 | propaganda, PNL, manipolazione mediatica |
 | IV · Le architetture del potere | 91 | geopolitica, banche centrali, società segrete |
 | V · DNA, energia e materia | 104 | genetica, fisica quantistica, energia libera |
