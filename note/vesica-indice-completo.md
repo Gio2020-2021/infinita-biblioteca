@@ -123,8 +123,8 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] APERTURA/CHIUSURA MENTALE → #pt-spiritualismo-tavistock (i fratelli Wright e Sitchin; l'argomento valido che scivola nel suo opposto)
 - [x] FRAME DI PERKINS(FRAME GIORNALISTICO) → #pt-frame-giornalistico (effetto a cascata, il frame, Soros e Gene Sharp non nominato)
 - [x] PROFLUVIO CULTURALE SCOMPOSTO → #pt-frame-giornalistico (James Forrestal/MJ-12, la lista di eroi da Tesla a Sitchin)
-- [ ] NOZIONISMO UNIVERSITARIO: INCULCAZIONE/RIPETIZIONE
-- [ ] DOTTRINA UNIVERSITARIA
+- [x] NOZIONISMO UNIVERSITARIO: INCULCAZIONE/RIPETIZIONE → #pt-nozionismo (energia libera rimandata a DNA/materia, John Gatto, il manifesto senza autore)
+- [x] DOTTRINA UNIVERSITARIA → #pt-nozionismo (il finanziamento reale delle università italiane, FFO e legge 243/1991)
 - [ ] SCIENTISMO
 - [ ] GIORDANO BRUNO
 - [ ] RICERCA SCIENTIFICA
