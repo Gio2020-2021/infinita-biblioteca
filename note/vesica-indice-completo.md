@@ -115,10 +115,10 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] AUTOMAZIONE → #pt-automazione (Goliath, R1/Walk-man, droni civili, risoluzione UE sulla robotica)
 - [x] INTELLIGENZA ARTIFICIALE → #pt-ia (Alpha, legge di Moore, TrueNorth, Partnership on AI, Hawking) · #pt-ia-naa (NAA/Moloch/bolle di realtà, il dialogo maieutico su Montauk)
 - [x] ROBOTICA → #pt-automazione (condivisa con Automazione; la voce «Robotica/Bionica» del transumanesimo resta separata, più avanti in questo stesso gruppo)
-- [ ] INGEGNERIA SOCIALE
-- [ ] FINESTRE DI OVERTON
-- [ ] LA RANA DI CHOMSKY
-- [ ] TAVISTOCK INSTITUTE
+- [x] INGEGNERIA SOCIALE → #pt-ingegneria-sociale (Bernays rimandato al consenso, Lasswell, «Armi silenziose per guerre tranquille», l'esperimento di Zimbardo)
+- [x] FINESTRE DI OVERTON → #pt-overton
+- [x] LA RANA DI CHOMSKY → #pt-rana-chomsky (la lista è di Sylvain Timsit, non di Chomsky; la metafora è biologicamente falsa)
+- [x] TAVISTOCK INSTITUTE → #pt-tavistock (fondazione 1947 a Londra, non 1921 a Oxford; Kurt Lewin non ne fu mai direttore)
 - [ ] SPIRITUALISMO TAVISTOCK
 - [ ] APERTURA/CHIUSURA MENTALE
 - [ ] FRAME DI PERKINS(FRAME GIORNALISTICO)
