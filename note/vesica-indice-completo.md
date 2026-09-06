@@ -319,45 +319,55 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 
 *Piramidi, megaliti, solidi platonici, anomalie geologiche.*
 
-**37 voci.**
+**37 voci — lette e trasferite per intero il 6-9-2026, in
+`sorgente/mappe/vesica/parti/05-geometria.html`, 128 sezioni. Tutte le citazioni verificate
+lettera per lettera: 1847/1847 letterali. Audit di copertura: 37/37 voci con riscontro.**
 
-- [ ] GRANDE PIRAMIDE
-- [ ] PIRAMIDI
-- [ ] PIRAMIDI BOSNIACHE
-- [ ] PIRAMIDI DI CUBA
-- [ ] PIRAMIDI DI GOLOD
-- [ ] MEGALITI
-- [ ] LINEE DI NAZCA:
-- [ ] OOPARTS: ARTEFATTI COMPLESSI
-- [ ] OOPARTS: ARTEFATTI MEGALITICI
-- [ ] LEVITAZIONE ACUSTICA TIBETANA
-- [ ] COLONNA DI DJED
-- [ ] CONOSCENZE VEDICHE
-- [ ] VAIMANIKA SHASTRA
-- [ ] ORO(Au)
-- [ ] STRATIFICAZIONE DI TEGMARK
-- [ ] PLASMA
-- [ ] DIMENSIONI(HU-n)
-- [ ] MONADE(HU-3, D4-5-6)
-- [ ] ALBERO DEL MONDO
-- [ ] MATRICE DOLARE(HU-4, D10-11-12, Avatar)
-- [ ] LEGGE DELL'UNO (RA Material)
-- [ ] RAPPORTO ALLA SORGENTE
-- [ ] MANIFESTAZIONE: VELO DI MAYA
-- [ ] SEME Azur-A
-- [ ] SHA-KA-RA
-- [ ] CADUCEO
-- [ ] KUNDALINI
-- [ ] CORPI HOVA
-- [ ] GRAVITA'/ANTI-GRAVITA'
-- [ ] EFFETTO CAVITA' STRUTTURALE
-- [ ] TETTONICA A PLACCHE
-- [ ] CONCAVITA' PLANETARIE
-- [ ] DILUVIO UNIVERSALE: CARBONE FOSSILE
-- [ ] DERIVA DEI CONTINENTI- SUBDUZIONE CONTINENTALE
-- [ ] NUCLEO TERRESTRE
-- [ ] ESSA-7
-- [ ] EQUAZIONE DI DRAKE
+> Il blocco è di gran lunga il più esteso della biblioteca: il libro dedica alla «Concavità
+> Planetarie» un'unica voce d'indice ma centinaia di pagine di digressioni (Halley, Symmes,
+> la spedizione Wilkes, Rügen, l'Oasi di Bunger, il teorema di Cowling, «The Smoky God»,
+> Nansen), quasi tutte senza una voce propria nell'indice del libro — da cui il rapporto
+> fortemente sbilanciato fra 37 voci e 128 sezioni. Stessa cosa, in scala minore, per
+> «Manifestazione», che nel corpo del libro ripete lo stesso titolo dodici volte su
+> argomenti diversi pur avendo una sola voce nell'indice generale («Velo di Maya»).
+
+- [x] GRANDE PIRAMIDE → #vg-piramide (le costanti) · #vg-terra (come modello della Terra) · #vg-camera (la camera del Re) · #vg-effetti (il «potere della piramide», gli esperimenti)
+- [x] PIRAMIDI → #vg-giza (la piana di Giza, la Sfinge, Orione) · #vg-mondo (siti megalitici nel mondo) · #vg-ecuador (la piramide con l'occhio, Puma Punku) · #vg-gobekli (Gobekli Tepe)
+- [x] PIRAMIDI BOSNIACHE → #vg-bosnia · #vg-prove (i cinque esperimenti e i loro numeri, condivisi con Golod)
+- [x] PIRAMIDI DI CUBA → #vg-cuba (le città sommerse, Cuba e l'Antartide)
+- [x] PIRAMIDI DI GOLOD → #vg-golod · #vg-prove (condivisa con le bosniache)
+- [x] MEGALITI → #vg-megaliti (il peso e la precisione) · #vg-mondo · #vg-africa (la metropoli sudafricana)
+- [x] LINEE DI NAZCA → #vg-nazca
+- [x] OOPARTS: ARTEFATTI COMPLESSI → #vg-ooparts-1 (oggetti nella roccia) · #vg-ooparts-2 (macchine e batterie) · #vg-eltanin (l'antenna Eltanin) · #vg-gabon (il reattore di Oklo)
+- [x] OOPARTS: ARTEFATTI MEGALITICI → #vg-saqqara (l'aereo di Saqqara, il martello del Texas)
+- [x] LEVITAZIONE ACUSTICA TIBETANA → #vg-levitazione
+- [x] COLONNA DI DJED → #vg-djed
+- [x] CONOSCENZE VEDICHE → #vg-veda
+- [x] VAIMANIKA SHASTRA → #vg-veda (stessa sezione: il libro tratta le due voci insieme)
+- [x] ORO(Au) → #vg-oro1 (Flamel, Roberto Monti) · #vg-oro2 (Nagaoka, la trasmutazione neutronica reale) — la voce risultava priva di sezione nell'audit del 6-9-2026 sera; scoperta e colmata a chiusura della parte, con lettura diretta di pagg. 1281-1282
+- [x] STRATIFICAZIONE DI TEGMARK → #vg-tegmark
+- [x] PLASMA → #vg-plasma (il plasma e le quindici dimensioni)
+- [x] DIMENSIONI(HU-n) → #vg-tegmark · #vg-plasma (le due sezioni condividono l'argomento delle dimensioni superiori)
+- [x] MONADE(HU-3, D4-5-6) → #vg-monade (la Monade e l'ATP)
+- [x] ALBERO DEL MONDO → #vg-albero
+- [x] MATRICE DOLARE(HU-4, D10-11-12, Avatar) → #vg-dolare
+- [x] LEGGE DELL'UNO (RA Material) → #vg-ra
+- [x] RAPPORTO ALLA SORGENTE → #vg-sorgente
+- [x] MANIFESTAZIONE: VELO DI MAYA → #vg-manifestazione1 fino a #vg-manifestazione12 (dodici sezioni: il libro ripete il titolo «Manifestazione» dodici volte su argomenti diversi — creazione e griglie, trauma, cicli e simboli, entità e malattia, ipotesi olografica, Sheldrake/etere/Geova, fisica mistica del primo Novecento, coscienza/Kabbalah/DNA, causalità e campi scalari, Mandelbrot/Capra, Azur-A, e infine il velo di Maya che dà il nome alla voce)
+- [x] SEME Azur-A → #vg-manifestazione11 (Azur-A e il campo aurico)
+- [x] SHA-KA-RA → #vg-shakara1 · #vg-shakara2 · #vg-shakara3
+- [x] CADUCEO → #vg-caduceo
+- [x] KUNDALINI → #vg-kundalini1 fino a #vg-kundalini7 · #vg-vecamerkaba (Bi-Veca/Tri-Veca e Mer-Ka-Ba, che nel libro seguono direttamente la serie Kundalini)
+- [x] CORPI HOVA → #vg-corpihova1 fino a #vg-corpihova5
+- [x] GRAVITA'/ANTI-GRAVITA' → #vg-gravita1 fino a #vg-gravita20 (venti sezioni; #vg-gravita9 è condivisa con la voce seguente)
+- [x] EFFETTO CAVITA' STRUTTURALE → #vg-gravita9 (sentito a mano, non da strumenti)
+- [x] TETTONICA A PLACCHE → #vg-tettonica1 · #vg-tettonica2
+- [x] CONCAVITA' PLANETARIE → #vg-concavita1 fino a #vg-concavita10 · #vg-diluvio1 fino a #vg-diluvio5 · #vg-deriva1 fino a #vg-deriva7 · #vg-nucleo1 fino a #vg-nucleo3 · #vg-crateri1 · #vg-marte1 · #vg-vanallen · #vg-fusionefredda · #vg-halley1 · #vg-halley2 · #vg-symmes · #vg-wilkes · #vg-rugen · #vg-antichi1 · #vg-essa1 · #vg-adriatico · #vg-bunger · #vg-cowling · #vg-smokygod (di gran lunga il gruppo più esteso: nel libro è un'unica voce d'indice che però si sviluppa per centinaia di pagine di digressioni storiche e scientifiche, quasi tutte prive di una propria voce nell'indice generale — vedi la nota sopra al blocco)
+- [x] DILUVIO UNIVERSALE: CARBONE FOSSILE → #vg-diluvio1 fino a #vg-diluvio5 (condivisa con Concavità Planetarie: il libro affronta il diluvio dentro la stessa digressione)
+- [x] DERIVA DEI CONTINENTI- SUBDUZIONE CONTINENTALE → #vg-deriva1 fino a #vg-deriva7 (condivisa con Concavità Planetarie)
+- [x] NUCLEO TERRESTRE → #vg-nucleo1 fino a #vg-nucleo3 (condivisa con Concavità Planetarie)
+- [x] ESSA-7 → #vg-essa1 (i satelliti ESSA e lo SCAR) · #vg-essa7 (il buco al Polo Nord)
+- [x] EQUAZIONE DI DRAKE → #vg-zetareticuli (Nansen, il Reticolo e Zeta Reticuli, che introduce l'argomento) · #vg-drake1
 
 ## Ufologia ed esopolitica
 
