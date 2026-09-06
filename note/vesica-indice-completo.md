@@ -131,9 +131,9 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [ ] ARCHETIPI
 - [ ] MANIPOLAZIONE ARCHETIPICA
 - [x] SICARI ECONOMICI → #pt-sicari (Roldós/Torrijos, Mossadegh/TPAJAX riconosciuta dalla CIA, Siria/RFK Jr., Bell Pottinger spostato di bersaglio ed epoca; Perkins in generale già in #vc-economia del consenso)
-- [ ] OPERAZIONI FALSE FLAG
-- [ ] 11 SETTEMBRE 2001
-- [ ] OPERAZIONE NORTWOODS
+- [x] OPERAZIONI FALSE FLAG → #pt-false-flag (NAA, Pearl Harbor come tesi minoritaria, il Bataclan con la ritrattazione di Hughes non riportata)
+- [x] 11 SETTEMBRE 2001 → #pt-11-settembre-fonti (Robin Cook, il NIST mai citato, Human Rights Watch, l'oppio afghano) · #pt-11-settembre-prove (il calcolo di probabilità scorretto, i documenti «troppo comodi»)
+- [x] OPERAZIONE NORTWOODS → #pt-false-flag (il documento più solido di questa parte — reale, declassificato, respinto da Kennedy)
 - [ ] INTELLIGENCE MILITARE
 - [ ] CIA/NSA
 - [ ] COMPARTIMENTAZIONE MILITARE
