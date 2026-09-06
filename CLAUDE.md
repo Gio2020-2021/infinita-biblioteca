@@ -75,14 +75,18 @@ tenuti come documentazione della scelta).
 testi/           i libri estratti in .txt, una riga per riga leggibile,
                  con marcatori "=== PAGINA n ===" per risalire al PDF
 pdf-sorgenti/    i PDF dei libri
-sorgente/        LA COPIA DI VERITÀ, spezzata in pezzi — si modifica QUI
-                 ordine.txt      l'ordine di riassemblaggio, una riga per file
-                 corpo/          testa, testata, piede, chiusura
-                 stile/          13 fogli, uno per componente
-                 parti/          una parte della mappa per file (00-casa … 12-voci)
-                 script/         9 moduli (diagramma, banco, diario, ricerca, …)
+sorgente/        LA COPIA DI VERITÀ — si modifica QUI, mai in sito/
+                 telaio/         identico per ogni mappa della biblioteca
+                   corpo/        apertura, barra (modello), pannelli, chiusura
+                   stile/        11 fogli generici
+                   script/       6 moduli generici
+                 mappe/
+                   transurfing/  mappa.json · titolo.txt · testata.html · piede.html
+                                 rituale.html · parti/ · stile/ (banco, diario)
+                                 script/ (rituale, banco, diario)
 sito/            mappa-transurfing.html   GENERATO da costruisci.py — non modificarlo
                  anteprima-locale.html    generata, usa-e-getta, mai modificarla
+                 mockup-biblioteca.html   il mockup della biblioteca (documentazione)
 note/            appunti di lavorazione, sintesi, materiale non ancora assorbito
 strumenti/       costruisci.py sorgente/ → sito/mappa-transurfing.html
                  estrai.py    PDF → testo
@@ -101,9 +105,17 @@ Il progetto è cresciuto oltre i 13.000 righe in un file solo, ed è stato spezz
 in `sorgente/` e si ricostruisce.
 
 ```bash
-python3 strumenti/costruisci.py             # ricostruisce il file
-python3 strumenti/costruisci.py --controlla # dice se il file è allineato ai pezzi
+python3 strumenti/costruisci.py             # ricostruisce tutte le mappe
+python3 strumenti/costruisci.py transurfing # solo una
+python3 strumenti/costruisci.py --controlla # dice se sono allineate ai pezzi
 ```
+
+**`mappa.json` è la carta d'identità di una mappa** e genera i quattro elenchi paralleli.
+`stile` e `script` sono elenchi **ordinati**: ogni nome si cerca prima in `mappe/<id>/`,
+poi in `telaio/`, così un foglio proprio (il banco, il diario) può stare in mezzo a quelli
+generici. Una mappa che non vuole il diario lo toglie da quell'elenco e basta.
+`parti` è la sola fonte per barra, ordine fisico, `PARTI` e `BRANCHES`; una parte con
+`"operativa": true` compare nella barra ma non nel diagramma.
 
 `--controlla` esiste per una ragione precisa: se qualcuno (o una sessione futura) modifica
 il file generato, la modifica sparisce alla ricostruzione successiva. Il controllo se ne
@@ -481,14 +493,13 @@ Nagal lo farebbe sembrare più zelandiano di quanto sia. Deciso dall'utente.
   ma se la sua scala di discorso non ha equivalenti nella struttura esistente (com'è successo con
   *Scardinare il Sistema Tecnogeno*, l'unico libro finora a valere una parte a sé), può guadagnarsi
   una parte intera: è un'eccezione, non un precedente da ripetere alla leggera.
-- **Quattro elenchi paralleli devono coincidere**: i `<button data-part>` della barra, l'ordine
-  fisico dei `<div class="part">`, l'array `BRANCHES` nel JS del diagramma (che ora elenca le
-  *parti*, non i rami), e l'array `PARTI` nello switcher JS (quello che decide quale parte
-  ricevere la classe `on` quando cambia l'ancora — dimenticarlo non dà errori, semplicemente la
-  parte nuova non si mostra mai). Aggiungendo una parte vanno aggiornati tutti e quattro — più il
-  `part-toc` della testata. `strumenti/verifica.py` controlla tutto questo, oltre a id duplicati,
-  link morti e bilanciamento dei tag: **eseguirlo sempre prima di pubblicare** (è già andato
-  storto due volte).
+- **I quattro elenchi paralleli non si scrivono più a mano.** Erano la trappola più costosa del
+  progetto — barra, ordine fisico, `BRANCHES` del diagramma e `PARTI` dello switcher —
+  e dimenticarne uno non dava errori: la parte semplicemente non compariva mai. Dal 6-9-2026
+  **si generano tutti da `parti` in `mappa.json`**: per aggiungere una parte si aggiunge una
+  voce lì e il file della parte in `parti/`. Resta da scrivere a mano il solo `part-toc` dentro
+  la testata della parte. `strumenti/verifica.py` continua a controllare i quattro elenchi sul
+  file costruito: ora è una rete di sicurezza contro le regressioni, non più l'unica difesa.
 - **«Da dove comincio se…»** (`#porte`, in fondo al banco) è il secondo ingresso alla mappa:
   diciotto situazioni di vita — *una persona se n'è andata*, *devo cambiare lavoro*, *questo
   problema non ha soluzione* — ognuna con la riga che la riformula nei termini del metodo e

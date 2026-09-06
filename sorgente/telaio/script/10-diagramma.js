@@ -3,17 +3,7 @@
 
     /* ---------- diagramma radiale ---------- */
     var BRANCHES = [
-      { n: "I", t: "IL TERRENO", id: "parte-terreno", c: "--blue" },
-      { n: "II", t: "COSA TI SOTTRAE", id: "parte-avversario", c: "--rust" },
-      { n: "III", t: "COSA HAI TU", id: "parte-forze", c: "--sage" },
-      { n: "IV", t: "L'OFFICINA", id: "parte-officina", c: "--amber" },
-      { n: "V", t: "GLI ALTRI", id: "parte-altri", c: "--sage" },
-      { n: "VI", t: "COORDINAZIONE", id: "parte-coordinazione", c: "--amber" },
-      { n: "VII", t: "LO SPECCHIO", id: "parte-specchio", c: "--amber" },
-      { n: "VIII", t: "LA TECNOSFERA", id: "parte-tecnosfera", c: "--rust" },
-      { n: "IX", t: "LE STORIE", id: "parte-aneddoti", c: "--plum" },
-      { n: "X", t: "RIFERIMENTI", id: "parte-riferimenti", c: "--blue" },
-      { n: "XI", t: "LE ALTRE VOCI", id: "parte-voci", c: "--teal" }
+{{BRANCHES}}
     ];
     var NS = "http://www.w3.org/2000/svg";
     var gN = document.getElementById("nodes"), gS = document.getElementById("spokes");

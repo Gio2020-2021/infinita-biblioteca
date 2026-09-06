@@ -1,5 +1,5 @@
     /* ---------- commutatore delle parti ---------- */
-    var PARTI = ["casa", "diario", "terreno", "avversario", "forze", "officina", "altri", "coordinazione", "specchio", "tecnosfera", "aneddoti", "riferimenti", "voci"];
+    var PARTI = {{PARTI}};
     var bottoni = Array.prototype.slice.call(document.querySelectorAll("nav.parts button"));
     var barra = document.querySelector("nav.parts");
 

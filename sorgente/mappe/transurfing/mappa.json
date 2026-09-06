@@ -1,0 +1,143 @@
+{
+  "id": "transurfing",
+  "nome": "Transurfing",
+  "accento": "--amber",
+  "_nota": "stile e script sono elencati NELL'ORDINE di composizione. Ogni nome si cerca prima in mappe/<id>/, poi in telaio/: così un modulo proprio può stare in mezzo a quelli generici senza spostare nulla, e una mappa che non vuole il diario lo toglie da questo elenco e basta.",
+  "stile": [
+    "00-fondamenta",
+    "10-banco",
+    "20-mappa",
+    "30-glossario",
+    "40-parti",
+    "50-diario",
+    "60-percorsi",
+    "70-porte",
+    "80-storie",
+    "85-componenti",
+    "90-ricerca",
+    "93-voci",
+    "96-torna-su"
+  ],
+  "script": [
+    "10-diagramma",
+    "20-helpers",
+    "30-rituale",
+    "40-banco",
+    "50-parti",
+    "60-menu-sezioni",
+    "70-diario",
+    "80-glossario",
+    "90-ricerca"
+  ],
+  "parti": [
+    {
+      "file": "00-casa",
+      "id": "casa",
+      "n": "·",
+      "barra": "Il banco",
+      "c": "--amber",
+      "operativa": true
+    },
+    {
+      "file": "01-diario",
+      "id": "diario",
+      "n": "·",
+      "barra": "Il diario",
+      "c": "--sage",
+      "operativa": true
+    },
+    {
+      "file": "02-terreno",
+      "id": "terreno",
+      "n": "I",
+      "barra": "Il terreno",
+      "c": "--blue",
+      "diagramma": "IL TERRENO"
+    },
+    {
+      "file": "03-avversario",
+      "id": "avversario",
+      "n": "II",
+      "barra": "Cosa ti sottrae",
+      "c": "--rust",
+      "diagramma": "COSA TI SOTTRAE"
+    },
+    {
+      "file": "04-forze",
+      "id": "forze",
+      "n": "III",
+      "barra": "Cosa hai tu",
+      "c": "--sage",
+      "diagramma": "COSA HAI TU"
+    },
+    {
+      "file": "05-officina",
+      "id": "officina",
+      "n": "IV",
+      "barra": "L'officina",
+      "c": "--amber",
+      "diagramma": "L'OFFICINA"
+    },
+    {
+      "file": "06-altri",
+      "id": "altri",
+      "n": "V",
+      "barra": "Gli altri",
+      "c": "--sage",
+      "diagramma": "GLI ALTRI"
+    },
+    {
+      "file": "07-coordinazione",
+      "id": "coordinazione",
+      "n": "VI",
+      "barra": "Coordinazione",
+      "c": "--amber",
+      "diagramma": "COORDINAZIONE"
+    },
+    {
+      "file": "08-specchio",
+      "id": "specchio",
+      "n": "VII",
+      "barra": "Lo specchio",
+      "c": "--amber",
+      "diagramma": "LO SPECCHIO"
+    },
+    {
+      "file": "09-tecnosfera",
+      "id": "tecnosfera",
+      "n": "VIII",
+      "barra": "La tecnosfera",
+      "c": "--rust",
+      "diagramma": "LA TECNOSFERA"
+    },
+    {
+      "file": "10-aneddoti",
+      "id": "aneddoti",
+      "n": "IX",
+      "barra": "Aneddoti",
+      "c": "--plum",
+      "diagramma": "LE STORIE"
+    },
+    {
+      "file": "11-riferimenti",
+      "id": "riferimenti",
+      "n": "X",
+      "barra": "Riferimenti",
+      "c": "--blue",
+      "diagramma": "RIFERIMENTI"
+    },
+    {
+      "file": "12-voci",
+      "id": "voci",
+      "n": "XI",
+      "barra": "Le altre voci",
+      "c": "--teal",
+      "diagramma": "LE ALTRE VOCI"
+    }
+  ],
+  "_nota_parti": "Da qui si generano TUTTI e quattro gli elenchi paralleli: la barra, l'ordine fisico delle parti, l'array PARTI dello switcher e l'array BRANCHES del diagramma. Una parte con \"operativa\": true sta nella barra ma non nel diagramma (il banco, il diario).",
+  "coda": [
+    "piede",
+    "rituale"
+  ]
+}

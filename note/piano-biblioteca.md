@@ -1,6 +1,7 @@
 # Da una mappa a una biblioteca — piano
 
-Stato: **proposto**, non approvato. Mockup: `sito/mockup-biblioteca.html`.
+Stato: tappe 1 e 2 **fatte** il 6-9-2026 (telaio estratto, elenchi generati da
+`mappa.json`, file costruito identico byte per byte). Dalla 3 in poi: da fare. Mockup: `sito/mockup-biblioteca.html`.
 
 ## Il principio
 
@@ -71,6 +72,24 @@ ogni argomento.
 - **La disciplina dei tag.** Un vocabolario di concetti si degrada in fretta se ogni mappa
   ne inventa di nuovi. Regola: `concetti.json` è chiuso, si aggiunge un concetto solo
   quando almeno **due** mappe lo toccano, e `verifica.py` segnala i tag non dichiarati.
+
+## Rapporto Vesica: una mappa che fa da perno
+
+L'utente ha annunciato un libro, **Rapporto Vesica**, che «parla di tutto e di più» e sarà
+**un punto di contatto per molti altri argomenti e mappe**. Non è una mappa come le altre:
+è un perno. Conseguenze sul disegno, da tenere presenti fin dalla tappa 1:
+
+- **I rimandi fra mappe devono essere di prima classe**, non un'aggiunta. Serve un indirizzo
+  stabile per ogni sezione — `mappa:sezione`, es. `transurfing:pendoli` — che `costruisci.py`
+  risolve nel link giusto (`transurfing.html#pendoli`). Scritto così, un rimando non si rompe
+  se una mappa cambia nome di file o se una sezione cambia parte.
+- **Una mappa-perno tocca quasi tutti i concetti**: la tavola dei concetti deve reggere una
+  colonna molto piena senza diventare illeggibile, e il perno va probabilmente mostrato per
+  primo e in modo diverso dalle altre.
+- **Il rischio da evitare**: che il perno diventi il posto dove si mette tutto ciò che non si
+  sa dove mettere. Un rimando dal perno a una mappa deve puntare a una sezione che esiste
+  davvero — la stessa regola già valida per `#porte`: *una porta non deve mai promettere
+  qualcosa che la sezione linkata non contiene.*
 
 ## Tappe
 
