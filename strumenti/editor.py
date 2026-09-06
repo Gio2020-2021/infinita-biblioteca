@@ -53,7 +53,56 @@ SORGENTE = RADICE / "sorgente"
 MAPPE = SORGENTE / "mappe"
 SITO = RADICE / "sito"
 STORICO = RADICE / ".storico"
+VENDOR = Path(__file__).resolve().parent / "vendor"
 PORTA_DI_DEFAULT = 8901
+
+# CodeMirror sta in strumenti/vendor/, non su un CDN: l'editor deve funzionare
+# anche senza rete, come il resto del progetto. Se la cartella non c'è, l'editor
+# ripiega su una textarea semplice invece di rompersi.
+CODEMIRROR = [
+    ("css", "lib/codemirror.css"),
+    ("css", "addon/dialog/dialog.css"),
+    ("css", "addon/fold/foldgutter.css"),
+    ("css", "addon/search/matchesonscrollbar.css"),
+    ("js", "lib/codemirror.js"),
+    ("js", "mode/xml/xml.js"),
+    ("js", "mode/javascript/javascript.js"),
+    ("js", "mode/css/css.js"),
+    ("js", "mode/htmlmixed/htmlmixed.js"),
+    ("js", "addon/fold/xml-fold.js"),
+    ("js", "addon/edit/closetag.js"),
+    ("js", "addon/edit/closebrackets.js"),
+    ("js", "addon/edit/matchtags.js"),
+    ("js", "addon/edit/matchbrackets.js"),
+    ("js", "addon/fold/foldcode.js"),
+    ("js", "addon/fold/foldgutter.js"),
+    ("js", "addon/fold/brace-fold.js"),
+    ("js", "addon/dialog/dialog.js"),
+    ("js", "addon/search/searchcursor.js"),
+    ("js", "addon/search/search.js"),
+    ("js", "addon/search/jump-to-line.js"),
+    ("js", "addon/scroll/annotatescrollbar.js"),
+    ("js", "addon/search/matchesonscrollbar.js"),
+    ("js", "addon/search/match-highlighter.js"),
+    ("js", "addon/selection/active-line.js"),
+    ("js", "addon/comment/comment.js"),
+]
+
+
+def codemirror_c_e():
+    return (VENDOR / "codemirror" / "lib" / "codemirror.js").exists()
+
+
+def tag_codemirror():
+    if not codemirror_c_e():
+        return ""
+    righe = []
+    for tipo, f in CODEMIRROR:
+        if tipo == "css":
+            righe.append(f'<link rel="stylesheet" href="/vendor/codemirror/{f}">')
+        else:
+            righe.append(f'<script src="/vendor/codemirror/{f}"></script>')
+    return "\n".join(righe) + "\n"
 
 GUSCIO = """<!doctype html>
 <html lang="it">
@@ -277,6 +326,37 @@ STILE_EDITOR = """
     font-family: var(--f-mono, ui-monospace, monospace);
     font-size: var(--ed-misura, 11px); line-height: 1.6;
     background: var(--ground, #12131A); color: var(--ink, #E6E4DC) }
+  /* CodeMirror: prende i colori dalla pagina, così segue il tema chiaro/scuro
+     invece di portarsene uno suo che stona */
+  #ed-sinistra .CodeMirror {
+    flex: 1; min-height: 0; height: auto;
+    font-family: var(--f-mono, ui-monospace, monospace);
+    font-size: var(--ed-misura, 11px); line-height: 1.6;
+    background: var(--ground, #12131A); color: var(--ink, #E6E4DC);
+  }
+  .CodeMirror-gutters { background: var(--surface, #1B1D27); border-right: 1px solid var(--line, #2E3140) }
+  .CodeMirror-linenumber { color: var(--muted, #8B8D9E) }
+  .CodeMirror-cursor { border-left: 2px solid var(--amber, #E8A33D) }
+  .CodeMirror-activeline-background { background: var(--surface-2, #232633) }
+  .CodeMirror-selected, .CodeMirror-focused .CodeMirror-selected { background: var(--blue-soft, rgba(127,168,201,.22)) !important }
+  .CodeMirror-matchingtag, .CodeMirror-matchingbracket {
+    background: var(--amber-soft, rgba(232,163,61,.18)); color: var(--amber, #E8A33D) !important }
+  .cm-s-default .cm-tag { color: var(--blue, #7FA8C9) }
+  .cm-s-default .cm-attribute { color: var(--sage, #8AA878) }
+  .cm-s-default .cm-string { color: var(--amber, #E8A33D) }
+  .cm-s-default .cm-comment { color: var(--muted, #8B8D9E); font-style: italic }
+  .cm-s-default .cm-bracket { color: var(--ink-dim, #B4B3AC) }
+  .CodeMirror-dialog {
+    background: var(--surface, #1B1D27); color: var(--ink, #E6E4DC);
+    border-bottom: 1px solid var(--line, #2E3140);
+    font-family: var(--f-mono, monospace); font-size: 12px; padding: 8px 10px }
+  .CodeMirror-dialog input {
+    font-family: var(--f-mono, monospace); font-size: 12px;
+    background: var(--ground, #12131A); color: var(--ink, #E6E4DC);
+    border: 1px solid var(--line, #2E3140); border-radius: 3px; padding: 4px 6px; outline: none }
+  .cm-searching { background: var(--amber-soft, rgba(232,163,61,.25)) }
+  #ed-scorciatoie { font-family: var(--f-mono, monospace); font-size: 10px;
+    color: var(--muted, #8B8D9E); letter-spacing: .04em }
   #ed-destra { overflow: auto; padding: 0 26px; background: var(--ground, #12131A) }
   #ed-etichetta-anteprima { position: sticky; top: 0; z-index: 2; padding: 8px 0 6px;
     background: var(--ground, #12131A); font-family: var(--f-mono, monospace);
@@ -304,6 +384,7 @@ SCRIPT_EDITOR = r"""
     <div id="ed-testa">
       <h3 id="ed-titolo"></h3>
       <span id="ed-dove"></span>
+      <span id="ed-scorciatoie">tab indenta · &#8984;F cerca · &#8984;&#8997;F sostituisci · &#8984;/ commenta · &#8984;D duplica riga</span>
       <span class="ed-spinta">
         <button type="button" id="ed-annulla">Chiudi (Esc)</button>
         <button type="button" id="ed-salva">Salva (&#8984;S)</button>
@@ -365,8 +446,75 @@ SCRIPT_EDITOR = r"""
     if (testo) e.firstChild.textContent = testo;
   }
 
+  // ---- il testo: CodeMirror se c'è, altrimenti la textarea nuda -------------
+  var cm = null;
+  function areaTesto() { return document.getElementById("ed-testo"); }
+  function creaEditor() {
+    if (cm || typeof CodeMirror === "undefined") return;
+    cm = CodeMirror.fromTextArea(areaTesto(), {
+      mode: "htmlmixed",
+      lineNumbers: true,
+      lineWrapping: true,
+      indentUnit: 2,
+      tabSize: 2,
+      indentWithTabs: false,
+      autoCloseTags: true,
+      autoCloseBrackets: true,
+      matchTags: { bothTags: true },
+      matchBrackets: true,
+      styleActiveLine: true,
+      foldGutter: true,
+      highlightSelectionMatches: { showToken: /[\w-]/, annotateScrollbar: true },
+      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+      extraKeys: {
+        // il Tab indenta invece di saltare al campo successivo: era il difetto più fastidioso
+        "Tab": function (c) {
+          if (c.somethingSelected()) c.indentSelection("add");
+          else c.replaceSelection(new Array(c.getOption("indentUnit") + 1).join(" "), "end");
+        },
+        "Shift-Tab": function (c) { c.indentSelection("subtract"); },
+        "Cmd-S": function () { salva(); },
+        "Ctrl-S": function () { salva(); },
+        "Cmd-F": "findPersistent",
+        "Ctrl-F": "findPersistent",
+        "Cmd-G": "findNext",
+        "Ctrl-G": "findNext",
+        "Shift-Cmd-G": "findPrev",
+        "Shift-Ctrl-G": "findPrev",
+        "Cmd-Alt-F": "replace",
+        "Shift-Ctrl-F": "replace",
+        "Shift-Cmd-Alt-F": "replaceAll",
+        "Alt-G": "jumpToLine",
+        "Cmd-/": "toggleComment",
+        "Ctrl-/": "toggleComment",
+        "Cmd-D": function (c) {           // duplica la riga
+          var r = c.getCursor().line, t = c.getLine(r);
+          c.replaceRange(t + "\n", { line: r + 1, ch: 0 });
+        },
+        "Ctrl-D": function (c) {
+          var r = c.getCursor().line, t = c.getLine(r);
+          c.replaceRange(t + "\n", { line: r + 1, ch: 0 });
+        }
+      }
+    });
+    cm.on("change", anteprima);
+  }
+  function leggi() { return cm ? cm.getValue() : areaTesto().value; }
+  function scrivi(v) {
+    if (cm) { cm.setValue(v); cm.clearHistory(); cm.refresh(); }
+    else areaTesto().value = v;
+  }
+  function metti(t) {
+    if (cm) { cm.replaceSelection(t, "end"); cm.focus(); return; }
+    var ta = areaTesto(), i = ta.selectionStart, j = ta.selectionEnd;
+    ta.value = ta.value.slice(0, i) + t + ta.value.slice(j);
+    ta.focus();
+    ta.setSelectionRange(i + t.length, i + t.length);
+  }
+  function metteFuoco() { if (cm) cm.focus(); else areaTesto().focus(); }
+
   function anteprima() {
-    document.getElementById("ed-anteprima").innerHTML = document.getElementById("ed-testo").value;
+    document.getElementById("ed-anteprima").innerHTML = leggi();
   }
 
   function appendiMatita(sez) {
@@ -402,26 +550,25 @@ SCRIPT_EDITOR = r"""
     document.getElementById("ed-titolo").textContent = titoloDi(sez);
     document.getElementById("ed-dove").textContent = "#" + sez.id + " · " + PAGINA;
     esiti("");
-    var ta = document.getElementById("ed-testo");
-    ta.value = "caricamento…";
     document.getElementById("ed-velo").classList.add("on");
+    creaEditor();                 // dopo l'apertura del velo: CodeMirror misura il suo spazio
+    scrivi("caricamento…");
     fetch("/sorgente?pagina=" + encodeURIComponent(PAGINA) + "&sezione=" + encodeURIComponent(sez.id))
       .then(function (r) { return r.json(); })
       .then(function (r) {
-        if (!r.ok) { esiti(r.errore || "non riesco a leggere la sezione", true); ta.value = ""; return; }
-        ta.value = r.html;
+        if (!r.ok) { esiti(r.errore || "non riesco a leggere la sezione", true); scrivi(""); return; }
+        scrivi(r.html);
         testoIniziale = r.html;
         document.getElementById("ed-dove").textContent = "#" + sez.id + " · " + r.file;
         anteprima();
-        ta.focus();
-        ta.setSelectionRange(0, 0);
+        metteFuoco();
+        if (cm) cm.setCursor({ line: 0, ch: 0 });
       })
       .catch(function () { esiti("il server locale non risponde", true); });
   }
 
   function chiudi(forza) {
-    var ta = document.getElementById("ed-testo");
-    if (!forza && ta.value !== testoIniziale &&
+    if (!forza && leggi() !== testoIniziale &&
         !confirm("Ci sono modifiche non salvate. Chiudere lo stesso?")) return;
     document.getElementById("ed-velo").classList.remove("on");
     sezioneAperta = null;
@@ -429,7 +576,7 @@ SCRIPT_EDITOR = r"""
 
   function salva() {
     if (!sezioneAperta) return;
-    var testo = document.getElementById("ed-testo").value;
+    var testo = leggi();
     esiti("salvo, ricostruisco e verifico…");
     fetch("/salva-sezione", {
       method: "POST",
@@ -456,27 +603,27 @@ SCRIPT_EDITOR = r"""
   misura.addEventListener("change", function () {
     document.documentElement.style.setProperty("--ed-misura", misura.value);
     try { localStorage.setItem("ed.misura", misura.value); } catch (e) {}
-    document.getElementById("ed-testo").focus();
+    if (cm) cm.refresh();
+    metteFuoco();
   });
 
   document.getElementById("ed-annulla").addEventListener("click", function () { chiudi(false); });
   document.getElementById("ed-salva").addEventListener("click", salva);
-  document.getElementById("ed-testo").addEventListener("input", anteprima);
+  areaTesto().addEventListener("input", anteprima);   // serve solo senza CodeMirror
   document.addEventListener("keydown", function (e) {
     var aperto = document.getElementById("ed-velo").classList.contains("on");
     if (!aperto) return;
-    if (e.key === "Escape") { e.preventDefault(); chiudi(false); }
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") { e.preventDefault(); salva(); }
+    // se è aperta la finestrella di ricerca di CodeMirror, Esc la chiude: non il pannello
+    if (e.key === "Escape" && !document.querySelector(".CodeMirror-dialog")) {
+      e.preventDefault(); chiudi(false);
+    }
+    // con CodeMirror il salvataggio passa dalle sue scorciatoie; questa resta per la textarea
+    if (!cm && (e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") { e.preventDefault(); salva(); }
   });
 
   document.querySelectorAll(".ed-inserti button").forEach(function (b) {
     b.addEventListener("click", function () {
-      var ta = document.getElementById("ed-testo");
-      var t = INSERTI[b.dataset.inserto] || "";
-      var i = ta.selectionStart, j = ta.selectionEnd;
-      ta.value = ta.value.slice(0, i) + t + ta.value.slice(j);
-      ta.focus();
-      ta.setSelectionRange(i + t.length, i + t.length);
+      metti(INSERTI[b.dataset.inserto] || "");
       anteprima();
     });
   });
@@ -506,9 +653,9 @@ def pagine_pronte():
         corpo = p.read_text(encoding="utf-8")
         ids = sezioni_modificabili(p.name)
         if ids:
-            editor = STILE_EDITOR + (SCRIPT_EDITOR
-                                     .replace("__PAGINA__", p.name)
-                                     .replace("__EDITABILI__", json.dumps(ids)))
+            editor = tag_codemirror() + STILE_EDITOR + (SCRIPT_EDITOR
+                                                        .replace("__PAGINA__", p.name)
+                                                        .replace("__EDITABILI__", json.dumps(ids)))
         else:
             editor = ""
         pronte[p.name] = GUSCIO.format(corpo=corpo, editor=editor)
@@ -531,6 +678,26 @@ class ManoDiPagina(BaseHTTPRequestHandler):
 
     def do_GET(self):
         pezzi = urlparse(self.path)
+
+        # i file di CodeMirror, serviti da strumenti/vendor/ (niente CDN: deve
+        # funzionare anche senza rete)
+        if pezzi.path.startswith("/vendor/"):
+            relativo = pezzi.path[len("/vendor/"):]
+            f = (VENDOR / relativo).resolve()
+            if not str(f).startswith(str(VENDOR.resolve())) or not f.is_file():
+                self.send_response(404)
+                self.end_headers()
+                return
+            tipo = {"js": "application/javascript", "css": "text/css"}.get(
+                f.suffix.lstrip("."), "application/octet-stream")
+            dati = f.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", tipo + "; charset=utf-8")
+            self.send_header("Content-Length", str(len(dati)))
+            self.end_headers()
+            self.wfile.write(dati)
+            return
+
         if pezzi.path == "/sorgente":
             q = parse_qs(pezzi.query)
             pagina = (q.get("pagina") or [""])[0]

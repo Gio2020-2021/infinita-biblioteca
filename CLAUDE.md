@@ -91,7 +91,8 @@ note/            appunti di lavorazione, sintesi, materiale non ancora assorbito
 strumenti/       costruisci.py sorgente/ → sito/mappa-transurfing.html
                  estrai.py    PDF → testo
                  anteprima.py anteprima locale fedele all'involucro dell'Artifact
-                 editor.py    modalità modifica: matita in hover, scrive in sorgente/
+                 editor.py    modalità modifica: matita in hover, editor CodeMirror,
+                              scrive in sorgente/ (vendor/ = CodeMirror in locale)
                  verifica.py  controlli di coerenza — eseguirlo SEMPRE prima di pubblicare
                  rinumera.py  rinumera i sommari in progressione continua (01→N)
                  cita.py      verifica ogni citazione sui testi e ne trova la pagina
@@ -181,7 +182,24 @@ sezione: a sinistra il testo vero — quello che sta in `sorgente/`, non una cop
 destra l'**anteprima dal vivo**, che si aggiorna mentre si scrive. Si corregge quello
 che c'è e si aggiunge quello che manca. `⌘S` salva, `Esc` chiude (e avverte se ci sono
 modifiche non salvate). Quattro bottoni inseriscono lo scheletro dei componenti del
-progetto: voce d'elenco, blocco `.move`, citazione, paragrafo.
+progetto: voce d'elenco, blocco `.move`, citazione, paragrafo; un menù sceglie la misura
+del codice (9-16px, ricordata nel browser).
+
+**È un editor di codice vero, non una textarea.** Dentro gira **CodeMirror 5**, in modo
+`htmlmixed`: numeri di riga, evidenziazione della sintassi, `Tab`/`Shift-Tab` che
+indentano di 2 spazi (anche su una selezione di righe), chiusura automatica di tag e
+parentesi, evidenziazione del tag corrispondente, ripiegamento dei blocchi, a-capo
+morbido, cronologia annulla/ripeti, cursori multipli (⌘-clic), `⌘F` ricerca persistente,
+`⌘⌥F` sostituisci, `⌘/` commenta, `⌘D` duplica la riga. Quando la finestrella di ricerca
+è aperta, `Esc` chiude quella e non il pannello.
+
+**CodeMirror sta in `strumenti/vendor/codemirror/`, non su un CDN** (26 file, ~430 KB,
+versionati): il progetto deve funzionare senza rete, come tutto il resto. Se quella
+cartella sparisce l'editor **non si rompe** — ripiega sulla textarea semplice. I file si
+riscaricano da `https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/`; l'elenco
+esatto è la costante `CODEMIRROR` in `editor.py`. Il suo aspetto non viene dal tema di
+CodeMirror ma dalle **variabili di colore della pagina**, così segue il chiaro/scuro
+insieme al resto.
 
 **Il salvataggio scrive davvero in `sorgente/`** — nel file della parte a cui la sezione
 appartiene — poi ricostruisce e rilancia `verifica.py`, e la pagina si ricarica sulla
