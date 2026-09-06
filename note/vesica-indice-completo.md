@@ -138,8 +138,8 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] CIA/NSA → #pt-cia-paperclip (fondazione reale, l'Agenzia Gehlen confusa con la CIA stessa, Klaus Barbie e von Bolschwing)
 - [x] COMPARTIMENTAZIONE MILITARE → #pt-cia-paperclip (Progetto Paperclip) · #pt-foia (Manhattan, le piramidi sommerse di Cuba mai confermate)
 - [x] FREEDOM OF INFORMACTION ACT(FOIA) → #pt-foia (storia legislativa corretta; il manifesto di John Coleman)
-- [ ] SINDROME DI STOCCOLMA
-- [ ] MITO DELLA CAVERNA DI PLATONE
+- [x] SINDROME DI STOCCOLMA → #pt-stoccolma (1973 reale; NAA/razze parassite; Rothschild e Jefferson, due citazioni apocrife documentate)
+- [x] MITO DELLA CAVERNA DI PLATONE → #pt-caverna (Schopenhauer, il Ṛgveda, Jung — la sezione più filologicamente solida di questa parte)
 - [ ] AGENTI INCONSAPEVOLI
 - [ ] SIGNORAGGIO
 - [ ] CREDITO SOCIALE CINESE
