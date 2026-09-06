@@ -375,7 +375,7 @@ STILE_EDITOR = """
     display: none; align-items: center; justify-content: center; padding: 24px }
   #ed-conferma.on { display: flex }
   #ed-conferma-scatola {
-    width: min(460px, 100%); background: var(--surface, #1B1D27);
+    width: min(560px, 100%); background: var(--surface, #1B1D27);
     border: 1px solid var(--line, #2E3140); border-top: 3px solid var(--amber, #E8A33D);
     border-radius: 6px; padding: 22px 24px 18px;
     box-shadow: 0 30px 70px -30px rgba(0,0,0,.9);
@@ -385,10 +385,12 @@ STILE_EDITOR = """
     font-size: 20px; font-weight: 600; color: var(--ink, #E6E4DC) }
   #ed-conferma p { margin: 0 0 20px; font-size: 14.5px; line-height: 1.55;
     color: var(--ink-dim, #B4B3AC); max-width: 46ch }
-  #ed-conferma-tasti { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap }
+  /* i tre tasti stanno su una riga sola: nowrap più il testo che non si spezza,
+     e la scatola larga abbastanza da contenerli */
+  #ed-conferma-tasti { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: nowrap }
   #ed-conferma-tasti button {
     font-family: var(--f-mono, monospace); font-size: 11px; letter-spacing: .05em;
-    padding: 8px 14px; border-radius: 4px; cursor: pointer;
+    padding: 8px 14px; border-radius: 4px; cursor: pointer; white-space: nowrap;
     border: 1px solid var(--line, #2E3140); background: transparent;
     color: var(--ink-dim, #B4B3AC);
   }
@@ -397,6 +399,8 @@ STILE_EDITOR = """
     background: var(--amber, #E8A33D); color: #14140f;
     border-color: var(--amber, #E8A33D); font-weight: 600 }
   #ed-conferma-tasti button:focus-visible { outline: 2px solid var(--amber, #E8A33D); outline-offset: 2px }
+  /* i tre tasti occupano ~420px: sotto questa soglia non ci stanno più in riga */
+  @media (max-width: 520px) { #ed-conferma-tasti { flex-wrap: wrap } }
   #ed-briciola { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
     z-index: 320; font-family: var(--f-mono, monospace); font-size: 12px;
     padding: 10px 18px; border-radius: 4px; background: var(--surface, #1B1D27);
