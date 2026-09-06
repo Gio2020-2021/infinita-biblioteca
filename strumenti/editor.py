@@ -258,11 +258,24 @@ STILE_EDITOR = """
     flex: 1; min-height: 0 }
   #ed-sinistra { display: flex; flex-direction: column; min-height: 0;
     border-right: 1px solid var(--line, #2E3140) }
-  .ed-inserti { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 10px;
+  .ed-inserti { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 10px;
     border-bottom: 1px solid var(--line-soft, #242734); background: var(--surface-2, #232633) }
+  .ed-misura { margin-left: auto; display: flex; align-items: center; gap: 6px;
+    font-family: var(--f-mono, monospace); font-size: 10px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--muted, #8B8D9E) }
+  .ed-misura select {
+    font-family: var(--f-mono, monospace); font-size: 11px; padding: 5px 8px;
+    border-radius: 4px; cursor: pointer;
+    border: 1px solid var(--line, #2E3140); background: var(--surface, #1B1D27);
+    color: var(--ink-dim, #B4B3AC);
+  }
+  .ed-misura select:hover { color: var(--ink, #E6E4DC); border-color: var(--amber, #E8A33D) }
+  /* la misura del codice è una preferenza di chi scrive, non del documento:
+     vive in una variabile e viene ricordata nel browser */
   #ed-testo { flex: 1; min-height: 0; width: 100%; box-sizing: border-box; resize: none;
     border: 0; outline: none; padding: 14px 16px; tab-size: 2;
-    font-family: var(--f-mono, ui-monospace, monospace); font-size: 12.5px; line-height: 1.65;
+    font-family: var(--f-mono, ui-monospace, monospace);
+    font-size: var(--ed-misura, 11px); line-height: 1.6;
     background: var(--ground, #12131A); color: var(--ink, #E6E4DC) }
   #ed-destra { overflow: auto; padding: 0 26px; background: var(--ground, #12131A) }
   #ed-etichetta-anteprima { position: sticky; top: 0; z-index: 2; padding: 8px 0 6px;
@@ -303,6 +316,17 @@ SCRIPT_EDITOR = r"""
           <button type="button" data-inserto="blocco">+ blocco</button>
           <button type="button" data-inserto="citazione">+ citazione</button>
           <button type="button" data-inserto="paragrafo">+ paragrafo</button>
+          <label class="ed-misura">codice
+            <select id="ed-misura">
+              <option value="9px">9</option>
+              <option value="10px">10</option>
+              <option value="11px">11</option>
+              <option value="12px">12</option>
+              <option value="13px">13</option>
+              <option value="14px">14</option>
+              <option value="16px">16</option>
+            </select>
+          </label>
         </div>
         <textarea id="ed-testo" spellcheck="false"></textarea>
       </div>
@@ -420,6 +444,20 @@ SCRIPT_EDITOR = r"""
       location.reload();
     }).catch(function () { esiti("il server locale non risponde", true); });
   }
+
+  // misura del codice: preferenza di chi scrive, ricordata fra una sessione e l'altra
+  var misura = document.getElementById("ed-misura");
+  var scelta = null;
+  try { scelta = localStorage.getItem("ed.misura"); } catch (e) {}
+  if (!scelta) scelta = "11px";
+  document.documentElement.style.setProperty("--ed-misura", scelta);
+  misura.value = scelta;
+  if (misura.value !== scelta) misura.value = "11px";  // valore vecchio non più in elenco
+  misura.addEventListener("change", function () {
+    document.documentElement.style.setProperty("--ed-misura", misura.value);
+    try { localStorage.setItem("ed.misura", misura.value); } catch (e) {}
+    document.getElementById("ed-testo").focus();
+  });
 
   document.getElementById("ed-annulla").addEventListener("click", function () { chiudi(false); });
   document.getElementById("ed-salva").addEventListener("click", salva);
