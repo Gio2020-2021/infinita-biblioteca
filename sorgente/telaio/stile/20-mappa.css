@@ -297,6 +297,17 @@
 
   .part-nav a {
     display: block;
+    /* niente shrink sull'asse principale del flex-column: con molte voci
+       (una parte da un centinaio di sezioni) Chromium risolve lo shrink del
+       flex in un passaggio che sfasa temporaneamente l'altezza della riga
+       da quella con cui il testo viene poi disegnato — il bordo resta giusto,
+       il testo esce a frammenti sparsi invece delle lettere intere. Vedi la
+       nota sotto: qui il fix va provato aprendo l'anteprima, non a occhio sul
+       sorgente. */
+    flex-shrink: 0;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     font-family: var(--f-mono);
     font-size: 10.5px;
     letter-spacing: .04em;

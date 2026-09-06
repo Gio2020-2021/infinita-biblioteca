@@ -524,7 +524,40 @@ sul contenitore diretto di un marcatore-via-pseudo-elemento più testo misto —
 componente con marcatore + testo, verificarlo aprendo l'anteprima su quella sezione, non fidarsi
 della sola lettura del sorgente: il bug non dà errori né in `verifica.py` né in console.
 
-## Rapporto Vesica — lettura in corso (1/8 parti lette)
+### Trappola già incontrata: `flex-shrink` di default corrompe il testo del mini-indice quando una parte ha molte sezioni
+
+Scoperta il 6-9-2026, segnalata dall'utente su Rapporto Vesica dopo che *Geometria sacra* è
+arrivata a 127 sezioni: il `.part-nav` (il mini-indice fisso a destra, generato clonando i
+link del `part-toc` in `popolaPartNav()`, `sorgente/telaio/script/50-parti.js`) mostrava ogni
+voce come una manciata di frammenti di lettere sparsi invece del testo — il **bordo** di ogni
+riga era giusto, solo il **testo dentro** usciva a pezzi. Non dava errori in console né in
+`verifica.py`, e **non si vedeva leggendo il sorgente**: si è dovuto renderizzare la pagina
+davvero (Chromium headless via Puppeteer) e bisecare le proprietà CSS una per una per trovarlo.
+
+La causa: `.part-nav` è `display:flex; flex-direction:column` con altezza fissa
+(`top`/`bottom` in px) e `overflow-y:auto`; i suoi figli `<a>` (`.part-nav a`) non
+dichiaravano `flex-shrink`, quindi restava il valore di default, `1`. Con poche voci (fino a
+una ventina, il massimo che il progetto aveva mai avuto finché non è arrivata *Concavità
+Planetarie*) Chromium non tenta mai di comprimerle. Con un centinaio, il calcolo dello shrink
+del flex sfasa **temporaneamente** l'altezza della riga in un passaggio intermedio
+dell'algoritmo, e il testo (`text-overflow:ellipsis` più `white-space:nowrap`) viene
+disegnato contro quell'altezza sbagliata prima che il layout torni a quella giusta per il
+bordo — un bug del motore, non un errore nel foglio di stile in sé.
+
+**Fix**: `flex-shrink: 0` su `.part-nav a` (insieme a `width:100%; min-width:0;
+box-sizing:border-box`, che non sono la causa ma sono comunque corretti da avere su un
+elemento a cui si chiede di riempire la larghezza del contenitore flex). Corretto in
+`sorgente/telaio/stile/20-mappa.css`, quindi vale per ogni mappa della biblioteca, non solo
+per Vesica.
+
+**Come si trova un bug così**: non a occhio, e non aggiungendo `console.log`. Si renderizza
+la pagina in un browser vero e si isola la proprietà colpevole cambiandone una alla volta via
+JavaScript su una pagina già caricata (`element.style.proprietà = valore`), confrontando gli
+screenshot prima e dopo. Un cambiamento che "ripara" il rendering solo quando applicato *dopo*
+il caricamento, e non quando scritto nel CSS fin dall'inizio, è il segno che si tratta di un
+bug di invalidazione del motore — non di una regola sbagliata.
+
+## Rapporto Vesica — lettura in corso (3/8 parti lette, una in corso)
 
 Iniziato il 6-9-2026. **2.559 pagine**, strato di testo pulito, ~15,8 MB estratti in
 `testi/rapporto-vesica-v-16-08-2026.txt`. Non ha un sommario tradizionale: ha un **indice di
@@ -540,12 +573,12 @@ Le otto parti (dopo la Parte I «Il libro», che è la sola meta-sezione):
 
 | Parte | Voci | Cosa |
 |---|---|---|
-| II · Gli strumenti d'indagine | 40 · **letta** | logica, matematica, metodo scientifico — sette sezioni, 45 citazioni verificate |
-| III · La fabbrica del consenso | 22 | propaganda, PNL, manipolazione mediatica |
+| II · Gli strumenti d'indagine | 40 · **letta** | logica, matematica, metodo scientifico — dodici sezioni, 289 citazioni verificate |
+| III · La fabbrica del consenso | 22 · **letta** | propaganda, PNL, manipolazione mediatica — venti sezioni + tavola `#vc-indice`, 647 citazioni verificate |
 | IV · Le architetture del potere | 91 | geopolitica, banche centrali, società segrete |
 | V · DNA, energia e materia | 104 | genetica, fisica quantistica, energia libera |
-| VI · Geometria sacra e luoghi anomali | 37 | piramidi, megaliti, solidi platonici |
-| VII · Ufologia ed esopolitica | 33 | fenomeno UFO, disclosure, razze aliene |
+| VI · Geometria sacra e luoghi anomali | 37 · **letta** | piramidi, megaliti, solidi platonici — 127 sezioni + tavola `#vg-indice`, 1851 citazioni verificate |
+| VII · Ufologia ed esopolitica | 33 · **in corso (8/33)** | fenomeno UFO, disclosure, razze aliene — MJ-12/EBE, Roswell, il bestiario ETI, Scientology e MCEO già scritti |
 | VIII · Mitologia e cosmologia perduta | 128 | mitologia greca/sumera, Anunnaki, «Keylontic Science» |
 | IX · Coscienza e responsabilità | 13 | chiusura del trattato, dalla diagnosi all'azione |
 
