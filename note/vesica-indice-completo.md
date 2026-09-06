@@ -130,7 +130,7 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] RICERCA SCIENTIFICA → #pt-bruno (condiviso con Giordano Bruno)
 - [ ] ARCHETIPI
 - [ ] MANIPOLAZIONE ARCHETIPICA
-- [ ] SICARI ECONOMICI
+- [x] SICARI ECONOMICI → #pt-sicari (Roldós/Torrijos, Mossadegh/TPAJAX riconosciuta dalla CIA, Siria/RFK Jr., Bell Pottinger spostato di bersaglio ed epoca; Perkins in generale già in #vc-economia del consenso)
 - [ ] OPERAZIONI FALSE FLAG
 - [ ] 11 SETTEMBRE 2001
 - [ ] OPERAZIONE NORTWOODS
