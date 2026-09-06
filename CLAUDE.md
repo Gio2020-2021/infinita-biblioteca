@@ -181,9 +181,16 @@ sticky, così non finisce mai sotto la barra fissa). Cliccandola si apre l'edito
 sezione: a sinistra il testo vero — quello che sta in `sorgente/`, non una copia — a
 destra l'**anteprima dal vivo**, che si aggiorna mentre si scrive. Si corregge quello
 che c'è e si aggiunge quello che manca. `⌘S` salva, `Esc` chiude (e avverte se ci sono
-modifiche non salvate). Quattro bottoni inseriscono lo scheletro dei componenti del
-progetto: voce d'elenco, blocco `.move`, citazione, paragrafo; un menù sceglie la misura
-del codice (9-16px, ricordata nel browser).
+modifiche non salvate: il modale è **della pagina, non il `confirm()` del browser**, e
+offre tre strade — torna all'editor, chiudi e perdi, salva e chiudi). Quattro bottoni
+inseriscono lo scheletro dei componenti del progetto: voce d'elenco, blocco `.move`,
+citazione, paragrafo; un menù sceglie la misura del codice (9-16px, ricordata nel
+browser).
+
+**Niente dialoghi nativi**: `alert`/`confirm` del browser arrivano con l'indirizzo del
+server in testa e rompono l'illusione della pagina. La funzione `conferma(titolo, testo,
+scelte)` in `editor.py` costruisce un modale nello stile del sito e torna una `Promise`
+con la scelta — usarla anche per le conferme che verranno.
 
 **È un editor di codice vero, non una textarea.** Dentro gira **CodeMirror 5**, in modo
 `htmlmixed`: numeri di riga, evidenziazione della sintassi, `Tab`/`Shift-Tab` che

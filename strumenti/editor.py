@@ -368,6 +368,35 @@ STILE_EDITOR = """
   #ed-esiti:empty { display: none }
   #ed-esiti.male { color: #E8938A }
   #ed-esiti .ed-riga-esito { padding: 10px 0 }
+  /* la richiesta di conferma è un modale della pagina, non il confirm() del
+     browser: quello arriva con l'indirizzo del server in testa e non c'entra
+     niente con il resto */
+  #ed-conferma { position: fixed; inset: 0; z-index: 360; background: rgba(6,6,10,.55);
+    display: none; align-items: center; justify-content: center; padding: 24px }
+  #ed-conferma.on { display: flex }
+  #ed-conferma-scatola {
+    width: min(460px, 100%); background: var(--surface, #1B1D27);
+    border: 1px solid var(--line, #2E3140); border-top: 3px solid var(--amber, #E8A33D);
+    border-radius: 6px; padding: 22px 24px 18px;
+    box-shadow: 0 30px 70px -30px rgba(0,0,0,.9);
+    font-family: var(--f-body, Georgia, serif);
+  }
+  #ed-conferma h4 { margin: 0 0 8px; font-family: var(--f-display, Georgia, serif);
+    font-size: 20px; font-weight: 600; color: var(--ink, #E6E4DC) }
+  #ed-conferma p { margin: 0 0 20px; font-size: 14.5px; line-height: 1.55;
+    color: var(--ink-dim, #B4B3AC); max-width: 46ch }
+  #ed-conferma-tasti { display: flex; justify-content: flex-end; gap: 8px; flex-wrap: wrap }
+  #ed-conferma-tasti button {
+    font-family: var(--f-mono, monospace); font-size: 11px; letter-spacing: .05em;
+    padding: 8px 14px; border-radius: 4px; cursor: pointer;
+    border: 1px solid var(--line, #2E3140); background: transparent;
+    color: var(--ink-dim, #B4B3AC);
+  }
+  #ed-conferma-tasti button:hover { color: var(--ink, #E6E4DC); border-color: var(--amber, #E8A33D) }
+  #ed-conferma-tasti button.ed-primario {
+    background: var(--amber, #E8A33D); color: #14140f;
+    border-color: var(--amber, #E8A33D); font-weight: 600 }
+  #ed-conferma-tasti button:focus-visible { outline: 2px solid var(--amber, #E8A33D); outline-offset: 2px }
   #ed-briciola { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
     z-index: 320; font-family: var(--f-mono, monospace); font-size: 12px;
     padding: 10px 18px; border-radius: 4px; background: var(--surface, #1B1D27);
@@ -419,6 +448,13 @@ SCRIPT_EDITOR = r"""
     <div id="ed-esiti"></div>
   </div>
 </div>
+<div id="ed-conferma">
+  <div id="ed-conferma-scatola" role="dialog" aria-modal="true" aria-labelledby="ed-conferma-titolo">
+    <h4 id="ed-conferma-titolo"></h4>
+    <p id="ed-conferma-testo"></p>
+    <div id="ed-conferma-tasti"></div>
+  </div>
+</div>
 <div id="ed-briciola"></div>
 <script>
 (function () {
@@ -432,6 +468,38 @@ SCRIPT_EDITOR = r"""
     citazione: '<b>«...»</b>',
     paragrafo: '\n              <p class="n-d">Testo.</p>'
   };
+
+  // ---- conferma: modale della pagina, al posto di confirm() ----------------
+  var confermaInCorso = null;
+  function conferma(titolo, testo, scelte) {
+    return new Promise(function (risolvi) {
+      var velo = document.getElementById("ed-conferma");
+      var tasti = document.getElementById("ed-conferma-tasti");
+      document.getElementById("ed-conferma-titolo").textContent = titolo;
+      document.getElementById("ed-conferma-testo").textContent = testo;
+      tasti.innerHTML = "";
+      confermaInCorso = function (valore) {
+        velo.classList.remove("on");
+        confermaInCorso = null;
+        risolvi(valore);
+      };
+      scelte.forEach(function (s) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.textContent = s.etichetta;
+        if (s.primario) b.className = "ed-primario";
+        b.addEventListener("click", function () { confermaInCorso(s.valore); });
+        tasti.appendChild(b);
+      });
+      velo.classList.add("on");
+      var primo = tasti.querySelector("button");
+      if (primo) primo.focus();
+    });
+  }
+  document.getElementById("ed-conferma").addEventListener("click", function (e) {
+    // clic fuori dalla scatola = annulla, come il velo dell'editor
+    if (e.target.id === "ed-conferma" && confermaInCorso) confermaInCorso(null);
+  });
 
   function briciola(msg) {
     var b = document.getElementById("ed-briciola");
@@ -567,11 +635,24 @@ SCRIPT_EDITOR = r"""
       .catch(function () { esiti("il server locale non risponde", true); });
   }
 
-  function chiudi(forza) {
-    if (!forza && leggi() !== testoIniziale &&
-        !confirm("Ci sono modifiche non salvate. Chiudere lo stesso?")) return;
+  function chiudiDavvero() {
     document.getElementById("ed-velo").classList.remove("on");
     sezioneAperta = null;
+  }
+
+  function chiudi(forza) {
+    if (forza || leggi() === testoIniziale) { chiudiDavvero(); return; }
+    conferma(
+      "Modifiche non salvate",
+      "Hai cambiato il testo di questa sezione senza salvarlo. Se chiudi adesso, le modifiche vanno perse.",
+      [{ etichetta: "Torna all'editor", valore: null },
+       { etichetta: "Chiudi e perdi", valore: "scarta" },
+       { etichetta: "Salva e chiudi", valore: "salva", primario: true }]
+    ).then(function (scelta) {
+      if (scelta === "scarta") chiudiDavvero();
+      else if (scelta === "salva") salva();
+      else metteFuoco();
+    });
   }
 
   function salva() {
@@ -611,6 +692,11 @@ SCRIPT_EDITOR = r"""
   document.getElementById("ed-salva").addEventListener("click", salva);
   areaTesto().addEventListener("input", anteprima);   // serve solo senza CodeMirror
   document.addEventListener("keydown", function (e) {
+    // la conferma viene prima di tutto: Esc la annulla e basta
+    if (confermaInCorso) {
+      if (e.key === "Escape") { e.preventDefault(); confermaInCorso(null); metteFuoco(); }
+      return;
+    }
     var aperto = document.getElementById("ed-velo").classList.contains("on");
     if (!aperto) return;
     // se è aperta la finestrella di ricerca di CodeMirror, Esc la chiude: non il pannello
