@@ -1,0 +1,500 @@
+  <div class="part" id="parte-casa" style="--pc:var(--amber)">
+    <section class="deck" id="banco">
+      <div class="deck-head">
+        <span class="tag">Spazio operativo</span>
+        <h2>Il banco di lavoro</h2>
+        <span class="eyebrow">quello che il libro chiede di fare, non di sapere</span>
+      </div>
+      <p class="deck-sub">Nessun contatore, nessuna serie da non interrompere, nessun rosso: un registro che tiene il
+        conto dei tuoi passi crea importanza, e l'importanza è esattamente ciò che il metodo esiste per sciogliere. Qui
+        si marca e si festeggia, punto. Quello che scrivi resta su questa pagina, privata, in silenzio.</p>
+
+      <div class="bench">
+          <div class="panel">
+            <h3>Il tuo fine</h3>
+            <p class="hint">Uno solo per volta. Dev'essere quello a cui ti si illuminano gli occhi — se ti dà disagio o
+              dovere, non è dell'anima.</p>
+            <label class="f" for="fine-t">Il fine, come se fosse già fatto</label>
+            <input class="t" id="fine-t" placeholder="Vivo del lavoro che mi sono inventato">
+            <div style="margin-top:14px"></div>
+            <label class="f" for="fine-d">La diapositiva — la scena in cui ci sei dentro</label>
+            <textarea class="t" id="fine-d"
+              placeholder="Dove sei, cosa fai, cosa hai in mano, chi ti sta vicino. Dettagli concreti, tempo presente, nessun &laquo;come ci sono arrivato&raquo;."></textarea>
+            <div class="row">
+              <button class="btn primary" id="fine-save">Salva il fine</button>
+              <button class="btn" id="fine-check" hidden>Passa al filtro dell'anima</button>
+            </div>
+            <p class="note" id="fine-note"></p>
+            <div class="sample-out" id="fine-out" hidden></div>
+          </div>
+
+          <div class="panel">
+            <h3>Il registro ✓</h3>
+            <p class="hint">Ogni volta che qualcosa si muove verso il fine — anche minimo — marcalo. Nel libro il ✓ non
+              misura: rinforza. «Ricorda di marcare e di festeggiare i successi.»</p>
+            <label class="f" for="log-t">Cos'è successo</label>
+            <input class="t" id="log-t" placeholder="Mi hanno richiamato per il preventivo">
+            <div class="row">
+              <button class="btn primary" id="log-add">Marca ✓</button>
+              <span class="note" id="log-note" style="margin:0"></span>
+            </div>
+            <ul class="log" id="log-list"></ul>
+            <p class="empty" id="log-empty">Il primo ✓ arriva prima di quanto pensi. Anche «ho fatto la telefonata»
+              conta.</p>
+          </div>
+
+          <div class="panel">
+            <h3>I tre attivatori</h3>
+            <p class="hint">Non serve un rituale a orario. Sono i tre momenti in cui la vita ti coglie, e in tutti e tre
+              la mossa è la stessa: non aspettare, non sperare, non agitarti — imposta.</p>
+            <div class="triggers">
+              <button class="btn big" data-trigger="attesa">
+                <b>Attesa</b>
+                <span>Stai sperando che qualcosa vada in un certo modo</span>
+              </button>
+              <button class="btn big" data-trigger="intenzione">
+                <b>Intenzione</b>
+                <span>Stai per fare qualcosa, andare da qualche parte</span>
+              </button>
+              <button class="btn big" data-trigger="problema">
+                <b>Problema</b>
+                <span>È successo qualcosa che chiede una soluzione</span>
+              </button>
+            </div>
+            <p class="note">Il rituale dura meno di un minuto e finisce sempre con lo scollegamento. La treccina
+              lasciata attiva manifesta qualunque cosa ti passi per la testa.</p>
+          </div>
+
+          <div class="panel">
+            <h3>Riduttore di importanza</h3>
+            <p class="hint">Per Zeland è la causa unica: «l'unico ostacolo sulla strada che porta alla realizzazione dei
+              desideri è l'importanza». Non superare l'ostacolo — togli il mattone che regge il muro.</p>
+            <label class="f" for="imp-t">Cosa sto sopravvalutando adesso?</label>
+            <input class="t" id="imp-t" placeholder="Quel colloquio è decisivo per me">
+            <div class="row">
+              <button class="btn primary" id="imp-go">Riduci</button>
+            </div>
+            <div class="sample-out" id="imp-out" hidden>
+              <b>1 · Nomina il potenziale.</b> A cosa stai dando un valore che a livello energetico non ha? È importanza
+              <i>interna</i> («io sono/non sono all'altezza») o <i>esterna</i> («questa cosa è decisiva»)?<br><br>
+              <b>2 · Datti una copertura.</b> Sul tronco a terra cammini, sospeso tra due palazzi no. Qual è la tua
+              alternativa di riserva, l'uscita di sicurezza? Non puntare mai su una carta sola.<br><br>
+              <b>3 · Scaricala col corpo.</b> Cammina, corri, nuota, fai flessioni. Il potenziale superfluo si dissolve
+              nell'azione: «non pensate, agite — se proprio non potete agire, allora non pensate».<br><br>
+              <b>4 · Ridila.</b> L'umorismo è l'unica cosa che non crea potenziali: è la caricatura
+              dell'importanza.<br><br>
+              <b>5 · Sposta il fuoco.</b> Dal risultato finale al <i>processo</i>. Così «io non svolgo un lavoro
+              importante» e «il lavoro non è importante»: niente potenziale, niente forze equilibratrici.
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Risveglio</h3>
+            <p class="hint">Le quattro domande da farsi più volte al giorno per uscire dai due schermi e tornare al
+              centro della coscienza.</p>
+            <ol style="margin:0;padding-left:20px;font-size:16px;color:var(--ink)">
+              <li>Dove sono?</li>
+              <li>Cosa sto facendo?</li>
+              <li>Come mi sento?</li>
+              <li>Le mie azioni mi portano al mio obiettivo?</li>
+            </ol>
+            <div class="row">
+              <button class="btn" id="wake">Mi sono svegliato adesso</button>
+              <span class="note" id="wake-note" style="margin:0"></span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Amalgama</h3>
+            <p class="hint">Forma-pensiero affermativa, concreta, laconica. Mai la negazione. Si scrive su un foglio, ci
+              si posa sopra un bicchiere d'acqua, la si pronuncia, si beve. Se non sai quale scegliere, Zeland ne dà una
+              che vale per tutte le altre: <i>il mio mondo si occupa di me</i> — <a href="#amalgama">l'amalgama, e da
+                dove viene il nome</a>.</p>
+            <label class="f" for="am-t">L'amalgama di adesso</label>
+            <input class="t" id="am-t" placeholder="Ogni progetto che inizio mi porta successo e profitti">
+            <div class="row">
+              <button class="btn primary" id="am-save">Salva</button>
+              <button class="btn" id="am-forge" hidden>Forgia dall'intenzione</button>
+            </div>
+            <p class="note" id="am-note"></p>
+            <div class="sample-out" id="am-out" hidden></div>
+          </div>
+      </div>
+
+      <div class="perf" role="presentation"></div>
+    </section>
+
+    <div class="core">
+      <div class="core-head">
+        <h2>Il fotogramma zero</h2>
+        <span class="eyebrow">quattro premesse da cui discende tutto il resto</span>
+      </div>
+      <ul class="axioms">
+        <li><span class="k">Struttura</span>
+          <p>La realtà ha due lati. Da uno l'universo fisico, dall'altro lo <b>Spazio delle Varianti</b>: un archivio
+            dove ogni pellicola possibile — passata, presente, futura — esiste già.</p>
+        </li>
+        <li><span class="k">Condizione</span>
+          <p>Non sei tu a vivere la tua vita: è la vita che ti accade. Sei un personaggio dentro una sceneggiatura
+            rigida che non hai scelto, e te ne accorgi solo nell'istante in cui ti chiedi chi sei.</p>
+        </li>
+        <li><span class="k">Legge</span>
+          <p>Il mondo è uno specchio, con una latenza. L'immagine primaria sta nella tua mente; ciò che vedi è il
+            riflesso. Combattere il riflesso lo rafforza.</p>
+        </li>
+        <li><span class="k">Leva</span>
+          <p>Il fotogramma corrente è già stampato: su di esso non hai potere. L'unico punto d'intervento è il
+            <b>fotogramma imminente</b>, quello che deve ancora scorrere.</p>
+        </li>
+      </ul>
+      <p class="motto">«Non temere, ma impostare. Non aspettare, ma impostare. Non sprecare, ma impostare. Non
+        scoraggiarsi, ma impostare.»<span>Vadim Zeland</span></p>
+    </div>
+
+    <section class="diagram-sec">
+      <p class="eyebrow" style="margin-bottom:8px">Le undici parti — ogni nodo apre la sua sezione · oppure segui <a
+          href="#percorsi">l'ordine consigliato</a> o entra da <a href="#porte">quello che ti sta capitando</a></p>
+      <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;color:var(--muted)">
+        <span style="color:var(--blue)">■</span> com'è fatto il terreno &nbsp;&nbsp;
+        <span style="color:var(--rust)">■</span> cosa ti agisce contro &nbsp;&nbsp;
+        <span style="color:var(--sage)">■</span> cosa hai dalla tua &nbsp;&nbsp;
+        <span style="color:var(--amber)">■</span> cosa si esegue &nbsp;&nbsp;
+        <span style="color:var(--plum)">■</span> le storie e la fonte &nbsp;&nbsp;
+        <span style="color:var(--teal)">■</span> voci che non sono di Zeland
+      </p>
+      <div class="diagram-scroll">
+        <svg class="map" viewBox="0 0 1100 760" role="img"
+          aria-label="Diagramma radiale: le otto parti del Transurfing attorno al nucleo">
+          <g id="spokes"></g>
+          <circle class="hub-ring" cx="550" cy="380" r="98"></circle>
+          <circle class="hub-fill" cx="550" cy="380" r="88"></circle>
+          <text class="hub-s" x="550" y="356" text-anchor="middle">IL NUCLEO</text>
+          <text class="hub-t" x="550" y="382" text-anchor="middle">Imposta il</text>
+          <text class="hub-t" x="550" y="405" text-anchor="middle">fotogramma</text>
+          <text class="node-s" x="550" y="424" text-anchor="middle">non aspettare</text>
+          <g id="nodes"></g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="percorsi-sec" id="percorsi">
+      <div class="percorsi-head">
+        <p class="eyebrow">l'ordine — se è la prima volta, o se il primo giro ha già funzionato</p>
+        <h2>In che ordine leggerlo</h2>
+        <p class="percorsi-sub">Sessantaquattro sezioni sono un archivio, non un corso: messe tutte sullo stesso piano non
+          dicono da dove si comincia. Questi tre percorsi lo dicono, e soprattutto dicono <b>perché quel passo viene
+            adesso</b>. La gerarchia non è mia: è Zeland stesso a chiamare il corso base «la scuola primaria» e le
+          tecniche di Tafti «scuola di livello superiore». Nessuno dei tre è obbligatorio, e si può saltare da uno
+          all'altro.</p>
+      </div>
+
+      <div class="percorsi">
+
+        <article class="percorso" style="--c:var(--blue)">
+          <header>
+            <span class="p-n">Primo percorso</span>
+            <h3>Il primo giro</h3>
+            <p class="p-per">Se non hai mai letto niente di Transurfing. Dieci sezioni per capire il modello abbastanza
+              da poterlo <i>verificare</i>, e avere una cosa sola da fare.</p>
+          </header>
+          <ol class="p-passi">
+            <li><a href="#varianti">Lo Spazio delle Varianti</a>
+              <p>Prima di tutto il resto, perché stabilisce la mossa che distingue il metodo da qualunque manuale di
+                pensiero positivo: non si costruisce il futuro, lo si sceglie.</p>
+            </li>
+            <li><a href="#specchio">Lo strato del mondo</a>
+              <p>Subito dopo, perché spiega in anticipo la delusione che arriva sempre alla seconda settimana: lo
+                specchio risponde, ma con mesi di ritardo.</p>
+            </li>
+            <li><a href="#pendoli">I pendoli</a>
+              <p>Il primo pezzo che puoi controllare oggi stesso, senza credere a niente: guarda cosa succede quando ti
+                indigni per una notizia.</p>
+            </li>
+            <li><a href="#equilibrio">L'equilibrio</a>
+              <p>Il cuore. Se leggi una sola sezione di tutta la mappa, è questa: da qui viene la causa unica dei
+                problemi, l'importanza, e tutto il resto ne discende.</p>
+            </li>
+            <li><a href="#intenzione">L'intenzione</a>
+              <p>La distinzione che regge l'apparato pratico — interna contro esterna — e la formula che sostituisce il
+                desiderio: la risolutezza ad avere.</p>
+            </li>
+            <li><a href="#fini">Il tuo fine, la tua porta</a>
+              <p>Prima delle tecniche, perché una tecnica senza bersaglio non fa nulla, e un bersaglio altrui fa
+                danno.</p>
+            </li>
+            <li><a href="#diapositive">Le diapositive</a>
+              <p>Il primo strumento vero, quello che si tiene per mesi. Da qui in poi si smette di leggere e si comincia
+                a fare.</p>
+            </li>
+            <li><a href="#algoritmo">L'algoritmo</a>
+              <p>L'unica parte del metodo che è davvero una sequenza: cinque azioni in ordine, meno di un minuto.</p>
+            </li>
+            <li><a href="#coordinazione">La coordinazione dell'importanza</a>
+              <p>Perché nelle prime settimane qualcosa andrà storto, ed è lì che il metodo si usa davvero — non quando
+                va tutto bene.</p>
+            </li>
+            <li><a href="#errori">Gli errori che annullano tutto</a>
+              <p>Da leggere <b>prima</b> di provare, non dopo aver concluso che non funziona.</p>
+            </li>
+          </ol>
+        </article>
+
+        <article class="percorso" style="--c:var(--sage)">
+          <header>
+            <span class="p-n">Secondo percorso</span>
+            <h3>Quando il primo giro ha funzionato</h3>
+            <p class="p-per">Se hai visto muoversi qualcosa e vuoi sapere perché. Qui il metodo smette di essere una
+              tecnica e diventa un modo di stare nelle cose.</p>
+          </header>
+          <ol class="p-passi">
+            <li><a href="#corrente">La corrente delle varianti</a>
+              <p>Il salto di qualità: smettere di governare la corrente e governare il proprio movimento dentro di
+                essa. È la sezione che i riassunti in circolazione non hanno.</p>
+            </li>
+            <li><a href="#freiling">Il Freiling</a>
+              <p>Il primo capitolo che riguarda gli altri, e l'unico principio del metodo che si può provare in una
+                conversazione sola.</p>
+            </li>
+            <li><a href="#mele">Le mele cadono in cielo</a>
+              <p>La coordinazione dell'intenzione: dichiarare favorevole ciò che è appena andato storto, prima di
+                sapere se lo è.</p>
+            </li>
+            <li><a href="#specchiodual">I sette principi</a>
+              <p>Il modello maturo, quello del quarto e quinto volume. Adesso ha senso: prima sarebbe stato solo una
+                bella immagine.</p>
+            </li>
+            <li><a href="#arbitro">L'Arbitro</a>
+              <p>Il punto d'arrivo di cinque volumi, e non è una tecnica: è un permesso che nessuno può darti al posto
+                tuo.</p>
+            </li>
+            <li><a href="#strumenti">Le dieci tecniche</a>
+              <p>Adesso che sai a cosa servono, l'arsenale completo — da cui se ne sceglie <i>una</i>, quella che ti
+                riesce.</p>
+            </li>
+            <li><a href="#transazione">La transazione</a>
+              <p>L'unica prova che si vede con gli occhi, in giornata. Utile esattamente quando cominci a dubitare.</p>
+            </li>
+            <li><a href="#limiti">I limiti del metodo</a>
+              <p>Dove i libri stessi ammettono di non arrivare. Chi salta questa sezione finisce per pretendere dal
+                metodo cose che non ha mai promesso.</p>
+            </li>
+          </ol>
+        </article>
+
+        <article class="percorso" style="--c:var(--plum)">
+          <header>
+            <span class="p-n">Terzo percorso</span>
+            <h3>Il ciclo Tafti e la tecnosfera</h3>
+            <p class="p-per">I libri dal 2012 in poi, dove l'autore cambia strumento e retrocede sé stesso. Ha senso
+              solo dopo i primi due percorsi — lo dice lui.</p>
+          </header>
+          <ol class="p-passi">
+            <li><a href="#divergenze">Dove i libri non dicono la stessa cosa</a>
+              <p>Da leggere per prima, in questo percorso: serve sapere in partenza che qui l'autore contraddice e
+                declassa i propri libri precedenti, invece di scoprirlo per caso.</p>
+            </li>
+            <li><a href="#treccina">Tafti e la treccina</a>
+              <p>Lo strumento nuovo, che nel 2017 sostituisce di fatto la diapositiva. «Non illuminiamo con
+                l'attenzione, ma con l'intenzione.»</p>
+            </li>
+            <li><a href="#testimone">Il Testimone</a>
+              <p>Subito dopo, perché la treccina non si sente finché l'attenzione non è tua: è il prerequisito che i
+                manuali danno per scontato e che il romanzo di Zeland spiega per esteso.</p>
+            </li>
+            <li><a href="#manichino">Il nuovo manichino</a>
+              <p>Come cambia l'idea di sé quando lo strumento cambia: la Scintilla del Creatore al posto del pupazzo
+                d'argilla.</p>
+            </li>
+            <li><a href="#beneficio">Il principio del beneficio</a>
+              <p>La coordinazione dell'intenzione riscritta in una parola sola da dire ad alta voce quando qualcosa non
+                va.</p>
+            </li>
+            <li><a href="#immagineriflesso">L'uomo di carta</a>
+              <p>La regola dello specchio applicata alle persone — con il limite dichiarato: si imposta l'atteggiamento
+                verso qualcuno, mai qualcuno.</p>
+            </li>
+            <li><a href="#tecnosfera">La tecnosfera</a>
+              <p>Il cambio di scala: dall'individuo alla civiltà. Ed è qui che Zeland ammette che il Transurfing
+                classico «non funziona con tutti, e non sempre come si deve».</p>
+            </li>
+            <li><a href="#scardinamento">Le mollette mentali</a>
+              <p>L'importanza del primo volume, ridotta a unità più piccole e più maneggevoli, con un algoritmo in tre
+                passi.</p>
+            </li>
+            <li><a href="#trasmissione">Il proiettore e i due taccuini</a>
+              <p>La pratica quotidiana con cui il ciclo si chiude — ed è quella che regge <a href="#parte-diario">il
+                  diario</a> di questa pagina.</p>
+            </li>
+          </ol>
+        </article>
+
+      </div>
+
+      <p class="percorsi-coda">Dopo i tre percorsi restano fuori le <a href="#storie">cinquantuno storie</a>, che si
+        leggono in qualunque momento e spesso spiegano meglio delle sezioni, e le <a href="#porte">porte per
+          situazione</a>, che servono quando non stai studiando ma ti sta succedendo qualcosa.</p>
+    </section>
+
+    <section class="doors-sec" id="porte">
+      <div class="doors-head">
+        <span class="eyebrow">l'altra porta — si entra da quello che ti sta capitando, non dalla teoria</span>
+        <h2>Da dove comincio se…</h2>
+        <p class="doors-sub">Il diagramma qui sopra apre la mappa dalla dottrina. Questo la apre dalla vita: sedici
+          situazioni in cui i libri dicono qualcosa di preciso, e la riga che lo riassume. Nessuna di queste risposte è
+          inventata qui — ognuna porta alla sezione che la cita per esteso.</p>
+      </div>
+
+      <div class="doors">
+
+        <article class="door">
+          <h3>«Non so quale sia il mio fine.»</h3>
+          <p>Cercarlo non serve: la ragione sa solo confrontarti con quello che vede fare agli altri, e lì il tuo fine
+            non c'è. Si smette di cercare, si allarga il campo delle esperienze, e si sta a sentire quale accende
+            l'anima.</p>
+          <p class="door-go"><a href="#fini">Il tuo fine, la tua porta</a><a href="#scardinamento">Le mollette
+              mentali</a><a href="#anima">Anima e mente</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Ho ottenuto quello che volevo e non sento niente.»</h3>
+          <p>È il segno tipico di un fine altrui: non ti fa perdere per strada, ti fa <i>arrivare</i> — e trovare il
+            vuoto. Ci sono sette segni per riconoscerlo prima di partire.</p>
+          <p class="door-go"><a href="#finialtrui">I fini e le porte altrui</a><a href="#anima">Anima e mente</a><a
+              href="#fini">Il tuo fine, la tua porta</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Devo decidere e non ci riesco.»</h3>
+          <p>La variante che costa meno esiste già nella corrente. L'errore è pretendere di governare la corrente invece
+            del proprio movimento dentro di essa — e davanti a un bivio la regola è disarmante: prendi la più facile.</p>
+          <p class="door-go"><a href="#corrente">La corrente delle varianti</a><a href="#specchiodual">I sette
+              principi</a><a href="#anima">Anima e mente</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Una persona se n'è andata.»</h3>
+          <p>Due che stanno insieme creano un pendolo. Se uno esce, chi resta continua a pagarlo per due — e più soffre,
+            più paga. La domanda da farsi non è come farlo tornare: è se vuoi la persona o il suo amore.</p>
+          <p class="door-go"><a href="#relazioni">Le relazioni</a><a href="#scardinamento">Le mollette mentali</a><a
+              href="#dipendenze">I signori dell'energia</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Sono solo, e cercare non funziona.»</h3>
+          <p>Non si conquista e non si insegue: si smette di correre dietro all'Uccello della Felicità e si fa in modo
+            che si posi. Si imposta l'atteggiamento verso una persona, mai la persona.</p>
+          <p class="door-go"><a href="#relazioni">Le relazioni</a><a href="#simulazione">L'impostazione del
+              riflesso</a><a href="#immagineriflesso">L'uomo di carta</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«I soldi non bastano mai.»</h3>
+          <p>Il denaro non è mai il fine da illuminare: è una conseguenza, e puntarci dritto lo allontana. E finché in
+            testa gira il film del debito, nella realtà resta il debito.</p>
+          <p class="door-go"><a href="#soldi">I soldi</a><a href="#scardinamento">Le mollette mentali</a><a
+              href="#equilibrio">L'equilibrio</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Devo trovare o cambiare lavoro.»</h3>
+          <p>Prima si stabilisce quale lavoro è <i>tuo</i> — non il più prestigioso, che è uno standard del sistema.
+            Poi si ordina e si aspetta come al ristorante, senza correre in cucina a controllare.</p>
+          <p class="door-go"><a href="#lavoro">Il caso: cercare lavoro</a><a href="#fini">Il tuo fine, la tua porta</a><a
+              href="#scardinamento">Le mollette mentali</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Ho paura che vada male.»</h3>
+          <p>La paura vive nell'attesa: si scioglie uscendo dall'attesa, non stringendo i denti. E l'insicurezza consuma
+            esattamente l'energia che servirebbe all'intenzione — più ti sforzi di fare bene, peggio riesce.</p>
+          <p class="door-go"><a href="#insicurezza">Il labirinto dell'insicurezza</a><a href="#scardinamento">Le mollette
+              mentali</a><a href="#arbitro">L'Arbitro</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Mi sento in colpa.»</h3>
+          <p>Per il modello è potenziale superfluo allo stato puro: genera da sé gli scenari della punizione, e nel
+            frattempo attira i manipolatori come mosche al miele.</p>
+          <p class="door-go"><a href="#equilibrio">L'equilibrio</a><a href="#insicurezza">Il labirinto
+              dell'insicurezza</a><a href="#marionette">I fili delle marionette</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Qualcuno mi svuota le energie.»</h3>
+          <p>Combatterlo lo alimenta: i pendoli premono in misura proporzionale ai tentativi di liberarsi. Si fa il
+            vuoto, oppure si estingue con la mossa morbida — dargli quello che cerca prima che lo chieda.</p>
+          <p class="door-go"><a href="#pendoli">I pendoli</a><a href="#dipendenze">I signori dell'energia</a><a
+              href="#freiling">Il Freiling</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Litigo sempre con la stessa persona.»</h3>
+          <p>Il Freiling in una riga: rinuncia all'intenzione di ricevere, sostituiscila con quella di dare, e otterrai
+            ciò cui avevi rinunciato. Chi hai davanti è uno specchio, e allo specchio si muove l'immagine.</p>
+          <p class="door-go"><a href="#freiling">Il Freiling</a><a href="#immagineriflesso">L'uomo di carta</a><a
+              href="#pendoli">I pendoli</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Oggi va tutto storto.»</h3>
+          <p>È l'imbuto, e ha un solo punto in cui si interrompe: la prima spinta. Dopo diventa un vortice. La mossa,
+            controintuitiva, è dichiarare che va bene lo stesso — e farlo prima di crederci.</p>
+          <p class="door-go"><a href="#imbuto">Il passaggio indotto</a><a href="#coordinazione">La coordinazione
+              dell'importanza</a><a href="#mele">Le mele cadono in cielo</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Devo controllare tutto, sennò crolla.»</h3>
+          <p>L'errore più grave che la ragione possa fare: tentare di governare la corrente invece del proprio movimento
+            dentro di essa. Il paradosso è che mollando la presa il controllo aumenta.</p>
+          <p class="door-go"><a href="#corrente">La corrente delle varianti</a><a href="#specchiodual">I sette
+              principi</a><a href="#transazione">La transazione</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Mi confronto sempre con gli altri.»</h3>
+          <p>Il gioco è truccato: il sistema ti chiede di essere <i>migliore</i>, che è una corsa senza fine, mentre la
+            regola di aggiramento non dichiarata premia chi resta <i>unico</i>. E ogni confronto crea da sé il
+            potenziale che poi ti si ritorce contro.</p>
+          <p class="door-go"><a href="#scardinamento">Le mollette mentali</a><a href="#stereotipi">La forzatura degli
+              stereotipi</a><a href="#equilibrio">L'equilibrio</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Sto sempre nella rete e mi sento vuoto.»</h3>
+          <p>Perché è un film altrui: si entra creatori e si esce ricevitori, con la sensazione di aver partecipato a
+            qualcosa che in realtà non è successo. L'uscita non è disconnettersi, è passare in trasmissione.</p>
+          <p class="door-go"><a href="#trasmettitori">Ricevitori e trasmettitori</a><a href="#tecnosfera">La
+              tecnosfera</a><a href="#trasmissione">Il proiettore e i due taccuini</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Questo problema non ha soluzione.»</h3>
+          <p>Il pendolo che l'ha creato ti tiene i pensieri dentro un settore ristretto, e la soluzione sta quasi sempre
+            fuori da lì. Da cui la formula: ammettere l'inammissibile, puntare il fine, e muoversi prima di sapere
+            come.</p>
+          <p class="door-go"><a href="#scardinamento">Le mollette mentali</a><a href="#pendoli">I pendoli</a><a
+              href="#corrente">La corrente delle varianti</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Non mi succede niente, mi annoio.»</h3>
+          <p>È lo stato di sospensione: chi si stacca da <i>tutti</i> i pendoli finisce in un deserto, perché con i
+            conflitti se ne vanno anche i desideri. La libertà da conquistare è dai pendoli estranei, non dai tuoi.</p>
+          <p class="door-go"><a href="#pendoli">I pendoli</a><a href="#onda">L'onda della fortuna</a><a href="#mago">Il
+              mago dentro di noi</a></p>
+        </article>
+
+        <article class="door">
+          <h3>«Riguarda mio figlio, non me.»</h3>
+          <p>È l'unica eccezione dichiarata alla regola che le persone non si impostano: finché sono piccoli condividono
+            lo strato di mondo dei genitori. Con un limite preciso, che il libro pone da sé.</p>
+          <p class="door-go"><a href="#figli">I figli</a><a href="#relazioni">Le relazioni</a></p>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ============================================================ PARTE · DIARIO -->

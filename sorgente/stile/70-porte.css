@@ -1,0 +1,82 @@
+  /* ============ DA DOVE COMINCIO SE… ============ */
+  .doors-sec {
+    padding: 46px 0 10px;
+    border-top: 1px solid var(--line);
+    margin-top: 44px;
+    scroll-margin-top: 52px
+  }
+
+  .doors-head h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 34px;
+    letter-spacing: -.012em;
+    margin: 10px 0 0
+  }
+
+  .doors-sub {
+    color: var(--ink-dim);
+    max-width: 92ch;
+    margin: 14px 0 30px;
+    font-size: 15.5px
+  }
+
+  .doors {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 18px
+  }
+
+  .door {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--amber);
+    border-radius: 4px;
+    padding: 20px 22px 16px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column
+  }
+
+  .door h3 {
+    font-family: var(--f-display);
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+    margin: 0;
+    text-wrap: balance;
+    color: var(--ink)
+  }
+
+  .door p {
+    margin: 12px 0 0;
+    font-size: 15px;
+    line-height: 1.58;
+    color: var(--ink-dim)
+  }
+
+  .door .door-go {
+    margin-top: auto;
+    padding-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px
+  }
+
+  .door .door-go a {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .04em;
+    color: var(--ink-dim);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 5px 9px;
+    background: var(--ground)
+  }
+
+  .door .door-go a:hover {
+    border-color: var(--amber);
+    color: var(--ink)
+  }

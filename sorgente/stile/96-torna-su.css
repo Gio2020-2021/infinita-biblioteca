@@ -1,0 +1,125 @@
+  /* ============ TORNA SU ============ */
+  /* riusa .btn per non introdurre un linguaggio nuovo: è lo stesso bottone
+     di tutta la pagina, solo agganciato all'angolo */
+  .su {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 50;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity .2s ease, transform .2s ease, border-color .15s, color .15s
+  }
+
+  .su.on {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none
+  }
+
+  .su b {
+    font-family: var(--f-body);
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 7px;
+    color: var(--amber)
+  }
+
+  /* sotto i 560px la linguetta del vocabolario scende in basso a destra:
+     il bottone si sposta a sinistra invece di finirci sotto */
+  @media (max-width:560px) {
+    .su {
+      right: auto;
+      left: 20px;
+      bottom: 20px
+    }
+
+    .ric-eco-via {
+      bottom: 78px
+    }
+  }
+
+  /* le parole cercate, evidenziate nel punto d'arrivo: restano finché non si
+     cerca altro o non si preme Esc, perché servono a rileggere il passaggio */
+  mark.ric-eco {
+    background: var(--amber-soft);
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 2px;
+    box-shadow: inset 0 -1px 0 var(--amber)
+  }
+
+  .ric-eco-via {
+    position: fixed;
+    left: 50%;
+    bottom: 26px;
+    transform: translateX(-50%);
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--amber);
+    border-radius: 4px;
+    padding: 9px 14px;
+    box-shadow: var(--shadow);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .05em;
+    color: var(--ink-dim);
+    cursor: pointer
+  }
+
+  .ric-eco-via:hover {
+    border-color: var(--amber);
+    color: var(--ink)
+  }
+
+  .ric-eco-via kbd {
+    font-family: inherit;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1px 5px;
+    color: var(--muted)
+  }
+
+  /* il bersaglio raggiunto da un risultato si segnala per un attimo,
+     poi torna esattamente com'era: nessuno stato che resta addosso */
+  .ric-bersaglio {
+    animation: ricLampo 1.9s ease-out 1
+  }
+
+  @keyframes ricLampo {
+    0%,
+    36% {
+      box-shadow: -14px 0 0 -11px var(--amber), 14px 0 0 -11px var(--amber)
+    }
+
+    100% {
+      box-shadow: -14px 0 0 -11px transparent, 14px 0 0 -11px transparent
+    }
+  }
+
+  @media (prefers-reduced-motion:reduce) {
+    .ric-bersaglio {
+      animation: none
+    }
+  }
+
+  @media (max-width:560px) {
+    .ric-veil {
+      padding: 0
+    }
+
+    .ric-box {
+      max-width: none;
+      max-height: 100vh;
+      height: 100vh;
+      border: 0;
+      border-radius: 0
+    }
+  }

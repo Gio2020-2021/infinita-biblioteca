@@ -1,0 +1,651 @@
+  /* ============ MAPPA ============ */
+  .perf {
+    height: 12px;
+    background-image: repeating-linear-gradient(to right, var(--line) 0 8px, transparent 8px 22px);
+    background-size: auto 5px;
+    background-repeat: repeat-x;
+    background-position: 0 center;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    margin: 46px 0 0
+  }
+
+  .core {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 32px 0 30px;
+    margin-top: 30px
+  }
+
+  .core-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 22px
+  }
+
+  .core-head h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 26px;
+    margin: 0;
+    letter-spacing: -.01em
+  }
+
+  .axioms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 26px 34px;
+    list-style: none;
+    padding: 0;
+    margin: 0
+  }
+
+  .axioms .k {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    display: block;
+    margin-bottom: 7px
+  }
+
+  .axioms p {
+    margin: 0;
+    font-size: 15.5px;
+    line-height: 1.55
+  }
+
+  .motto {
+    margin: 30px 0 0;
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--amber);
+    max-width: 60ch
+  }
+
+  .motto span {
+    color: var(--muted);
+    font-family: var(--f-mono);
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: .12em;
+    display: block;
+    margin-top: 10px
+  }
+
+  .diagram-sec {
+    padding: 42px 0 6px
+  }
+
+  .diagram-scroll {
+    overflow-x: auto;
+    padding-bottom: 6px
+  }
+
+  svg.map {
+    display: block;
+    width: 100%;
+    min-width: 820px;
+    height: auto
+  }
+
+  svg.map text {
+    font-family: var(--f-mono);
+    fill: var(--ink)
+  }
+
+  .node-box {
+    fill: var(--surface);
+    stroke: var(--line);
+    stroke-width: 1
+  }
+
+  .node-g {
+    cursor: pointer
+  }
+
+  .node-g:hover .node-box,
+  .node-g:focus-visible .node-box {
+    fill: var(--surface-2);
+    stroke-width: 1.5
+  }
+
+  .node-g:focus-visible {
+    outline: none
+  }
+
+  .node-t {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .02em
+  }
+
+  .node-i {
+    font-size: 9.5px;
+    letter-spacing: .14em
+  }
+
+  .spoke {
+    stroke: var(--line);
+    stroke-width: 1
+  }
+
+  .hub-ring {
+    fill: none;
+    stroke: var(--line);
+    stroke-width: 1;
+    stroke-dasharray: 3 6
+  }
+
+  .hub-fill {
+    fill: var(--ground)
+  }
+
+  .hub-t {
+    font-family: var(--f-display);
+    font-size: 19px;
+    font-weight: 600;
+    fill: var(--ink)
+  }
+
+  .hub-s {
+    font-size: 9.5px;
+    fill: var(--amber);
+    letter-spacing: .18em
+  }
+
+  .node-s {
+    font-size: 10px;
+    fill: var(--muted)
+  }
+
+  section.branch {
+    scroll-margin-top: 52px;
+    padding: 54px 0;
+    border-bottom: 1px solid var(--line-soft)
+  }
+
+  .branch-grid {
+    display: grid;
+    grid-template-columns: minmax(190px, 240px) minmax(0, 1fr);
+    gap: 16px 48px;
+    align-items: start
+  }
+
+  .branch-aside {
+    position: sticky;
+    top: 78px
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border: 1px solid currentColor;
+    border-radius: 2px
+  }
+
+  .branch h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(26px, 3.4vw, 36px);
+    line-height: 1.08;
+    letter-spacing: -.015em;
+    margin: 14px 0 0;
+    text-wrap: balance
+  }
+
+  .gist {
+    margin: 14px 0 0;
+    color: var(--ink-dim);
+    font-size: 15px;
+    max-width: 36ch
+  }
+
+  .src {
+    margin: 16px 0 0;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted)
+  }
+
+  /* il riferimento di pagina, ricavato verificando le citazioni sui testi */
+  /* Va a capo dentro la colonna dell'aside: con white-space:nowrap il
+     riferimento usciva dalla colonna e finiva sopra il testo della sezione
+     (era così in otto sezioni). Resta unito solo il numero di pagina, che è
+     l'unico pezzo che non si deve spezzare. */
+  .src .pagg {
+    color: var(--plum)
+  }
+
+  .src .pagg i {
+    font-style: normal;
+    white-space: nowrap
+  }
+
+  .src .pagg::before {
+    content: "· "
+  }
+
+  .branch-aside .quote {
+    margin: 18px 0 0;
+    padding-left: 13px;
+    border-left: 2px solid var(--c);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--muted)
+  }
+
+  /* mini-indice della parte, fisso a destra per tutto lo scroll del capitolo
+     (non ripetuto per sezione: una sidebar che si "ricarica" a ogni sezione
+     salta e non dà la sensazione di continuità) */
+  .part-nav {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    position: fixed;
+    top: 130px;
+    bottom: 40px;
+    /* allineato al bordo destro del contenuto, non al bordo dello schermo */
+    right: max(24px, calc(50vw - var(--maxw) / 2 + 24px));
+    /* larghezza tagliata sulla voce più lunga: ogni voce sta su una riga sola */
+    width: 268px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    z-index: 30;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .18s ease
+  }
+
+  /* sotto i 1500px non c'è spazio vero per la colonna: il menu della parte
+     resta quello in testa (i badge), e la pagina è larga come sempre */
+  @media (min-width:1500px) {
+    /* Si restringono solo le sezioni, che sono l'unica cosa che scorre sotto
+       il menu: l'intestazione del capitolo (titolo, sommario, badge) resta
+       larga quanto il resto, perché mentre la si legge il menu non c'è ancora.
+       Fuori restano anche il banco e la galleria delle storie, che non hanno
+       un sommario di sezioni e quindi non fanno mai comparire il menu. */
+    #contenuto>.part:not(#parte-casa):not(#parte-aneddoti) .branch {
+      padding-right: 312px
+    }
+
+    .part-nav {
+      display: flex
+    }
+
+    /* compare solo quando i badge in testa alla parte sono usciti di scena */
+    .part-nav.on {
+      opacity: 1;
+      pointer-events: auto
+    }
+  }
+
+  .part-nav::-webkit-scrollbar {
+    display: none
+  }
+
+  .part-nav a {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .04em;
+    color: var(--ink-dim);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 6px 10px;
+    background: var(--surface);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: border-color .15s, background .15s
+  }
+
+  .part-nav a:hover {
+    border-color: var(--pc, var(--amber));
+    color: var(--ink)
+  }
+
+  .part-nav a b {
+    color: var(--pc, var(--amber));
+    font-weight: 500;
+    margin-right: 6px
+  }
+
+  .part-nav a.cur {
+    border-color: var(--pc, var(--amber));
+    color: var(--ink);
+    background: var(--surface-2)
+  }
+
+  ul.tree {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 22px;
+    border-left: 1px solid var(--c)
+  }
+
+  ul.tree>li {
+    position: relative;
+    padding: 0 0 22px 20px
+  }
+
+  ul.tree>li:last-child {
+    padding-bottom: 0
+  }
+
+  ul.tree>li::before {
+    content: "";
+    position: absolute;
+    left: -22px;
+    top: 11px;
+    width: 20px;
+    height: 1px;
+    background: var(--c)
+  }
+
+  ul.tree>li::after {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ground);
+    border: 1px solid var(--c)
+  }
+
+  .n-t {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .03em;
+    color: var(--ink);
+    margin-bottom: 5px
+  }
+
+  .n-t small {
+    color: var(--c);
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-size: 10px;
+    margin-left: 8px
+  }
+
+  .n-d {
+    margin: 0;
+    max-width: var(--read);
+    font-size: 15.5px;
+    color: var(--ink-dim)
+  }
+
+  .n-d b {
+    color: var(--ink);
+    font-weight: 600
+  }
+
+  .n-d+.n-d {
+    margin-top: 8px
+  }
+
+  ul.sub {
+    list-style: none;
+    margin: 9px 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px
+  }
+
+  ul.sub li {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--ink-dim);
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    padding: 3px 9px;
+    border-radius: 2px
+  }
+
+  .move {
+    margin: 24px 0 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--amber);
+    border-radius: 3px;
+    padding: 18px 20px;
+    /* il riquadro si ferma dove finisce il testo che contiene, invece di
+       allargarsi fino al bordo della colonna */
+    max-width: calc(var(--read) + 44px);
+    box-shadow: var(--shadow)
+  }
+
+  .move h3 {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 10px;
+    font-weight: 600
+  }
+
+  .move p {
+    margin: 0;
+    font-size: 15.5px;
+    max-width: var(--read);
+    color: var(--ink)
+  }
+
+  .move p+p {
+    margin-top: 9px
+  }
+
+  .move.cool {
+    border-left-color: var(--plum)
+  }
+
+  .move.cool h3 {
+    color: var(--plum)
+  }
+
+  ol.algo {
+    counter-reset: step;
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 2px
+  }
+
+  ol.algo li {
+    counter-increment: step;
+    position: relative;
+    padding: 14px 0 14px 60px;
+    border-top: 1px solid var(--line-soft)
+  }
+
+  ol.algo li:last-child {
+    border-bottom: 1px solid var(--line-soft)
+  }
+
+  ol.algo li::before {
+    content: counter(step, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--f-display);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--amber);
+    line-height: 1
+  }
+
+  ol.algo .s-t {
+    font-family: var(--f-mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .03em;
+    display: block;
+    margin-bottom: 4px
+  }
+
+  ol.algo p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink-dim);
+    max-width: var(--read)
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    margin-top: 6px
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 560px;
+    font-size: 15px
+  }
+
+  thead th {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    font-weight: 500;
+    padding: 0 16px 9px 0;
+    border-bottom: 1px solid var(--line)
+  }
+
+  tbody td {
+    padding: 14px 16px 14px 0;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+    color: var(--ink-dim)
+  }
+
+  tbody td:first-child {
+    color: var(--rust);
+    font-family: var(--f-mono);
+    font-size: 12.5px;
+    width: 31%
+  }
+
+  tbody td:last-child {
+    color: var(--ink)
+  }
+
+  tbody td:last-child::before {
+    content: "→ ";
+    color: var(--sage)
+  }
+
+  .voices {
+    display: grid;
+    gap: 2px;
+    margin: 4px 0 0
+  }
+
+  .voices .v {
+    display: grid;
+    grid-template-columns: minmax(120px, 168px) minmax(0, 1fr);
+    gap: 20px;
+    padding: 15px 0;
+    border-top: 1px solid var(--line-soft)
+  }
+
+  .voices .v:last-child {
+    border-bottom: 1px solid var(--line-soft)
+  }
+
+  .voices .who {
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    letter-spacing: .04em;
+    color: var(--plum);
+    line-height: 1.5
+  }
+
+  .voices .who i {
+    display: block;
+    font-style: normal;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-top: 3px
+  }
+
+  .voices .what {
+    font-size: 15.5px;
+    color: var(--ink-dim);
+    max-width: var(--read)
+  }
+
+  .gloss-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 6px 0 22px
+  }
+
+  .gloss-search input {
+    flex: 1 1 auto;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-family: var(--f-body);
+    font-size: 15.5px;
+    color: var(--ink)
+  }
+
+  .gloss-search input::placeholder {
+    color: var(--muted)
+  }
+
+  .gloss-search input:focus {
+    outline: none;
+    border-color: var(--blue)
+  }
+
+  .gloss-count {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .06em;
+    color: var(--muted);
+    white-space: nowrap
+  }
+
+  .gloss-empty {
+    color: var(--muted);
+    font-size: 14.5px;
+    font-style: italic;
+    margin: 8px 0 0
+  }
+
+  .gloss {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
+    gap: 2px 40px;
+    margin: 0;
+    padding: 0
+  }

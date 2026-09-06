@@ -1,0 +1,156 @@
+  /* ============ PARTI (la piattaforma) ============ */
+  /* Senza JS tutte le parti restano visibili: il documento resta leggibile per intero. */
+  .part {
+    display: block
+  }
+
+  html.js .part {
+    display: none
+  }
+
+  /* col JS acceso il vocabolario sta solo nel pannello a destra */
+  html.js #gloss-sorgente {
+    display: none
+  }
+
+  html.js .part.on {
+    display: block
+  }
+
+  nav.parts {
+    position: sticky;
+    top: 0;
+    z-index: 31;
+    background: var(--ground);
+    background: color-mix(in srgb, var(--ground) 94%, transparent);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line)
+  }
+
+  nav.parts .rail {
+    display: flex;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: var(--maxw);
+    overflow-x: auto;
+    scrollbar-width: none
+  }
+
+  nav.parts .rail::-webkit-scrollbar {
+    display: none
+  }
+
+  nav.parts button {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    padding: 11px 12px;
+    white-space: nowrap;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer
+  }
+
+  nav.parts button i {
+    font-style: normal;
+    font-size: 9.5px;
+    letter-spacing: .14em;
+    color: var(--line);
+    transition: color .15s
+  }
+
+  nav.parts button:hover {
+    color: var(--ink)
+  }
+
+  nav.parts button[aria-current="true"] {
+    color: var(--ink);
+    border-bottom-color: var(--pc, var(--amber))
+  }
+
+  nav.parts button[aria-current="true"] i {
+    color: var(--pc, var(--amber))
+  }
+
+  nav.parts button:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: -4px
+  }
+
+  nav.parts li:first-child button {
+    padding-left: 24px
+  }
+
+  .part-head {
+    padding: 44px 0 6px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 4px;
+    text-align: center
+  }
+
+  .part-head .pn {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--pc, var(--amber))
+  }
+
+  .part-head h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(30px, 4.6vw, 48px);
+    line-height: 1.04;
+    letter-spacing: -.018em;
+    margin: 12px 0 0;
+    text-wrap: balance
+  }
+
+  .part-head .pd {
+    max-width: 138ch;
+    color: var(--ink-dim);
+    font-size: 16.5px;
+    margin: 16px auto 0
+  }
+
+  .part-toc {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    list-style: none;
+    margin: 24px 0 26px;
+    padding: 0
+  }
+
+  .part-toc a {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .05em;
+    color: var(--ink-dim);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 6px 11px;
+    background: var(--surface)
+  }
+
+  .part-toc a:hover {
+    border-color: var(--pc, var(--amber));
+    color: var(--ink)
+  }
+
+  .part-toc a b {
+    color: var(--pc, var(--amber));
+    font-weight: 500;
+    margin-right: 7px
+  }

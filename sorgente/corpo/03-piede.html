@@ -1,0 +1,82 @@
+<footer>
+  <div class="wrap">
+    <p class="colophon">Mappa costruita sui testi integrali. La spina dorsale teorica e l'apparato pratico vengono dai
+      cinque volumi del corso base di Vadim Zeland; il ciclo Tafti aggiunge la treccina e l'impostazione del riflesso,
+      <i>Scardinare il Sistema Tecnogeno</i> la parte sulla tecnosfera; la trilogia di Klod Nagal, che raccoglie, cita e
+      commenta Zeland, fa da cornice sulla Matrix. Ogni sezione dichiara la propria fonte. Le formulazioni tra
+      virgolette sono letterali; dove una frase è una sintesi, non è tra virgolette. Le sezioni <a href="#fonte">Chi ci
+        ha dato tutto questo</a> e <a href="#fabbricanti">I fabbricanti di specchi</a> espongono materiale di indagine
+      che gli autori stessi dichiarano privo di certificato di verità.</p>
+    <p class="bib">
+      LETTI PER INTERO — Vadim Zeland, <i>Reality Transurfing I · Lo Spazio delle Varianti</i> · <i>II · Il Fruscio
+        delle Stelle del Mattino</i> · <i>III · Avanti nel Passato</i> · <i>IV · La Gestione della Realtà</i> ·
+      <i>V · Le Mele Cadono in Cielo</i> · <i>Tafti la Sacerdotessa</i> · <i>Cosa non ha detto Tafti</i> ·
+      <i>Scardinare il Sistema Tecnogeno</i> (Macro) &nbsp;·&nbsp; Klod Nagal, <i>Hackerare la Matrix con il
+        Transurfing</i> · <i>Surfare nell'Ologramma</i> · <i>Cosa ci ha detto Tafti</i><br>
+      IN ATTESA — Vadim Zeland: <i>Il Proiettore della Realtà Separata</i> · <i>Transurfing Vivo</i> ·
+      <i>La Sacerdotessa Itfat</i> · <i>Tafti la Sacerdotessa 2</i>
+    </p>
+  </div>
+</footer>
+
+<!-- rituale -->
+<div class="veil" id="veil" hidden>
+  <div class="ritual" role="dialog" aria-modal="true" aria-labelledby="rit-h">
+    <p class="step-n" id="rit-n">Passo 01 di 05</p>
+    <h4 id="rit-h">Svegliati</h4>
+    <p id="rit-p">Vedo me stesso e vedo la realtà.</p>
+    <div class="frame-echo" id="rit-echo" hidden></div>
+    <div class="arc" id="rit-arc" hidden><b id="rit-arc-b"></b></div>
+    <div class="foot">
+      <button class="btn primary" id="rit-next">Fatto</button>
+      <button class="btn" id="rit-esc">Esci</button>
+      <span class="dots" id="rit-dots"></span>
+    </div>
+  </div>
+</div>
+
+<!-- mini-indice della parte, fisso a destra per tutto lo scroll -->
+<nav class="part-nav" id="part-nav" aria-label="Sezioni di questa parte"></nav>
+
+<!-- vocabolario sempre a portata -->
+<button type="button" class="btn su" id="su" aria-label="Torna in cima al capitolo"><b aria-hidden="true">&uarr;</b>Su</button>
+
+<div class="ric-veil" id="ric-veil" hidden>
+  <div class="ric-box" role="dialog" aria-modal="true" aria-labelledby="ric-tit">
+    <h2 id="ric-tit" class="eyebrow" style="position:absolute;left:-9999px">Cerca in tutta la mappa</h2>
+    <div class="ric-campo">
+      <span class="lente" aria-hidden="true">⌕</span>
+      <input type="search" id="ric-q" autocomplete="off" spellcheck="false"
+        placeholder="Cerca una parola, o &laquo;una frase esatta&raquo; fra virgolette"
+        aria-controls="ric-esiti" aria-describedby="ric-conta">
+      <span class="ric-conta" id="ric-conta" role="status" aria-live="polite"></span>
+    </div>
+    <div class="ric-esiti" id="ric-esiti" role="listbox" aria-label="Risultati"></div>
+    <div class="ric-piede">
+      <span><kbd>↑↓</kbd>scorri</span>
+      <span><kbd>↵</kbd>vai</span>
+      <span><kbd>esc</kbd>chiudi</span>
+      <span><kbd>"…"</kbd>frase esatta</span>
+      <span><kbd>esc</kbd>toglie l&rsquo;evidenziazione</span>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="gloss-tab" id="gloss-tab" aria-expanded="false" aria-controls="gloss-panel">Vocabolario</button>
+<div class="gloss-backdrop" id="gloss-backdrop"></div>
+<aside class="gloss-panel" id="gloss-panel" aria-label="Vocabolario del Transurfing">
+  <div class="gloss-panel-head">
+    <h3>Vocabolario</h3>
+    <button type="button" class="gloss-panel-close" id="gloss-panel-close" aria-label="Chiudi il vocabolario">✕</button>
+  </div>
+  <div class="gloss-search">
+    <input type="search" id="gloss-q2" placeholder="Cerca un termine…" aria-label="Cerca nel vocabolario">
+    <span class="gloss-count" id="gloss-count2"></span>
+  </div>
+  <p class="gloss-empty" id="gloss-empty2" hidden>Nessun termine corrisponde alla ricerca.</p>
+  <div class="gloss-panel-body">
+    <dl class="gloss" id="gloss-panel-list"></dl>
+  </div>
+</aside>
+
+<script>

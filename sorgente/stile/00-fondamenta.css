@@ -1,0 +1,169 @@
+  :root {
+    --ground: #12131A;
+    --surface: #1B1D27;
+    --surface-2: #232633;
+    --line: #2E3140;
+    --line-soft: #242734;
+    --ink: #E6E4DC;
+    --ink-dim: #B4B3AC;
+    --muted: #8B8D9E;
+    --amber: #E8A33D;
+    --amber-soft: rgba(232, 163, 61, .12);
+    --blue: #7FA8C9;
+    --blue-soft: rgba(127, 168, 201, .12);
+    --rust: #C4574B;
+    --rust-soft: rgba(196, 87, 75, .12);
+    --sage: #8AA878;
+    --sage-soft: rgba(138, 168, 120, .12);
+    --plum: #A98BB8;
+    --plum-soft: rgba(169, 139, 184, .12);
+    --teal: #6FA6A1;
+    --teal-soft: rgba(111, 166, 161, .12);
+    --shadow: 0 1px 0 rgba(255, 255, 255, .03), 0 18px 40px -28px rgba(0, 0, 0, .9);
+    --f-display: "Bodoni Moda", "Didot", Georgia, serif;
+    --f-body: "Spectral", Georgia, "Times New Roman", serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --maxw: 1265px;
+    --read: 66ch;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --ground: #E7E6E1;
+      --surface: #F3F2EE;
+      --surface-2: #EBEAE4;
+      --line: #CFCDC4;
+      --line-soft: #DBD9D2;
+      --ink: #171820;
+      --ink-dim: #3B3D46;
+      --muted: #5F6170;
+      --amber: #9A6612;
+      --amber-soft: rgba(154, 102, 18, .10);
+      --blue: #2F5F87;
+      --blue-soft: rgba(47, 95, 135, .10);
+      --rust: #96382E;
+      --rust-soft: rgba(150, 56, 46, .10);
+      --sage: #4A6739;
+      --sage-soft: rgba(74, 103, 57, .10);
+      --plum: #6B4A7C;
+      --plum-soft: rgba(107, 74, 124, .10);
+      --teal: #2C6360;
+      --teal-soft: rgba(44, 99, 96, .10);
+      --shadow: 0 1px 0 rgba(255, 255, 255, .6), 0 14px 30px -26px rgba(20, 20, 30, .5);
+    }
+  }
+
+  :root[data-theme="light"] {
+    --ground: #E7E6E1;
+    --surface: #F3F2EE;
+    --surface-2: #EBEAE4;
+    --line: #CFCDC4;
+    --line-soft: #DBD9D2;
+    --ink: #171820;
+    --ink-dim: #3B3D46;
+    --muted: #5F6170;
+    --amber: #9A6612;
+    --amber-soft: rgba(154, 102, 18, .10);
+    --blue: #2F5F87;
+    --blue-soft: rgba(47, 95, 135, .10);
+    --rust: #96382E;
+    --rust-soft: rgba(150, 56, 46, .10);
+    --sage: #4A6739;
+    --sage-soft: rgba(74, 103, 57, .10);
+    --plum: #6B4A7C;
+    --plum-soft: rgba(107, 74, 124, .10);
+    --teal: #2C6360;
+    --teal-soft: rgba(44, 99, 96, .10);
+    --shadow: 0 1px 0 rgba(255, 255, 255, .6), 0 14px 30px -26px rgba(20, 20, 30, .5);
+  }
+
+  * {
+    box-sizing: border-box
+  }
+
+  /* deve battere ogni display: senza questa il pannello del rituale non si chiude
+   fuori dall'involucro dell'Artifact (es. aprendo il file in locale) */
+  [hidden] {
+    display: none !important
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased
+  }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+    color: inherit
+  }
+
+  a {
+    color: var(--ink-dim)
+  }
+
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted)
+  }
+
+  /* header */
+  header {
+    padding: 52px 0 0;
+    text-align: center
+  }
+
+  h1 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(38px, 6.4vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -.015em;
+    margin: 14px 0 0;
+    text-wrap: balance
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400
+  }
+
+  .standfirst {
+    max-width: 92ch;
+    color: var(--ink-dim);
+    font-size: 17px;
+    margin: 18px auto 0
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 26px;
+    margin: 24px 0 30px;
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    letter-spacing: .05em;
+    color: var(--muted)
+  }
+
+  .meta b {
+    color: var(--ink-dim);
+    font-weight: 500
+  }

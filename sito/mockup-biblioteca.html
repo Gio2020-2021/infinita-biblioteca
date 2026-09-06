@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mockup · La Biblioteca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700&family=Spectral:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground: #12131A;
+    --surface: #1B1D27;
+    --surface-2: #232633;
+    --line: #2E3140;
+    --line-soft: #242734;
+    --ink: #E6E4DC;
+    --ink-dim: #B4B3AC;
+    --muted: #8B8D9E;
+    --amber: #E8A33D;
+    --amber-soft: rgba(232, 163, 61, .12);
+    --blue: #7FA8C9;
+    --blue-soft: rgba(127, 168, 201, .12);
+    --rust: #C4574B;
+    --rust-soft: rgba(196, 87, 75, .12);
+    --sage: #8AA878;
+    --sage-soft: rgba(138, 168, 120, .12);
+    --plum: #A98BB8;
+    --plum-soft: rgba(169, 139, 184, .12);
+    --teal: #6FA6A1;
+    --teal-soft: rgba(111, 166, 161, .12);
+    --shadow: 0 1px 0 rgba(255, 255, 255, .03), 0 18px 40px -28px rgba(0, 0, 0, .9);
+    --f-display: "Bodoni Moda", "Didot", Georgia, serif;
+    --f-body: "Spectral", Georgia, "Times New Roman", serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --maxw: 1265px;
+    --read: 66ch;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --ground: #E7E6E1;
+      --surface: #F3F2EE;
+      --surface-2: #EBEAE4;
+      --line: #CFCDC4;
+      --line-soft: #DBD9D2;
+      --ink: #171820;
+      --ink-dim: #3B3D46;
+      --muted: #5F6170;
+      --amber: #9A6612;
+      --amber-soft: rgba(154, 102, 18, .10);
+      --blue: #2F5F87;
+      --blue-soft: rgba(47, 95, 135, .10);
+      --rust: #96382E;
+      --rust-soft: rgba(150, 56, 46, .10);
+      --sage: #4A6739;
+      --sage-soft: rgba(74, 103, 57, .10);
+      --plum: #6B4A7C;
+      --plum-soft: rgba(107, 74, 124, .10);
+      --teal: #2C6360;
+      --teal-soft: rgba(44, 99, 96, .10);
+      --shadow: 0 1px 0 rgba(255, 255, 255, .6), 0 14px 30px -26px rgba(20, 20, 30, .5);
+    }
+  }
+
+  :root[data-theme="light"] {
+    --ground: #E7E6E1;
+    --surface: #F3F2EE;
+    --surface-2: #EBEAE4;
+    --line: #CFCDC4;
+    --line-soft: #DBD9D2;
+    --ink: #171820;
+    --ink-dim: #3B3D46;
+    --muted: #5F6170;
+    --amber: #9A6612;
+    --amber-soft: rgba(154, 102, 18, .10);
+    --blue: #2F5F87;
+    --blue-soft: rgba(47, 95, 135, .10);
+    --rust: #96382E;
+    --rust-soft: rgba(150, 56, 46, .10);
+    --sage: #4A6739;
+    --sage-soft: rgba(74, 103, 57, .10);
+    --plum: #6B4A7C;
+    --plum-soft: rgba(107, 74, 124, .10);
+    --teal: #2C6360;
+    --teal-soft: rgba(44, 99, 96, .10);
+    --shadow: 0 1px 0 rgba(255, 255, 255, .6), 0 14px 30px -26px rgba(20, 20, 30, .5);
+  }
+
+
+  * { box-sizing: border-box }
+  body { background: var(--ground); color: var(--ink); font-family: var(--f-body);
+    font-weight: 300; font-size: 16px; line-height: 1.6; margin: 0; -webkit-font-smoothing: antialiased }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px }
+  a { color: var(--ink-dim) }
+  .eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--muted) }
+
+  /* nastro del mockup */
+  .nota { background: var(--surface-2); border-bottom: 1px solid var(--line);
+    padding: 10px 0; font-family: var(--f-mono); font-size: 11px; letter-spacing: .05em; color: var(--muted) }
+  .nota b { color: var(--amber); font-weight: 500 }
+
+  header { padding: 54px 0 0; text-align: center }
+  h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(38px, 6.4vw, 66px);
+    line-height: 1.02; letter-spacing: -.015em; margin: 14px 0 0 }
+  h1 em { font-style: italic; color: var(--amber); font-weight: 400 }
+  .standfirst { max-width: 78ch; color: var(--ink-dim); font-size: 17px; margin: 18px auto 0 }
+
+  /* barra della biblioteca */
+  nav.bib { position: sticky; top: 0; z-index: 30; margin-top: 34px;
+    background: color-mix(in srgb, var(--ground) 94%, transparent); backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line) }
+  nav.bib ul { display: flex; list-style: none; margin: 0 auto; padding: 0; max-width: var(--maxw);
+    overflow-x: auto; scrollbar-width: none }
+  nav.bib button { display: flex; align-items: baseline; gap: 7px; background: transparent; border: 0;
+    border-bottom: 2px solid transparent; padding: 11px 12px; white-space: nowrap;
+    font-family: var(--f-mono); font-size: 11px; letter-spacing: .09em; text-transform: uppercase;
+    color: var(--muted); cursor: pointer }
+  nav.bib li:first-child button { padding-left: 24px }
+  nav.bib button[aria-current="true"] { color: var(--ink); border-bottom-color: var(--amber) }
+  nav.bib .cerca { margin-left: auto }
+  nav.bib .cerca button { color: var(--ink-dim); gap: 9px; padding-right: 24px }
+  nav.bib kbd { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .06em; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 3px; padding: 1px 5px }
+
+  section.blocco { padding: 52px 0 10px; border-top: 1px solid var(--line); margin-top: 44px }
+  section.blocco:first-of-type { border-top: 0; margin-top: 0 }
+  h2 { font-family: var(--f-display); font-weight: 600; font-size: 34px; letter-spacing: -.012em; margin: 10px 0 0 }
+  .sub { color: var(--ink-dim); max-width: 88ch; margin: 14px 0 30px; font-size: 15.5px }
+
+  /* schede delle mappe */
+  .scaffale { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 20px }
+  .mappa { background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--c);
+    border-radius: 5px; padding: 22px 24px 20px; box-shadow: var(--shadow); display: flex; flex-direction: column }
+  .mappa .stato { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--c); display: flex; justify-content: space-between; gap: 10px }
+  .mappa .stato i { font-style: normal; color: var(--muted) }
+  .mappa h3 { font-family: var(--f-display); font-size: 25px; font-weight: 600; letter-spacing: -.01em;
+    line-height: 1.12; margin: 10px 0 0; text-wrap: balance }
+  .mappa .chi { margin: 7px 0 0; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .08em;
+    color: var(--muted); text-transform: uppercase }
+  .mappa p.d { margin: 13px 0 0; font-size: 15px; color: var(--ink-dim); line-height: 1.55 }
+  .cifre { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 16px 0 0; padding-top: 14px;
+    border-top: 1px solid var(--line-soft); font-family: var(--f-mono); font-size: 10.5px;
+    letter-spacing: .04em; color: var(--muted); font-variant-numeric: tabular-nums }
+  .cifre b { color: var(--ink-dim); font-weight: 500 }
+  .tag-c { display: flex; flex-wrap: wrap; gap: 5px; margin: 14px 0 0 }
+  .tag-c span { font-family: var(--f-mono); font-size: 10px; letter-spacing: .04em; color: var(--ink-dim);
+    background: var(--ground); border: 1px solid var(--line-soft); border-radius: 2px; padding: 3px 8px }
+  .mappa .vai { margin-top: auto; padding-top: 18px }
+  .mappa .vai a { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--c); text-decoration: none; border: 1px solid currentColor; border-radius: 3px; padding: 7px 12px;
+    display: inline-block }
+  .mappa.vuota { border-top-style: dashed; background: transparent; box-shadow: none }
+  .mappa.vuota h3 { color: var(--muted) }
+
+  /* tavola dei concetti */
+  .avviso { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--plum);
+    border-radius: 3px; padding: 16px 20px; margin: 0 0 24px; max-width: 92ch }
+  .avviso h4 { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--plum); margin: 0 0 8px; font-weight: 600 }
+  .avviso p { margin: 0; font-size: 15px; color: var(--ink) }
+  .scorri { overflow-x: auto }
+  table.conc { border-collapse: collapse; width: 100%; min-width: 780px; font-size: 14.5px }
+  table.conc th { text-align: left; font-family: var(--f-mono); font-weight: 500; font-size: 10px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0 16px 9px 0;
+    border-bottom: 1px solid var(--line) }
+  table.conc td { padding: 13px 16px 13px 0; border-bottom: 1px solid var(--line-soft);
+    vertical-align: top; color: var(--ink-dim) }
+  table.conc td:first-child { font-family: var(--f-mono); font-size: 12px; color: var(--ink); width: 20% }
+  table.conc a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--line) }
+  table.conc a:hover { border-bottom-color: var(--amber); color: var(--ink) }
+  table.conc .no { color: var(--muted); font-style: italic }
+  .pallino { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 7px;
+    vertical-align: 1px; background: var(--c) }
+
+  /* confronti */
+  .confronti { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px }
+  .conf { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--plum);
+    border-radius: 4px; padding: 22px 24px 20px; box-shadow: var(--shadow) }
+  .conf .fra { font-family: var(--f-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--plum) }
+  .conf h3 { font-family: var(--f-display); font-size: 23px; font-weight: 600; letter-spacing: -.01em;
+    line-height: 1.15; margin: 9px 0 0; text-wrap: balance }
+  .conf p { margin: 12px 0 0; font-size: 15px; color: var(--ink-dim); line-height: 1.57 }
+  .fronte { display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0 22px; margin: 18px 0 0;
+    background: var(--ground); border: 1px solid var(--line-soft); border-radius: 4px; overflow: hidden }
+  .fronte .lato { padding: 16px 18px }
+  .fronte .mezzo { background: repeating-linear-gradient(to bottom, var(--line) 0 4px, transparent 4px 9px) }
+  .fronte .chi { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--c); display: block; margin-bottom: 8px }
+  .fronte q { font-family: var(--f-display); font-style: italic; font-size: 16.5px; line-height: 1.4;
+    color: var(--ink); quotes: "«" "»" }
+  .fronte .fonte { display: block; margin-top: 10px; font-family: var(--f-mono); font-size: 9.5px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--muted) }
+  .verdetto { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line-soft); font-size: 15px;
+    color: var(--ink) }
+  .verdetto::before { content: "→ "; color: var(--plum) }
+  @media (max-width: 720px) { .fronte { grid-template-columns: 1fr } .fronte .mezzo { display: none } }
+
+  footer { padding: 46px 0 70px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line);
+    margin-top: 48px }
+  footer code { font-family: var(--f-mono); font-size: 12.5px; color: var(--ink-dim) }
+  .albero { font-family: var(--f-mono); font-size: 12px; line-height: 1.85; color: var(--ink-dim);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 20px 22px;
+    margin: 20px 0 0; overflow-x: auto; white-space: pre }
+  .albero b { color: var(--amber); font-weight: 500 }
+  .albero i { color: var(--muted); font-style: normal }
+</style>
+</head>
+<body>
+
+<div class="nota"><div class="wrap"><b>MOCKUP</b> &nbsp;·&nbsp; il portale della biblioteca, la tavola dei concetti e un confronto &nbsp;·&nbsp; niente qui è cliccabile: serve a decidere la forma</div></div>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Una mappa per argomento · lo stesso telaio · i confronti a parte</p>
+    <h1>La <em>Biblioteca</em></h1>
+    <p class="standfirst">Ogni argomento ha la sua mappa, autonoma e completa, costruita con lo stesso telaio:
+      le parti, il diagramma, i percorsi di lettura, le porte per situazione, la ricerca, il vocabolario.
+      Il portale le tiene insieme e permette la sola cosa che una mappa da sola non può fare: <b>metterle a
+        confronto</b>.</p>
+  </div>
+</header>
+
+<nav class="bib">
+  <ul>
+    <li><button aria-current="true">Lo scaffale</button></li>
+    <li><button>I concetti</button></li>
+    <li><button>I confronti</button></li>
+    <li><button>Il metodo</button></li>
+    <li class="cerca"><button><span style="color:var(--amber)">⌕</span>Cerca in tutta la biblioteca<kbd>⌘K</kbd></button></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <section class="blocco">
+    <p class="eyebrow">Lo scaffale</p>
+    <h2>Le mappe</h2>
+    <p class="sub">Ognuna è un file a sé, che si apre e funziona da sola. Le cifre sono quelle vere della mappa
+      esistente; le altre due schede mostrano come si presenta un argomento appena aperto e uno ancora vuoto.</p>
+
+    <div class="scaffale">
+
+      <article class="mappa" style="--c:var(--amber)">
+        <p class="stato"><span>Completa</span><i>agg. 6 set 2026</i></p>
+        <h3>Il Transurfing</h3>
+        <p class="chi">Vadim Zeland · Klod Nagal</p>
+        <p class="d">Il metodo intero ridotto alla sua ossatura operativa, più un banco di lavoro e un diario per
+          usarlo davvero. Com'è fatta la realtà, cosa te la sottrae, cosa hai dalla tua.</p>
+        <p class="cifre"><span><b>13</b> libri</span><span><b>11</b> parti</span><span><b>66</b> sezioni</span><span><b>51</b> storie</span><span><b>1126</b> citazioni verificate</span></p>
+        <div class="tag-c"><span>attenzione</span><span>importanza</span><span>intenzione</span><span>accettazione</span><span>identità</span><span>gruppo e conformismo</span></div>
+        <p class="vai"><a href="#">Apri la mappa</a></p>
+      </article>
+
+      <article class="mappa" style="--c:var(--teal)">
+        <p class="stato"><span>In lavorazione</span><i>3 di 12 letti</i></p>
+        <h3>La cornice: arconti e gnosticismo</h3>
+        <p class="chi">Klod Nagal · fonti gnostiche</p>
+        <p class="d">La metafisica a cui i libri sul Transurfing rimandano senza svilupparla: la simulazione, gli
+          arconti, la trappola della reincarnazione, la quinta via. Testi già in casa, 2.581 pagine.</p>
+        <p class="cifre"><span><b>12</b> libri</span><span><b>4</b> parti</span><span><b>—</b> sezioni</span></p>
+        <div class="tag-c"><span>identità</span><span>illusione</span><span>morte e continuità</span></div>
+        <p class="vai"><a href="#">Apri la mappa</a></p>
+      </article>
+
+      <article class="mappa vuota" style="--c:var(--muted)">
+        <p class="stato"><span>Da aprire</span><i>una cartella e un mappa.json</i></p>
+        <h3>Il prossimo argomento</h3>
+        <p class="chi">L'autore che stai per darmi</p>
+        <p class="d">Aprire una mappa nuova è creare una cartella in <code>sorgente/mappe/</code> con dentro il suo
+          <code>mappa.json</code>. Barra, diagramma, sommari e ricerca vengono generati da lì: non c'è nessun elenco
+          da tenere allineato a mano.</p>
+        <p class="cifre"><span>eredita l'intero telaio</span></p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="blocco">
+    <p class="eyebrow">I concetti</p>
+    <h2>Dove gli argomenti si toccano</h2>
+    <p class="sub">Ogni sezione, in ogni mappa, dichiara i concetti che tratta. Il vocabolario canonico tiene i
+      sinonimi: quello che Zeland chiama <i>importanza</i> altrove si chiama in altri modi. Questa tavola si genera
+      da sola dai tag.</p>
+
+    <div class="avviso">
+      <h4>Cosa dice questa tavola, e cosa non dice</h4>
+      <p>Dice che <b>queste pagine parlano della stessa cosa</b>. Non dice che <b>dicono la stessa cosa</b> — quello
+        richiede leggerle e scriverlo, ed è il lavoro dei confronti qui sotto. Una tavola generata che pretendesse di
+        concludere sarebbe la cosa più facile da costruire e la più disonesta da pubblicare.</p>
+    </div>
+
+    <div class="scorri">
+      <table class="conc">
+        <thead>
+          <tr><th>Concetto</th><th>Il Transurfing</th><th>La cornice</th><th>Il prossimo</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>attenzione</td>
+            <td><span class="pallino" style="--c:var(--amber)"></span><a href="#">Il Testimone</a> · <a href="#">Tafti e la treccina</a> · <a href="#">La cattura dell'attenzione</a></td>
+            <td class="no">non ancora mappato</td>
+            <td class="no">—</td>
+          </tr>
+          <tr>
+            <td>importanza</td>
+            <td><span class="pallino" style="--c:var(--amber)"></span><a href="#">L'equilibrio</a> · <a href="#">Le mollette mentali</a> · <a href="#">La coordinazione dell'importanza</a></td>
+            <td class="no">non ancora mappato</td>
+            <td class="no">—</td>
+          </tr>
+          <tr>
+            <td>identità</td>
+            <td><span class="pallino" style="--c:var(--amber)"></span><a href="#">Il nuovo manichino</a> · <a href="#">Io sono io</a></td>
+            <td><span class="pallino" style="--c:var(--teal)"></span><a href="#">La scintilla e la copia</a></td>
+            <td class="no">—</td>
+          </tr>
+          <tr>
+            <td>illusione</td>
+            <td><span class="pallino" style="--c:var(--amber)"></span><a href="#">L'illusione dell'azione scenica</a> · <a href="#">La tecnosfera</a></td>
+            <td><span class="pallino" style="--c:var(--teal)"></span><a href="#">La simulazione</a></td>
+            <td class="no">—</td>
+          </tr>
+          <tr>
+            <td>gruppo e conformismo</td>
+            <td><span class="pallino" style="--c:var(--amber)"></span><a href="#">I pendoli</a> · <a href="#">I fili delle marionette</a></td>
+            <td class="no">non ancora mappato</td>
+            <td class="no">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="blocco">
+    <p class="eyebrow">I confronti</p>
+    <h2>Quando due mappe dicono la stessa cosa — o non la dicono</h2>
+    <p class="sub">Scritti a mano, con la stessa disciplina delle mappe: citazioni letterali, fonte dichiarata,
+      verificate da <code>cita.py</code>. È la generalizzazione di <i>Dove i libri non dicono la stessa cosa</i>,
+      che oggi confronta Zeland con sé stesso.</p>
+
+    <div class="confronti">
+
+      <article class="conf">
+        <p class="fra">Il Transurfing ↔ La cornice</p>
+        <h3>Due matrix che non sono la stessa matrix</h3>
+        <p>Entrambe le mappe usano la parola. Per Zeland è un <b>modello dichiarato tale</b>, che lui stesso invita a
+          non prendere alla lettera; nella cornice gnostica è una <b>tesi cosmologica</b> con conseguenze pratiche.
+          Confondere i due statuti è l'errore più comune di chi legge entrambi.</p>
+        <div class="fronte">
+          <div class="lato" style="--c:var(--amber)">
+            <span class="chi">Zeland</span>
+            <q>la “matrix” è un idiotismo generalizzato più la cyborgizzazione di tutta la società</q>
+            <span class="fonte">Scardinare il Sistema Tecnogeno</span>
+          </div>
+          <div class="mezzo"></div>
+          <div class="lato" style="--c:var(--teal)">
+            <span class="chi">Nagal</span>
+            <q>Matrix è il nostro Universo… una complessa struttura che simula di essere la creazione di Dio</q>
+            <span class="fonte">Surfare nell'Ologramma, cap. 1</span>
+          </div>
+        </div>
+        <p class="verdetto">Stessa parola, due statuti diversi: una metafora sociale e una cosmologia. La mappa non
+          arbitra — segnala il salto, e dice dove ciascuno lo compie.</p>
+      </article>
+
+      <article class="conf">
+        <p class="fra">Il Transurfing ↔ Il prossimo argomento</p>
+        <h3>La forma che avrà ogni confronto</h3>
+        <p>Un titolo che dice la tesi, due o più citazioni messe a fronte con la fonte sotto, e una riga di verdetto
+          che <b>non concilia a forza</b>: se due autori si contraddicono, il confronto lo dice. Il modello è la
+          sezione che già esiste dentro la mappa del Transurfing.</p>
+        <div class="fronte">
+          <div class="lato" style="--c:var(--amber)">
+            <span class="chi">Prima voce</span>
+            <q>la citazione letterale, verificata sul testo con lo strumento che già usiamo</q>
+            <span class="fonte">Libro, capitolo, pagina</span>
+          </div>
+          <div class="mezzo"></div>
+          <div class="lato" style="--c:var(--sage)">
+            <span class="chi">Seconda voce</span>
+            <q>la citazione dell'altro autore, che dice la stessa cosa con altre parole o la nega</q>
+            <span class="fonte">Libro, capitolo, pagina</span>
+          </div>
+        </div>
+        <p class="verdetto">Dove coincidono, dove divergono, e cosa resta aperto.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="blocco">
+    <p class="eyebrow">Il metodo</p>
+    <h2>Come è fatta la biblioteca</h2>
+    <p class="sub">Il telaio è uno solo e sta scritto una volta. Ogni mappa è una cartella con dentro il suo
+      <code>mappa.json</code> e le sue parti. Il portale, i confronti e le pagine si costruiscono con lo stesso
+      comando di oggi.</p>
+    <div class="albero"><b>sorgente/</b>
+  <b>telaio/</b>          <i>identico per ogni mappa — corpo, stile, script</i>
+  <b>mappe/</b>
+    transurfing/    mappa.json · testata.html · parti/ · proprio/
+    cornice/        mappa.json · testata.html · parti/
+    <i>&lt;nuova&gt;/</i>       <i>una cartella e un mappa.json: la barra, il diagramma,</i>
+                    <i>i sommari e la ricerca nascono da lì</i>
+  <b>biblioteca/</b>
+    concetti.json   <i>i concetti canonici e i sinonimi di ogni mappa</i>
+    confronti/      <i>i confronti scritti a mano</i>
+<b>sito/</b>
+  index.html        <i>il portale</i>
+  transurfing.html  cornice.html  confronti.html   <i>generati</i></div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Cosa non si perde.</b> Barra delle parti, diagramma radiale, percorsi di lettura, porte per situazione,
+      ricerca completa con radici ed evidenziazione, torna su, vocabolario laterale, banco e diario, e tutti gli
+      strumenti (<code>costruisci</code>, <code>verifica</code>, <code>rinumera</code>, <code>cita</code>,
+      <code>anteprima</code>). Banco e diario diventano <b>moduli opzionali per mappa</b>: sono strumenti del
+      Transurfing, non di ogni argomento.</p>
+  </div>
+</footer>
+
+</body>
+</html>

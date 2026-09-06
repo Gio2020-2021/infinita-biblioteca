@@ -1,0 +1,1231 @@
+<title>Quattro diari a confronto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700&family=Spectral:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --ground: #12131A;
+    --surface: #1B1D27;
+    --surface-2: #232633;
+    --line: #2E3140;
+    --line-soft: #242734;
+    --ink: #E6E4DC;
+    --ink-dim: #B4B3AC;
+    --muted: #8B8D9E;
+    --amber: #E8A33D;
+    --amber-soft: rgba(232, 163, 61, .12);
+    --blue: #7FA8C9;
+    --rust: #C4574B;
+    --sage: #8AA878;
+    --plum: #A98BB8;
+    --shadow: 0 1px 0 rgba(255, 255, 255, .03), 0 18px 40px -28px rgba(0, 0, 0, .9);
+    --f-display: "Bodoni Moda", "Didot", Georgia, serif;
+    --f-body: "Spectral", Georgia, "Times New Roman", serif;
+    --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --maxw: 1265px;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --ground: #E7E6E1;
+      --surface: #F3F2EE;
+      --surface-2: #EBEAE4;
+      --line: #CFCDC4;
+      --line-soft: #DBD9D2;
+      --ink: #171820;
+      --ink-dim: #3B3D46;
+      --muted: #5F6170;
+      --amber: #9A6612;
+      --amber-soft: rgba(154, 102, 18, .10);
+      --blue: #2F5F87;
+      --rust: #96382E;
+      --sage: #4A6739;
+      --plum: #6B4A7C;
+      --shadow: 0 1px 0 rgba(255, 255, 255, .6), 0 14px 30px -26px rgba(20, 20, 30, .5);
+    }
+  }
+
+  * {
+    box-sizing: border-box
+  }
+
+  [hidden] {
+    display: none !important
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased
+  }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit
+  }
+
+  .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted)
+  }
+
+  .btn {
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 7px 12px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    cursor: pointer
+  }
+
+  .btn:hover {
+    border-color: var(--amber);
+    color: var(--ink)
+  }
+
+  /* ---------- testata ---------- */
+  .avviso {
+    background: var(--amber-soft);
+    border-bottom: 1px solid var(--line);
+    padding: 9px 0
+  }
+
+  .avviso p {
+    margin: 0;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .06em;
+    color: var(--ink-dim);
+    text-align: center
+  }
+
+  header {
+    padding: 38px 0 0;
+    text-align: center
+  }
+
+  h1 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(30px, 4.6vw, 48px);
+    line-height: 1.04;
+    letter-spacing: -.015em;
+    margin: 12px 0 0
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400
+  }
+
+  .standfirst {
+    max-width: 104ch;
+    margin: 14px auto 0;
+    color: var(--ink-dim);
+    font-size: 16.5px
+  }
+
+  /* ---------- selettore ---------- */
+  nav.varianti {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: color-mix(in srgb, var(--ground) 94%, transparent);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 30px
+  }
+
+  nav.varianti ul {
+    display: flex;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: var(--maxw);
+    overflow-x: auto;
+    scrollbar-width: none
+  }
+
+  nav.varianti ul::-webkit-scrollbar {
+    display: none
+  }
+
+  nav.varianti button {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    padding: 13px 16px;
+    white-space: nowrap;
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer
+  }
+
+  nav.varianti button i {
+    font-style: normal;
+    font-size: 9.5px;
+    color: var(--line)
+  }
+
+  nav.varianti button:hover {
+    color: var(--ink)
+  }
+
+  nav.varianti button[aria-current="true"] {
+    color: var(--ink);
+    border-bottom-color: var(--pc, var(--amber))
+  }
+
+  nav.varianti button[aria-current="true"] i {
+    color: var(--pc, var(--amber))
+  }
+
+  nav.varianti li:first-child button {
+    padding-left: 24px
+  }
+
+  /* ---------- intestazione di variante ---------- */
+  .v-head {
+    padding: 34px 0 22px;
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 28px
+  }
+
+  .v-head h2 {
+    font-family: var(--f-display);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -.012em;
+    margin: 8px 0 0
+  }
+
+  .v-head p {
+    margin: 10px 0 0;
+    color: var(--ink-dim);
+    max-width: 88ch;
+    font-size: 15.5px
+  }
+
+  .v-head .per-chi {
+    margin-top: 12px;
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    letter-spacing: .04em;
+    color: var(--muted)
+  }
+
+  .v-head .per-chi b {
+    color: var(--sage);
+    font-weight: 500
+  }
+
+  .variante {
+    display: none;
+    padding-bottom: 70px
+  }
+
+  .variante.on {
+    display: block
+  }
+
+  /* ---------- barra data condivisa ---------- */
+  .data-bar {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 22px
+  }
+
+  .data-bar h3 {
+    font-family: var(--f-display);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -.01em
+  }
+
+  .data-bar .oggi-tag {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    border: 1px solid currentColor;
+    border-radius: 2px;
+    padding: 3px 7px
+  }
+
+  .campo {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 13px 15px;
+    font-family: var(--f-body);
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    resize: vertical
+  }
+
+  .campo:focus {
+    outline: none;
+    border-color: var(--amber)
+  }
+
+  .campo::placeholder {
+    color: var(--muted)
+  }
+
+  .etichetta {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--c, var(--amber));
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600
+  }
+
+  .regola {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 10px;
+    max-width: 72ch
+  }
+
+  /* =========================================================
+     A · IL QUADERNO
+     ========================================================= */
+  .quad {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 250px;
+    gap: 48px;
+    align-items: start
+  }
+
+  @media (max-width:980px) {
+    .quad {
+      grid-template-columns: 1fr
+    }
+  }
+
+  .foglio {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 34px 38px;
+    box-shadow: var(--shadow);
+    background-image: repeating-linear-gradient(to bottom, transparent 0 31px, var(--line-soft) 31px 32px);
+    background-position: 0 84px
+  }
+
+  .foglio .apertura {
+    font-family: var(--f-display);
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin: 0 0 6px
+  }
+
+  .foglio .sottotitolo {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 0 0 22px
+  }
+
+  .foglio textarea {
+    width: 100%;
+    min-height: 340px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    font-family: var(--f-body);
+    font-size: 17px;
+    line-height: 32px;
+    color: var(--ink);
+    resize: vertical
+  }
+
+  .foglio textarea:focus {
+    outline: none
+  }
+
+  .margine {
+    display: grid;
+    gap: 14px
+  }
+
+  .marca {
+    border-left: 2px solid var(--c);
+    padding: 2px 0 2px 12px
+  }
+
+  .marca .m-t {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--c);
+    display: block
+  }
+
+  .marca p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: var(--ink-dim);
+    line-height: 1.5
+  }
+
+  .quad-strumenti {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-soft)
+  }
+
+  .quad-strumenti .btn {
+    border-color: var(--line-soft)
+  }
+
+  /* =========================================================
+     B · I DUE TACCUINI
+     ========================================================= */
+  .taccuini {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    overflow: hidden
+  }
+
+  @media (max-width:900px) {
+    .taccuini {
+      grid-template-columns: 1fr
+    }
+
+    .dorso {
+      display: none
+    }
+  }
+
+  .pagina {
+    padding: 28px 30px
+  }
+
+  .dorso {
+    background: repeating-linear-gradient(to bottom, var(--line) 0 4px, transparent 4px 9px)
+  }
+
+  .pagina .num {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px
+  }
+
+  .pagina h4 {
+    font-family: var(--f-display);
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    letter-spacing: -.01em
+  }
+
+  .pagina.mattino h4 {
+    color: var(--amber)
+  }
+
+  .pagina.sera h4 {
+    color: var(--sage)
+  }
+
+  .pagina textarea {
+    width: 100%;
+    min-height: 210px;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid var(--line-soft);
+    padding: 14px 0 0;
+    font-family: var(--f-body);
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink);
+    resize: vertical;
+    margin-top: 14px
+  }
+
+  .pagina textarea:focus {
+    outline: none
+  }
+
+  .mezzo {
+    margin-top: 26px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--blue);
+    border-radius: 5px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow)
+  }
+
+  .mezzo textarea {
+    width: 100%;
+    min-height: 150px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    font-family: var(--f-body);
+    font-size: 16.5px;
+    line-height: 1.75;
+    resize: vertical
+  }
+
+  .mezzo textarea:focus {
+    outline: none
+  }
+
+  .fascia {
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 14.5px;
+    color: var(--ink-dim)
+  }
+
+  .fascia div {
+    flex: 1 1 210px
+  }
+
+  .fascia .k {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 5px
+  }
+
+  /* =========================================================
+     C · IL FLUSSO
+     ========================================================= */
+  .flusso-guscio {
+    max-width: 760px;
+    margin: 0 auto
+  }
+
+  .flusso-testa {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    margin-bottom: 22px
+  }
+
+  .flusso-testa .fine {
+    font-size: 15px;
+    color: var(--ink)
+  }
+
+  .flusso-testa .fine b {
+    color: var(--amber);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    display: block;
+    font-weight: 600;
+    margin-bottom: 3px
+  }
+
+  .giorno-sep {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 26px 0 16px
+  }
+
+  .giorno-sep span {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted)
+  }
+
+  .giorno-sep::before,
+  .giorno-sep::after {
+    content: "";
+    height: 1px;
+    background: var(--line-soft);
+    flex: 1
+  }
+
+  .voce {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 14px;
+    padding: 11px 0;
+    align-items: start
+  }
+
+  .voce .ora {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    padding-top: 3px
+  }
+
+  .voce .bolla {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--c, var(--line));
+    border-radius: 4px;
+    padding: 11px 14px
+  }
+
+  .voce .bolla .tag {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--c);
+    display: block;
+    margin-bottom: 4px
+  }
+
+  .voce .bolla p {
+    margin: 0;
+    font-size: 15.5px;
+    color: var(--ink)
+  }
+
+  .voce.lunga .bolla p {
+    font-size: 16px;
+    line-height: 1.7
+  }
+
+  .compositore {
+    position: sticky;
+    bottom: 0;
+    background: color-mix(in srgb, var(--ground) 95%, transparent);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    padding: 14px 0 18px;
+    margin-top: 22px
+  }
+
+  .compositore textarea {
+    width: 100%;
+    min-height: 62px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 12px 14px;
+    font-size: 15.5px;
+    resize: vertical
+  }
+
+  .compositore textarea:focus {
+    outline: none;
+    border-color: var(--amber)
+  }
+
+  .tipi {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 9px
+  }
+
+  .tipi button {
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer
+  }
+
+  .tipi button[aria-pressed="true"] {
+    color: var(--ink);
+    border-color: currentColor
+  }
+
+  .tipi button.libero[aria-pressed="true"] {
+    color: var(--ink-dim)
+  }
+
+  .tipi button.pensiero[aria-pressed="true"] {
+    color: var(--blue)
+  }
+
+  .tipi button.segno[aria-pressed="true"] {
+    color: var(--plum)
+  }
+
+  .tipi button.molletta[aria-pressed="true"] {
+    color: var(--rust)
+  }
+
+  .tipi button.marker[aria-pressed="true"] {
+    color: var(--sage)
+  }
+
+  .tipi .invio {
+    margin-left: auto;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--muted);
+    align-self: center
+  }
+
+  /* =========================================================
+     D · LO SPECCHIO
+     ========================================================= */
+  .specchio {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0 34px;
+    align-items: start
+  }
+
+  @media (max-width:980px) {
+    .specchio {
+      grid-template-columns: 1fr;
+      gap: 26px
+    }
+
+    .linea-specchio {
+      display: none
+    }
+  }
+
+  .linea-specchio {
+    width: 1px;
+    align-self: stretch;
+    background: linear-gradient(to bottom, transparent, var(--line) 12%, var(--line) 88%, transparent);
+    position: relative
+  }
+
+  .linea-specchio::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ground);
+    border: 1px solid var(--plum)
+  }
+
+  .anta {
+    display: grid;
+    gap: 20px
+  }
+
+  .anta .anta-t {
+    font-family: var(--f-display);
+    font-size: 23px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -.01em
+  }
+
+  .anta .anta-s {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: var(--muted);
+    max-width: 42ch
+  }
+
+  .anta.immagine .anta-t {
+    color: var(--amber)
+  }
+
+  .anta.riflesso .anta-t {
+    color: var(--blue)
+  }
+
+  .blocco {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--c, var(--amber));
+    border-radius: 4px;
+    padding: 15px 17px;
+    box-shadow: var(--shadow)
+  }
+
+  .blocco textarea {
+    width: 100%;
+    min-height: 78px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    font-size: 15.5px;
+    line-height: 1.6;
+    resize: vertical
+  }
+
+  .blocco textarea:focus {
+    outline: none
+  }
+
+  .blocco p.riga {
+    margin: 7px 0 0;
+    font-size: 14.5px;
+    color: var(--ink-dim);
+    padding-top: 7px;
+    border-top: 1px solid var(--line-soft)
+  }
+
+  .blocco p.riga:first-of-type {
+    border-top: none;
+    padding-top: 0
+  }
+
+  .sotto-specchio {
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line)
+  }
+
+  .sotto-specchio textarea {
+    width: 100%;
+    min-height: 160px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 16px 18px;
+    font-size: 16px;
+    line-height: 1.72;
+    resize: vertical
+  }
+
+  .sotto-specchio textarea:focus {
+    outline: none;
+    border-color: var(--plum)
+  }
+
+  /* ---------- calendarietto condiviso ---------- */
+  .cal-mini {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+    max-width: 250px
+  }
+
+  .cal-mini i {
+    aspect-ratio: 1;
+    border-radius: 3px;
+    background: var(--surface-2);
+    display: block;
+    position: relative
+  }
+
+  .cal-mini i.pieno {
+    background: var(--amber-soft);
+    border: 1px solid var(--amber)
+  }
+
+  .cal-mini i.mezzo-pieno {
+    background: var(--surface-2);
+    border: 1px solid var(--line)
+  }
+
+  .cal-mini i.oggi {
+    outline: 1px solid var(--sage);
+    outline-offset: 1px
+  }
+
+  .cal-did {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 10px 0 0;
+    max-width: 250px;
+    line-height: 1.5
+  }
+</style>
+
+<div class="avviso">
+  <div class="wrap">
+    <p>Quattro mockup a confronto — stessi dati d'esempio, quattro impostazioni diverse. Si può scrivere dentro.</p>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Il diario del transurfer · quattro strade</p>
+    <h1>Quattro diari a <em>confronto</em></h1>
+    <p class="standfirst">Cambia l'idea di fondo, non il colore: dove si scrive per primo, quanto la struttura ti guida,
+      e quanto il metodo si vede. In tutti c'è lo spazio libero per raccontare la giornata — in due è il centro, negli
+      altri due sta accanto al resto.</p>
+  </div>
+</header>
+
+<nav class="varianti" aria-label="Le quattro varianti">
+  <ul>
+    <li><button type="button" data-v="quaderno" style="--pc:var(--amber)"><i>A</i>Il quaderno</button></li>
+    <li><button type="button" data-v="taccuini" style="--pc:var(--sage)"><i>B</i>I due taccuini</button></li>
+    <li><button type="button" data-v="flusso" style="--pc:var(--blue)"><i>C</i>Il flusso</button></li>
+    <li><button type="button" data-v="specchio" style="--pc:var(--plum)"><i>D</i>Lo specchio</button></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <!-- ============================ A · IL QUADERNO ============================ -->
+  <section class="variante" id="v-quaderno">
+    <div class="v-head">
+      <p class="eyebrow">Variante A</p>
+      <h2>Il quaderno</h2>
+      <p>Si apre su una pagina bianca e basta. Scrivi la giornata come viene, di seguito, senza caselle da riempire.
+        Il metodo non sparisce: sta nel margine, e lo applichi <i>dopo</i> — selezioni una frase e la marchi come segno,
+        molletta o ✓. La struttura non ti chiede il permesso di esistere, ma nemmeno ti guarda mentre scrivi.</p>
+      <p class="per-chi"><b>Per te se</b> — il diario è prima di tutto un posto dove pensare, e la griglia ti
+        bloccherebbe.</p>
+    </div>
+
+    <div class="data-bar">
+      <button class="btn">‹</button><button class="btn">›</button>
+      <h3>venerdì 5 settembre</h3><span class="oggi-tag">oggi</span>
+    </div>
+
+    <div class="quad">
+      <div class="foglio">
+        <p class="apertura">La giornata</p>
+        <p class="sottotitolo">Scrivi come viene. Marcare si può anche domani.</p>
+        <textarea spellcheck="false">Mi sono svegliato con l'idea di scrivere a M. Non ci pensavo da mesi, ed è arrivata prima ancora del caffè — di quelle cose che ti sembrano ovvie solo mentre le pensi.
+
+Prima della call di mezzogiorno mi sono accorto che stavo stringendo i denti. È sempre la stessa cosa: do alla riunione un peso che non ha, e poi parlo male perché sto attento a parlare bene.
+
+Nel pomeriggio M. ha risposto. Vuole propormi una collaborazione.
+
+Stasera penso che il preventivo rifiutato di ieri non fosse una perdita di tempo. Era una porta che si è chiusa da sola, e ci ho messo un giorno ad accorgermene.</textarea>
+        <div class="quad-strumenti">
+          <button class="btn">✓ marca la frase</button>
+          <button class="btn">segno</button>
+          <button class="btn">molletta</button>
+          <button class="btn">dichiarazione</button>
+          <button class="btn">constatazione</button>
+        </div>
+      </div>
+
+      <div class="margine">
+        <div class="marca" style="--c:var(--plum)">
+          <span class="m-t">Segno · 08:14</span>
+          <p>«L'idea di scrivere a M.»</p>
+        </div>
+        <div class="marca" style="--c:var(--rust)">
+          <span class="m-t">Molletta · 11:02</span>
+          <p>«Do alla riunione un peso che non ha»</p>
+        </div>
+        <div class="marca" style="--c:var(--sage)">
+          <span class="m-t">✓ · 14:37</span>
+          <p>«M. ha risposto»</p>
+        </div>
+        <div class="marca" style="--c:var(--amber)">
+          <span class="m-t">Il fine corrente</span>
+          <p>Vivo del lavoro che mi sono inventato.</p>
+        </div>
+        <div class="marca" style="--c:var(--blue)">
+          <span class="m-t">Settembre</span>
+          <div class="cal-mini" style="margin-top:8px">
+            <i class="pieno"></i><i class="mezzo-pieno"></i><i class="pieno"></i><i></i><i class="pieno oggi"></i><i></i>
+            <i></i>
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <p style="margin-top:8px">Cinque giorni scritti. I vuoti restano vuoti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ B · I DUE TACCUINI ============================ -->
+  <section class="variante" id="v-taccuini">
+    <div class="v-head">
+      <p class="eyebrow">Variante B</p>
+      <h2>I due taccuini</h2>
+      <p>La prescrizione di Zeland presa alla lettera, e resa oggetto: due pagine affiancate come in un registro
+        aperto. A sinistra la <b>dichiarazione</b> del mattino, a destra la <b>constatazione</b> della sera — le due
+        cose che il libro chiede, nella loro forma originale. Il racconto libero della giornata sta sotto, fra le due,
+        dove effettivamente accade.</p>
+      <p class="per-chi"><b>Per te se</b> — vuoi fare esattamente quello che c'è scritto nel libro, e vuoi vederlo.</p>
+    </div>
+
+    <div class="data-bar">
+      <button class="btn">‹</button><button class="btn">›</button>
+      <h3>venerdì 5 settembre</h3><span class="oggi-tag">oggi</span>
+    </div>
+
+    <div class="taccuini">
+      <div class="pagina mattino">
+        <span class="num">Taccuino I · mattino</span>
+        <h4>Dichiarazione</h4>
+        <p class="regola">Il risultato come se fosse già ottenuto. Mai lo scenario: quello lo scrivono l'intenzione
+          esterna e la corrente.</p>
+        <textarea
+          spellcheck="false">Vivo del lavoro che mi sono inventato, e mi paga bene. Le persone giuste mi trovano da sole. Il mio mondo si occupa di me.</textarea>
+      </div>
+      <div class="dorso"></div>
+      <div class="pagina sera">
+        <span class="num">Taccuino II · sera</span>
+        <h4>Constatazione</h4>
+        <p class="regola">Il giornale di bordo: solo ciò che si è mosso verso il fine. Selettivo per prescrizione, non
+          per reticenza.</p>
+        <textarea spellcheck="false">M. mi ha scritto per primo.
+Ho detto di no a un lavoro che non era mio, e non mi è pesato.</textarea>
+      </div>
+    </div>
+
+    <div class="mezzo">
+      <span class="etichetta" style="--c:var(--blue)">Fra i due taccuini · la giornata</span>
+      <p class="regola">Quello che non è né dichiarazione né constatazione: come è andata, cosa hai pensato, cosa ti ha
+        colpito. Nessuno lo rilegge se non tu.</p>
+      <textarea spellcheck="false">Strana giornata. L'idea di scrivere a M. è arrivata da sola, prima del caffè, e nel pomeriggio ha risposto proponendomi una collaborazione — non credo alle coincidenze quanto credevo prima.
+
+Resta la faccenda delle riunioni: continuo a caricarle di un peso che non hanno.</textarea>
+      <div class="fascia">
+        <div><span class="k" style="color:var(--amber)">Il fine</span>Vivo del lavoro che mi sono inventato.</div>
+        <div><span class="k" style="color:var(--amber)">Amalgama</span><i>Il mio mondo si occupa di me.</i></div>
+        <div><span class="k" style="color:var(--rust)">Mollette aperte</span>Il preventivo · «devo dimostrare che
+          valgo»</div>
+        <div><span class="k" style="color:var(--plum)">Segni in attesa</span>La frase di mio padre sul «lavoro vero»
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ C · IL FLUSSO ============================ -->
+  <section class="variante" id="v-flusso">
+    <div class="v-head">
+      <p class="eyebrow">Variante C</p>
+      <h2>Il flusso</h2>
+      <p>Un solo filo continuo, come parlare con sé stessi. Scrivi quando ti va, quanto ti va: due righe alle otto del
+        mattino, dieci righe la sera. Il tipo — segno, molletta, ✓ — è <b>facoltativo</b> e si sceglie dopo aver
+        scritto, o mai. I giorni sono soltanto delle righe di separazione, non contenitori da riempire.</p>
+      <p class="per-chi"><b>Per te se</b> — la cosa che ti fermerebbe è dover decidere <i>dove</i> va una cosa prima di
+        scriverla.</p>
+    </div>
+
+    <div class="flusso-guscio">
+      <div class="flusso-testa">
+        <div class="fine"><b>Il fine corrente</b>Vivo del lavoro che mi sono inventato.</div>
+        <button class="btn" style="margin-left:auto">Calendario</button>
+        <button class="btn">Cerca</button>
+      </div>
+
+      <div class="giorno-sep"><span>giovedì 4 settembre</span></div>
+      <div class="voce">
+        <span class="ora">21:40</span>
+        <div class="bolla" style="--c:var(--rust)"><span class="tag">molletta</span>
+          <p>Preventivo rifiutato. Mi brucia più di quanto dovrebbe.</p>
+        </div>
+      </div>
+
+      <div class="giorno-sep"><span>venerdì 5 settembre · oggi</span></div>
+      <div class="voce">
+        <span class="ora">08:14</span>
+        <div class="bolla" style="--c:var(--plum)"><span class="tag">segno</span>
+          <p>Mi sveglio con l'idea di scrivere a M. Non ci pensavo da mesi.</p>
+        </div>
+      </div>
+      <div class="voce">
+        <span class="ora">08:20</span>
+        <div class="bolla" style="--c:var(--amber)"><span class="tag">dichiarazione</span>
+          <p>Vivo del lavoro che mi sono inventato, e mi paga bene. Le persone giuste mi trovano da sole.</p>
+        </div>
+      </div>
+      <div class="voce lunga">
+        <span class="ora">12:55</span>
+        <div class="bolla">
+          <p>Ho stretto i denti per tutta la call e ho parlato peggio del solito, proprio perché stavo attento a parlare
+            bene. È sempre lo stesso meccanismo e lo riconosco solo dopo, mai durante.</p>
+        </div>
+      </div>
+      <div class="voce">
+        <span class="ora">14:37</span>
+        <div class="bolla" style="--c:var(--sage)"><span class="tag">✓</span>
+          <p>M. ha risposto e mi propone una collaborazione.</p>
+        </div>
+      </div>
+
+      <div class="compositore">
+        <textarea placeholder="Scrivi qualcosa. Anche solo una riga, anche senza etichetta." spellcheck="false"></textarea>
+        <div class="tipi">
+          <button class="libero" aria-pressed="true">nessuna etichetta</button>
+          <button class="pensiero" aria-pressed="false">pensiero</button>
+          <button class="segno" aria-pressed="false">segno</button>
+          <button class="molletta" aria-pressed="false">molletta</button>
+          <button class="marker" aria-pressed="false">✓</button>
+          <span class="invio">invio per salvare</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ D · LO SPECCHIO ============================ -->
+  <section class="variante" id="v-specchio">
+    <div class="v-head">
+      <p class="eyebrow">Variante D</p>
+      <h2>Lo specchio</h2>
+      <p>L'impaginato è il metodo. A sinistra <b>l'immagine</b>: quello che emetti — il fine, l'amalgama, come hai
+        deciso di trattare la giornata. A destra <b>il riflesso</b>: quello che il mondo ha restituito — fatti, segni,
+        ✓. In mezzo la linea dello specchio. Sotto, a tutta larghezza, lo spazio libero: la giornata raccontata, che non
+        sta né di qua né di là.</p>
+      <p class="per-chi"><b>Per te se</b> — quello che ti interessa davvero è vedere il rapporto fra le due colonne,
+        rileggendo a distanza di settimane.</p>
+    </div>
+
+    <div class="data-bar">
+      <button class="btn">‹</button><button class="btn">›</button>
+      <h3>venerdì 5 settembre</h3><span class="oggi-tag">oggi</span>
+    </div>
+
+    <div class="specchio">
+      <div class="anta immagine">
+        <div>
+          <p class="anta-t">L'immagine</p>
+          <p class="anta-s">Quello che hai emesso oggi. Si scrive al mattino, o quando te ne accorgi.</p>
+        </div>
+        <div class="blocco" style="--c:var(--amber)">
+          <span class="etichetta" style="--c:var(--amber)">Dichiarazione</span>
+          <textarea
+            spellcheck="false">Vivo del lavoro che mi sono inventato, e mi paga bene. Le persone giuste mi trovano da sole.</textarea>
+        </div>
+        <div class="blocco" style="--c:var(--amber)">
+          <span class="etichetta" style="--c:var(--amber)">Amalgama</span>
+          <textarea spellcheck="false">Il mio mondo si occupa di me.</textarea>
+        </div>
+        <div class="blocco" style="--c:var(--rust)">
+          <span class="etichetta" style="--c:var(--rust)">Come ho trattato la giornata</span>
+          <textarea
+            spellcheck="false">Con i denti stretti fino alle tre. Poi mi è passata, ma non perché l'ho deciso io.</textarea>
+        </div>
+      </div>
+
+      <div class="linea-specchio"></div>
+
+      <div class="anta riflesso">
+        <div>
+          <p class="anta-t">Il riflesso</p>
+          <p class="anta-s">Quello che è tornato indietro. Si annota quando succede, con ritardo — come lo specchio.</p>
+        </div>
+        <div class="blocco" style="--c:var(--sage)">
+          <span class="etichetta" style="--c:var(--sage)">✓ Si è mosso</span>
+          <p class="riga">M. ha risposto e propone una collaborazione.</p>
+          <p class="riga">Ho detto di no a un lavoro che non era mio.</p>
+        </div>
+        <div class="blocco" style="--c:var(--plum)">
+          <span class="etichetta" style="--c:var(--plum)">Segni</span>
+          <p class="riga">L'idea di scrivere a M., arrivata da sola alle 8.</p>
+          <p class="riga">La frase di mio padre sul «lavoro vero» — in attesa.</p>
+        </div>
+        <div class="blocco" style="--c:var(--blue)">
+          <span class="etichetta" style="--c:var(--blue)">Fatti, senza commento</span>
+          <textarea spellcheck="false">Call andata male. Preventivo di ieri: nessuna risposta.</textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="sotto-specchio">
+      <span class="etichetta" style="--c:var(--plum)">La giornata, per esteso</span>
+      <p class="regola">Lo spazio che non appartiene a nessuna delle due colonne. Scrivi quanto vuoi, o niente.</p>
+      <textarea spellcheck="false">Strana giornata: l'idea del mattino è tornata indietro nel pomeriggio con un nome e una proposta. Se lo specchio ha davvero un ritardo, oggi è stato di sei ore.
+
+Il pezzo che non torna sono le riunioni. Lì l'immagine che emetto è ancora «questa cosa è decisiva», e infatti il riflesso è sempre lo stesso.</textarea>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function () {
+    var bottoni = Array.prototype.slice.call(document.querySelectorAll("nav.varianti button"));
+    var sezioni = ["quaderno", "taccuini", "flusso", "specchio"];
+
+    function mostra(nome) {
+      sezioni.forEach(function (s) {
+        var el = document.getElementById("v-" + s);
+        if (el) el.classList.toggle("on", s === nome);
+      });
+      bottoni.forEach(function (b) {
+        b.setAttribute("aria-current", b.getAttribute("data-v") === nome ? "true" : "false");
+      });
+      try { history.replaceState(null, "", "#" + nome); } catch (e) { }
+    }
+
+    bottoni.forEach(function (b) {
+      b.addEventListener("click", function () {
+        mostra(b.getAttribute("data-v"));
+        window.scrollTo(0, 0);
+      });
+    });
+
+    /* i tipi nel compositore del Flusso */
+    document.querySelectorAll(".tipi button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        document.querySelectorAll(".tipi button").forEach(function (a) {
+          a.setAttribute("aria-pressed", a === b ? "true" : "false");
+        });
+      });
+    });
+
+    var iniziale = (location.hash || "").replace("#", "");
+    mostra(sezioni.indexOf(iniziale) >= 0 ? iniziale : "quaderno");
+  })();
+</script>

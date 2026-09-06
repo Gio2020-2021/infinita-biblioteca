@@ -1,0 +1,256 @@
+  /* ============ RICERCA IN TUTTA LA MAPPA ============ */
+  /* Il bottone vive in coda alla barra delle parti, che è sticky: così la
+     ricerca è raggiungibile da qualunque punto dello scroll. */
+  nav.parts .rail .rail-cerca {
+    margin-left: auto;
+    position: sticky;
+    right: 0;
+    background: var(--ground);
+    background: color-mix(in srgb, var(--ground) 94%, transparent)
+  }
+
+  nav.parts .rail-cerca button {
+    color: var(--ink-dim);
+    gap: 9px;
+    padding-right: 24px
+  }
+
+  nav.parts .rail-cerca .lente-r {
+    font-size: 14px;
+    line-height: 1;
+    color: var(--amber)
+  }
+
+  nav.parts .rail-cerca button:hover {
+    color: var(--ink)
+  }
+
+  nav.parts .rail-cerca kbd {
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: .06em;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1px 5px
+  }
+
+  .ric-veil {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(8, 8, 12, .74);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(16px, 7vh, 88px) 20px 20px
+  }
+
+  .ric-box {
+    width: 100%;
+    max-width: 780px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: 0 40px 90px -34px rgba(0, 0, 0, .92);
+    overflow: hidden
+  }
+
+  .ric-campo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line)
+  }
+
+  .ric-campo .lente {
+    flex: 0 0 auto;
+    color: var(--amber);
+    font-family: var(--f-mono);
+    font-size: 15px
+  }
+
+  .ric-campo input {
+    flex: 1 1 auto;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    font-family: var(--f-body);
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--ink)
+  }
+
+  .ric-campo input:focus {
+    outline: none
+  }
+
+  .ric-campo input::placeholder {
+    color: var(--muted)
+  }
+
+  .ric-conta {
+    flex: 0 0 auto;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    color: var(--muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums
+  }
+
+  .ric-esiti {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-bottom: 6px
+  }
+
+  .ric-esiti::-webkit-scrollbar {
+    display: none
+  }
+
+  .ric-gruppo {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line-soft);
+    padding: 7px 20px;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px
+  }
+
+  .ric-voce {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    border-left: 2px solid transparent;
+    border-bottom: 1px solid var(--line-soft);
+    padding: 13px 20px 14px 18px;
+    cursor: pointer
+  }
+
+  .ric-voce:hover,
+  .ric-voce.sel {
+    background: var(--surface-2);
+    border-left-color: var(--c, var(--amber))
+  }
+
+  .ric-voce:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: -2px
+  }
+
+  .ric-t {
+    display: block;
+    font-family: var(--f-body);
+    font-size: 16.5px;
+    line-height: 1.35;
+    color: var(--ink)
+  }
+
+  .ric-p {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-dim)
+  }
+
+  .ric-dove {
+    display: block;
+    margin-top: 7px;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted)
+  }
+
+  .ric-dove b {
+    color: var(--c, var(--amber));
+    font-weight: 500
+  }
+
+  .ric-esiti mark {
+    background: var(--amber-soft);
+    color: var(--ink);
+    border-radius: 2px;
+    padding: 0 1px;
+    font-weight: 600
+  }
+
+  .ric-vuoto {
+    padding: 26px 20px 24px
+  }
+
+  .ric-vuoto p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink-dim);
+    max-width: 62ch
+  }
+
+  .ric-vuoto p+p {
+    margin-top: 10px
+  }
+
+  .ric-semi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 16px
+  }
+
+  .ric-semi button {
+    background: var(--ground);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .03em;
+    color: var(--ink-dim);
+    cursor: pointer
+  }
+
+  .ric-semi button:hover {
+    border-color: var(--amber);
+    color: var(--ink)
+  }
+
+  .ric-piede {
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    padding: 10px 20px;
+    border-top: 1px solid var(--line);
+    background: var(--surface-2);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .07em;
+    color: var(--muted)
+  }
+
+  .ric-piede kbd {
+    font-family: inherit;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 1px 5px;
+    margin-right: 5px;
+    color: var(--ink-dim)
+  }

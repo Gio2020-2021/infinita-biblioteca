@@ -1,0 +1,111 @@
+  <div class="part" id="parte-diario" style="--pc:var(--sage)">
+    <div class="part-head">
+      <p class="pn">Ogni giorno</p>
+      <h2>Il diario</h2>
+      <p class="pd">I due taccuini che Zeland prescrive in <i>Scardinare il Sistema Tecnogeno</i>, resi oggetto: a
+        sinistra la dichiarazione del mattino, a destra la constatazione della sera, e in mezzo lo spazio libero per la
+        giornata — che nei libri non c'è, ma è dove la giornata succede davvero. Tutto quello che scrivi resta su questa
+        pagina, privata, e si può riprendere qualsiasi giorno indietro.</p>
+    </div>
+
+    <div class="d-bar">
+      <div class="d-nav">
+        <button type="button" class="btn" id="d-prec" aria-label="Giorno precedente">‹</button>
+        <button type="button" class="btn" id="d-succ" aria-label="Giorno successivo">›</button>
+        <h3 id="d-titolo">oggi</h3>
+        <span class="d-oggi" id="d-tag-oggi">oggi</span>
+        <button type="button" class="btn" id="d-oggi" hidden>Torna a oggi</button>
+      </div>
+      <div class="d-azioni">
+        <span class="d-stato" id="d-stato"></span>
+        <input type="search" id="d-cerca" placeholder="Cerca nel diario…" aria-label="Cerca nel diario">
+        <button type="button" class="btn" id="d-scarica-apri">Scarica</button>
+      </div>
+    </div>
+
+    <div class="d-risultati" id="d-risultati" hidden></div>
+
+    <div class="d-taccuini">
+      <div class="d-pagina mattino">
+        <span class="d-num">Taccuino I · mattino</span>
+        <h4>Dichiarazione</h4>
+        <p class="d-regola">Il risultato come se fosse già ottenuto. <b>Mai lo scenario</b>: quello lo scrivono
+          l'intenzione esterna e la corrente, a mano a mano che si aprono le porte.</p>
+        <textarea id="d-dichiarazione" data-campo="dichiarazione" spellcheck="false"
+          placeholder="Vivo del lavoro che mi sono inventato. Le persone giuste mi trovano da sole."></textarea>
+      </div>
+      <div class="d-dorso" role="presentation"></div>
+      <div class="d-pagina sera">
+        <span class="d-num">Taccuino II · sera</span>
+        <h4>Constatazione</h4>
+        <p class="d-regola">Il giornale di bordo: <b>solo ciò che si è mosso verso il fine</b>. Selettivo per
+          prescrizione, non per reticenza — è la parte che rafforza la dichiarazione del mattino.</p>
+        <textarea id="d-constatazione" data-campo="constatazione" spellcheck="false"
+          placeholder="Cosa si è mosso oggi, anche di poco."></textarea>
+      </div>
+    </div>
+
+    <div class="d-mezzo">
+      <span class="d-eti">Fra i due taccuini · la giornata</span>
+      <p class="d-regola">Quello che non è né dichiarazione né constatazione: com'è andata, cosa hai pensato, cosa ti ha
+        colpito. Scrivi quanto vuoi, o niente.</p>
+      <textarea id="d-giornata" data-campo="giornata" spellcheck="false"
+        placeholder="Scrivi come viene. Nessuno lo rilegge se non tu."></textarea>
+    </div>
+
+    <div class="d-sotto">
+      <div class="d-cal-box">
+        <div class="d-cal-head">
+          <button type="button" class="btn" id="d-mese-prec" aria-label="Mese precedente">‹</button>
+          <span id="d-mese">—</span>
+          <button type="button" class="btn" id="d-mese-succ" aria-label="Mese successivo">›</button>
+        </div>
+        <div class="d-cal" id="d-cal"></div>
+        <p class="d-cal-nota" id="d-cal-nota">Il puntino dice che quel giorno c'è qualcosa scritto. Un giorno vuoto
+          resta vuoto: qui non si contano le serie.</p>
+      </div>
+
+      <div class="d-fianco">
+        <div class="d-scheda" style="--c:var(--amber)">
+          <h5>Il fine corrente</h5>
+          <p id="d-fine">—</p>
+          <p class="d-sub" id="d-diapositiva"></p>
+          <p class="d-sub"><a href="#banco">si imposta nel banco</a></p>
+        </div>
+        <div class="d-scheda" style="--c:var(--amber)">
+          <h5>L'amalgama di adesso</h5>
+          <p id="d-amalgama"><i>—</i></p>
+        </div>
+        <div class="d-scheda" style="--c:var(--sage)">
+          <h5>Come si usa</h5>
+          <p class="d-sub">Si scrive quando viene: la dichiarazione al mattino, la giornata durante, la constatazione la
+            sera. Nessuno dei tre è obbligatorio, e un giorno saltato non è niente da recuperare — <a
+              href="#coordinazione">l'importanza è il problema, non la disciplina</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- pannello di scarico -->
+    <div class="d-veil" id="d-veil" hidden>
+      <div class="d-modale" role="dialog" aria-modal="true" aria-labelledby="d-modale-t">
+        <h4 id="d-modale-t">Scarica il diario</h4>
+        <p class="d-regola">Scegli quali giorni portare via. Esce un file di testo leggibile, con i tre taccuini di ogni
+          giornata uno sotto l'altro.</p>
+        <div class="d-scelte">
+          <button type="button" class="btn" data-scelta="tutto">Tutto</button>
+          <button type="button" class="btn" data-scelta="mese">Questo mese</button>
+          <button type="button" class="btn" data-scelta="30">Ultimi 30 giorni</button>
+          <button type="button" class="btn" data-scelta="giorno">Solo il giorno aperto</button>
+        </div>
+        <p class="d-conteggio" id="d-conteggio">—</p>
+        <div class="d-modale-piede">
+          <button type="button" class="btn" id="d-annulla">Annulla</button>
+          <button type="button" class="btn primary" id="d-scarica">Scarica</button>
+        </div>
+        <p class="d-nota-piccola" id="d-scarica-nota"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================ PARTE · TERRENO -->

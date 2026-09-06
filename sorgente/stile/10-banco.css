@@ -1,0 +1,367 @@
+  /* ============ BANCO ============ */
+  section.deck {
+    padding: 44px 0 8px;
+    scroll-margin-top: 52px
+  }
+
+  .deck-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 10px
+  }
+
+  .deck-head .tag {
+    color: var(--amber)
+  }
+
+  .deck-head h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 34px;
+    margin: 0;
+    letter-spacing: -.012em
+  }
+
+  .deck-sub {
+    color: var(--ink-dim);
+    max-width: 92ch;
+    margin: 0 0 30px;
+    font-size: 15.5px
+  }
+
+  /* il banco: sei schede della stessa identica larghezza, in una griglia
+     regolare — niente colonne asimmetriche */
+  .bench {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    align-items: start
+  }
+
+  @media (max-width:900px) {
+    .bench {
+      grid-template-columns: repeat(2, 1fr)
+    }
+  }
+
+  @media (max-width:560px) {
+    .bench {
+      grid-template-columns: 1fr
+    }
+  }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--amber);
+    border-radius: 4px;
+    padding: 22px 24px;
+    box-shadow: var(--shadow)
+  }
+
+  .panel h3 {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 4px;
+    font-weight: 600
+  }
+
+  .panel .hint {
+    color: var(--muted);
+    font-size: 13.5px;
+    margin: 0 0 16px;
+    max-width: 52ch
+  }
+
+  label.f {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 6px
+  }
+
+  input.t,
+  textarea.t {
+    width: 100%;
+    background: var(--ground);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 10px 12px;
+    font-family: var(--f-body);
+    font-size: 15.5px;
+    line-height: 1.5
+  }
+
+  textarea.t {
+    min-height: 96px;
+    resize: vertical
+  }
+
+  input.t:focus,
+  textarea.t:focus {
+    outline: none;
+    border-color: var(--amber)
+  }
+
+  .row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 14px
+  }
+
+  .btn {
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 8px 14px;
+    font-family: var(--f-mono);
+    font-size: 11.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    cursor: pointer
+  }
+
+  .btn:hover {
+    border-color: var(--amber);
+    color: var(--ink)
+  }
+
+  .btn:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px
+  }
+
+  .btn.primary {
+    border-color: var(--amber);
+    color: var(--amber)
+  }
+
+  .btn.primary:hover {
+    background: var(--amber-soft)
+  }
+
+  .btn[disabled] {
+    opacity: .45;
+    cursor: default;
+    border-color: var(--line)
+  }
+
+  .btn.big {
+    padding: 16px 14px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    transition: background .15s, border-color .15s
+  }
+
+  .btn.big:hover {
+    background: var(--amber-soft)
+  }
+
+  .btn.big b {
+    display: block;
+    font-family: var(--f-display);
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    text-transform: none;
+    color: var(--ink);
+    margin-bottom: 3px
+  }
+
+  .btn.big span {
+    display: block;
+    font-family: var(--f-body);
+    font-size: 13.5px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--muted);
+    line-height: 1.4
+  }
+
+  .triggers {
+    display: grid;
+    gap: 10px
+  }
+
+  .note {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: .03em;
+    margin-top: 12px;
+    line-height: 1.6
+  }
+
+  .ok {
+    color: var(--sage)
+  }
+
+  /* registro */
+  .log {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    max-height: 280px;
+    overflow-y: auto
+  }
+
+  .log li {
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    gap: 10px;
+    padding: 9px 0;
+    border-top: 1px solid var(--line-soft);
+    align-items: baseline
+  }
+
+  .log li:first-child {
+    border-top: none
+  }
+
+  .log .mark {
+    color: var(--sage);
+    font-family: var(--f-mono);
+    font-size: 13px
+  }
+
+  .log .txt {
+    font-size: 15px;
+    color: var(--ink)
+  }
+
+  .log .when {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    color: var(--muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums
+  }
+
+  .empty {
+    color: var(--muted);
+    font-size: 14.5px;
+    font-style: italic;
+    margin: 14px 0 0
+  }
+
+  .sample-out {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: var(--ground);
+    border: 1px solid var(--line);
+    border-left: 2px solid var(--blue);
+    border-radius: 3px;
+    font-size: 15px;
+    color: var(--ink-dim);
+    white-space: pre-wrap
+  }
+
+  /* rituale */
+  .veil {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 12, .82);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px
+  }
+
+  .ritual {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    max-width: 560px;
+    width: 100%;
+    padding: 28px;
+    box-shadow: 0 30px 80px -30px rgba(0, 0, 0, .9)
+  }
+
+  .ritual .step-n {
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--amber)
+  }
+
+  .ritual h4 {
+    font-family: var(--f-display);
+    font-size: 29px;
+    font-weight: 600;
+    margin: 10px 0 0;
+    letter-spacing: -.01em;
+    line-height: 1.1
+  }
+
+  .ritual p {
+    font-size: 16px;
+    color: var(--ink-dim);
+    margin: 14px 0 0;
+    max-width: 52ch
+  }
+
+  .ritual .frame-echo {
+    margin: 18px 0 0;
+    padding: 13px 15px;
+    background: var(--ground);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-size: 15px;
+    color: var(--ink)
+  }
+
+  .ritual .foot {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 24px;
+    flex-wrap: wrap
+  }
+
+  .dots {
+    display: flex;
+    gap: 6px;
+    margin-left: auto
+  }
+
+  .dots i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--line);
+    display: block
+  }
+
+  .dots i.on {
+    background: var(--amber)
+  }
+
+  .arc {
+    margin: 20px 0 0;
+    height: 3px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden
+  }
+
+  .arc b {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--amber)
+  }

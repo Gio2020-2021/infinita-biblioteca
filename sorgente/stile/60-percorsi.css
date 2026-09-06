@@ -1,0 +1,113 @@
+  /* ============ IN CHE ORDINE LEGGERLO ============ */
+  .percorsi-sec {
+    padding: 46px 0 10px;
+    border-top: 1px solid var(--line);
+    margin-top: 44px;
+    scroll-margin-top: 52px
+  }
+
+  .percorsi-head h2 {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 34px;
+    letter-spacing: -.012em;
+    margin: 10px 0 0
+  }
+
+  .percorsi-sub {
+    color: var(--ink-dim);
+    max-width: 92ch;
+    margin: 14px 0 30px;
+    font-size: 15.5px
+  }
+
+  .percorsi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 22px;
+    align-items: start
+  }
+
+  .percorso {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--c);
+    border-radius: 4px;
+    padding: 22px 24px 20px;
+    box-shadow: var(--shadow)
+  }
+
+  .percorso .p-n {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--c)
+  }
+
+  .percorso h3 {
+    font-family: var(--f-display);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    line-height: 1.15;
+    margin: 7px 0 0;
+    text-wrap: balance
+  }
+
+  .percorso .p-per {
+    margin: 10px 0 0;
+    font-size: 14.5px;
+    color: var(--ink-dim);
+    line-height: 1.55
+  }
+
+  .p-passi {
+    counter-reset: passo;
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0
+  }
+
+  .p-passi li {
+    counter-increment: passo;
+    position: relative;
+    padding: 13px 0 13px 34px;
+    border-top: 1px solid var(--line-soft)
+  }
+
+  .p-passi li::before {
+    content: counter(passo, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--c)
+  }
+
+  .p-passi a {
+    font-family: var(--f-body);
+    font-size: 16.5px;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line)
+  }
+
+  .p-passi a:hover {
+    border-bottom-color: var(--c)
+  }
+
+  .p-passi p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.55
+  }
+
+  .percorsi-coda {
+    margin: 28px 0 0;
+    font-size: 15px;
+    color: var(--ink-dim);
+    max-width: 92ch
+  }

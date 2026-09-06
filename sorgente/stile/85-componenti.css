@@ -1,0 +1,84 @@
+  /* ============ COMPONENTI NUOVI ============ */
+  .pair {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px 34px;
+    margin: 20px 0 0;
+    list-style: none;
+    padding: 0
+  }
+
+  .pair li {
+    padding: 13px 0;
+    border-top: 1px solid var(--line-soft)
+  }
+
+  .pair .lab {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--c);
+    margin-bottom: 6px
+  }
+
+  .pair p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink-dim)
+  }
+
+  blockquote.pull {
+    margin: 24px 0 0;
+    padding: 0 0 0 18px;
+    border-left: 3px solid var(--c);
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.38;
+    color: var(--ink);
+    max-width: 52ch
+  }
+
+  blockquote.pull cite {
+    display: block;
+    font-family: var(--f-mono);
+    font-style: normal;
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 12px
+  }
+
+  .checks {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 2px
+  }
+
+  .checks li {
+    position: relative;
+    padding: 11px 0 11px 32px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 15px;
+    color: var(--ink-dim)
+  }
+
+  .checks li::before {
+    content: "◇";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    color: var(--c);
+    font-size: 12px;
+    line-height: 1.5
+  }
+
+  .checks li b {
+    color: var(--ink);
+    font-weight: 600
+  }
