@@ -75,7 +75,8 @@ contro il testo: 289/289 letterali.**
 *Propaganda, PNL, manipolazione mediatica: come si dice il libro viene costruita l'opinione pubblica.*
 
 **22 voci — lette e trasferite per intero il 6-9-2026, in
-`sorgente/mappe/vesica/parti/02-consenso.html`, venti sezioni. Tutte le citazioni verificate
+`sorgente/mappe/vesica/parti/02-consenso.html`, venti sezioni più la tavola di corrispondenza
+`#vc-indice`, che rimette le 22 voci sotto il nome che hanno nel libro. Tutte le citazioni verificate
 lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con riscontro.**
 
 > Il blocco corrisponde alle pagg. 76-149 del libro (righe 8358-16595 del testo estratto), più
