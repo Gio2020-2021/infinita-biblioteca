@@ -29,11 +29,11 @@ contro il testo: 289/289 letterali.**
 > blocco (righe 907-8358 del testo estratto) — ora dodici sezioni, ognuna con più sotto-voci
 > e citazioni dirette.
 
-- [x] PARTE I → #vs-linguaggio (introduzione della Parte I del libro, non un enunciato a sé)
-- [x] INTRODUZIONE → #vs-linguaggio (la domanda giusta)
-- [x] ABSTRACT → #vs-linguaggio
-- [x] METODO D'INDAGINE, LINEE GUIDA → #vs-linguaggio
-- [x] DOCUMENTAZIONE DI CONVALIDA → #vs-linguaggio
+- [x] PARTE I → #vesica-abstract · #vesica-metodo · #vesica-lettore · #vesica-convalida · #vesica-dichiarazione (la Parte I del libro — dedica, abstract, metodo, linee guida, bibliografia, dichiarazione finale — è resa per intero nella Parte I della mappa, «Il libro»)
+- [x] INTRODUZIONE → #vesica-dichiarazione (dedica «VERITAS VINCIT OMNIA» e pagina di apertura del trattato) · #vs-linguaggio (la domanda giusta, già negli strumenti)
+- [x] ABSTRACT → #vesica-abstract (i sette punti dell'«Esito del rapporto» e le considerazioni personali)
+- [x] METODO D'INDAGINE, LINEE GUIDA → #vesica-metodo (matematica come lingua, scienza contro scientismo, target e forma della dimostrazione) · #vesica-lettore (le due modalità di lettura, le due parti del libro, le due note)
+- [x] DOCUMENTAZIONE DI CONVALIDA → #vesica-convalida (oltre duecento titoli, e che cosa dice il loro accostamento)
 - [x] STRUMENTI D'INDAGINE → #vs-linguaggio (titolo della parte)
 - [x] Conoscenze pertinenti per la completa comprensione dei temi trattati nella stesura rapporto → #vs-linguaggio
 - [x] LINGUISTICA: ALFABETO GRECO, ETIMOLOGIA, SEMANTICA → #vs-linguaggio (alfabeto greco · linguistica/etimologia/semantica · prefissi e affissi · etica, persona)
