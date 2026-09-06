@@ -105,10 +105,23 @@ Il progetto è cresciuto oltre i 13.000 righe in un file solo, ed è stato spezz
 in `sorgente/` e si ricostruisce.
 
 ```bash
-python3 strumenti/costruisci.py             # ricostruisce tutte le mappe
-python3 strumenti/costruisci.py transurfing # solo una
+python3 strumenti/anteprima.py --apri       # COSTRUISCE TUTTO E APRE IL PORTALE
+python3 strumenti/costruisci.py             # ricostruisce le mappe e il portale
+python3 strumenti/costruisci.py transurfing # solo una mappa
 python3 strumenti/costruisci.py --controlla # dice se sono allineate ai pezzi
 ```
+
+**Per avviare il sito basta il primo comando.** Costruisce, avvolge ogni pagina nel guscio
+che l'Artifact aggiunge in pubblicazione, la scrive in `sito/locale/` (usa-e-getta, ignorata
+da git) e apre `sito/locale/index.html`, il portale della biblioteca. I nomi dei file
+restano gli stessi in `sito/` e in `sito/locale/`, così i **rimandi fra mappe** funzionano
+identici nei due posti.
+
+**I rimandi fra mappe** si scrivono `href="vesica:il-perno"` e diventano
+`href="vesica.html#il-perno"`. Vengono **verificati in costruzione**: se la mappa non esiste
+o l'ancora non c'è, la costruzione si ferma e lo dice. Serve perché *Rapporto Vesica* fa da
+perno e punta ovunque — senza controllo il primo spostamento di una sezione romperebbe i
+rimandi in silenzio.
 
 **`mappa.json` è la carta d'identità di una mappa** e genera i quattro elenchi paralleli.
 `stile` e `script` sono elenchi **ordinati**: ogni nome si cerca prima in `mappe/<id>/`,

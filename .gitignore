@@ -1,8 +1,8 @@
 # i PDF dei libri: 100 MB di binari che non cambiano mai
 pdf-sorgenti/
 
-# generato a ogni anteprima, usa e getta
-sito/anteprima-locale.html
+# generata a ogni anteprima, usa e getta
+sito/locale/
 
 # rumore di sistema
 .DS_Store

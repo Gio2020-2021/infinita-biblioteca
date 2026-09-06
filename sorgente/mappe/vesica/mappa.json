@@ -1,0 +1,44 @@
+{
+  "id": "vesica",
+  "nome": "Rapporto Vesica",
+  "accento": "--plum",
+  "_nota": "Mappa senza banco né diario: sono strumenti del Transurfing. Si vede da qui — gli elenchi stile/script non li contengono, e non c'è la coda con il rituale.",
+  "stile": [
+    "00-fondamenta",
+    "20-mappa",
+    "30-glossario",
+    "40-parti",
+    "60-percorsi",
+    "70-porte",
+    "80-storie",
+    "85-componenti",
+    "90-ricerca",
+    "93-voci",
+    "96-torna-su"
+  ],
+  "script": [
+    "10-diagramma",
+    "20-helpers",
+    "50-parti",
+    "60-menu-sezioni",
+    "80-glossario",
+    "90-ricerca"
+  ],
+  "coda": [
+    "piede"
+  ],
+  "parti": [
+    {
+      "file": "00-libro",
+      "id": "libro",
+      "n": "I",
+      "barra": "Il libro",
+      "c": "--plum",
+      "diagramma": "IL LIBRO"
+    }
+  ],
+  "stato": "Impianto pronto",
+  "nota_stato": "contenuti in lavorazione",
+  "chi": "Un solo libro · 2.559 pagine",
+  "descrizione": "La mappa più grande della biblioteca e il suo perno: attraversa troppi argomenti perché una sintesi lineare abbia senso, e dove tocca un tema che un'altra mappa tratta per esteso ci rimanda invece di ripeterlo."
+}

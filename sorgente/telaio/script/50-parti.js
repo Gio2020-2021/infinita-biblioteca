@@ -60,18 +60,22 @@
     function segna(hash) {
       try { history.replaceState(null, "", hash); } catch (e) { /* sandbox */ }
     }
+    /* la parte di partenza è la prima dichiarata in mappa.json, non «casa»:
+       una mappa senza banco (Rapporto Vesica) non ha una parte con quel nome,
+       e con il nome scritto a mano non si accendeva niente all'apertura */
+    var PRIMA = PARTI[0];
     function instrada(hash, primaVolta) {
       var id = (hash || "").replace(/^#/, "");
-      if (!id) { mostra("casa"); return; }
+      if (!id) { mostra(PRIMA); return; }
       if (id.indexOf("parte-") === 0) {
         if (mostra(id.slice(6))) { if (!primaVolta) allaBarra(); }
-        else mostra("casa");
+        else mostra(PRIMA);
         return;
       }
       var bersaglio = document.getElementById(id);
-      if (!bersaglio) { mostra("casa"); return; }
+      if (!bersaglio) { mostra(PRIMA); return; }
       var p = partediEl(bersaglio);
-      mostra(p ? p.id.replace("parte-", "") : "casa");
+      mostra(p ? p.id.replace("parte-", "") : PRIMA);
       requestAnimationFrame(function () {
         bersaglio.scrollIntoView({ behavior: primaVolta ? "auto" : "smooth", block: "start" });
       });

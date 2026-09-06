@@ -11928,10 +11928,10 @@
       LETTI PER INTERO — Vadim Zeland, <i>Reality Transurfing I · Lo Spazio delle Varianti</i> · <i>II · Il Fruscio
         delle Stelle del Mattino</i> · <i>III · Avanti nel Passato</i> · <i>IV · La Gestione della Realtà</i> ·
       <i>V · Le Mele Cadono in Cielo</i> · <i>Tafti la Sacerdotessa</i> · <i>Cosa non ha detto Tafti</i> ·
-      <i>Scardinare il Sistema Tecnogeno</i> (Macro) &nbsp;·&nbsp; Klod Nagal, <i>Hackerare la Matrix con il
+      <i>Scardinare il Sistema Tecnogeno</i> · <i>Transurfing Vivo</i> ·
+      <i>La Sacerdotessa Itfat</i> &nbsp;·&nbsp; Klod Nagal, <i>Hackerare la Matrix con il
         Transurfing</i> · <i>Surfare nell'Ologramma</i> · <i>Cosa ci ha detto Tafti</i><br>
-      IN ATTESA — Vadim Zeland: <i>Il Proiettore della Realtà Separata</i> · <i>Transurfing Vivo</i> ·
-      <i>La Sacerdotessa Itfat</i> · <i>Tafti la Sacerdotessa 2</i>
+      IN ATTESA — Vadim Zeland: <i>Il Proiettore della Realtà Separata</i> · <i>Tafti la Sacerdotessa 2</i>
     </p>
   </div>
 </footer>
@@ -12372,18 +12372,22 @@
     function segna(hash) {
       try { history.replaceState(null, "", hash); } catch (e) { /* sandbox */ }
     }
+    /* la parte di partenza è la prima dichiarata in mappa.json, non «casa»:
+       una mappa senza banco (Rapporto Vesica) non ha una parte con quel nome,
+       e con il nome scritto a mano non si accendeva niente all'apertura */
+    var PRIMA = PARTI[0];
     function instrada(hash, primaVolta) {
       var id = (hash || "").replace(/^#/, "");
-      if (!id) { mostra("casa"); return; }
+      if (!id) { mostra(PRIMA); return; }
       if (id.indexOf("parte-") === 0) {
         if (mostra(id.slice(6))) { if (!primaVolta) allaBarra(); }
-        else mostra("casa");
+        else mostra(PRIMA);
         return;
       }
       var bersaglio = document.getElementById(id);
-      if (!bersaglio) { mostra("casa"); return; }
+      if (!bersaglio) { mostra(PRIMA); return; }
       var p = partediEl(bersaglio);
-      mostra(p ? p.id.replace("parte-", "") : "casa");
+      mostra(p ? p.id.replace("parte-", "") : PRIMA);
       requestAnimationFrame(function () {
         bersaglio.scrollIntoView({ behavior: primaVolta ? "auto" : "smooth", block: "start" });
       });

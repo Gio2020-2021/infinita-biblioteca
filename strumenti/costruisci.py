@@ -18,6 +18,7 @@ fogli propri di una mappa (il banco, il diario) stanno in mezzo a quelli
 generici: senza un ordine esplicito il risultato cambierebbe.
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -30,6 +31,34 @@ SITO = RADICE / "sito"
 
 def leggi(p):
     return p.read_text(encoding="utf-8")
+
+
+# ------------------------------------------------------------ rimandi fra mappe
+# Nei sorgenti un rimando a un'altra mappa si scrive `href="vesica:il-perno"`.
+# Qui diventa `href="vesica.html#il-perno"`, e viene **verificato**: se l'ancora
+# non esiste nella mappa di destinazione, la costruzione si ferma. Serve perché
+# Rapporto Vesica fa da perno e punta ovunque: senza controllo, il primo
+# spostamento di una sezione romperebbe i rimandi in silenzio.
+
+RIMANDO = re.compile(r'href="([a-z][a-z0-9-]*):([A-Za-z0-9_-]+)"')
+
+
+def ancore_di(testo):
+    return set(re.findall(r'\sid="([A-Za-z0-9_-]+)"', testo))
+
+
+def risolvi_rimandi(testo, dove, indice, errori):
+    def uno(m):
+        mappa, ancora = m.group(1), m.group(2)
+        if mappa not in indice:
+            errori.append(f"{dove}: rimando a una mappa che non esiste — «{mappa}:{ancora}»")
+            return m.group(0)
+        file, ancore = indice[mappa]
+        if ancore is not None and ancora not in ancore:
+            errori.append(f"{dove}: «{mappa}:{ancora}» — la mappa c'è, l'ancora no")
+            return m.group(0)
+        return f'href="{file}.html#{ancora}"'
+    return RIMANDO.sub(uno, testo)
 
 
 # ---------------------------------------------------------------- generazione
@@ -79,13 +108,16 @@ def risolvi(mappa_dir, sotto, nome, est):
     sys.exit(f"[{mappa_dir.name}] manca il pezzo {sotto}/{nome}.{est}")
 
 
-def componi(mappa_dir):
+def componi(mappa_dir, indice=None, errori=None):
     cfg = json.loads(leggi(mappa_dir / "mappa.json"))
     parti = cfg["parti"]
     pezzi = []
 
     def metti(p):
-        pezzi.append(riempi(leggi(p), parti))
+        testo = riempi(leggi(p), parti)
+        if indice is not None:
+            testo = risolvi_rimandi(testo, p.name, indice, errori)
+        pezzi.append(testo)
 
     metti(mappa_dir / "titolo.txt")
     metti(TELAIO / "corpo" / "01-apertura.html")
@@ -105,6 +137,52 @@ def componi(mappa_dir):
     metti(TELAIO / "corpo" / "05-chiusura.html")
 
     return cfg, "\n".join(pezzi), len(pezzi)
+
+
+# ------------------------------------------------------------------- il portale
+# Le cifre delle schede si CONTANO sul file costruito invece di essere dichiarate
+# a mano: un numero scritto a mano invecchia in silenzio, e nel corso di questo
+# progetto è già successo (la testata ha contato dieci parti per un giorno intero
+# mentre erano undici).
+
+def conta(cfg, html):
+    # le parti operative (banco, diario) sono strumenti, non capitoli: la mappa
+    # stessa non le conta nella sua testata, e il portale deve dire lo stesso numero
+    return {
+        "parti": sum(1 for p in cfg["parti"] if not p.get("operativa")),
+        "sezioni": len(re.findall(r'<section class="branch" id="', html)),
+        "storie": len(re.findall(r'<article class="story"', html)),
+    }
+
+
+def scheda(cfg, html, file):
+    c = conta(cfg, html)
+    cifre = [f'<span><b>{c["parti"]}</b> parti</span>',
+             f'<span><b>{c["sezioni"]}</b> sezioni</span>']
+    if c["storie"]:
+        cifre.append(f'<span><b>{c["storie"]}</b> storie</span>')
+    cifre.append(f'<span><b>{len(html) // 1024}</b> KB</span>')
+    return f"""      <article class="mappa" style="--c:var({cfg["accento"]})">
+        <p class="stato"><span>{cfg.get("stato", "")}</span><i>{cfg.get("nota_stato", "")}</i></p>
+        <h3>{cfg["nome"]}</h3>
+        <p class="chi">{cfg.get("chi", "")}</p>
+        <p class="d">{cfg.get("descrizione", "")}</p>
+        <p class="cifre">{"".join(cifre)}</p>
+        <p class="vai"><a href="{file}.html">Apri la mappa</a></p>
+      </article>"""
+
+
+def costruisci_portale(schede):
+    corpo = leggi(TELAIO / "portale" / "corpo.html").replace("{{SCHEDE}}", "\n".join(schede))
+    pezzi = ["<title>La Biblioteca</title>",
+             leggi(TELAIO / "corpo" / "01-apertura.html"),
+             leggi(TELAIO / "stile" / "00-fondamenta.css").split("  * {")[0],
+             leggi(TELAIO / "portale" / "stile.css"),
+             "</style>",
+             corpo]
+    testo = "\n".join(pezzi)
+    (SITO / "index.html").write_text(testo, encoding="utf-8")
+    return testo
 
 
 def uscita(cfg):
@@ -133,12 +211,25 @@ def main():
     if not mappe:
         sys.exit("nessuna mappa in sorgente/mappe/")
 
+    # prima passata: quali ancore esistono in quale mappa. Senza questa, un
+    # rimando fra mappe potrebbe puntare nel vuoto senza che nessuno se ne accorga.
+    tutte = sorted(d for d in MAPPE.iterdir() if (d / "mappa.json").exists())
+    indice = {}
+    for d in tutte:
+        c = json.loads(leggi(d / "mappa.json"))
+        testo = "".join(leggi(f) for f in sorted((d / "parti").glob("*.html")))
+        indice[c["id"]] = (uscita(c).stem, ancore_di(testo))
+
     problemi = 0
+    errori = []
+    schede = []
     for d in mappe:
-        cfg, nuovo, n = componi(d)
+        cfg, nuovo, n = componi(d, indice, errori)
         fuori = uscita(cfg)
         vecchio = leggi(fuori) if fuori.exists() else None
         rel = fuori.relative_to(RADICE)
+
+        schede.append(scheda(cfg, nuovo, fuori.stem))
 
         if controlla:
             if vecchio == nuovo:
@@ -166,6 +257,16 @@ def main():
         uguale = " (invariato)" if vecchio == nuovo else ""
         print(f"scritta  {rel}  ({len(nuovo) // 1024} KB, {n} pezzi){uguale}")
 
+    # il portale si rifà sempre da tutte le mappe, non solo da quelle scelte
+    if not controlla and len(mappe) == len(tutte):
+        p = costruisci_portale(schede)
+        print(f"scritta  sito/index.html  ({len(p) // 1024} KB, {len(schede)} mappe)")
+
+    if errori:
+        print("\nRIMANDI ROTTI:")
+        for e in errori:
+            print(" ·", e)
+        return 1
     return 1 if problemi else 0
 
 
