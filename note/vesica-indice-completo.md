@@ -125,9 +125,9 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] PROFLUVIO CULTURALE SCOMPOSTO → #pt-frame-giornalistico (James Forrestal/MJ-12, la lista di eroi da Tesla a Sitchin)
 - [x] NOZIONISMO UNIVERSITARIO: INCULCAZIONE/RIPETIZIONE → #pt-nozionismo (energia libera rimandata a DNA/materia, John Gatto, il manifesto senza autore)
 - [x] DOTTRINA UNIVERSITARIA → #pt-nozionismo (il finanziamento reale delle università italiane, FFO e legge 243/1991)
-- [ ] SCIENTISMO
-- [ ] GIORDANO BRUNO
-- [ ] RICERCA SCIENTIFICA
+- [x] SCIENTISMO → #pt-scientismo (Sheldrake, l'ETS mai posseduta da Carnegie, leggi vere per una tesi indimostrata) · #pt-bruno (il calabrone torna identico, il dibattito «complottista/credista»)
+- [x] GIORDANO BRUNO → #pt-bruno (Copernico, il rogo del 1600, Lutero e Calvino, la citazione di Hawking da verificare)
+- [x] RICERCA SCIENTIFICA → #pt-bruno (condiviso con Giordano Bruno)
 - [ ] ARCHETIPI
 - [ ] MANIPOLAZIONE ARCHETIPICA
 - [ ] SICARI ECONOMICI
