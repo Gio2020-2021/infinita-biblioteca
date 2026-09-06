@@ -149,9 +149,9 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] QUARTO POTERE → #pt-lisbona (Burke 1787, Jefferson autentico stavolta — da distinguere dal falso sulle banche)
 - [x] BANCA CENTRALE EUROPEA → #pt-signoraggio (già trattata con gli artt. 105/107/108A di Maastricht)
 - [x] MECCANISMO EUROPEO DI STABILITà(MES) → #pt-mes (articoli 8/9/10 reali, «colpo di Stato» è un giudizio non un fatto)
-- [ ] DOCUMENTAZIONE PNAC
-- [ ] TRATTATO DI VALSEN(EUROGENDFOR)
-- [ ] SAVI DI SION
+- [x] DOCUMENTAZIONE PNAC → #pt-pnac (reale, già discusso dal giornalismo mainstream)
+- [x] TRATTATO DI VALSEN(EUROGENDFOR) → #pt-pnac (trattato pubblico e ratificato, non un atto segreto)
+- [x] SAVI DI SION → #pt-savi-sion (i Protocolli sono un falso storico provato — Okhrana, Maurice Joly, smascherato nel 1921; la data 1773/Rothschild è inventata; la teoria cazara svuotata dalla genetica)
 - [ ] MAJESTIC-12
 - [ ] SIONISMO
 - [ ] B'NAI B'RITH
