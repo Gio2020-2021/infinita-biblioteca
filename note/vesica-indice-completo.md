@@ -19,48 +19,56 @@ Totale voci: **468**, in otto gruppi tematici più l'introduzione.
 
 *Parte I del libro. Logica, matematica, metodo scientifico: gli strumenti con cui il resto del trattato pretende di dimostrare le proprie tesi.*
 
-**40 voci — lette e trasferite il 6-9-2026, in `sorgente/mappe/vesica/parti/01-strumenti.html`, sette sezioni.**
+**40 voci — lette e trasferite per intero il 6-9-2026, in
+`sorgente/mappe/vesica/parti/01-strumenti.html`, riscritto poi in dodici sezioni dopo un primo
+passaggio troppo compresso (vedi nota sotto). Tutte le citazioni verificate lettera per lettera
+contro il testo: 289/289 letterali.**
+
+> La prima stesura (sette sezioni) comprimeva ~7450 righe di testo in poche righe a sezione,
+> lasciando fuori la maggior parte del contenuto. Riscritta interamente rileggendo l'intero
+> blocco (righe 907-8358 del testo estratto) — ora dodici sezioni, ognuna con più sotto-voci
+> e citazioni dirette.
 
 - [x] PARTE I → #vs-linguaggio (introduzione della Parte I del libro, non un enunciato a sé)
-- [x] INTRODUZIONE → #vs-linguaggio
+- [x] INTRODUZIONE → #vs-linguaggio (la domanda giusta)
 - [x] ABSTRACT → #vs-linguaggio
 - [x] METODO D'INDAGINE, LINEE GUIDA → #vs-linguaggio
 - [x] DOCUMENTAZIONE DI CONVALIDA → #vs-linguaggio
 - [x] STRUMENTI D'INDAGINE → #vs-linguaggio (titolo della parte)
 - [x] Conoscenze pertinenti per la completa comprensione dei temi trattati nella stesura rapporto → #vs-linguaggio
-- [x] LINGUISTICA: ALFABETO GRECO, ETIMOLOGIA, SEMANTICA → #vs-linguaggio
+- [x] LINGUISTICA: ALFABETO GRECO, ETIMOLOGIA, SEMANTICA → #vs-linguaggio (alfabeto greco · linguistica/etimologia/semantica · prefissi e affissi · etica, persona)
 - [x] INSIEMISTICA → #vs-linguaggio
-- [x] LOGICA PROPOSIZIONALE → #vs-logica
-- [x] LOGICA MATEMATICA → #vs-logica
-- [x] LOGICA BOLEANA → #vs-logica (algebra di Boole, dentro #vs-logica)
-- [x] STRUMENTI MATEMATICI: LOGARITMO, P GRECO, CAMPI DI ESISTENZA(CE) → #vs-logica
-- [x] LOGICA DEDUTTIVA: LEGGE DI MORGAN, TAUTOLOGIE → #vs-logica
-- [x] INDAGINE STATISTICA: CERTEZZA STATISTICA, CURVA DI GAUSS, NORMA → #vs-statistica
-- [x] MATEMATICA (continuazione della voce precedente, spezzata dall'a-capo del PDF) → #vs-statistica
-- [x] DIMOSTRAZIONE → #vs-logica
-- [x] LOGICA FUZZY: MEDIAZIONE TRA LOGICA MATEMATICA E CONSIDERAZIONI UMANE → #vs-statistica
-- [x] INDAGINE INTERDISCIPLINARE → #vs-calabrone
-- [x] INFORMAZIONE: FONTI, FEDE, VERITA' → #vs-calabrone
-- [x] PROBLEMA DELLA DEMARCAZIONE → #vs-demarcazione
-- [x] INDAGINE SCIENTIFICA → #vs-demarcazione
-- [x] PARADOSSO DEL CALABRONE: ARGOMENTUM AB AUCTORITATE → #vs-calabrone
-- [x] TEOREMI DI INCOMPLETEZZA DI GODEL → #vs-logica
-- [x] DOTTRINA UFFICIALE/UFFICIALISMO → #vs-demarcazione
+- [x] LOGICA PROPOSIZIONALE → #vs-logica (la sfida dell'essere pensante · costanti/variabili/funzioni · proposizioni logiche, algebra di Boole)
+- [x] LOGICA MATEMATICA → #vs-logica (postulato e assioma · logica matematica: sistema assiomatico, primitive, Kant · proposizione ed enunciato · tesi/antitesi · argomento)
+- [x] LOGICA BOLEANA → #vs-logica (dentro "proposizioni logiche, algebra di Boole")
+- [x] STRUMENTI MATEMATICI: LOGARITMO, P GRECO, CAMPI DI ESISTENZA(CE) → #vs-logica (logica deduttiva, aritmetica, logaritmo, π · campo di esistenza)
+- [x] LOGICA DEDUTTIVA: LEGGE DI MORGAN, TAUTOLOGIE → #vs-logica (logica binaria: congiunzione, disgiunzione, quantificatori · implicazione logica e materiale)
+- [x] INDAGINE STATISTICA: CERTEZZA STATISTICA, CURVA DI GAUSS, NORMA → #vs-statistica (certezza statistica: Cournot, de Finetti, il Lunedì Nero · curva di Gauss · norma matematica)
+- [x] MATEMATICA (continuazione della voce precedente, spezzata dall'a-capo del PDF) → #vs-statistica (ragionamento logico · operatori booleani)
+- [x] DIMOSTRAZIONE → #vs-statistica (Aristotele, Carnap, Hilbert — spostata da #vs-logica: qui segue naturalmente la statistica, non l'algebra)
+- [x] LOGICA FUZZY: MEDIAZIONE TRA LOGICA MATEMATICA E CONSIDERAZIONI UMANE → #vs-statistica (Zadeh, uso in finanza)
+- [x] INDAGINE INTERDISCIPLINARE → #vs-fonti (il caso «alfa»; NON in #vs-calabrone come nella prima stesura)
+- [x] INFORMAZIONE: FONTI, FEDE, VERITA' → #vs-fonti (perché si cerca la fonte · credere e capire · verità/aletheia · che cos'è una fonte · campi di esistenza dell'informazione · trasduzione sensoriale/Kuhn · verità e autorità)
+- [x] PROBLEMA DELLA DEMARCAZIONE → #vs-demarcazione (Popper e il problema della demarcazione)
+- [x] INDAGINE SCIENTIFICA → #vs-demarcazione (fede e metodo scientifico)
+- [x] PARADOSSO DEL CALABRONE: ARGOMENTUM AB AUCTORITATE → #vs-calabrone (il principio: non «chi» ma «cosa» · Giordano Bruno e il frame giornalistico · il Bias di conferma e il «sapere rubato» · perché il libro non ha un autore dichiarato)
+- [x] TEOREMI DI INCOMPLETEZZA DI GODEL → #vs-calabrone (spostati qui dalla prima stesura, che li aveva messi in #vs-logica: nel libro chiudono l'argomento del calabrone, non la sezione di logica pura)
+- [x] DOTTRINA UFFICIALE/UFFICIALISMO → #vs-credenze (Castaneda, Maxwell, la massoneria, Wilcock)
 - [x] METODO SCIENTIFICO → #vs-demarcazione
 - [x] PROBLEMA DELLA DEMARCAZION → #vs-demarcazione (refuso ripetuto dell'indice)
-- [x] RASOIO DI OCCAM → #vs-demarcazione
-- [x] FALSIFICAZIONISMO → #vs-demarcazione
-- [x] FISICA NEWTONIANA/QUANTISTICA A CONFRONTO → #vs-demarcazione
-- [x] BIAS COGNITIVI → #vs-bias
-- [x] VISIONE A TUNNEL(PERCEZIONE SELETTIVA) → #vs-bias (citato, non sviluppato a parte: assorbito nel bias di conferma)
-- [x] FALLACIE LOGICHE → #vs-bias (catalogo citato per titolo: il libro ne elenca decine, la mappa non le trascrive tutte)
-- [x] MAJEUTICA(METODO MAJEUTICO) → #vs-bias
-- [x] GIORNALISMO INVESTIGATIVO → #vs-divulgazione
+- [x] RASOIO DI OCCAM → #vs-demarcazione (dentro "geometrie non euclidee"/le voci di confine)
+- [x] FALSIFICAZIONISMO → #vs-demarcazione (Popper contro il circolo · falsificazionismo: l'eclissi del 1919 · Laudan e Tommaso d'Aquino · il tacchino induttivista)
+- [x] FISICA NEWTONIANA/QUANTISTICA A CONFRONTO → #vs-fisica (sezione propria, separata da #vs-demarcazione nella riscrittura: fisica newtoniana e materialismo · Religo · fisica quantistica · relativismo e verità assoluta)
+- [x] BIAS COGNITIVI → #vs-bias (logica associativa/Pavlov · il Bias di conferma: Kahneman e Tversky · euristica · gli errori affettivi · l'errore di autoverifica)
+- [x] VISIONE A TUNNEL(PERCEZIONE SELETTIVA) → #vs-bias (ora sviluppata a parte: "la percezione selettiva", non solo citata dentro il bias di conferma)
+- [x] FALLACIE LOGICHE → #vs-bias (catalogo esteso: il catalogo classico ad auctoritatem/ad populum/ad numerum… · legge di Franklin · correlazione indiretta · test dei vasi · fallacia dell'accusatore · euristica della disponibilità · effetto tunnel · errore di ancoraggio · effetto risultato · iper-approssimazione · errore di globalizzazione/uomo di paglia/piano inclinato · composizione/sottrazione/petitio principii · ad hominem/ad ignorantiam/domanda pesante · falso dilemma · affermazione del conseguente)
+- [x] MAJEUTICA(METODO MAJEUTICO) → #vs-maieutica (sezione propria nella riscrittura, non più dentro #vs-bias: Socrate, Quintiliano, Rousseau, Montessori · l'etichetta «complottista»)
+- [x] GIORNALISMO INVESTIGATIVO → #vs-divulgazione (l'obiettività giornalistica · la relazione simbiotica/Chomsky-Herman · l'affidabilità/i due meteorologi · la benda di Osakue)
 - [x] DIVULGAZIONE → #vs-divulgazione
-- [x] TELECOMUNICAZIONI: SEGNALE ANALOGICO/DIGITALE, CODIFICA, → #vs-divulgazione (manualistica, riassunta)
-- [x] RICETRASMITTENTE (continuazione della voce precedente) → #vs-divulgazione
-- [x] INFORMATICA: INPUT/OUTPUT, HARDWARE, SOFTWARE, INTERNET SERVICE → #vs-divulgazione (manualistica, riassunta)
-- [x] PROVIDERS (continuazione della voce precedente) → #vs-divulgazione
+- [x] TELECOMUNICAZIONI: SEGNALE ANALOGICO/DIGITALE, CODIFICA, → #vs-tecnica (sezione propria nella riscrittura, non più riassunta dentro #vs-divulgazione: temperatura · segnale · analogico/digitale · codifica/modulazione · reti · ricetrasmissione)
+- [x] RICETRASMITTENTE (continuazione della voce precedente) → #vs-tecnica
+- [x] INFORMATICA: INPUT/OUTPUT, HARDWARE, SOFTWARE, INTERNET SERVICE → #vs-tecnica (informatica di base · banda larga, Wi-Fi, router, WLAN, indirizzo IP, DNS, ISP, transistor · l'eccezione: l'intelligenza artificiale, unica voce con una tesi propria)
+- [x] PROVIDERS (continuazione della voce precedente) → #vs-tecnica
 
 ## La fabbrica del consenso
 
