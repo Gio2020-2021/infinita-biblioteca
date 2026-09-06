@@ -144,11 +144,11 @@ lettera per lettera: 647/647 letterali. Audit di copertura: 22/22 voci con risco
 - [x] SIGNORAGGIO → #pt-signoraggio (la porta girevole Goldman Sachs documentata, Maastricht, Banca d'Italia 1992-2004, la citazione di Rockefeller quasi certamente fasulla, Cochabamba)
 - [ ] CREDITO SOCIALE CINESE
 - [x] TRATTATO DI MAASTRICHT → #pt-signoraggio (BCE, artt. 105/107/108A) · #pt-rothschild (data e struttura, Jekyll Island, il mito Rothschild)
-- [ ] STATO CENTRALIZZATO
-- [ ] TRATTATO DI LISBONA
-- [ ] QUARTO POTERE
-- [ ] BANCA CENTRALE EUROPEA
-- [ ] MECCANISMO EUROPEO DI STABILITà(MES)
+- [x] STATO CENTRALIZZATO → #pt-lisbona (Laeken 2001, i referendum del 2005, cronologia corretta)
+- [x] TRATTATO DI LISBONA → #pt-lisbona (il caso Tillack, condannato dalla CEDU a favore del giornalista)
+- [x] QUARTO POTERE → #pt-lisbona (Burke 1787, Jefferson autentico stavolta — da distinguere dal falso sulle banche)
+- [x] BANCA CENTRALE EUROPEA → #pt-signoraggio (già trattata con gli artt. 105/107/108A di Maastricht)
+- [x] MECCANISMO EUROPEO DI STABILITà(MES) → #pt-mes (articoli 8/9/10 reali, «colpo di Stato» è un giudizio non un fatto)
 - [ ] DOCUMENTAZIONE PNAC
 - [ ] TRATTATO DI VALSEN(EUROGENDFOR)
 - [ ] SAVI DI SION
