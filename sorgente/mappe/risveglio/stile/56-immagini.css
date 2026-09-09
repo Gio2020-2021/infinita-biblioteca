@@ -1,32 +1,98 @@
 /* Immagini originali del libro (diagrammi, foto, screenshot), estratte dal PDF —
-   non componenti disegnati a mano come in Rapporto Vesica. Un solo componente,
-   .fonte-img: una figura con didascalia, allineata a sinistra dentro il testo. */
+   non componenti disegnati a mano come in Rapporto Vesica.
+
+   Due componenti:
+   .fonte-img      una figura singola con didascalia, per le immagini portanti
+   .galleria       la griglia con TUTTE le immagini di una pagina del libro, così
+                   non se ne perde nessuna: il libro è un'infografica, e le immagini
+                   sono argomentazione, non decorazione. */
 
 .fonte-img {
   margin: 18px 0;
   max-width: 340px;
 }
+
 .fonte-img img {
   display: block;
   width: 100%;
   border-radius: 6px;
   border: 1px solid var(--line);
-  background: var(--surface);
+  background: #fff;
 }
+
 .fonte-img figcaption {
   margin-top: 6px;
   font-size: .82rem;
   color: var(--muted);
   line-height: 1.4;
 }
+
 .fonte-img-riga {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   margin: 18px 0;
 }
+
 .fonte-img-riga .fonte-img {
   flex: 1 1 220px;
   max-width: 280px;
   margin: 0;
+}
+
+/* ---------------------------------------------------------------- la galleria */
+
+.galleria {
+  margin: 26px 0 8px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+}
+
+.galleria > h4 {
+  margin: 0 0 4px;
+  font-size: .74rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pc, var(--muted));
+}
+
+.galleria > p {
+  margin: 0 0 16px;
+  font-size: .84rem;
+  color: var(--muted);
+  max-width: 60ch;
+  line-height: 1.5;
+}
+
+.galleria-griglia {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.galleria figure {
+  margin: 0;
+}
+
+.galleria figure img {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.galleria figcaption {
+  margin-top: 5px;
+  font-size: .76rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+  .galleria-griglia {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
 }
