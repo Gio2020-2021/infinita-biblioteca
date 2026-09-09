@@ -55,22 +55,22 @@ Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
 ## La terra piatta (Parte V, pagg. 32-47)
 
-- [ ] pag. 32 — FLAT HEARTH
-- [ ] pag. 33 — FLAT HEARTH
-- [ ] pag. 34 — FREEMASONIC COSMOLOGY
-- [ ] pag. 35 — COSMOLOGY
-- [ ] pag. 36 — COSMOLOGY
-- [ ] pag. 37 — COSMOLOGY
-- [ ] pag. 38 — COSMOLOGY
-- [ ] pag. 39 — COSMOLOGY - AS ABOVE SO BELOW
-- [ ] pag. 40 — FLAT EARTH
-- [ ] pag. 41 — ABOUT THE FIRMAMENT
-- [ ] pag. 42 — EARLY CHRISTIAN ART OF FIRMAMENT
-- [ ] pag. 43 — THE NORTH POLE
-- [ ] pag. 44 — THE NORTH POLE
-- [ ] pag. 45 — THE HELIOCENTRIC SCAM
-- [ ] pag. 46 — THE HELIOCENTRIC SCAM
-- [ ] pag. 47 — THE HELIOCENTRIC SCAM
+- [x] pag. 32 — FLAT HEARTH → #piatta-piano-inerzia
+- [x] pag. 33 — FLAT HEARTH → #piatta-piano-inerzia
+- [x] pag. 34 — FREEMASONIC COSMOLOGY → #piatta-cosmologia-massonica
+- [x] pag. 35 — COSMOLOGY → #piatta-cosmologia
+- [x] pag. 36 — COSMOLOGY → #piatta-cosmologia
+- [x] pag. 37 — COSMOLOGY → #piatta-cosmologia
+- [x] pag. 38 — COSMOLOGY → #piatta-cosmologia
+- [x] pag. 39 — COSMOLOGY - AS ABOVE SO BELOW → #piatta-come-sopra
+- [x] pag. 40 — FLAT EARTH → #piatta-come-sopra
+- [x] pag. 41 — ABOUT THE FIRMAMENT → #piatta-firmamento
+- [x] pag. 42 — EARLY CHRISTIAN ART OF FIRMAMENT → #piatta-firmamento
+- [x] pag. 43 — THE NORTH POLE → #piatta-polo-nord
+- [x] pag. 44 — THE NORTH POLE → #piatta-polo-nord
+- [x] pag. 45 — THE HELIOCENTRIC SCAM → #piatta-eliocentrismo
+- [x] pag. 46 — THE HELIOCENTRIC SCAM → #piatta-eliocentrismo
+- [x] pag. 47 — THE HELIOCENTRIC SCAM → #piatta-eliocentrismo
 
 ## Saturno e la trappola dell'anima (Parte VI, pagg. 48-54)
 
