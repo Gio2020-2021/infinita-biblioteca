@@ -27,18 +27,18 @@ Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
 ## Il corpo sottile (Parte III, pagg. 10-21)
 
-- [ ] pag. 10 — AS WITHIN SO WITHOUT
-- [ ] pag. 11 — AS WITHIN SO WITHOUT
-- [ ] pag. 12 — PLANES OF EXISTANCE
-- [ ] pag. 13 — THE ASTRAL PLANE
-- [ ] pag. 14 — ASTRAL PROJECTION
-- [ ] pag. 15 — BODY OF LIGHT
-- [ ] pag. 16 — CONSCIOUSNESS
-- [ ] pag. 17 — CHAKRAS
-- [ ] pag. 18 — CHAKRAS
-- [ ] pag. 19 — HIGHER SELF VS LOWER SELF
-- [ ] pag. 20 — CHAKRAS
-- [ ] pag. 21 — HAND & FEET CHAKRAS
+- [x] pag. 10 — AS WITHIN SO WITHOUT → #sottile-dentro-fuori
+- [x] pag. 11 — AS WITHIN SO WITHOUT → #sottile-dentro-fuori
+- [x] pag. 12 — PLANES OF EXISTANCE → #sottile-piani
+- [x] pag. 13 — THE ASTRAL PLANE → #sottile-astrale
+- [x] pag. 14 — ASTRAL PROJECTION → #sottile-proiezione
+- [x] pag. 15 — BODY OF LIGHT → #sottile-proiezione
+- [x] pag. 16 — CONSCIOUSNESS → #sottile-coscienza
+- [x] pag. 17 — CHAKRAS → #sottile-chakra
+- [x] pag. 18 — CHAKRAS → #sottile-chakra
+- [x] pag. 19 — HIGHER SELF VS LOWER SELF → #sottile-tre-cervelli
+- [x] pag. 20 — CHAKRAS → #sottile-tre-cervelli
+- [x] pag. 21 — HAND & FEET CHAKRAS → #sottile-mani-piedi
 
 ## Testa ed elementi (Parte IV, pagg. 22-31)
 
