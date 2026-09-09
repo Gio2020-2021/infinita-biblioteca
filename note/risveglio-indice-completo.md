@@ -42,16 +42,16 @@ Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
 ## Testa ed elementi (Parte IV, pagg. 22-31)
 
-- [ ] pag. 22 — HEAD IS HEAVEN
-- [ ] pag. 23 — HEAD IS HEAVEN
-- [ ] pag. 24 — HEAD IS HEAVEN
-- [ ] pag. 25 — HEAD IS HEAVEN
-- [ ] pag. 26 — HEAD IS HEAVEN
-- [ ] pag. 27 — KNOW THYSELF
-- [ ] pag. 28 — KNOW THYSELF
-- [ ] pag. 29 — LEFT AND RIGHT BRAINS
-- [ ] pag. 30 — THE 5 ELEMENTS
-- [ ] pag. 31 — THE ETHER
+- [x] pag. 22 — HEAD IS HEAVEN → #testa-due-cervelli
+- [x] pag. 23 — HEAD IS HEAVEN → #testa-camera-alta
+- [x] pag. 24 — HEAD IS HEAVEN → #testa-camera-alta
+- [x] pag. 25 — HEAD IS HEAVEN → #testa-tempio
+- [x] pag. 26 — HEAD IS HEAVEN → #testa-tempio
+- [x] pag. 27 — KNOW THYSELF → #testa-conosci-te
+- [x] pag. 28 — KNOW THYSELF → #testa-conosci-te
+- [x] pag. 29 — LEFT AND RIGHT BRAINS → #testa-emisferi
+- [x] pag. 30 — THE 5 ELEMENTS → #testa-elementi
+- [x] pag. 31 — THE ETHER → #testa-elementi
 
 ## La terra piatta (Parte V, pagg. 32-47)
 
