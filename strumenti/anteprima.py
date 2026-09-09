@@ -69,6 +69,12 @@ def main():
         (LOCALE / p.name).write_text(GUSCIO.format(corpo=corpo), encoding="utf-8")
         n += 1
 
+    # le cartelle <id>-immagini/ (materiale originale dei libri, non generato)
+    # vanno copiate anche qui: i riferimenti nel sorgente sono relativi e restano
+    # identici sia in sito/ sia in sito/locale/.
+    for cartella in SITO.glob("*-immagini"):
+        shutil.copytree(cartella, LOCALE / cartella.name)
+
     indice = LOCALE / "index.html"
     print(f"\npronto  {n} pagine in {LOCALE.relative_to(RADICE)}/")
     print(f"apri    {indice}")

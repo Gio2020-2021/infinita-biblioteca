@@ -1,0 +1,132 @@
+{
+  "id": "risveglio",
+  "nome": "Risveglio",
+  "accento": "--amber",
+  "_nota": "Mappa senza banco né diario: sono strumenti del Transurfing. Terza mappa della biblioteca, tradotta dall'inglese: il PDF originale ('da tradurre e creare una mappa come si deve.pdf', 118 pagine, formato Canva 1080x1920, autore 'revival wisdom') non ha un titolo proprio nei metadati.",
+  "stile": [
+    "00-fondamenta",
+    "20-mappa",
+    "30-glossario",
+    "40-parti",
+    "60-percorsi",
+    "70-porte",
+    "80-storie",
+    "85-componenti",
+    "90-ricerca",
+    "93-voci",
+    "96-torna-su"
+  ],
+  "script": [
+    "10-diagramma",
+    "20-helpers",
+    "50-parti",
+    "60-menu-sezioni",
+    "80-glossario",
+    "90-ricerca"
+  ],
+  "coda": [
+    "piede"
+  ],
+  "parti": [
+    {
+      "file": "00-libro",
+      "id": "libro",
+      "n": "I",
+      "barra": "Il libro",
+      "c": "--amber",
+      "diagramma": "IL LIBRO"
+    },
+    {
+      "file": "01-luce-pineale",
+      "id": "luce",
+      "n": "II",
+      "barra": "Luce e pineale",
+      "c": "--amber",
+      "diagramma": "LUCE E GHIANDOLA PINEALE"
+    },
+    {
+      "file": "02-corpo-sottile",
+      "id": "sottile",
+      "n": "III",
+      "barra": "Il corpo sottile",
+      "c": "--plum",
+      "diagramma": "IL CORPO SOTTILE"
+    },
+    {
+      "file": "03-testa-elementi",
+      "id": "testa",
+      "n": "IV",
+      "barra": "Testa ed elementi",
+      "c": "--sage",
+      "diagramma": "LA TESTA E GLI ELEMENTI"
+    },
+    {
+      "file": "04-terra-piatta",
+      "id": "piatta",
+      "n": "V",
+      "barra": "La terra piatta",
+      "c": "--blue",
+      "diagramma": "LA TERRA PIATTA"
+    },
+    {
+      "file": "05-saturno",
+      "id": "saturno",
+      "n": "VI",
+      "barra": "Saturno",
+      "c": "--rust",
+      "diagramma": "SATURNO E LA TRAPPOLA DELL'ANIMA"
+    },
+    {
+      "file": "06-astrologia",
+      "id": "astrologia",
+      "n": "VII",
+      "barra": "Astrologia",
+      "c": "--teal",
+      "diagramma": "ASTROLOGIA E CICLI CELESTI"
+    },
+    {
+      "file": "07-cabala-elettromagnetismo",
+      "id": "cabala",
+      "n": "VIII",
+      "barra": "Cabala ed elettromagnetismo",
+      "c": "--amber",
+      "diagramma": "CABALA, GEOMETRIA SACRA ED ELETTROMAGNETISMO"
+    },
+    {
+      "file": "08-corpo-dieta",
+      "id": "dieta",
+      "n": "IX",
+      "barra": "Corpo e dieta",
+      "c": "--plum",
+      "diagramma": "CORPO, DIETA E COSCIENZA"
+    },
+    {
+      "file": "09-culto-solare",
+      "id": "solare",
+      "n": "X",
+      "barra": "Culto solare",
+      "c": "--sage",
+      "diagramma": "CRISTIANESIMO E CULTO SOLARE"
+    },
+    {
+      "file": "10-mente-massoneria",
+      "id": "massoneria",
+      "n": "XI",
+      "barra": "Mente e massoneria",
+      "c": "--blue",
+      "diagramma": "MENTE, MUDRA E SIMBOLISMO MASSONICO"
+    },
+    {
+      "file": "11-sesso-leggi",
+      "id": "leggi",
+      "n": "XII",
+      "barra": "Sesso e leggi universali",
+      "c": "--rust",
+      "diagramma": "SESSO, ENERGIA E LEGGI UNIVERSALI"
+    }
+  ],
+  "stato": "Struttura pronta",
+  "nota_stato": "0/118 pagine tradotte",
+  "chi": "Un solo libro · 118 pagine",
+  "descrizione": "Terza mappa della biblioteca: un libro-infografica in inglese (formato Canva, senza titolo proprio) sul simbolismo esoterico e gnostico-cristiano — ghiandola pineale, terzo occhio, terra piatta, Saturno, cabala, massoneria. Tradotto interamente in italiano, con le immagini originali (diagrammi, foto, screenshot) riportate accanto al testo."
+}

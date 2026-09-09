@@ -19,6 +19,7 @@ generici: senza un ordine esplicito il risultato cambierebbe.
 """
 import json
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -192,6 +193,23 @@ def uscita(cfg):
     return SITO / f"{nome}.html"
 
 
+# ------------------------------------------------------------ immagini di una mappa
+# Una mappa può avere una cartella `immagini/` (materiale originale del libro:
+# diagrammi, foto, screenshot — non componenti grafici disegnati a mano, quelli
+# restano SVG inline). Si copia com'è in `sito/<id>-immagini/`, a fianco del file
+# .html generato: i riferimenti nel sorgente si scrivono `src="risveglio-immagini/…"`
+# e restano identici sia in `sito/` sia in `sito/locale/`.
+def copia_immagini(d, cfg):
+    origine = d / "immagini"
+    if not origine.is_dir():
+        return None
+    dest = SITO / f"{cfg['id']}-immagini"
+    if dest.exists():
+        shutil.rmtree(dest)
+    shutil.copytree(origine, dest, ignore=shutil.ignore_patterns("_manifest.json", ".DS_Store"))
+    return dest
+
+
 def elenco_mappe(argv):
     voluti = [a for a in argv[1:] if not a.startswith("--")]
     tutte = sorted(d for d in MAPPE.iterdir() if (d / "mappa.json").exists())
@@ -257,6 +275,11 @@ def main():
         fuori.write_text(nuovo, encoding="utf-8")
         uguale = " (invariato)" if vecchio == nuovo else ""
         print(f"scritta  {rel}  ({len(nuovo) // 1024} KB, {n} pezzi){uguale}")
+
+        cartella_immagini = copia_immagini(d, cfg)
+        if cartella_immagini is not None:
+            n_img = sum(1 for _ in cartella_immagini.glob("*.png"))
+            print(f"copiate  {cartella_immagini.relative_to(RADICE)}/  ({n_img} immagini)")
 
     # il portale si rifà sempre da tutte le mappe, non solo da quelle scelte
     if not controlla and len(mappe) == len(tutte):
