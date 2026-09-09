@@ -788,6 +788,23 @@ class ManoDiPagina(BaseHTTPRequestHandler):
             self.wfile.write(dati)
             return
 
+        # le immagini vere di una mappa (es. risveglio-immagini/pNNN-k.png):
+        # copiate da costruisci.py in sito/<id>-immagini/, non tenute in memoria
+        # come le pagine — vanno servite come file statici, non c'è pronte[...].
+        if re.fullmatch(r"[a-z][a-z0-9-]*-immagini/[A-Za-z0-9_.-]+\.png", pezzi.path.lstrip("/")):
+            f = (SITO / pezzi.path.lstrip("/")).resolve()
+            if not str(f).startswith(str(SITO.resolve())) or not f.is_file():
+                self.send_response(404)
+                self.end_headers()
+                return
+            dati = f.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "image/png")
+            self.send_header("Content-Length", str(len(dati)))
+            self.end_headers()
+            self.wfile.write(dati)
+            return
+
         if pezzi.path == "/sorgente":
             q = parse_qs(pezzi.query)
             pagina = (q.get("pagina") or [""])[0]
