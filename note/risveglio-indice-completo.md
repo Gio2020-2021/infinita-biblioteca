@@ -13,21 +13,21 @@ errore di trascrizione.
 
 Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
-## Luce e ghiandola pineale (Parte II, pagg. 1-10)
+## Luce e ghiandola pineale (Parte II, pagg. 1-9)
 
-- [ ] pag. 1 — LIGHT
-- [ ] pag. 2 — CHRIST OIL
-- [ ] pag. 3 — CHRIST OIL
-- [ ] pag. 4 — THE THREE WISE MEN
-- [ ] pag. 5 — (continua, senza nuovo titolo)
-- [ ] pag. 6 — THE THIRD EYE
-- [ ] pag. 7 — THE PINEAL GLAND
-- [ ] pag. 8 — THE PINEAL GLAND
-- [ ] pag. 9 — THE HOLY GRAIL
+- [x] pag. 1 — LIGHT → #luce-genesi
+- [x] pag. 2 — CHRIST OIL → #luce-olio
+- [x] pag. 3 — CHRIST OIL → #luce-olio
+- [x] pag. 4 — THE THREE WISE MEN → #luce-savi
+- [x] pag. 5 — (continua, senza nuovo titolo) → #luce-savi
+- [x] pag. 6 — THE THIRD EYE → #luce-terzo-occhio
+- [x] pag. 7 — THE PINEAL GLAND → #luce-terzo-occhio
+- [x] pag. 8 — THE PINEAL GLAND → #luce-terzo-occhio
+- [x] pag. 9 — THE HOLY GRAIL → #luce-graal
+
+## Il corpo sottile (Parte III, pagg. 10-21)
+
 - [ ] pag. 10 — AS WITHIN SO WITHOUT
-
-## Il corpo sottile (Parte III, pagg. 11-21)
-
 - [ ] pag. 11 — AS WITHIN SO WITHOUT
 - [ ] pag. 12 — PLANES OF EXISTANCE
 - [ ] pag. 13 — THE ASTRAL PLANE

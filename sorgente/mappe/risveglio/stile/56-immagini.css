@@ -1,0 +1,32 @@
+/* Immagini originali del libro (diagrammi, foto, screenshot), estratte dal PDF —
+   non componenti disegnati a mano come in Rapporto Vesica. Un solo componente,
+   .fonte-img: una figura con didascalia, allineata a sinistra dentro il testo. */
+
+.fonte-img {
+  margin: 18px 0;
+  max-width: 340px;
+}
+.fonte-img img {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.fonte-img figcaption {
+  margin-top: 6px;
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.fonte-img-riga {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
+.fonte-img-riga .fonte-img {
+  flex: 1 1 220px;
+  max-width: 280px;
+  margin: 0;
+}

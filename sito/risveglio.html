@@ -1219,6 +1219,39 @@
     margin-right: 7px
   }
 
+/* Immagini originali del libro (diagrammi, foto, screenshot), estratte dal PDF —
+   non componenti disegnati a mano come in Rapporto Vesica. Un solo componente,
+   .fonte-img: una figura con didascalia, allineata a sinistra dentro il testo. */
+
+.fonte-img {
+  margin: 18px 0;
+  max-width: 340px;
+}
+.fonte-img img {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.fonte-img figcaption {
+  margin-top: 6px;
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.fonte-img-riga {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
+.fonte-img-riga .fonte-img {
+  flex: 1 1 220px;
+  max-width: 280px;
+  margin: 0;
+}
+
   /* ============ IN CHE ORDINE LEGGERLO ============ */
   .percorsi-sec {
     padding: 46px 0 10px;
@@ -2157,33 +2190,329 @@
     <div class="part-head">
       <p class="pn">Parte II</p>
       <h2>Luce e pineale</h2>
-      <p class="pd">Da leggere e tradurre: pagine 1-10 del libro originale.</p>
+      <p class="pd">Le prime nove pagine del libro: la luce come sostanza universale, il processo dell'«olio
+        di Cristo» lungo la colonna vertebrale, i tre saggi come ghiandole del cervello, il terzo occhio e la
+        ghiandola pineale, il Santo Graal come simbolo del corpo.</p>
       <ul class="part-toc">
-        <li><a href="#luce-stato"><b>01</b>Stato di questa parte</a></li>
+        <li><a href="#luce-genesi"><b>01</b>La luce e il sigillo di Lucifero</a></li>
+        <li><a href="#luce-olio"><b>02</b>L'olio di Cristo</a></li>
+        <li><a href="#luce-savi"><b>03</b>I tre saggi e il serpente di Mosè</a></li>
+        <li><a href="#luce-terzo-occhio"><b>04</b>Il terzo occhio</a></li>
+        <li><a href="#luce-graal"><b>05</b>Il Santo Graal</a></li>
       </ul>
     </div>
 
-    <section class="branch" id="luce-stato" style="--c:var(--amber)">
+    <section class="branch" id="luce-genesi" style="--c:var(--amber)">
       <div class="branch-grid">
         <div class="branch-aside">
-          <span class="tag" style="color:var(--amber)">Stato · da leggere e tradurre</span>
-          <h2>Luce e pineale</h2>
-          <p class="gist">Pagine 1-10 del libro originale (10 pagine), nessuna ancora tradotta e
-            trasferita in una sezione vera. Questa pagina lo dichiara invece di sembrare completa.</p>
-          <p class="src">«da tradurre e creare una mappa come si deve», pagg. 1-10</p>
+          <span class="tag" style="color:var(--amber)">Luce e pineale · pagina 1</span>
+          <h2>La luce e il sigillo di Lucifero</h2>
+          <p class="gist">Il libro apre dichiarando che l'universo è fatto di luce, che la mente umana è
+            «luce manifestata in forma fisica», e che il «Sigillo di Lucifero» — una figura geometrica fatta di
+            triangoli — rappresenterebbe il campo visivo dei due occhi. Introduce anche un gioco etimologico
+            che ricorrerà in tutto il libro: scomporre le parole inglesi in sillabe per farne emergere un
+            significato nascosto.</p>
+          <p class="quote">«Non vediamo dentro la realtà esterna. Le onde di luce entrano nelle retine, e poi
+            l'immagine che vediamo viene prodotta nella corteccia visiva, in fondo al nostro cervello.»</p>
+          <p class="src">«da tradurre e creare una mappa come si deve», pag. 1 — traduzione dall'inglese</p>
         </div>
         <div>
-          <p class="n-d" style="margin:0 0 20px">I titoli qui sotto sono quelli che compaiono nelle intestazioni
-            delle pagine originali di questo gruppo (in inglese, non ancora tradotti). Non sono ancora sezioni:
-            sono la lista di ciò che va letto e scritto. L'elenco completo e definitivo, con la pagina esatta di
-            ciascun titolo, è <code>note/risveglio-indice-completo.md</code>.</p>
-          <ul class="checks">
-              <li>light</li>
-              <li>christ oil</li>
-              <li>the three wise men</li>
-              <li>the third eye</li>
-              <li>the pineal gland</li>
-              <li>the holy grail</li>
+          <div class="fonte-img-riga">
+            <figure class="fonte-img">
+              <img src="risveglio-immagini/p001-2.png" alt="Il Sigillo di Lucifero: due triangoli intrecciati con due piccoli cerchi in alto">
+              <figcaption>Il «Sigillo di Lucifero» come lo mostra il libro.</figcaption>
+            </figure>
+            <figure class="fonte-img">
+              <img src="risveglio-immagini/p001-1.png" alt="Diagramma: la luce entra nelle retine e forma il campo visivo">
+              <figcaption>«La luce entra nelle retine» — il campo visivo dei due occhi.</figcaption>
+            </figure>
+          </div>
+          <ul class="tree">
+            <li><span class="n-t">GENESI 1:3 E L'UNIVERSO DI LUCE <small>Walter Russell, citato per esteso</small></span>
+              <p class="n-d">Il libro apre con Genesi 1:3, <b>«sia fatta la luce»</b>, per sostenere che
+                <b>«viviamo dentro un universo-onda-di-luce dove tutte le cose sono create dalla luce. La luce a
+                  bassa vibrazione diventa materia, la materia ad alta vibrazione ritorna in luce»</b>. Cita poi
+                per esteso <b>Walter Russell</b> (1871-1963), reale filosofo e artista americano autore del
+                trattato <i>The Universal One</i> (1926): <b>«Dio è mente pensante. La sostanza o il corpo di
+                  Dio è luce»</b>. Russell è realmente esistito ed è realmente l'autore di questa cosmologia
+                della luce, che non ha alcun riscontro nella fisica accademica ma è un corpus filosofico a sé,
+                studiato ancora oggi da una piccola comunità di seguaci.</p>
+            </li>
+            <li><span class="n-t">«HUMAN» = «HUE MAN»: UN GIOCO DI PAROLE, NON UN'ETIMOLOGIA <small>«hue» in inglese significa «tonalità di colore» — ma non è la radice storica di «human»</small></span>
+              <p class="n-d">Il libro scompone la parola inglese <i>human</i> in <i>hue man</i> — «uomo-colore»
+                — per sostenere che ogni persona sarebbe <b>«un attributo di un colore»</b> determinato dalla
+                frequenza mentale dominante, e che «dovremmo puntare a diventare violetto, il colore più alto
+                nello spettro della luce». È un gioco di parole basato sull'omofonia inglese, non un'etimologia
+                reale: <i>human</i> deriva dal latino <i>humanus</i>, a sua volta legato a <i>humus</i> (terra,
+                suolo) — la parola non ha alcuna radice storica in comune con <i>hue</i> (che viene dall'inglese
+                antico <i>hīw</i>, aspetto/forma). È un procedimento che il libro applica a decine di altre
+                parole inglesi nel corso delle 118 pagine.</p>
+            </li>
+            <li><span class="n-t">IL SIGILLO DI LUCIFERO E L'ETIMOLOGIA REALE DEL NOME <small>«Lucifer», dal latino «lux» (luce) e «ferre» (portare) — questa sì è un'etimologia accurata</small></span>
+              <p class="n-d">Il libro mostra il cosiddetto <b>«Sigillo di Lucifero»</b> — un simbolo a due
+                triangoli intrecciati diffuso nell'occultismo moderno, di origine non anteriore al XX secolo —
+                sostenendo che rappresenti <b>«il campo visivo dei due occhi»</b> e collegandolo al nome
+                <i>Lucifer</i>, che scompone in <i>Luci</i> = luce. Qui l'etimologia è corretta: <i>Lucifer</i>
+                significa letteralmente «portatore di luce» in latino (<i>lux/lucis</i>, luce, e <i>ferre</i>,
+                portare), ed era originariamente il nome latino del pianeta Venere come «stella del mattino» —
+                il legame fra il nome e la luce è un fatto linguistico reale, non un'invenzione del libro.
+                Il salto interpretativo (che il sigillo mostri anatomicamente il campo visivo) resta invece
+                un'affermazione simbolica propria del libro, senza fonte storica indipendente.</p>
+            </li>
+            <li><span class="n-t">GLI EGIZI E LA CORTECCIA VISIVA: UN FATTO DI NEUROSCIENZA REALE, UN'INTERPRETAZIONE SIMBOLICA DELLE SCULTURE <small>la corteccia visiva esiste davvero, riceve davvero il segnale dalle retine</small></span>
+              <p class="n-d">Il libro accosta una fotografia di sculture egizie a un diagramma della corteccia
+                visiva, sostenendo che <b>«gli antichi Egizi avevano una comprensione profonda del funzionamento
+                  della realtà e del cervello»</b>, riflessa nelle loro sculture. La corteccia visiva è
+                un'area reale del cervello, situata nel lobo occipitale, che riceve ed elabora davvero il
+                segnale proveniente dalle retine — questo è un fatto di neuroscienza accertato. Che le sculture
+                egizie codifichino deliberatamente questa conoscenza anatomica è invece un'interpretazione
+                simbolica del libro, non un dato storico o archeologico riconosciuto dall'egittologia.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="branch" id="luce-olio" style="--c:var(--amber)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--amber)">Luce e pineale · pagine 2-3</span>
+          <h2>L'olio di Cristo</h2>
+          <p class="gist">Il nucleo dottrinale di tutto il libro: un «fluido psico-fisico» prodotto dal
+            cervello scenderebbe lungo la colonna vertebrale fino al sacro, per poi risalire — se «conservato»
+            attraverso l'astinenza sessuale e alimentare — attivando il 100% del cervello. Ogni figura della
+            storia di Gesù viene letta come metafora di questo processo anatomico immaginario.</p>
+          <p class="quote">«Gesù (l'olio) è a Nazareret (la testa) con Giuseppe e Maria (la ghiandola pineale e
+            pituitaria) e il re Erode vuole ucciderlo. Gesù (l'olio) scende il fiume Giordano (la spina
+            dorsale) verso Betlemme, vicino al Mar Morto (l'osso sacro).»</p>
+          <p class="src">«da tradurre e creare una mappa come si deve», pagg. 2-3 — traduzione dall'inglese</p>
+        </div>
+        <div>
+          <div class="fonte-img-riga">
+            <figure class="fonte-img">
+              <img src="risveglio-immagini/p002-1.png" alt="Diagramma anatomico reale del cervello con ghiandola pineale e pituitaria evidenziate">
+              <figcaption>Ghiandola pineale e pituitaria in un diagramma anatomico reale.</figcaption>
+            </figure>
+            <figure class="fonte-img">
+              <img src="risveglio-immagini/p002-2.png" alt="Diagramma dei tre canali energetici ida, pingala e sushumna lungo la colonna vertebrale">
+              <figcaption>Ida, pingala e sushumna: i tre canali della tradizione yoga/tantrica.</figcaption>
+            </figure>
+          </div>
+          <ul class="tree">
+            <li><span class="n-t">IL PROCESSO DELL'OLIO IN SETTE PASSI <small>claustro, pineale, pituitaria, ida, pingala, sacro, midollo allungato</small></span>
+              <p class="n-d">Il libro descrive un processo in sette fasi: (1) il <b>claustro</b> produce un
+                «fluido psico-fisico»; (2) la <b>ghiandola pineale</b> lo carica elettricamente («maschile,
+                Giuseppe»); (3) la <b>ghiandola pituitaria</b> lo carica magneticamente («femminile, Maria»);
+                (4) il fluido viaggia lungo due canali, <b>ida</b> e <b>pingala</b>; (5) si deposita per 2-3
+                giorni sull'osso sacro; (6) se «conservato», la kundalini lo trasforma in gas e lo fa risalire
+                lungo <b>33 vertebre</b> fino al midollo allungato; (7) da lì torna alla pineale e «rinasce»
+                tutte le cellule del cervello. <b>Claustro</b>, <b>pineale</b>, <b>pituitaria</b>, <b>ida</b>,
+                <b>pingala</b> e <b>vertebre</b> sono termini reali di anatomia e di tradizione yogica; il
+                processo che li collega — un fluido che scende e risale trasformando la coscienza — non
+                corrisponde a nessun processo fisiologico documentato dalla medicina.</p>
+            </li>
+            <li><span class="n-t">«CHRISTOS = GRECO PER OLIO»: UN'ETIMOLOGIA SEMPLIFICATA <small>il vero significato è «unto», non «olio» in sé</small></span>
+              <p class="n-d">Il libro afferma: <b>«Christos è greco per olio, poi diventò Christ»</b>. È una
+                semplificazione che va corretta: la parola greca <i>Χριστός</i> (Christós) significa
+                letteralmente <b>«unto»</b> — participio del verbo <i>chrío</i> (ungere) — non «olio» come
+                sostanza. La parola greca per l'olio stesso è diversa (<i>élaion</i>). Il legame con l'unzione
+                rituale con olio è reale ed è proprio l'origine storica del titolo «Cristo» (l'unto, il
+                messia, dal rito ebraico di unzione dei re e sacerdoti) — ma la parola greca non significa
+                «olio», significa «che è stato unto con olio»: una differenza piccola ma precisa.</p>
+            </li>
+            <li><span class="n-t">SEROTONINA E DOPAMINA: DUE ATTRIBUZIONI ANATOMICHE ERRATE <small>la pituitaria non produce serotonina, il talamo non produce dopamina in modo primario</small></span>
+              <p class="n-d">Qui e nella pagina successiva (sui «tre saggi») il libro attribuisce alla
+                <b>ghiandola pituitaria</b> la produzione di <b>serotonina</b> («il latte») e al
+                <b>talamo</b> la produzione di <b>dopamina</b>, insieme alla pineale che produce
+                <b>melatonina</b> («il miele»). Quest'ultima è corretta: la melatonina è realmente prodotta
+                dalla ghiandola pineale. Le altre due non lo sono, secondo l'endocrinologia e la neuroscienza
+                correnti: la serotonina è prodotta soprattutto nell'intestino e nei nuclei del rafe del tronco
+                encefalico, non dalla pituitaria (che secerne altri ormoni, come l'ossitocina e il cortisolo);
+                la dopamina è prodotta principalmente nella substantia nigra e nell'area tegmentale ventrale,
+                non nel talamo, che ne è piuttosto un punto di passaggio e modulazione.</p>
+            </li>
+            <li><span class="n-t">LA SCALA DI GIACOBBE E LA COLONNA VERTEBRALE <small>un'interpretazione simbolica, non un fatto storico sul testo biblico</small></span>
+              <p class="n-d">Il libro legge l'episodio biblico della scala di Giacobbe (Genesi 28) come
+                allegoria del midollo spinale: la roccia su cui Giacobbe si addormenta sarebbe l'osso sacro, la
+                scala che sale al cielo sarebbe la colonna vertebrale. Nota, correttamente, che i simboli
+                massonici associano davvero la colonna vertebrale a una scala o scalinata — è un'osservazione
+                reale sull'iconografia massonica — ma l'interpretazione del testo biblico stesso come
+                allegoria anatomica resta una lettura simbolica del libro, non un dato di esegesi biblica
+                condivisa.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="branch" id="luce-savi" style="--c:var(--amber)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--amber)">Luce e pineale · pagine 4-5</span>
+          <h2>I tre saggi e il serpente di Mosè</h2>
+          <p class="gist">I tre re magi del Natale diventano le tre ghiandole del cervello (pineale,
+            pituitaria, talamo); il serpente innalzato da Mosè nel deserto diventa la kundalini; la Trimurti
+            induista (Brahma, Vishnu, Shiva) diventa anima, mente e corpo.</p>
+          <p class="quote">«Così come Mosè innalzò il serpente nel deserto, così il Figlio dell'uomo deve
+            essere innalzato.»</p>
+          <p class="src">«da tradurre e creare una mappa come si deve», pagg. 4-5 — traduzione dall'inglese,
+            citando Giovanni 3:14</p>
+        </div>
+        <div>
+          <div class="fonte-img-riga">
+            <figure class="fonte-img">
+              <img src="risveglio-immagini/p004-3.png" alt="Diagramma del talamo nel cervello">
+              <figcaption>Il talamo, una delle «tre ghiandole» del capitolo.</figcaption>
+            </figure>
+          </div>
+          <ul class="tree">
+            <li><span class="n-t">PINEALE, PITUITARIA E TALAMO: TRE STRUTTURE REALI, UNA FUNZIONE SIMBOLICA <small>il talamo esiste davvero e ha davvero un ruolo in percezione e coscienza</small></span>
+              <p class="n-d">Il libro identifica <b>pineale</b>, <b>pituitaria</b> e <b>talamo</b> come «i tre
+                saggi» del racconto natalizio, elencando funzioni reali della dopamina (regolazione dell'umore,
+                controllo motorio, apprendimento, sonno) tratte da nozioni di neuroscienza effettivamente
+                accurate — anche se, come già notato, la loro attribuzione specifica al talamo come sede
+                primaria di produzione non corrisponde alla fisiologia reale. Il talamo è comunque un centro
+                reale e importante di transito e integrazione sensoriale, non una struttura inventata.</p>
+            </li>
+            <li><span class="n-t">IL SERPENTE DI MOSÈ E LA KUNDALINI <small>Giovanni 3:14, citato correttamente — l'interpretazione kundalinica è del libro</small></span>
+              <p class="n-d">Il libro cita Giovanni 3:14 (<b>«così come Mosè innalzò il serpente nel
+                  deserto»</b>, riferimento reale a Numeri 21:9, il serpente di bronzo innalzato da Mosè)
+                per sostenere che il serpente rappresenti l'energia della <b>kundalini</b>, e che innalzarla
+                <b>«dà la capacità di lasciare il corpo ed esplorare altre realtà»</b>. La citazione biblica è
+                corretta; la lettura kundalinica è un'interpretazione esoterica moderna, diffusa in alcuni
+                circoli di sincretismo induista-cristiano ma non condivisa dall'esegesi biblica tradizionale né
+                dalla storia delle religioni accademica.</p>
+            </li>
+            <li><span class="n-t">BRAHMA, VISHNU, SHIVA: DIVINITÀ REALI DELL'INDUISMO, RIDOTTE A UNA METAFORA OCCIDENTALE <small>la Trimurti è un concetto induista reale — qui applicata a un modello di anima/mente/corpo estraneo alla sua tradizione</small></span>
+              <p class="n-d">Il libro accosta <b>Brahma</b>, <b>Vishnu</b> e <b>Shiva</b> — le tre divinità
+                reali della <i>Trimurti</i> induista (rispettivamente creatore, conservatore e distruttore
+                dell'universo) — a una tripartizione anima/mente/corpo, e nota che Brahma è spesso raffigurato
+                con più volti. La Trimurti è un concetto reale e centrale dell'induismo; la sua traduzione
+                specifica in una griglia anima-mente-corpo di matrice occidentale è una costruzione del libro,
+                non una dottrina induista riconosciuta in quella forma.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="branch" id="luce-terzo-occhio" style="--c:var(--amber)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--amber)">Luce e pineale · pagine 6-8</span>
+          <h2>Il terzo occhio</h2>
+          <p class="gist">La ghiandola pineale come «terzo occhio»: la sua anatomia reale, la tecnica di
+            attivazione proposta (meditazione, respirazione, sun gazing), l'affermazione — reale ma dibattuta —
+            sul fluoro e la calcificazione, e l'accusa che il Vaticano abbia deliberatamente occultato questa
+            conoscenza.</p>
+          <p class="quote">«La ghiandola pineale è un corpo a forma di cono, alto 6 mm e largo 4 mm di
+            diametro.»</p>
+          <p class="src">«da tradurre e creare una mappa come si deve», pagg. 6-8 — traduzione dall'inglese</p>
+        </div>
+        <div>
+          <div class="fonte-img-riga">
+            <figure class="fonte-img">
+              <img src="risveglio-immagini/p007-8.png" alt="Diagramma della ghiandola pineale con il tratto retino-ipotalamico">
+              <figcaption>La ghiandola pineale e il suo collegamento nervoso reale con la retina.</figcaption>
+            </figure>
+            <figure class="fonte-img">
+              <img src="risveglio-immagini/p008-13.png" alt="Illustrazione simbolica del sole sopra una coppa, associata al terzo occhio">
+              <figcaption>Un'illustrazione massonica citata dal libro a supporto della sua lettura simbolica.</figcaption>
+            </figure>
+          </div>
+          <ul class="tree">
+            <li><span class="n-t">LE DIMENSIONI REALI DELLA GHIANDOLA PINEALE <small>6×4 mm dichiarati dal libro — la misura reale è vicina, un poco più grande</small></span>
+              <p class="n-d">Il libro descrive la ghiandola pineale come <b>«un corpo a forma di cono, alto 6
+                  mm e largo 4 mm di diametro»</b>. È una struttura anatomica reale, situata al centro del
+                cervello: le misure tipiche riportate dall'anatomia sono di circa 5-8 mm di lunghezza e 3-5 mm
+                di larghezza in un adulto — il valore del libro è plausibile e rientra in quell'intervallo,
+                anche se leggermente approssimato per difetto sulla lunghezza.</p>
+            </li>
+            <li><span class="n-t">MICROCRISTALLI NELLA PINEALE: UN FATTO SCIENTIFICO REALE, POCO NOTO <small>la calcite piezoluminescente esiste davvero — è oggetto di studi di neuroscienza minoritari ma pubblicati</small></span>
+              <p class="n-d">Il libro afferma che <b>«la ghiandola pineale è coperta di microcristalli»</b> con
+                proprietà piezoluminescenti. Questo è uno dei pochi punti di questo capitolo con un riscontro
+                scientifico reale e verificabile: la ghiandola pineale accumula effettivamente, con l'età,
+                depositi di <b>calcite</b> (carbonato di calcio) sotto forma di microcristalli, un fenomeno
+                studiato — seppure in una nicchia di ricerca minoritaria — anche per le sue possibili proprietà
+                piezoelettriche (per esempio dal fisico francese Jean-Luc Baconnier e colleghi, in una
+                pubblicazione del 2002). Il salto dal fatto scientifico («ci sono microcristalli di calcite»)
+                alla conclusione mistica («per questo si dice illuminazione») resta un'interpretazione del
+                libro, non una conclusione della ricerca citata.</p>
+            </li>
+            <li><span class="n-t">FLUORO E CALCIFICAZIONE PINEALE: UNA RICERCA REALE, NON UNA CERTEZZA SCIENTIFICA CHIUSA <small>lo studio di Jennifer Luke (2001) esiste davvero — ma non stabilisce un nesso causale univoco</small></span>
+              <p class="n-d">Il libro scrive: <b>«la ricerca indica che il fluoro può portare alla
+                  calcificazione della ghiandola pineale»</b>. Non è un'invenzione: esiste una ricerca reale,
+                condotta dalla biologa britannica <b>Jennifer Luke</b> nel 2001, che trovò concentrazioni di
+                fluoro più elevate nel tessuto pineale calcificato di cadaveri analizzati. È però uno studio
+                isolato, mai replicato in modo indipendente su larga scala, e la comunità scientifica lo
+                considera un'ipotesi preliminare, non un nesso causale stabilito: la calcificazione pineale è un
+                fenomeno che avviene comunque, universalmente, con il semplice avanzare dell'età, a prescindere
+                dall'esposizione al fluoro.</p>
+            </li>
+            <li><span class="n-t">IL SUN GAZING: UNA PRATICA REALE, CON RISCHI OCULARI REALI E DOCUMENTATI <small>osservare il sole a occhio nudo può causare retinopatia solare, anche irreversibile</small></span>
+              <p class="n-d">Il libro consiglia di praticare il <b>sun gazing</b> (osservare il sole,
+                inizialmente all'alba o al tramonto) per «decalcificare e attivare» la pineale. È una pratica
+                reale, con una storia recente (popolarizzata da un uomo indiano, Hira Ratan Manek, dagli anni
+                2000), ma l'oftalmologia documenta con chiarezza i suoi rischi: anche la luce solare attenuata
+                dell'alba o del tramonto può causare <b>retinopatia solare</b>, un danno alla retina che in
+                alcuni casi è permanente, perché la retina non ha recettori del dolore che avvertano del danno
+                mentre accade. Il libro non menziona questo rischio documentato.</p>
+            </li>
+            <li><span class="n-t">H. P. BLAVATSKY: UNA FIGURA STORICA REALE, CITATA IN MODO PLAUSIBILE <small>fondatrice reale della Società Teosofica — la citazione specifica non è stata verificata riga per riga</small></span>
+              <p class="n-d">Il libro cita <b>Helena Petrovna Blavatsky</b> (1831-1891), realmente fondatrice
+                della Società Teosofica e autrice di <i>La Dottrina Segreta</i>, a sostegno dell'idea che
+                l'organo percettivo del cervello risieda nell'«aura» della pineale, visibile solo ai
+                chiaroveggenti. Blavatsky è una figura storica reale e questo tipo di affermazione è coerente
+                con il suo corpus teosofico; la citazione specifica riportata dal libro non è stata rintracciata
+                parola per parola in questa sede nei suoi testi originali.</p>
+            </li>
+            <li><span class="n-t">IL VATICANO E LA «CONOSCENZA SOPPRESSA»: UN'ACCUSA NON VERIFICABILE, NON UN FATTO STORICO DOCUMENTATO <small>nessuna fonte storica indipendente citata dal libro stesso</small></span>
+              <p class="n-d">Il libro afferma che <b>«il Vaticano ha soppresso le informazioni sui poteri
+                  mistici della ghiandola pineale»</b> e che la Chiesa avrebbe <b>«distrutto e rubato tutta la
+                  conoscenza e le biblioteche»</b> dell'antichità per creare <b>«una Bibbia codificata»</b> che
+                distogliesse le persone dal cercare Dio dentro di sé. È un'affermazione dello stesso genere di
+                molte già incontrate nella biblioteca (per esempio in Rapporto Vesica): plausibile come
+                narrazione, ma priva di una fonte storica verificabile citata dal libro stesso — nessun
+                documento, archivio o studio storiografico viene indicato a supporto.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="branch" id="luce-graal" style="--c:var(--amber)">
+      <div class="branch-grid">
+        <div class="branch-aside">
+          <span class="tag" style="color:var(--amber)">Luce e pineale · pagina 9</span>
+          <h2>Il Santo Graal</h2>
+          <p class="gist">Il Graal come metafora del collo e del cranio, che «si riempiono» ogni mese di
+            «latte e miele»; e la distinzione, presa in prestito dalla storia religiosa reale, fra insegnamento
+            esoterico (per pochi) ed esoterico (per le masse).</p>
+          <p class="quote">«O non sapete che il vostro corpo è tempio dello Spirito Santo che è in voi?»</p>
+          <p class="src">«da tradurre e creare una mappa come si deve», pag. 9 — traduzione dall'inglese,
+            citando 1 Corinzi 6:19-20</p>
+        </div>
+        <div>
+          <ul class="tree">
+            <li><span class="n-t">IL GRAAL COME COLLO E CRANIO <small>un'estensione del simbolismo già incontrato per il «latte e miele»</small></span>
+              <p class="n-d">Il libro presenta il Santo Graal come simbolo di <b>«collo e cranio»</b>, riempiti
+                ogni mese dal «fluido sacro» prodotto dal sole (pineale) e dalla luna (pituitaria) — la stessa
+                coppia simbolica di «latte e miele» già incontrata nella sezione precedente. È una continuazione
+                diretta del sistema simbolico del libro, non un'aggiunta nuova.</p>
+            </li>
+            <li><span class="n-t">ESOTERICO CONTRO ESOTERICO: UNA DISTINZIONE STORICA REALE, APPLICATA QUI IN MODO GENERICO <small>la distinzione fra insegnamento interno ed esterno è documentata in diverse tradizioni religiose reali</small></span>
+              <p class="n-d">Il libro sostiene che la Chiesa e le altre religioni insegnino alle masse
+                <b>l'esoterico</b> (gli insegnamenti esterni), mentre <b>«le persone al potere»</b> riceverebbero
+                <b>l'esoterico</b> (gli insegnamenti interni sul corpo, la coscienza e la metafisica) — usando i
+                due termini invertiti rispetto al loro significato standard (di norma è «esoterico» a indicare
+                l'insegnamento riservato e interno, «esoterico» quello pubblico ed esterno; qui il libro li
+                scambia, probabilmente per un errore di redazione più che per un'intenzione). La distinzione fra
+                un livello di insegnamento pubblico e uno riservato a un'élite iniziata è reale e documentata in
+                diverse tradizioni storiche (i misteri eleusini nell'antica Grecia, alcune correnti gnostiche
+                del primo cristianesimo, la struttura per gradi della massoneria): l'esistenza storica del
+                fenomeno è reale, la sua applicazione specifica al cristianesimo istituzionale contemporaneo
+                resta un'affermazione del libro, non un dato storiografico condiviso.</p>
+            </li>
           </ul>
         </div>
       </div>
@@ -2196,7 +2525,7 @@
     <div class="part-head">
       <p class="pn">Parte III</p>
       <h2>Il corpo sottile</h2>
-      <p class="pd">Da leggere e tradurre: pagine 11-21 del libro originale.</p>
+      <p class="pd">Da leggere e tradurre: pagine 10-21 del libro originale.</p>
       <ul class="part-toc">
         <li><a href="#sottile-stato"><b>01</b>Stato di questa parte</a></li>
       </ul>
@@ -2207,9 +2536,9 @@
         <div class="branch-aside">
           <span class="tag" style="color:var(--plum)">Stato · da leggere e tradurre</span>
           <h2>Il corpo sottile</h2>
-          <p class="gist">Pagine 11-21 del libro originale (11 pagine), nessuna ancora tradotta e
+          <p class="gist">Pagine 10-21 del libro originale (12 pagine), nessuna ancora tradotta e
             trasferita in una sezione vera. Questa pagina lo dichiara invece di sembrare completa.</p>
-          <p class="src">«da tradurre e creare una mappa come si deve», pagg. 11-21</p>
+          <p class="src">«da tradurre e creare una mappa come si deve», pagg. 10-21</p>
         </div>
         <div>
           <p class="n-d" style="margin:0 0 20px">I titoli qui sotto sono quelli che compaiono nelle intestazioni
