@@ -74,13 +74,13 @@ Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
 ## Saturno e la trappola dell'anima (Parte VI, pagg. 48-54)
 
-- [ ] pag. 48 — SOUL TRAP
-- [ ] pag. 49 — SATAN IS SATURN
-- [ ] pag. 50 — SATAN IS SATURN
-- [ ] pag. 51 — BLACK CUBE OF SATURN
-- [ ] pag. 52 — BLACK CUBE OF SATURN
-- [ ] pag. 53 — SATURN SYMBOLOGY
-- [ ] pag. 54 — SATURN AND RELIGION
+- [x] pag. 48 — SOUL TRAP → #saturno-trappola
+- [x] pag. 49 — SATAN IS SATURN → #saturno-satana
+- [x] pag. 50 — SATAN IS SATURN → #saturno-satana
+- [x] pag. 51 — BLACK CUBE OF SATURN → #saturno-cubo
+- [x] pag. 52 — BLACK CUBE OF SATURN → #saturno-cubo
+- [x] pag. 53 — SATURN SYMBOLOGY → #saturno-simbologia
+- [x] pag. 54 — SATURN AND RELIGION → #saturno-religione
 
 ## Astrologia e cicli celesti (Parte VII, pagg. 55-66)
 
