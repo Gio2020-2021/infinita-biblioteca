@@ -120,14 +120,14 @@ Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
 ## Corpo, dieta e coscienza (Parte IX, pagg. 85-92)
 
-- [ ] pag. 85 — BRAIN WAVES
-- [ ] pag. 86 — VEGANISM
-- [ ] pag. 87 — VEGANISM
-- [ ] pag. 88 — THE HUMAN DIET
-- [ ] pag. 89 — LIFE & DEATH
-- [ ] pag. 90 — ELEVATING CONSCIOUSNESS
-- [ ] pag. 91 — MUSIC IS MAGIC
-- [ ] pag. 92 — CYMATICS
+- [x] pag. 85 — BRAIN WAVES → #dieta-onde
+- [x] pag. 86 — VEGANISM → #dieta-veganismo
+- [x] pag. 87 — VEGANISM → #dieta-veganismo
+- [x] pag. 88 — THE HUMAN DIET → #dieta-alimentazione
+- [x] pag. 89 — LIFE & DEATH → #dieta-vita-morte
+- [x] pag. 90 — ELEVATING CONSCIOUSNESS → #dieta-coscienza
+- [x] pag. 91 — MUSIC IS MAGIC → #dieta-musica
+- [x] pag. 92 — CYMATICS → #dieta-musica
 
 ## Cristianesimo e culto solare (Parte X, pagg. 93-99)
 
