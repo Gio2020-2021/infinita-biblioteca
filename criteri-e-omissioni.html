@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Criteri e omissioni della biblioteca</title>
+<style>
+  :root{
+    --bg:#f8f6f2; --surface:#fffdf9; --ink:#1d1b18; --muted:#6d675e;
+    --line:#dcd6cb; --line-soft:#ebe6dd;
+    --amber:#a8761f; --rust:#9c4a34; --sage:#57734c; --blue:#3a5d7d; --plum:#744968; --teal:#376c69;
+    --f-body:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --f-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --bg:#15171b; --surface:#1c1f24; --ink:#e9e5dd; --muted:#968f84;
+      --line:#2f343a; --line-soft:#23272c;
+      --amber:#d5a24e; --rust:#cc7a63; --sage:#8fae80; --blue:#7aa3c6; --plum:#b98cab; --teal:#63aba6;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15171b; --surface:#1c1f24; --ink:#e9e5dd; --muted:#968f84;
+    --line:#2f343a; --line-soft:#23272c;
+    --amber:#d5a24e; --rust:#cc7a63; --sage:#8fae80; --blue:#7aa3c6; --plum:#b98cab; --teal:#63aba6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);
+       font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 26px 120px}
+
+  header.testa{padding:64px 0 38px;border-bottom:1px solid var(--line)}
+  .occhiello{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+             color:var(--muted);margin:0 0 14px}
+  h1{font-size:clamp(30px,4.4vw,46px);line-height:1.1;margin:0 0 18px;font-weight:600;text-wrap:balance}
+  .sottotitolo{font-size:19px;color:var(--muted);max-width:62ch;margin:0}
+  .aggiornato{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);margin-top:24px;
+              letter-spacing:.05em}
+
+  nav.indice{margin:34px 0 0;padding:18px 0 0;border-top:1px solid var(--line-soft)}
+  nav.indice ol{list-style:none;margin:0;padding:0;display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:6px 28px;
+                counter-reset:i}
+  nav.indice li{counter-increment:i}
+  nav.indice a{color:var(--ink);text-decoration:none;font-size:15px;display:block;padding:4px 0;
+               border-bottom:1px solid transparent}
+  nav.indice a:hover{border-bottom-color:var(--line)}
+  nav.indice a::before{content:counter(i,decimal-leading-zero);font-family:var(--f-mono);
+                       font-size:10.5px;color:var(--muted);margin-right:10px;letter-spacing:.1em}
+
+  section.blocco{padding:52px 0;border-bottom:1px solid var(--line-soft)}
+  section.blocco > h2{font-size:27px;margin:0 0 6px;font-weight:600;line-height:1.2}
+  .cappello{color:var(--muted);max-width:66ch;margin:0 0 30px;font-size:16.5px}
+
+  .regola{border-left:3px solid var(--c,var(--line));padding:0 0 0 20px;margin:0 0 30px}
+  .regola:last-child{margin-bottom:0}
+  .regola h3{font-size:13px;font-family:var(--f-mono);letter-spacing:.11em;text-transform:uppercase;
+             color:var(--c,var(--ink));margin:0 0 9px;font-weight:600;line-height:1.45}
+  .regola p{margin:0 0 11px;max-width:72ch}
+  .regola p:last-child{margin-bottom:0}
+  .perche{font-size:15.5px;color:var(--muted)}
+  .perche b{color:var(--ink);font-weight:600}
+
+  table{width:100%;border-collapse:collapse;margin:8px 0 0;font-size:15.5px}
+  .tabellone{overflow-x:auto}
+  th,td{text-align:left;padding:11px 14px 11px 0;border-bottom:1px solid var(--line-soft);
+        vertical-align:top}
+  th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+     color:var(--muted);font-weight:600;border-bottom:1px solid var(--line)}
+  td.fuori{color:var(--rust)}
+  td.dentro{color:var(--sage)}
+  td .nota{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+
+  .stato{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 30px}
+  .pill{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;padding:6px 11px;
+        border:1px solid var(--line);border-radius:3px;color:var(--muted);background:var(--surface)}
+  .pill b{color:var(--ink);font-weight:600}
+
+  .avviso{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:22px 24px;
+          margin:0 0 30px}
+  .avviso h3{margin:0 0 10px;font-size:13px;font-family:var(--f-mono);letter-spacing:.11em;
+             text-transform:uppercase;color:var(--rust)}
+  .avviso p{margin:0 0 10px;max-width:72ch}
+  .avviso p:last-child{margin-bottom:0}
+
+  code{font-family:var(--f-mono);font-size:.86em;background:var(--surface);
+       border:1px solid var(--line-soft);border-radius:3px;padding:1px 5px}
+  a{color:var(--blue)}
+  footer{padding:44px 0 0;color:var(--muted);font-size:15px;max-width:70ch}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="testa">
+  <p class="occhiello">Biblioteca · documento di servizio</p>
+  <h1>Cosa resta fuori dalle mappe, e con che criterio</h1>
+  <p class="sottotitolo">Ogni mappa della biblioteca lascia fuori qualcosa, e non sempre per la stessa
+    ragione. Questa pagina raccoglie in un posto solo tutte le esclusioni decise finora, il criterio che
+    le regge e il modo in cui il materiale escluso viene comunque segnalato invece di sparire in
+    silenzio.</p>
+  <p class="aggiornato">Aggiornato al 10 settembre 2026 · Risveglio a 66/118 pagine · si aggiorna quando cambia un criterio o si
+    esclude qualcosa di nuovo</p>
+
+  <nav class="indice">
+    <ol>
+      <li><a href="#principio">Il principio di fondo</a></li>
+      <li><a href="#zeland">Zeland: fuori la dieta e la medicina</a></li>
+      <li><a href="#nagal">Nagal: criterio opposto</a></li>
+      <li><a href="#vesica">Vesica: niente è escluso, molto non è ancora scritto</a></li>
+      <li><a href="#risveglio">Risveglio: non si esclude nulla</a></li>
+      <li><a href="#rigore">I tre livelli di rigore</a></li>
+      <li><a href="#odio">Materiale d'odio: si segnala, non si toglie</a></li>
+      <li><a href="#citazioni">Le citazioni e cosa le verifica</a></li>
+      <li><a href="#tecniche">Esclusioni tecniche</a></li>
+    </ol>
+  </nav>
+</header>
+
+<section class="blocco" id="principio">
+  <h2>Il principio di fondo</h2>
+  <p class="cappello">Una sola regola tiene insieme tutte le altre, ed è la ragione per cui questo
+    documento esiste.</p>
+
+  <div class="regola" style="--c:var(--amber)">
+    <h3>Un'esclusione dichiarata non è un'omissione</h3>
+    <p>Ogni volta che del materiale resta fuori da una mappa, la mappa lo dice — nella parte, nella
+      sezione di stato, o nella checklist di copertura. Non esiste materiale semplicemente saltato:
+      esiste materiale <b>escluso con una motivazione scritta</b>, che chiunque può leggere e
+      contestare.</p>
+    <p class="perche"><b>Perché:</b> una mappa che sembra completa mentendo è peggio di una mappa che
+      dichiara i propri buchi. Chi la consulta deve poter sapere se un argomento manca perché non c'è
+      nel libro, perché non è stato ancora letto, o perché è stato deliberatamente lasciato fuori.</p>
+  </div>
+
+  <div class="regola" style="--c:var(--amber)">
+    <h3>Il criterio cambia da autore ad autore, e questo è voluto</h3>
+    <p>Di Zeland la biblioteca documenta il <b>metodo</b>; di Klod Nagal documenta anche
+      <b>l'autore</b>; di <i>Rapporto Vesica</i> e di <i>Risveglio</i> documenta <b>il testo così com'è</b>,
+      compreso ciò che vi è di falso. Sono tre posizioni diverse, prese apposta.</p>
+    <p class="perche"><b>Perché:</b> Zeland è un corpus da usare, e i suoi capitoli dietetici non
+      servono a usarlo. Nagal è un autore in discussione, e togliere i suoi capitoli esoterici lo
+      farebbe sembrare più zelandiano di quanto sia. Vesica e Risveglio sono oggetti di studio: lì
+      togliere significherebbe falsare il reperto.</p>
+  </div>
+</section>
+
+<section class="blocco" id="zeland">
+  <h2>Zeland: fuori la dieta e la medicina</h2>
+  <p class="cappello">È l'unica esclusione di contenuto vera e propria di tutta la biblioteca, e riguarda
+    solo i libri di Vadim Zeland. La mappa del Transurfing documenta un metodo operativo: i capitoli
+    che escono da quel metodo per entrare nella prescrizione alimentare o sanitaria restano fuori.</p>
+
+  <div class="tabellone">
+  <table>
+    <thead>
+      <tr><th>Libro</th><th>Cosa resta fuori</th><th>Quanto</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><i>Cosa non ha detto Tafti</i></td>
+        <td class="fuori">Il capitolo <i>L'alimentazione</i>
+          <span class="nota">Consigli dietetici e di salute alternativa</span></td>
+        <td>1 capitolo</td>
+      </tr>
+      <tr>
+        <td><i>Scardinare il Sistema Tecnogeno</i></td>
+        <td class="fuori">Tutta la Parte III, «la biosfera»
+          <span class="nota">Crudismo e vegetarianismo militante. Un solo aneddoto è stato vagliato e
+            scartato perché non separabile dalla tesi dietetica</span></td>
+        <td>20 capitoli</td>
+      </tr>
+      <tr>
+        <td><i>Scardinare il Sistema Tecnogeno</i></td>
+        <td class="fuori">I capitoli medici dentro Parte II e IV: <i>Aprire lo sportello</i>,
+          <i>Le mollette somatiche</i>, <i>Il controllo del supporto vitale</i>
+          <span class="nota">Salve le metafore che ne sopravvivono, citate a parte: l'ingranaggio, il
+            joystick</span></td>
+        <td>3 capitoli</td>
+      </tr>
+      <tr>
+        <td><i>Transurfing Vivo</i></td>
+        <td class="fuori">I capitoli XI, XII, XIII, XV, XVII, XIX, XX, XXI, XXIII e gli Allegati 1, 2, 5
+          <span class="nota">Salute e alimentazione</span></td>
+        <td>10 capitoli su 23</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="regola" style="--c:var(--sage)" id="zeland-perche">
+    <h3>Perché proprio la dieta</h3>
+    <p>Non è pudore né disaccordo personale: è che <b>la mappa promette una cosa sola</b>, cioè come si
+      pratica il Transurfing. Un lettore che segue un consiglio dietetico trovato lì lo farebbe sulla
+      fiducia di una mappa che non ha alcun titolo per darlo, e che non ha modo di verificarlo come
+      verifica le citazioni. Il metodo si può documentare senza; la salute di chi legge no.</p>
+    <p class="perche"><b>Come è segnalato:</b> in <code>CLAUDE.md</code>, alle voci 9, 10 e 11 dei libri
+      letti, con l'elenco dei capitoli esclusi. L'audit di copertura salta deliberatamente quelle
+      sezioni e lo dichiara.</p>
+  </div>
+</section>
+
+<section class="blocco" id="nagal">
+  <h2>Nagal: criterio opposto, e dichiarato</h2>
+  <p class="cappello">Con Klod Nagal la regola si rovescia: non si toglie niente, nemmeno ciò che non è
+    Transurfing.</p>
+
+  <div class="regola" style="--c:var(--teal)">
+    <h3>Dei suoi 22 capitoli, sette non sono Transurfing — e sono nella mappa</h3>
+    <p>Decreti anti-arconti, perdono karmico, trasmutazione alchemica del dolore, protezioni con sale ed
+      erbe, ricapitolazione tolteca da Castaneda, mindfulness, I Ching. Stanno tutti in
+      <code>#moksha</code>, dentro la Parte XI «Le altre voci».</p>
+    <p class="perche"><b>Perché:</b> di Zeland si documenta il metodo, di Nagal si documenta anche
+      l'autore, perché è lui il punto in discussione. Togliere i suoi capitoli esoterici lo farebbe
+      sembrare più zelandiano di quanto sia — cioè falserebbe proprio la cosa che la Parte XI esiste per
+      mostrare. Deciso dall'utente il 6-9-2026.</p>
+  </div>
+
+  <div class="regola" style="--c:var(--teal)">
+    <h3>Lo strato commerciale è riportato come fatto</h3>
+    <p>Libri venduti su WhatsApp a 10 euro, lezioni personalizzate richiamate una decina di volte nel
+      testo, rimandi a specialisti a pagamento. È in <code>#nagal</code>.</p>
+    <p class="perche"><b>Perché:</b> cambia come si pesa un'affermazione. Non è un giudizio sull'autore,
+      è un dato che il lettore ha diritto di avere quando valuta un consiglio.</p>
+  </div>
+</section>
+
+<section class="blocco" id="vesica">
+  <h2>Vesica: niente è escluso, molto non è ancora scritto</h2>
+  <p class="cappello">In <i>Rapporto Vesica</i> non c'è nessuna esclusione di contenuto. C'è invece una
+    grande quantità di materiale <b>non ancora letto</b>, ed è una condizione diversa che va tenuta
+    distinta.</p>
+
+  <div class="stato">
+    <span class="pill">468 voci in totale</span>
+    <span class="pill">Parti lette: <b>II · III · VI</b></span>
+    <span class="pill">In corso: <b>IV (39/91)</b> · <b>VII (8/33)</b></span>
+    <span class="pill">Non iniziate: <b>V · VIII · IX</b></span>
+  </div>
+
+  <div class="regola" style="--c:var(--blue)">
+    <h3>Ogni parte non ancora letta è un elenco che si dichiara tale</h3>
+    <p>Una parte non scritta non è una pagina vuota né una pagina finta: è una sezione
+      <code>#&lt;id&gt;-stato</code> che dice quante voci sono state individuate, quante lette, ed elenca
+      i titoli che restano. Lo stesso vale per <i>Risveglio</i>.</p>
+    <p class="perche"><b>Dove si controlla davvero:</b> <code>note/vesica-indice-completo.md</code> per
+      Vesica e <code>note/risveglio-indice-completo.md</code> per Risveglio. Sono le checklist canoniche,
+      voce per voce, con l'ancora della sezione dove la voce è finita. Non fidarsi della sola mappa per
+      sapere cosa manca.</p>
+  </div>
+</section>
+
+<section class="blocco" id="risveglio">
+  <h2>Risveglio: non si esclude nulla</h2>
+  <p class="cappello">La terza mappa è il caso più netto: <b>tutte</b> le 118 pagine e <b>tutte</b> le
+    immagini, comprese quelle che sostengono tesi false e quelle che sostengono tesi offensive.</p>
+
+  <div class="regola" style="--c:var(--plum)">
+    <h3>Tutte le immagini, non una selezione</h3>
+    <p>Il libro è un'infografica: le immagini sono argomentazione, non decorazione. Ogni sezione porta in
+      fondo un blocco <code>.galleria</code> con <b>tutte</b> le immagini della pagina originale che
+      copre, nell'ordine in cui compaiono nel file, ciascuna con didascalia.</p>
+    <p class="perche"><b>Perché:</b> selezionare le immagini «migliori» significherebbe scegliere quali
+      argomenti del libro far vedere. Su un testo che si vuole documentare, non commentare, la selezione
+      è già una manipolazione.</p>
+  </div>
+
+  <div class="regola" style="--c:var(--plum)">
+    <h3>I titoli dei capitoli non si perdono mai</h3>
+    <p>Ogni sezione dichiara in apertura il titolo originale inglese della pagina o delle pagine che
+      copre — <i>AS WITHIN SO WITHOUT</i>, <i>PLANES OF EXISTANCE</i> con il refuso del libro,
+      <i>THE HELIOCENTRIC SCAM</i>. La corrispondenza pagina → titolo → ancora sta nella checklist.</p>
+  </div>
+</section>
+
+<section class="blocco" id="rigore">
+  <h2>I tre livelli di rigore</h2>
+  <p class="cappello">Non tutte le mappe verificano allo stesso modo, e la differenza è una scelta
+    esplicita presa mappa per mappa.</p>
+
+  <div class="tabellone">
+  <table>
+    <thead><tr><th>Mappa</th><th>Modalità</th><th>Cosa comporta</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Transurfing</b></td>
+        <td>Documentazione del metodo</td>
+        <td>Si espone la dottrina; si verifica che ogni citazione sia letterale e attribuita al libro
+          giusto. Non si discute se il Transurfing funzioni.</td>
+      </tr>
+      <tr>
+        <td><b>Vesica</b></td>
+        <td>Verifica sistematica</td>
+        <td>Ogni affermazione fattuale controllabile viene controllata, con fonte, e la sezione riporta
+          l'esito anche quando smentisce il libro. È il livello più pesante e il più lento.</td>
+      </tr>
+      <tr>
+        <td><b>Risveglio</b></td>
+        <td>Come Zeland/Nagal <span class="nota">scelto dall'utente</span></td>
+        <td>Si documenta la dottrina fedelmente e si verificano <b>solo le affermazioni chiaramente
+          fattuali</b> — date, etimologie, dati fisici, citazioni bibliche. Nessun apparato di
+          confutazione sistematica in ogni voce.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="regola" style="--c:var(--blue);margin-top:30px">
+    <h3>La seconda eccezione: quando un libro dà un consiglio sanitario</h3>
+    <p>In <i>Risveglio</i>, pagina 64 propone i <b>dodici sali cellulari dello zodiaco</b> con un metodo per
+      calcolare di quali si sarebbe carenti in base al segno di nascita. La sezione
+      <code>#astro-ariete-sali</code> lo documenta e aggiunge due cose che il libro non dice: che il sistema
+      ha un autore e una data (Schüssler 1873, l'aggancio zodiacale di Carey 1919), che sono preparati
+      omeopatici privi di studi controllati a sostegno, e che una carenza minerale si accerta con un esame
+      del sangue.</p>
+    <p class="perche"><b>Perché:</b> è la stessa ragione per cui i capitoli dietetici di Zeland restano
+      fuori. Lì il materiale si poteva escludere perché la mappa documenta un metodo; qui non si può,
+      perché la mappa documenta un testo per intero — quindi si riporta, e si dice da dove viene.</p>
+  </div>
+
+  <div class="regola" style="--c:var(--blue)">
+    <h3>L'eccezione: quando un libro passa dal simbolo al fatto</h3>
+    <p>In <i>Risveglio</i>, la Parte V («La terra piatta») dichiara in testa che <b>la cosmologia che
+      quelle pagine sostengono è falsa</b>, e la documenta comunque per intero. È l'unico punto in cui il
+      livello di rigore scelto viene alzato.</p>
+    <p class="perche"><b>Perché:</b> finché il libro interpreta simboli, l'interpretazione è sua e va
+      riportata. Quando comincia a dire dove sta il sole e quanto è distante, entra in un terreno dove
+      esiste una risposta misurata, e tacerla sarebbe avallarla.</p>
+  </div>
+</section>
+
+<section class="blocco" id="odio">
+  <h2>Materiale d'odio: si segnala, non si toglie</h2>
+
+  <div class="avviso">
+    <h3>La regola</h3>
+    <p>Quando un libro della biblioteca contiene materiale antisemita o comunque diffamatorio verso un
+      gruppo, quel materiale <b>resta nella mappa</b>, riportato, e viene <b>segnalato senza
+      attenuazioni</b> per quello che è — non presentato come «un'opinione controversa da soppesare».
+      Ogni affermazione di fatto che lo compone viene smontata singolarmente, con la fonte.</p>
+    <p>Toglierlo renderebbe la mappa inservibile proprio per la cosa che serve di più: sapere cosa c'è
+      dentro un libro prima di consigliarlo o di fidarsene.</p>
+  </div>
+
+  <div class="tabellone">
+  <table>
+    <thead><tr><th>Dove</th><th>Cosa</th><th>Come è trattato</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Vesica</b><span class="nota">#pt-g30</span></td>
+        <td>Un inserto «N.d.T.» sull'Olocausto</td>
+        <td class="dentro">Segnalato come disinformazione antisemita, non come opinione: stessa
+          impalcatura retorica dei falsi Protocolli.</td>
+      </tr>
+      <tr>
+        <td><b>Vesica</b><span class="nota">#pt-savi-sion</span></td>
+        <td>I <i>Protocolli dei Savi di Sion</i> e la teoria cazara</td>
+        <td class="dentro">Ricostruita la storia del falso: Okhrana, Joly, l'inchiesta del Times di
+          Graves del 1921, il processo di Berna 1935-37.</td>
+      </tr>
+      <tr>
+        <td><b>Vesica</b><span class="nota">#pt-rothschild</span></td>
+        <td>Il trope dei Rothschild che «finanziano entrambe le parti»</td>
+        <td class="dentro">Ricondotto alla sua origine: il libello di Dairnvaell del 1846.</td>
+      </tr>
+      <tr>
+        <td><b>Risveglio</b><span class="nota">#saturno-cubo · #saturno-religione</span></td>
+        <td>«L'ebraismo è una religione basata su Saturno»: i tefillin come «cubo nero», la Stella di
+          David come «Stella di Saturno», il ritaglio su «Refan»</td>
+        <td class="dentro">Segnalato come antisemitismo; i cinque punti smontati uno per uno. Registrato
+          che il libro applica la stessa griglia anche a islam e cristianesimo, ma <b>non come
+          attenuante</b>: pagina 51 è l'unica che accusa mostrando corpi e oggetti di culto.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section class="blocco" id="citazioni">
+  <h2>Le citazioni e cosa le verifica</h2>
+
+  <div class="regola" style="--c:var(--amber)">
+    <h3>Ogni «...» è letterale</h3>
+    <p>Se una formulazione è una sintesi, non va tra virgolette. Lo verifica
+      <code>strumenti/cita.py</code>, che prende ogni citazione del sito, la cerca in tutti i libri letti
+      e dice in quale e a che pagina.</p>
+    <p class="perche"><b>L'errore ricorrente da cui difende:</b> avvolgere in virgolette una propria
+      glossa. È la svista più frequente in assoluto nella lavorazione, e la sola difesa è il controllo
+      automatico.</p>
+  </div>
+
+  <div class="regola" style="--c:var(--plum)">
+    <h3>Risveglio è fuori da quel controllo, e per una ragione</h3>
+    <p>Il libro è in inglese e la mappa lo <b>traduce</b>: nessuna citazione italiana potrà mai
+      corrispondere alla lettera al testo di partenza. Le virgolette lì dentro segnalano quindi
+      <b>«questa è traduzione fedele del libro»</b>, non «questa stringa esiste nei testi».</p>
+    <p class="perche"><b>Come è compensato:</b> ogni sezione dichiara la pagina esatta dell'originale
+      nella riga della fonte, così la traduzione è sempre riscontrabile sul PDF.</p>
+  </div>
+</section>
+
+<section class="blocco" id="tecniche">
+  <h2>Esclusioni tecniche</h2>
+  <p class="cappello">Cose che restano fuori per ragioni materiali, non di criterio. Sono qui perché
+    anche queste vanno sapute.</p>
+
+  <div class="regola" style="--c:var(--muted)">
+    <h3>Le immagini di Risveglio sono file separati, non incorporate</h3>
+    <p>907 PNG per 32,3 MB, copiati dalla costruzione in <code>sito/risveglio-immagini/</code>.
+      Incorporarli in base64 gonfierebbe l'HTML a circa 43 MB.</p>
+    <p class="perche"><b>Conseguenza da ricordare:</b> la mappa non è più un file singolo autosufficiente
+      come le altre. Spostandola, va spostata anche la cartella delle immagini.</p>
+  </div>
+
+  <div class="regola" style="--c:var(--muted)">
+    <h3>Il filtro sulle immagini estratte</h3>
+    <p>Dal PDF si estrae ogni immagine con <code>PyMuPDF</code>, si deduplica per <code>xref</code> e si
+      scartano quelle sotto i 40×40 pixel. Il conteggio grezzo di <code>pdfimages</code> dava circa 8800
+      elementi: la sola pagina 90 ne contiene 5943, che sono frammenti vettoriali, non figure.</p>
+    <p class="perche"><b>Cosa questo esclude davvero:</b> nessuna figura del libro. Solo schegge di
+      disegno che il PDF conta come immagini separate.</p>
+  </div>
+
+  <div class="regola" style="--c:var(--muted)">
+    <h3>Materiale in <code>pdf-sorgenti/</code> non ancora letto</h3>
+    <p>Dodici libri estratti e mai aperti, circa 2650 pagine: bardo-arconte, codice-moksha, gnosi-e-rigpa,
+      la-quinta-via, la-quinta-via-ii, ritorno-all-origine, stranieri-sulla-terra, ufo-alieni-libro,
+      arconti-e-gnosticismo, dark-cupido, legge-di-attrazione, trappola-tunnel-di-luce.</p>
+    <p class="perche">Sono la cornice metafisica a cui i libri sul Transurfing rimandano senza
+      svilupparla. Non sono esclusi: sono in coda.</p>
+  </div>
+</section>
+
+<footer>
+  <p>Questo file sta nella radice del progetto e non fa parte delle mappe: non viene costruito da
+    <code>costruisci.py</code> e non è toccato da <code>verifica.py</code>. Va aggiornato a mano quando
+    una decisione cambia — cioè quando si esclude qualcosa di nuovo, quando si cambia il criterio di una
+    mappa, o quando una parte finora solo elencata viene scritta davvero.</p>
+</footer>
+
+</div>
+</body>
+</html>

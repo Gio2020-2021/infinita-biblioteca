@@ -84,18 +84,18 @@ Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
 ## Astrologia e cicli celesti (Parte VII, pagg. 55-66)
 
-- [ ] pag. 55 — INCARNATION OF THE MIND
-- [ ] pag. 56 — INCARNATION
-- [ ] pag. 57 — ASCENSION
-- [ ] pag. 58 — THE 7 CELESTIAL ENERGIES
-- [ ] pag. 59 — CELESTIAL RULERSHIP
-- [ ] pag. 60 — THE MOON
-- [ ] pag. 61 — MAN IS GOD MADE FLESH
-- [ ] pag. 62 — ASTROLOGY
-- [ ] pag. 63 — ARIES AND TAURUS
-- [ ] pag. 64 — THE ZODIAC CELL SALTS
-- [ ] pag. 65 — ADDITIONAL SYNCRETISM
-- [ ] pag. 66 — SYNCRETISM - 12 AROUND THE 1
+- [x] pag. 55 — INCARNATION OF THE MIND → #astro-incarnazione
+- [x] pag. 56 — INCARNATION → #astro-incarnazione
+- [x] pag. 57 — ASCENSION → #astro-ascensione
+- [x] pag. 58 — THE 7 CELESTIAL ENERGIES → #astro-sette-energie
+- [x] pag. 59 — CELESTIAL RULERSHIP → #astro-sette-energie
+- [x] pag. 60 — THE MOON → #astro-luna
+- [x] pag. 61 — MAN IS GOD MADE FLESH → #astro-uomo-zodiaco
+- [x] pag. 62 — ASTROLOGY → #astro-uomo-zodiaco
+- [x] pag. 63 — ARIES AND TAURUS → #astro-ariete-sali
+- [x] pag. 64 — THE ZODIAC CELL SALTS → #astro-ariete-sali
+- [x] pag. 65 — ADDITIONAL SYNCRETISM → #astro-sincretismo
+- [x] pag. 66 — SYNCRETISM - 12 AROUND THE 1 → #astro-sincretismo
 
 ## Cabala, geometria sacra ed elettromagnetismo (Parte VIII, pagg. 66-84)
 
