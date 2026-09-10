@@ -99,24 +99,24 @@ Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
 ## Cabala, geometria sacra ed elettromagnetismo (Parte VIII, pagg. 66-84)
 
-- [ ] pag. 67 — KABALAH TREE OF LIFE
-- [ ] pag. 68 — AS ABOVE SO BELOW
-- [ ] pag. 69 — AS ABOVE SO BELOW
-- [ ] pag. 70 — ELECTROMAGNETISM
-- [ ] pag. 71 — ELECTROMAGNETISM
-- [ ] pag. 72 — ELECTROMAGNETISM
-- [ ] pag. 73 — ELECTROMAGNETISM
-- [ ] pag. 74 — ELECTROMAGNETISM IS NATURE
-- [ ] pag. 75 — GOD IS LIGHT
-- [ ] pag. 76 — GOD IS LIGHT
-- [ ] pag. 77 — ELECTROMAGNETISM IS NATURE
-- [ ] pag. 78 — ELECTROMAGNETISM IS NATURE
-- [ ] pag. 79 — FLOWER OF LIFE VS DAISY OF DEATH
-- [ ] pag. 80 — ELECTROMAGNETISM IS NATURE
-- [ ] pag. 81 — ELECTROMAGNETISM IS NATURE
-- [ ] pag. 82 — THE HUMAN ENERGY FIELD
-- [ ] pag. 83 — THE HUMAN ENERGY FIELD
-- [ ] pag. 84 — THE HUMAN ENERGY FIELD
+- [x] pag. 67 — KABALAH TREE OF LIFE → #cabala-albero
+- [x] pag. 68 — AS ABOVE SO BELOW → #cabala-come-sopra
+- [x] pag. 69 — AS ABOVE SO BELOW → #cabala-come-sopra
+- [x] pag. 70 — ELECTROMAGNETISM → #cabala-atomo
+- [x] pag. 71 — ELECTROMAGNETISM → #cabala-atomo
+- [x] pag. 72 — ELECTROMAGNETISM → #cabala-elettricita
+- [x] pag. 73 — ELECTROMAGNETISM → #cabala-elettricita
+- [x] pag. 74 — ELECTROMAGNETISM IS NATURE → #cabala-natura
+- [x] pag. 75 — GOD IS LIGHT → #cabala-natura
+- [x] pag. 76 — GOD IS LIGHT → #cabala-natura
+- [x] pag. 77 — ELECTROMAGNETISM IS NATURE → #cabala-natura
+- [x] pag. 78 — ELECTROMAGNETISM IS NATURE → #cabala-fiore
+- [x] pag. 79 — FLOWER OF LIFE VS DAISY OF DEATH → #cabala-fiore
+- [x] pag. 80 — ELECTROMAGNETISM IS NATURE → #cabala-campo
+- [x] pag. 81 — ELECTROMAGNETISM IS NATURE → #cabala-campo
+- [x] pag. 82 — THE HUMAN ENERGY FIELD → #cabala-campo
+- [x] pag. 83 — THE HUMAN ENERGY FIELD → #cabala-campo
+- [x] pag. 84 — THE HUMAN ENERGY FIELD → #cabala-campo
 
 ## Corpo, dieta e coscienza (Parte IX, pagg. 85-92)
 
