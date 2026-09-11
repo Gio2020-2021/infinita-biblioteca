@@ -426,10 +426,18 @@
       z-index: 50;
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      padding: 15px 9px;
+      /* mezzo giro: col solo vertical-rl la parola scende dall'alto e si legge
+         piegando la testa a destra. Ruotata, sale dal basso — il verso in cui
+         si leggono le linguette attaccate a un bordo. */
+      transform: rotate(180deg);
+      padding: 10px 3px;
       border: 1px solid var(--amber);
-      border-right: 0;
-      border-radius: 7px 0 0 7px;
+      /* lati scambiati apposta: il mezzo giro ribalta anche le decorazioni,
+         quindi il bordo tolto a destra si dipinge a sinistra. Scritti così,
+         dopo la rotazione risultano: nessun bordo contro il bordo dello
+         schermo, angoli arrotondati dalla parte del testo. */
+      border-left: 0;
+      border-radius: 0 7px 7px 0;
       background: var(--surface);
       box-shadow: var(--shadow);
       font-family: var(--f-mono);
@@ -451,8 +459,14 @@
     .sez-tab.aperto {
       right: min(300px, 82vw);
       /* da aperta la parola non serve più (la tendina dice già dove sei) e
-         lascia il posto alla croce, che torna orizzontale */
+         lascia il posto alla croce, che torna orizzontale e diritta */
       writing-mode: horizontal-tb;
+      /* senza rotazione i lati tornano quelli veri, quindi anche bordo e
+         angoli tornano scritti nel verso naturale */
+      transform: none;
+      border-left: 1px solid var(--amber);
+      border-right: 0;
+      border-radius: 7px 0 0 7px;
       padding: 0;
       width: 34px;
       height: 46px;

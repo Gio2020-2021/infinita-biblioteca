@@ -4,13 +4,20 @@
     top: 50%;
     right: 0;
     z-index: 45;
-    transform: translateY(-50%);
+    /* il mezzo giro dopo il centraggio: la parola sale dal basso invece di
+       scendere dall'alto (vedi la nota sulla linguetta delle sezioni in
+       20-mappa.css). La rotazione avviene attorno al centro dell'elemento,
+       quindi non sposta il centraggio fatto da translateY. */
+    transform: translateY(-50%) rotate(180deg);
     writing-mode: vertical-rl;
     text-orientation: mixed;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-right: none;
-    border-radius: 6px 0 0 6px;
+    /* lati scambiati: il mezzo giro della transform ribalta le decorazioni,
+       così dopo la rotazione il bordo manca contro il bordo dello schermo e
+       gli angoli tondi stanno dalla parte del testo */
+    border-left: none;
+    border-radius: 0 6px 6px 0;
     padding: 18px 10px;
     font-family: var(--f-mono);
     font-size: 11px;
@@ -127,13 +134,11 @@
   /* Sotto gli 820px il tasto verticale finiva sempre sopra il testo in corso
      di lettura, qualunque fosse la sua posizione: la colonna è troppo stretta
      perché una fascia lunga quanto "VOCABOLARIO" scritto in verticale non
-     tocchi mai una riga. Diventa invece una linguetta corta agganciata al
-     bordo destro, a metà altezza, in coppia con quella delle sezioni che le
-     sta sopra (20-mappa.css): sporge di 34px invece di una fascia lunga
-     quanto la parola, quindi il testo resta leggibile, e sul bordo si legge
-     come una linguetta da tirare. Il testo del bottone resta nel markup (per
-     chi naviga con lettore di schermo), solo non è più visibile: al suo
-     posto un'icona. */
+     tocchi mai una riga. Resta una linguetta con la parola scritta — un'icona
+     sola non direbbe cosa apre — ma stretta: 24px in tutto contro i 40 e più
+     di prima, perché il testo si rimpicciolisce e il padding scende a 10px 3px.
+     Fa coppia con quella delle sezioni (20-mappa.css), che le sta sopra: quella
+     ambra, questa azzurra, entrambe ancorate al centro del bordo destro. */
   @media (max-width: 1079.98px) {
     .gloss-tab {
       /* cresce verso il basso dalla metà del bordo, mentre quella delle
@@ -142,13 +147,15 @@
       bottom: auto;
       right: 0;
       left: auto;
-      transform: none;
-      padding: 15px 9px;
+      /* stesso mezzo giro della linguetta delle sezioni (20-mappa.css):
+         la parola sale dal basso invece di scendere dall'alto */
+      transform: rotate(180deg);
+      padding: 10px 3px;
       font-size: 10.5px;
       /* azzurro contro l'ambra delle sezioni: due colori distinti */
       border: 1px solid var(--blue);
-      border-right: 0;
-      border-radius: 7px 0 0 7px;
+      border-left: 0;
+      border-radius: 0 7px 7px 0;
       color: var(--blue);
       z-index: 45
     }
