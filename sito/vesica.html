@@ -1357,16 +1357,25 @@
     cursor: pointer
   }
 
+  /* Il numero romano portava il colore del BORDO (--line): praticamente
+     invisibile. Ora porta il colore della sua parte, smorzato — si legge, e
+     dice anche di che parte si tratta senza aggiungere niente. La prima riga
+     resta per i browser senza color-mix. */
   nav.parts button i {
     font-style: normal;
-    font-size: 9.5px;
+    font-size: 10.5px;
     letter-spacing: .14em;
-    color: var(--line);
+    color: var(--muted);
+    color: color-mix(in srgb, var(--pc, var(--amber)) 65%, transparent);
     transition: color .15s
   }
 
   nav.parts button:hover {
     color: var(--ink)
+  }
+
+  nav.parts button:hover i {
+    color: var(--pc, var(--amber))
   }
 
   nav.parts button[aria-current="true"] {
@@ -1565,17 +1574,9 @@
       background: var(--surface-2)
     }
 
-    nav.parts .rail-cerca {
-      margin-left: 0;
-      margin-top: auto;
-      position: static;
-      background: none;
-      border-top: 1px solid var(--line)
-    }
-
-    nav.parts .rail-cerca button {
-      padding: 15px 20px
-    }
+    /* il bottone della ricerca nel cassetto sta in 90-ricerca.css, che viene
+       dopo questo foglio: scritto qui, le sue regole senza media query
+       vincerebbero comunque a parità di specificità */
 
     .rail-backdrop {
       display: block;
@@ -2099,14 +2100,28 @@
     background: color-mix(in srgb, var(--ground) 94%, transparent)
   }
 
+  /* Nella barra resta la sola lente: la parola «Cerca» stava appiccicata
+     all'ultima voce del menù e la barra sembrava avere una voce in più. Il
+     filo a sinistra e il respiro tengono separati i due mestieri — scegliere
+     una parte, e cercare. La parola torna nel cassetto del telefono, dove il
+     bottone è una riga d'elenco e un'icona sola non si spiegherebbe. */
   nav.parts .rail-cerca button {
     color: var(--ink-dim);
+    align-items: center;
     gap: 9px;
-    padding-right: 24px
+    margin-left: 14px;
+    padding: 11px 22px;
+    border-left: 1px solid var(--line)
   }
 
+  nav.parts .rail-cerca .cerca-t {
+    display: none
+  }
+
+  /* il glifo ⌕ disegna piccolo dentro il suo quadrato: per stare alla pari
+     con le voci del menù va chiesto un corpo ben più grande del loro */
   nav.parts .rail-cerca .lente-r {
-    font-size: 14px;
+    font-size: 23px;
     line-height: 1;
     color: var(--amber)
   }
@@ -2115,14 +2130,35 @@
     color: var(--ink)
   }
 
-  nav.parts .rail-cerca kbd {
-    font-family: var(--f-mono);
-    font-size: 9.5px;
-    letter-spacing: .06em;
-    color: var(--muted);
-    border: 1px solid var(--line);
-    border-radius: 3px;
-    padding: 1px 5px
+  nav.parts .rail-cerca button:hover .lente-r {
+    color: var(--ink)
+  }
+
+  /* nel cassetto del telefono il bottone torna a essere una riga d'elenco come
+     le altre: lì la parola serve, una lente da sola non si spiegherebbe */
+  @media (max-width: 820px) {
+    /* la riga va in fondo al cassetto e larga quanto le altre: il
+       `margin-left:auto` che nella barra la spinge a destra qui la
+       schiacciava in un angolo. Tre classi perché la regola di sopra ne ha
+       tre: 40-parti.css ci provava con due e perdeva in silenzio. */
+    nav.parts .rail .rail-cerca {
+      margin-left: 0;
+      margin-top: auto;
+      position: static;
+      background: none;
+      border-top: 1px solid var(--line)
+    }
+
+    nav.parts .rail-cerca button {
+      width: 100%;
+      padding: 15px 20px;
+      margin-left: 0;
+      border-left: 0
+    }
+
+    nav.parts .rail-cerca .cerca-t {
+      display: inline
+    }
   }
 
   .ric-veil {
@@ -2592,7 +2628,7 @@
     <li><button type="button" data-part="ufologia" style="--pc:var(--blue)"><i>VII</i>Ufologia</button></li>
     <li><button type="button" data-part="mitologia" style="--pc:var(--plum)"><i>VIII</i>Mitologia perduta</button></li>
     <li><button type="button" data-part="coscienza" style="--pc:var(--sage)"><i>IX</i>Coscienza e azione</button></li>
-    <li class="rail-cerca"><button type="button" id="ric-apri" aria-haspopup="dialog"><span class="lente-r" aria-hidden="true">⌕</span>Cerca<kbd id="ric-kbd">⌘K</kbd></button>
+    <li class="rail-cerca"><button type="button" id="ric-apri" aria-haspopup="dialog" aria-label="Cerca" title="Cerca (⌘K)"><span class="lente-r" aria-hidden="true">⌕</span><span class="cerca-t">Cerca</span></button>
     </li>
   </ul>
 </nav>
@@ -19538,9 +19574,12 @@ fatti?»</b> — a proposito
         }
       });
 
-      /* su Windows e Linux la scorciatoia si scrive diversamente */
-      var kbd = $("ric-kbd");
-      if (kbd && !/Mac|iPhone|iPad/.test(navigator.platform || "")) kbd.textContent = "Ctrl K";
+      /* su Windows e Linux la scorciatoia si scrive diversamente. Non c'è più
+         una targhetta nella barra: la scorciatoia vive nel suggerimento del
+         bottone, che è l'unico posto dove serve ancora scriverla. */
+      var apri = $("ric-apri");
+      if (apri && !/Mac|iPhone|iPad/.test(navigator.platform || ""))
+        apri.title = "Cerca (Ctrl K)";
 
       vuoto();
     })();

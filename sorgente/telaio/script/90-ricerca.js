@@ -496,9 +496,12 @@
         }
       });
 
-      /* su Windows e Linux la scorciatoia si scrive diversamente */
-      var kbd = $("ric-kbd");
-      if (kbd && !/Mac|iPhone|iPad/.test(navigator.platform || "")) kbd.textContent = "Ctrl K";
+      /* su Windows e Linux la scorciatoia si scrive diversamente. Non c'è più
+         una targhetta nella barra: la scorciatoia vive nel suggerimento del
+         bottone, che è l'unico posto dove serve ancora scriverla. */
+      var apri = $("ric-apri");
+      if (apri && !/Mac|iPhone|iPad/.test(navigator.platform || ""))
+        apri.title = "Cerca (Ctrl K)";
 
       vuoto();
     })();
