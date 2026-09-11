@@ -27,6 +27,7 @@
         b.setAttribute("aria-current", b.getAttribute("data-part") === nome ? "true" : "false");
       });
       popolaPartNav(nome);
+      aggiornaRailToggle(nome);
       return ok;
     }
     function popolaPartNav(nome) {
@@ -103,3 +104,45 @@
     }
     window.addEventListener("hashchange", function () { instrada(location.hash, false); });
     instrada(location.hash, true);
+
+    /* ---------- menu delle parti a tendina (schermi stretti) ----------
+       Stesso <ul class="rail">, nessun bottone duplicato: sotto gli 820px
+       il CSS lo trasforma in un cassetto laterale, qui si gestisce solo
+       l'apertura/chiusura e l'etichetta con la parte corrente. Sopra la
+       soglia .rail-toggle è display:none e questi bottoni non esistono
+       nel DOM visibile, ma restare "vivi" non costa nulla. */
+    function aggiornaRailToggle(nome) {
+      var etichetta = $("rail-toggle-t"), toggle = $("rail-toggle");
+      if (!etichetta) return;
+      var b = bottoni.filter(function (x) { return x.getAttribute("data-part") === nome; })[0];
+      if (!b) return;
+      var nodi = b.childNodes;
+      var testo = nodi.length ? nodi[nodi.length - 1].textContent : b.textContent;
+      etichetta.textContent = testo.trim();
+      if (toggle) toggle.style.setProperty("--pc", b.style.getPropertyValue("--pc"));
+    }
+    (function () {
+      var toggle = $("rail-toggle"), tendina = $("rail-drawer"), sfondo = $("rail-backdrop");
+      if (!toggle || !tendina) return;
+      function apriTendina() {
+        tendina.classList.add("open");
+        if (sfondo) sfondo.classList.add("open");
+        toggle.setAttribute("aria-expanded", "true");
+      }
+      function chiudiTendina() {
+        tendina.classList.remove("open");
+        if (sfondo) sfondo.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+      toggle.addEventListener("click", function () {
+        if (tendina.classList.contains("open")) chiudiTendina(); else apriTendina();
+      });
+      if (sfondo) sfondo.addEventListener("click", chiudiTendina);
+      /* selezionare una parte, o aprire la ricerca, chiude la tendina da sé */
+      tendina.addEventListener("click", function (ev) {
+        if (ev.target.closest("button")) chiudiTendina();
+      });
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key === "Escape" && tendina.classList.contains("open")) chiudiTendina();
+      });
+    })();
