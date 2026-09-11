@@ -155,6 +155,17 @@
     margin-right: 7px
   }
 
+  /* Da 1080px in su il .part-nav a destra (20-mappa.css) copre lo stesso
+     ruolo restando a vista mentre si scorre, invece di stare fermo sotto
+     al titolo: due indici delle stesse voci sarebbero ridondanti. .part-toc
+     resta nel DOM (è la fonte da cui popolaPartNav() clona i link, e la
+     numerazione che rinumera.py aggiorna) — si nasconde, non si toglie. */
+  @media (min-width:1080px) {
+    .part-toc {
+      display: none
+    }
+  }
+
   /* ============ MENU DELLE PARTI A TENDINA (schermi stretti) ============
      Sotto la stessa soglia in cui la colonna laterale delle sezioni sparisce
      (vedi .branch-grid in 30-glossario.css), la barra orizzontale delle parti

@@ -268,9 +268,15 @@
     transition: opacity .18s ease
   }
 
-  /* sotto i 1500px non c'è spazio vero per la colonna: il menu della parte
-     resta quello in testa (i badge), e la pagina è larga come sempre */
-  @media (min-width:1500px) {
+  /* La soglia era 1500px: quasi nessuna finestra desktop normale la
+     raggiunge, quindi l'indice a destra non si vedeva mai in pratica e
+     l'unico modo di muoversi dentro una parte restava .part-toc, le pillole
+     sotto il titolo — che ora è nascosto (vedi 40-parti.css) proprio perché
+     sostituito da questo. Soglia abbassata a una larghezza da laptop vero:
+     a 1080px il testo resta comunque leggibile (colonna ≈630-700px anche
+     tolti i 312px della sidebar). Sotto restano il layout mobile e quello
+     "finestra stretta" senza sidebar: lì non c'è spazio, punto. */
+  @media (min-width:1080px) {
     /* Si restringono solo le sezioni, che sono l'unica cosa che scorre sotto
        il menu: l'intestazione del capitolo (titolo, sommario, badge) resta
        larga quanto il resto, perché mentre la si legge il menu non c'è ancora.
