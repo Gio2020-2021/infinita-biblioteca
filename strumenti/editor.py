@@ -653,6 +653,10 @@ STILE_SCHEDA = """
      quello che si sarebbe visto davvero. Sotto gli 820px del foglio della
      mappa la griglia si richiude da sé. */
   #sc-anteprima { padding: 4px 16px 30px }
+  /* il blocco su cui si sta scrivendo, segnato nell'anteprima: senza, in una
+     sezione lunga non si sa quale dei venti blocchi si sta guardando */
+  #sc-anteprima .sc-mirato { outline: 1px solid var(--amber-soft, rgba(232,163,61,.35));
+    outline-offset: 10px; border-radius: 2px }
   .sc-gruppo { max-width: 860px; margin: 0 auto 26px }
   .sc-intestazione { font-family: var(--f-mono, monospace); font-size: 10px;
     letter-spacing: .16em; text-transform: uppercase; color: var(--muted, #8B8D9E);
@@ -1063,7 +1067,15 @@ SCRIPT_SCHEDA = r"""
       b.textContent = "+ " + NOMI[t];
       b.addEventListener("click", function () {
         var vuoto = { tipo: t, origine: null, voci: t === "voci" ? [{ titolo: "", sottotitolo: "", testo: "" }] : [] };
-        elenco.appendChild(carta(vuoto, null));
+        var nuova = carta(vuoto, null);
+        elenco.appendChild(nuova);
+        /* un blocco nuovo nasce in fondo, cioè fuori dallo schermo in tutte e
+           due le colonne: lo si porta sotto gli occhi e ci si mette il fuoco,
+           altrimenti sembra che il tasto non abbia fatto niente */
+        mira(nuova);
+        nuova.scrollIntoView({ block: "center" });
+        var primo = nuova.querySelector(".sc-scrivi");
+        if (primo) primo.focus();
       });
       agg.appendChild(b);
     });
@@ -1155,6 +1167,44 @@ SCRIPT_SCHEDA = r"""
      frammento. Rifarla in JavaScript vorrebbe dire tenere due composizioni
      allineate a mano, e prima o poi divergerebbero — mostrando un'anteprima
      che non è ciò che verrebbe scritto. */
+  /* Il blocco su cui si sta scrivendo. L'anteprima si rifà a ogni tasto, e
+     senza questo tornerebbe ogni volta in cima: chi aggiunge un blocco in
+     fondo a una sezione lunga non vedrebbe mai comparire quello che scrive —
+     l'anteprima c'è, ma parecchi schermi più giù. */
+  var cartaMirata = null;
+  function mira(carta) {
+    cartaMirata = carta || null;
+  }
+  function indiceMirato() {
+    if (!cartaMirata || !cartaMirata.parentNode) return -1;
+    return Array.prototype.indexOf.call(cartaMirata.parentNode.children, cartaMirata);
+  }
+  /* I blocchi stanno tutti nella seconda colonna della griglia, nello stesso
+     ordine delle carte: l'n-esimo figlio è il blocco della n-esima carta. */
+  function bloccoAnteprima(i) {
+    var colonne = document.querySelectorAll("#sc-anteprima .branch-grid > div");
+    var dentro = colonne[1] || colonne[0];
+    if (!dentro || i < 0) return null;
+    return dentro.children[i] || dentro.children[dentro.children.length - 1] || null;
+  }
+  function inquadra() {
+    var el = bloccoAnteprima(indiceMirato());
+    if (!el) return;
+    el.classList.add("sc-mirato");
+    var lato = $("sc-lato");
+    var r = el.getBoundingClientRect(), rl = lato.getBoundingClientRect();
+    /* si muove solo se il blocco è fuori dalla finestra dell'anteprima: se è
+       già in vista, saltellare a ogni lettera darebbe il voltastomaco */
+    if (r.top < rl.top + 30 || r.bottom > rl.bottom)
+      lato.scrollTop += r.top - rl.top - 46;
+  }
+  /* nei campi della colonna di sinistra non si mira niente: quelli stanno in
+     cima all'anteprima e non c'è nessun blocco da inseguire */
+  $("sc-modulo").addEventListener("focusin", function (e) {
+    var c = e.target.closest && e.target.closest(".sc-carta");
+    if (c !== cartaMirata) mira(c);
+  });
+
   var attesaAnteprima = null, anteprimaInCorso = false;
   function chiediAnteprima() {
     if (!sezioneAperta || !scheda) return;
@@ -1167,7 +1217,11 @@ SCRIPT_SCHEDA = r"""
         body: JSON.stringify({ pagina: PAGINA, sezione: sezioneAperta, scheda: raccogli() })
       }).then(function (r) { return r.json(); }).then(function (r) {
         anteprimaInCorso = false;
-        if (r.ok) $("sc-anteprima").innerHTML = r.html;
+        if (!r.ok) { esiti(r.errore || "l'anteprima non si è potuta comporre", true); return; }
+        var alto = $("sc-lato").scrollTop;
+        $("sc-anteprima").innerHTML = r.html;
+        $("sc-lato").scrollTop = alto;    // l'HTML è nuovo di zecca: la posizione va rimessa
+        inquadra();
       }).catch(function () { anteprimaInCorso = false; });
     }, 260);
   }
