@@ -951,52 +951,63 @@
       background: var(--surface-2)
     }
 
-    /* Linguetta agganciata al bordo destro, non un tondo che galleggia in un
-       angolo: sta a metà altezza, dove arriva il pollice, e i due bordi
-       arrotondati solo a sinistra la fanno leggere come una linguetta che
-       esce dal bordo. Fa coppia con quella del vocabolario (30-glossario.css),
-       che sta subito sotto: insieme sono centrate sul bordo — questa occupa
-       da -58 a -4, quella da +4 a +58. */
+    /* Linguetta agganciata al bordo destro con la parola scritta per esteso in
+       verticale, non un'icona: un simbolo solo non dice cosa apre, e un tondo
+       che galleggia sopra il testo sporge molto di più di una linguetta
+       attaccata al bordo. Ambra qui, azzurro per il dizionario
+       (30-glossario.css): due colori distinti, così si riconoscono a colpo
+       d'occhio senza doverle leggere.
+       Ancoraggio al centro del bordo, non a un'altezza fissa: questa cresce
+       verso l'alto dalla metà (bottom) e quella del dizionario verso il basso
+       (top), quindi la coppia resta centrata qualunque sia la lunghezza delle
+       due parole — niente numeri da ricalcolare se una cambia. */
     .sez-tab {
       display: flex;
       align-items: center;
       justify-content: center;
       position: fixed;
       right: 0;
-      top: 50%;
-      margin-top: -58px;
+      bottom: calc(50% + 5px);
       z-index: 50;
-      width: 34px;
-      height: 54px;
-      padding: 0;
-      border: 1px solid var(--line);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      padding: 15px 9px;
+      border: 1px solid var(--amber);
       border-right: 0;
       border-radius: 7px 0 0 7px;
       background: var(--surface);
       box-shadow: var(--shadow);
-      color: var(--pc, var(--amber));
-      /* il testo resta nel markup per chi naviga con lettore di schermo */
-      font-size: 0;
+      font-family: var(--f-mono);
+      font-size: 10.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--amber);
       cursor: pointer;
-      transition: right .25s ease, border-color .15s
+      transition: right .25s ease, background .15s
     }
 
-    .sez-tab::before {
-      content: "§";
-      font-size: 20px;
-      line-height: 1
+    .sez-tab:hover {
+      background: var(--amber-soft)
     }
 
     /* aperta la tendina, la linguetta ci scivola accanto e diventa la
        chiusura: resta attaccata al suo bordo invece di finire sepolta sotto
        il pannello, e non serve un secondo bottone dentro */
     .sez-tab.aperto {
-      right: min(300px, 82vw)
+      right: min(300px, 82vw);
+      /* da aperta la parola non serve più (la tendina dice già dove sei) e
+         lascia il posto alla croce, che torna orizzontale */
+      writing-mode: horizontal-tb;
+      padding: 0;
+      width: 34px;
+      height: 46px;
+      font-size: 0
     }
 
     .sez-tab.aperto::before {
       content: "✕";
-      font-size: 14px
+      font-size: 14px;
+      line-height: 1
     }
 
     .sez-tab:focus-visible {
@@ -1480,32 +1491,25 @@
      posto un'icona. */
   @media (max-width: 1079.98px) {
     .gloss-tab {
-      top: 50%;
-      /* subito sotto la linguetta delle sezioni (20-mappa.css): le due sono
-         gemelle e centrate insieme sul bordo destro */
-      margin-top: 4px;
+      /* cresce verso il basso dalla metà del bordo, mentre quella delle
+         sezioni cresce verso l'alto: la coppia resta centrata da sé */
+      top: calc(50% + 5px);
       bottom: auto;
       right: 0;
       left: auto;
       transform: none;
-      writing-mode: horizontal-tb;
-      width: 34px;
-      height: 54px;
-      padding: 0;
-      border: 1px solid var(--line);
+      padding: 15px 9px;
+      font-size: 10.5px;
+      /* azzurro contro l'ambra delle sezioni: due colori distinti */
+      border: 1px solid var(--blue);
       border-right: 0;
       border-radius: 7px 0 0 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0;
+      color: var(--blue);
       z-index: 45
     }
 
-    .gloss-tab::before {
-      content: "📖";
-      font-size: 18px;
-      line-height: 1
+    .gloss-tab:hover {
+      background: var(--blue-soft)
     }
   }
 
@@ -12331,7 +12335,7 @@
   </div>
 </div>
 
-<button type="button" class="gloss-tab" id="gloss-tab" aria-expanded="false" aria-controls="gloss-panel">Vocabolario</button>
+<button type="button" class="gloss-tab" id="gloss-tab" aria-expanded="false" aria-controls="gloss-panel">Dizionario</button>
 <div class="gloss-backdrop" id="gloss-backdrop"></div>
 <aside class="gloss-panel" id="gloss-panel" aria-label="Vocabolario del Transurfing">
   <div class="gloss-panel-head">
@@ -12853,7 +12857,6 @@
       /* una parte senza sommario (il banco, la galleria delle storie) non ha
          sezioni da elencare: niente tasto invece di un cassetto vuoto */
       tasto.hidden = pannello.children.length === 0;
-      tasto.style.setProperty("--pc", pannello.style.getPropertyValue("--pc"));
       if (tasto.hidden) chiudiSezioni();
     }
     function chiudiSezioni() {

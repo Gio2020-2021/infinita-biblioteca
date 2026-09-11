@@ -136,32 +136,25 @@
      posto un'icona. */
   @media (max-width: 1079.98px) {
     .gloss-tab {
-      top: 50%;
-      /* subito sotto la linguetta delle sezioni (20-mappa.css): le due sono
-         gemelle e centrate insieme sul bordo destro */
-      margin-top: 4px;
+      /* cresce verso il basso dalla metà del bordo, mentre quella delle
+         sezioni cresce verso l'alto: la coppia resta centrata da sé */
+      top: calc(50% + 5px);
       bottom: auto;
       right: 0;
       left: auto;
       transform: none;
-      writing-mode: horizontal-tb;
-      width: 34px;
-      height: 54px;
-      padding: 0;
-      border: 1px solid var(--line);
+      padding: 15px 9px;
+      font-size: 10.5px;
+      /* azzurro contro l'ambra delle sezioni: due colori distinti */
+      border: 1px solid var(--blue);
       border-right: 0;
       border-radius: 7px 0 0 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0;
+      color: var(--blue);
       z-index: 45
     }
 
-    .gloss-tab::before {
-      content: "📖";
-      font-size: 18px;
-      line-height: 1
+    .gloss-tab:hover {
+      background: var(--blue-soft)
     }
   }
 

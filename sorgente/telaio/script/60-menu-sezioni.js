@@ -29,7 +29,6 @@
       /* una parte senza sommario (il banco, la galleria delle storie) non ha
          sezioni da elencare: niente tasto invece di un cassetto vuoto */
       tasto.hidden = pannello.children.length === 0;
-      tasto.style.setProperty("--pc", pannello.style.getPropertyValue("--pc"));
       if (tasto.hidden) chiudiSezioni();
     }
     function chiudiSezioni() {
