@@ -409,6 +409,116 @@ def componi_sezione(scheda, originale):
     return fuori
 
 
+# --------------------------------------------------------------------- la fusione
+
+def unisci(vera, dal_browser):
+    """Scheda appena riletta dal disco + quella tornata dal browser -> scheda da
+    ricomporre.
+
+    Il browser manda solo i VALORI dei campi, l'ordine dei blocchi e quali sono
+    stati toccati. Indici e testo grezzo si riprendono sempre dalla copia appena
+    riletta: così un browser con dati vecchi in mano (una scheda rimasta aperta
+    mentre il file cambiava) non può riscrivere pezzi che non ha mai visto, e
+    quello che non è stato toccato resta per forza identico all'originale.
+    """
+    fusa = {k: vera[k] for k in ("id", "apertura", "blocchi_da", "blocchi_a",
+                                 "rientro_blocchi") if k in vera}
+    fusa["aside"] = {}
+    for nome, campo in vera.get("aside", {}).items():
+        arrivato = (dal_browser.get("aside") or {}).get(nome) or {}
+        nuovo = dict(campo)
+        if arrivato.get("mod"):
+            nuovo["html"] = arrivato.get("html", "")
+            nuovo["mod"] = True
+        fusa["aside"][nome] = nuovo
+
+    veri = vera.get("blocchi", [])
+    fusa["blocchi"] = []
+    for arrivato in dal_browser.get("blocchi", []):
+        origine = arrivato.get("origine")
+        if isinstance(origine, int) and 0 <= origine < len(veri):
+            b = dict(veri[origine])
+        else:
+            b = {"tipo": arrivato.get("tipo", "paragrafo"), "mod": True}
+            origine = None
+        b["origine"] = origine
+        if arrivato.get("mod"):
+            b["mod"] = True
+            for campo in ("tipo", "titolo", "sottotitolo", "testo", "src", "alt",
+                          "didascalia", "grezzo"):
+                if campo in arrivato:
+                    b[campo] = arrivato[campo]
+            if "voci" in arrivato:
+                vecchie = b.get("voci") or []
+                b["voci"] = []
+                for v in arrivato["voci"]:
+                    o = v.get("origine")
+                    base = dict(vecchie[o]) if isinstance(o, int) and 0 <= o < len(vecchie) else {}
+                    if v.get("mod") or not base:
+                        base.update({k: v.get(k, "") for k in ("titolo", "sottotitolo", "testo")})
+                        base["mod"] = True
+                        base.pop("semplice", None)
+                    b["voci"].append(base)
+            if "figure" in arrivato:
+                vecchie = b.get("figure") or []
+                b["figure"] = []
+                for fg in arrivato["figure"]:
+                    o = fg.get("origine")
+                    base = dict(vecchie[o]) if isinstance(o, int) and 0 <= o < len(vecchie) else {}
+                    if fg.get("mod") or not base:
+                        base.update({k: fg.get(k, "") for k in ("src", "alt", "didascalia")})
+                        base["mod"] = True
+                    b["figure"].append(base)
+        fusa["blocchi"].append(b)
+    return fusa
+
+
+# ------------------------------------------------------------- una sezione nuova
+
+def scheletro_sezione(sid, titolo, colore, etichetta="", rientro="    "):
+    """Il markup di una sezione nuova, nella forma del progetto. Nasce con una
+    voce d'elenco vuota: una sezione senza blocchi non si potrebbe riempire dalla
+    scheda, perché non ci sarebbe nulla su cui appendere il primo."""
+    c = f"var(--{colore})" if colore else "var(--amber)"
+    r = rientro
+    return "\n".join([
+        f'{r}<section class="branch" id="{sid}" style="--c:{c}">',
+        f'{r}  <div class="branch-grid">',
+        f'{r}    <div class="branch-aside">',
+        f'{r}      <span class="tag" style="color:{c}">{etichetta or titolo}</span>',
+        f'{r}      <h2>{titolo}</h2>',
+        f'{r}      <p class="gist"></p>',
+        f'{r}      <p class="src"></p>',
+        f'{r}    </div>',
+        f'{r}    <div>',
+        f'{r}      <ul class="tree">',
+        f'{r}        <li><span class="n-t">TITOLO DELLA VOCE</span>',
+        f'{r}          <p class="n-d">Il testo della voce.</p>',
+        f'{r}        </li>',
+        f'{r}      </ul>',
+        f'{r}    </div>',
+        f'{r}  </div>',
+        f'{r}</section>'])
+
+
+# parole che in un indirizzo non dicono nulla: «Una sezione di prova» deve dare
+# «sezione-prova», non «una-sezione-di»
+VUOTE = {"il", "lo", "la", "i", "gli", "le", "un", "uno", "una", "di", "del",
+         "della", "dei", "delle", "dello", "degli", "da", "dal", "dalla", "in",
+         "nel", "nella", "con", "su", "sul", "sulla", "per", "tra", "fra", "e",
+         "ed", "o", "a", "al", "alla", "ai", "che", "non", "si", "come"}
+
+
+def sigla(titolo):
+    """Titolo -> pezzo di id: minuscolo, senza accenti né punteggiatura, e senza
+    le parole che non distinguono nulla."""
+    import unicodedata
+    t = unicodedata.normalize("NFKD", titolo).encode("ascii", "ignore").decode().lower()
+    parole = [p for p in re.split(r"[^a-z0-9]+", t) if p]
+    piene = [p for p in parole if p not in VUOTE] or parole
+    return "-".join(piene[:3]) or "sezione"
+
+
 # ------------------------------------------------------------------------- prova
 
 def sezioni_del_progetto():
