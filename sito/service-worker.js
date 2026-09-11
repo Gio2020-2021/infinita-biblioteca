@@ -4,15 +4,22 @@
 // anteprima.py, e il browser stesso rifiuta di registrare un worker fuori
 // da un contesto sicuro (https, o http://localhost).
 //
-// Strategia: "cache prima, rete per aggiornare". Ogni richiesta GET che va a
-// buon fine viene salvata; alla richiesta successiva si risponde subito dalla
-// cache (niente attesa, funziona anche se il server locale è appena partito
-// dopo un riavvio del telefono) mentre in sottofondo si va comunque a
-// controllare se c'è una versione più recente, che finisce in cache per la
-// volta dopo. Le 907 immagini di Risveglio non vengono precaricate tutte:
-// entrano in cache una per una, alla prima apertura di ciascuna pagina.
+// Strategia, diversa per le pagine e per il resto:
+//
+//   PAGINE (navigazioni)  prima la rete, la cache solo se la rete manca.
+//     Il server sta sullo stesso telefono, quindi chiedere alla rete non costa
+//     nulla e si vede sempre l'ultima versione ricostruita. La cache resta la
+//     rete di sicurezza per quando il server non c'è ancora (subito dopo
+//     l'accensione) o è spento: è lei che fa aprire comunque l'app.
+//     Prima erano cache-first anche queste, ed era il motivo per cui dopo un
+//     git pull si continuava a vedere la versione vecchia.
+//
+//   TUTTO IL RESTO       prima la cache, rete in sottofondo per aggiornarla.
+//     Immagini, icone, manifest: pesano e non cambiano quasi mai, quindi qui
+//     la cache serve davvero. Le 907 immagini di Risveglio non si precaricano
+//     tutte: entrano una per una, alla prima apertura di ciascuna pagina.
 
-const CACHE = "biblioteca-v3";
+const CACHE = "biblioteca-v4";
 
 const PRECARICA = [
   "/index.html",
@@ -43,20 +50,40 @@ self.addEventListener("activate", (evento) => {
   self.clients.claim();
 });
 
+function inCache(richiesta, risposta) {
+  if (risposta && risposta.status === 200) {
+    const copia = risposta.clone();
+    caches.open(CACHE).then((cache) => cache.put(richiesta, copia));
+  }
+  return risposta;
+}
+
 self.addEventListener("fetch", (evento) => {
   if (evento.request.method !== "GET") return;
 
+  // Le PAGINE si chiedono prima alla rete. Il server sta sullo stesso telefono
+  // (127.0.0.1): la "rete" è istantanea, quindi la cache non farebbe guadagnare
+  // tempo — farebbe solo vedere la versione vecchia dopo un aggiornamento, che
+  // è esattamente quello che succedeva. La cache resta la rete di sicurezza per
+  // quando il server non è ancora sveglio (all'accensione del telefono) o è
+  // spento: lì risponde lei, ed è il motivo per cui l'app si apre comunque.
+  if (evento.request.mode === "navigate" || evento.request.destination === "document") {
+    evento.respondWith(
+      fetch(evento.request)
+        .then((risposta) => inCache(evento.request, risposta))
+        .catch(() => caches.match(evento.request).then((c) => c || caches.match("/index.html")))
+    );
+    return;
+  }
+
+  // Tutto il resto (le 907 immagini di Risveglio, le icone, il manifest) resta
+  // "prima la cache": non cambia quasi mai e pesa, quindi qui la cache serve
+  // davvero. L'aggiornamento arriva in sottofondo per la volta dopo.
   evento.respondWith(
     caches.match(evento.request).then((dallaCache) => {
       const dallaRete = fetch(evento.request)
-        .then((risposta) => {
-          if (risposta && risposta.status === 200) {
-            const copia = risposta.clone();
-            caches.open(CACHE).then((cache) => cache.put(evento.request, copia));
-          }
-          return risposta;
-        })
-        .catch(() => dallaCache);   // server locale non ancora sveglio: usa la cache
+        .then((risposta) => inCache(evento.request, risposta))
+        .catch(() => dallaCache);
       return dallaCache || dallaRete;
     })
   );
