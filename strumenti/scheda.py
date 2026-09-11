@@ -284,6 +284,10 @@ def analizza_sezione(frammento):
     scheda["blocchi_da"] = primo["inizio"] if primo else colonna_da
     scheda["blocchi_a"] = ultimo["fine"] if ultimo else colonna_da
     scheda["rientro_blocchi"] = _rientro(frammento, primo["inizio"]) if primo else " " * 10
+    # quanti blocchi c'erano davvero: senza questo numero, una scheda a cui il
+    # browser ha tolto gli ultimi blocchi sembra intatta (0,1,2 è pur sempre la
+    # sequenza di partenza) e la cancellazione si perde per strada
+    scheda["blocchi_veri"] = len(scheda["blocchi"])
     return scheda
 
 
@@ -385,7 +389,12 @@ def componi_sezione(scheda, originale):
     # La sequenza è cambiata (aggiunta, cancellazione, spostamento)? Allora si
     # riscrive l'intera regione dei blocchi; altrimenti si tocca solo chi cambia.
     origini = [b.get("origine") for b in blocchi]
-    sequenza_intatta = origini == list(range(len(origini)))
+    # «intatta» vuol dire: stessi blocchi, nello stesso ordine, e TUTTI. Il
+    # confronto col numero di partenza è quello che riconosce la cancellazione
+    # degli ultimi: senza, 0,1 dopo aver tolto il terzo sembrava la sequenza
+    # originale e il blocco tolto restava sul disco.
+    sequenza_intatta = (origini == list(range(len(origini)))
+                        and len(origini) == scheda.get("blocchi_veri", len(origini)))
 
     if not sequenza_intatta and da is not None:
         pezzi = [_testo_blocco(b, rientro).lstrip() if k == 0 else _testo_blocco(b, rientro)
@@ -422,7 +431,7 @@ def unisci(vera, dal_browser):
     quello che non è stato toccato resta per forza identico all'originale.
     """
     fusa = {k: vera[k] for k in ("id", "apertura", "blocchi_da", "blocchi_a",
-                                 "rientro_blocchi") if k in vera}
+                                 "rientro_blocchi", "blocchi_veri") if k in vera}
     fusa["aside"] = {}
     for nome, campo in vera.get("aside", {}).items():
         arrivato = (dal_browser.get("aside") or {}).get(nome) or {}
