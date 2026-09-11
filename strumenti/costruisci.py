@@ -303,7 +303,8 @@ def main():
 
         cartella_immagini = copia_immagini(d, cfg)
         if cartella_immagini is not None:
-            n_img = sum(1 for _ in cartella_immagini.glob("*.png"))
+            n_img = sum(1 for p in cartella_immagini.iterdir()
+                        if p.suffix in (".png", ".jpg"))
             print(f"copiate  {cartella_immagini.relative_to(RADICE)}/  ({n_img} immagini)")
 
     # il portale si rifà sempre da tutte le mappe, non solo da quelle scelte
