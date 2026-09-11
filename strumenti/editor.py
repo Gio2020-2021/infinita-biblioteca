@@ -477,13 +477,25 @@ STILE_EDITOR = """
     border: 1px solid var(--line, #2E3140); background: transparent;
     color: var(--ink-dim, #B4B3AC);
   }
+  /* i tre tasti di comando in maiuscolo, come nella scheda: sono gli stessi
+     tre gesti nei due pannelli e devono avere la stessa voce */
+  #ed-testa .ed-spinta button { text-transform: uppercase; letter-spacing: .08em }
   #ed-testa button:hover, .ed-inserti button:hover { color: var(--ink, #E6E4DC); border-color: var(--amber, #E8A33D) }
   #ed-salva { background: var(--amber, #E8A33D) !important; color: #14140f !important;
     border-color: var(--amber, #E8A33D) !important; font-weight: 600 }
-  #ed-corpo { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  /* --ed-taglio è la larghezza della colonna del codice: la sposta la maniglia
+     e resta memorizzata nel browser, esattamente come nella scheda */
+  #ed-corpo { display: grid;
+    grid-template-columns: minmax(280px, var(--ed-taglio, 1fr)) 7px minmax(280px, 1fr);
     flex: 1; min-height: 0 }
-  #ed-sinistra { display: flex; flex-direction: column; min-height: 0;
-    border-right: 1px solid var(--line, #2E3140) }
+  #ed-sinistra { display: flex; flex-direction: column; min-height: 0 }
+  #ed-maniglia { position: relative; cursor: col-resize;
+    background: var(--line, #2E3140); transition: background .15s }
+  /* la zona di presa è più larga del segno: 7px si prendono male col mouse */
+  #ed-maniglia::before { content: ""; position: absolute; top: 0; bottom: 0;
+    left: -5px; right: -5px }
+  #ed-maniglia:hover, #ed-maniglia.ed-tira { background: var(--amber, #E8A33D) }
+  body.ed-trascina { user-select: none; cursor: col-resize }
   .ed-inserti { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 10px;
     border-bottom: 1px solid var(--line-soft, #242734); background: var(--surface-2, #232633) }
   .ed-misura { margin-left: auto; display: flex; align-items: center; gap: 6px;
@@ -584,7 +596,10 @@ STILE_EDITOR = """
     border: 1px solid var(--amber, #E8A33D); color: var(--ink, #E6E4DC);
     opacity: 0; pointer-events: none; transition: opacity .2s ease }
   #ed-briciola.on { opacity: 1 }
-  @media (max-width: 900px) { #ed-corpo { grid-template-columns: 1fr } #ed-destra { display: none } }
+  @media (max-width: 900px) {
+    #ed-corpo { grid-template-columns: 1fr }
+    #ed-destra, #ed-maniglia { display: none }
+  }
 </style>
 """
 
@@ -632,12 +647,12 @@ STILE_SCHEDA = """
     background: var(--ground, #12131A); border-bottom: 1px solid var(--line-soft, #242734);
     font-family: var(--f-mono, monospace); font-size: 10px; letter-spacing: .12em;
     text-transform: uppercase; color: var(--muted, #8B8D9E) }
+  /* L'anteprima è la sezione vera e si lascia impaginare dalle sue regole:
+     le due colonne — fianco e testo — come nell'editor di codice e come nella
+     pagina. Prima erano forzate a una sola, e l'anteprima non somigliava a
+     quello che si sarebbe visto davvero. Sotto gli 820px del foglio della
+     mappa la griglia si richiude da sé. */
   #sc-anteprima { padding: 4px 16px 30px }
-  /* l'anteprima è la sezione vera: le sue regole vogliono la griglia a due
-     colonne, che qui dentro non ci sta. Una colonna sola, come sul telefono. */
-  #sc-anteprima .branch-grid { grid-template-columns: 1fr; gap: 18px }
-  #sc-anteprima .branch-aside { position: static }
-  #sc-anteprima section.branch { padding: 0; border-bottom: 0 }
   .sc-gruppo { max-width: 860px; margin: 0 auto 26px }
   .sc-intestazione { font-family: var(--f-mono, monospace); font-size: 10px;
     letter-spacing: .16em; text-transform: uppercase; color: var(--muted, #8B8D9E);
@@ -1352,6 +1367,8 @@ SCRIPT_EDITOR = r"""
         </div>
         <textarea id="ed-testo" spellcheck="false"></textarea>
       </div>
+      <div id="ed-maniglia" role="separator" aria-orientation="vertical"
+           title="Trascina per allargare una delle due colonne &middot; doppio clic per rimetterle pari"></div>
       <div id="ed-destra">
         <div id="ed-etichetta-anteprima">anteprima dal vivo</div>
         <div id="ed-anteprima"></div>
@@ -1610,6 +1627,54 @@ SCRIPT_EDITOR = r"""
     if (cm) cm.refresh();
     metteFuoco();
   });
+
+  /* ---------- la maniglia fra codice e anteprima ----------
+     Stessa della scheda, con la sua misura a parte: qui a sinistra c'è il
+     codice e le larghezze comode sono altre. CodeMirror va rinfrescato dopo
+     il trascinamento, altrimenti continua a misurare la larghezza vecchia. */
+  (function () {
+    var maniglia = document.getElementById("ed-maniglia"),
+      corpo = document.getElementById("ed-corpo");
+    if (!maniglia || !corpo) return;
+    var salvata = null;
+    try { salvata = localStorage.getItem("ed.taglio"); } catch (e) { }
+    if (salvata) corpo.style.setProperty("--ed-taglio", salvata);
+
+    function sposta(x) {
+      var r = corpo.getBoundingClientRect();
+      var largo = Math.max(280, Math.min(x - r.left, r.width - 290));
+      corpo.style.setProperty("--ed-taglio", largo + "px");
+      try { localStorage.setItem("ed.taglio", largo + "px"); } catch (e) { }
+    }
+    function ripristina() {
+      corpo.style.removeProperty("--ed-taglio");
+      try { localStorage.removeItem("ed.taglio"); } catch (e) { }
+    }
+    /* il doppio clic lo riconosco qui invece di ascoltare "dblclick": il
+       preventDefault sul mousedown — che serve a non selezionare il testo
+       mentre si trascina — impedisce al browser di emetterlo */
+    var ultimoClic = 0;
+    maniglia.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      maniglia.classList.add("ed-tira");
+      document.body.classList.add("ed-trascina");
+      var mosso = false;
+      function muove(ev) { mosso = true; sposta(ev.clientX); }
+      function molla() {
+        maniglia.classList.remove("ed-tira");
+        document.body.classList.remove("ed-trascina");
+        document.removeEventListener("mousemove", muove);
+        document.removeEventListener("mouseup", molla);
+        if (cm) cm.refresh();
+        if (mosso) { ultimoClic = 0; return; }
+        var ora = Date.now();
+        if (ora - ultimoClic < 400) { ripristina(); if (cm) cm.refresh(); ultimoClic = 0; }
+        else ultimoClic = ora;
+      }
+      document.addEventListener("mousemove", muove);
+      document.addEventListener("mouseup", molla);
+    });
+  })();
 
   document.getElementById("ed-annulla").addEventListener("click", function () { chiudi(false); });
   /* il viaggio di ritorno: dal codice alla scheda a campi. Passa per chiudi(),
