@@ -96,3 +96,37 @@
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
 }
+
+/* ---------------------------------------------------------------- i sigilli
+   Le figure che il libro mostra come immagini minuscole e sgranate (il
+   «Sigillo di Lucifero» è un PNG di 76×108 pixel) qui sono RIDISEGNATE a mano
+   in SVG: ricalcate sulla figura del libro, ma vettoriali — nitide a qualunque
+   ingrandimento, leggere, e prendono il colore della pagina invece di portarsi
+   dietro un fondo bianco. È la stessa scelta già fatta in Rapporto Vesica per i
+   componenti geometrici. L'immagine originale resta in immagini/: si ridisegna
+   la figura, non si cancella la fonte. */
+.sigillo {
+  margin: 18px 0;
+  max-width: 250px;
+}
+
+.sigillo svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sigillo .tratto {
+  fill: none;
+  stroke: var(--c, var(--amber));
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sigillo figcaption {
+  margin-top: 8px;
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
