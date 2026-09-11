@@ -592,11 +592,12 @@ STILE_SCHEDA = """
 <style>
   /* ============ LA SCHEDA: modifica senza mettere le mani nel codice ============ */
   #sc-velo { position: fixed; inset: 0; z-index: 300; background: rgba(6,6,10,.6);
-    display: none; align-items: stretch; justify-content: center; padding: 24px }
+    display: none; align-items: stretch; justify-content: center; padding: 22px }
   #sc-velo.on { display: flex }
-  #sc-scatola { width: min(1000px, 100%); display: flex; flex-direction: column;
+  #sc-scatola { width: 100%; height: 100%; display: flex; flex-direction: column;
     background: var(--ground, #12131A); border: 1px solid var(--line, #2E3140);
-    border-radius: 6px; overflow: hidden }
+    border-radius: 6px; overflow: hidden;
+    box-shadow: 0 30px 70px -30px rgba(0,0,0,.9) }
   #sc-testa { display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
     padding: 12px 16px; border-bottom: 1px solid var(--line, #2E3140);
     background: var(--surface, #1B1D27) }
@@ -614,11 +615,19 @@ STILE_SCHEDA = """
   .sc-barra button:hover { color: var(--ink, #E6E4DC); border-color: var(--amber, #E8A33D) }
   #sc-salva { background: var(--amber, #E8A33D) !important; color: #14140f !important;
     border-color: var(--amber, #E8A33D) !important; font-weight: 600 }
+  /* --sc-taglio è la larghezza della colonna di sinistra: la sposta la maniglia
+     e resta memorizzata nel browser, come già la misura del codice */
   #sc-corpo { flex: 1 1 auto; min-height: 0; display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) }
+    grid-template-columns: minmax(260px, var(--sc-taglio, 1fr)) 7px minmax(280px, 1fr) }
+  #sc-maniglia { position: relative; cursor: col-resize;
+    background: var(--line, #2E3140); transition: background .15s }
+  /* la zona di presa è più larga del segno: 7px si prendono male col mouse */
+  #sc-maniglia::before { content: ""; position: absolute; top: 0; bottom: 0;
+    left: -5px; right: -5px }
+  #sc-maniglia:hover, #sc-maniglia.sc-tira { background: var(--amber, #E8A33D) }
+  body.sc-trascina { user-select: none; cursor: col-resize }
   #sc-modulo { overflow-y: auto; padding: 18px 16px 26px }
-  #sc-lato { overflow-y: auto; border-left: 1px solid var(--line, #2E3140);
-    background: var(--ground, #12131A) }
+  #sc-lato { overflow-y: auto; background: var(--ground, #12131A) }
   #sc-lato-etichetta { position: sticky; top: 0; z-index: 2; padding: 8px 16px 6px;
     background: var(--ground, #12131A); border-bottom: 1px solid var(--line-soft, #242734);
     font-family: var(--f-mono, monospace); font-size: 10px; letter-spacing: .12em;
@@ -700,7 +709,7 @@ STILE_SCHEDA = """
   .sc-nuova-sez:hover { color: var(--amber, #E8A33D); border-color: var(--amber, #E8A33D) }
   @media (max-width: 980px) {
     #sc-corpo { grid-template-columns: 1fr }
-    #sc-lato { display: none }
+    #sc-lato, #sc-maniglia { display: none }
   }
   @media (max-width: 720px) { #sc-velo { padding: 0 } #sc-scatola { border-radius: 0 } }
 </style>
@@ -720,6 +729,8 @@ SCRIPT_SCHEDA = r"""
     </div>
     <div id="sc-corpo">
       <div id="sc-modulo"></div>
+      <div id="sc-maniglia" role="separator" aria-orientation="vertical"
+           title="Trascina per allargare una delle due colonne · doppio clic per rimetterle pari"></div>
       <div id="sc-lato">
         <div id="sc-lato-etichetta">anteprima dal vivo</div>
         <div id="sc-anteprima"></div>
@@ -1253,6 +1264,53 @@ SCRIPT_SCHEDA = r"""
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "s") { e.preventDefault(); $("sc-salva").onclick(); }
   });
 
+  /* ---------- la maniglia fra modulo e anteprima ---------- */
+  (function () {
+    var maniglia = $("sc-maniglia"), corpo = $("sc-corpo");
+    if (!maniglia || !corpo) return;
+    var salvata = null;
+    try { salvata = localStorage.getItem("sc.taglio"); } catch (e) { }
+    if (salvata) corpo.style.setProperty("--sc-taglio", salvata);
+
+    function sposta(x) {
+      var r = corpo.getBoundingClientRect();
+      /* i due minmax del CSS tengono già i minimi, ma il valore va limitato
+         anche qui: senza, trascinando fuori si scriverebbe una larghezza
+         assurda che resterebbe memorizzata */
+      var largo = Math.max(260, Math.min(x - r.left, r.width - 290));
+      corpo.style.setProperty("--sc-taglio", largo + "px");
+      try { localStorage.setItem("sc.taglio", largo + "px"); } catch (e) { }
+    }
+    function ripristina() {
+      corpo.style.removeProperty("--sc-taglio");
+      try { localStorage.removeItem("sc.taglio"); } catch (e) { }
+    }
+    /* Il doppio clic lo riconosco qui invece di ascoltare "dblclick": il
+       preventDefault sul mousedown — che serve a non selezionare il testo
+       mentre si trascina — impedisce al browser di emetterlo, e la maniglia
+       resterebbe muta. Due clic fermi entro 400 ms rimettono le colonne pari. */
+    var ultimoClic = 0;
+    maniglia.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      maniglia.classList.add("sc-tira");
+      document.body.classList.add("sc-trascina");
+      var mosso = false;
+      function muove(ev) { mosso = true; sposta(ev.clientX); }
+      function molla() {
+        maniglia.classList.remove("sc-tira");
+        document.body.classList.remove("sc-trascina");
+        document.removeEventListener("mousemove", muove);
+        document.removeEventListener("mouseup", molla);
+        if (mosso) { ultimoClic = 0; return; }
+        var ora = Date.now();
+        if (ora - ultimoClic < 400) { ripristina(); ultimoClic = 0; }
+        else ultimoClic = ora;
+      }
+      document.addEventListener("mousemove", muove);
+      document.addEventListener("mouseup", molla);
+    });
+  })();
+
   window.__apriScheda = apriScheda;
 })();
 </script>
@@ -1268,6 +1326,7 @@ SCRIPT_EDITOR = r"""
       <span id="ed-dove"></span>
       <span id="ed-scorciatoie">tab indenta · &#8984;F cerca · &#8984;&#8997;F sostituisci · &#8984;/ commenta · &#8984;D duplica riga</span>
       <span class="ed-spinta">
+        <button type="button" id="ed-scheda" title="Torna alla modifica a campi">&#8862; scheda</button>
         <button type="button" id="ed-annulla">Chiudi (Esc)</button>
         <button type="button" id="ed-salva">Salva (&#8984;S)</button>
       </span>
@@ -1553,6 +1612,19 @@ SCRIPT_EDITOR = r"""
   });
 
   document.getElementById("ed-annulla").addEventListener("click", function () { chiudi(false); });
+  /* il viaggio di ritorno: dal codice alla scheda a campi. Passa per chiudi(),
+     così se ci sono modifiche non salvate lo chiede invece di buttarle via, e
+     la scheda si apre solo se il pannello si è chiuso davvero. */
+  document.getElementById("ed-scheda").addEventListener("click", function () {
+    var id = sezioneAperta;
+    chiudi(false);
+    setTimeout(function () {
+      var velo = document.getElementById("ed-velo");
+      if (velo.classList.contains("on")) return;      // annullato, o salvataggio in corso
+      var sez = document.getElementById(id);
+      if (sez && window.__apriScheda) window.__apriScheda(sez);
+    }, 60);
+  });
   document.getElementById("ed-salva").addEventListener("click", salva);
   areaTesto().addEventListener("input", anteprima);   // serve solo senza CodeMirror
   document.addEventListener("keydown", function (e) {
