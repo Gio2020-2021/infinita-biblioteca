@@ -1,13 +1,29 @@
   /* ============ TORNA SU ============ */
-  /* riusa .btn per non introdurre un linguaggio nuovo: è lo stesso bottone
-     di tutta la pagina, solo agganciato all'angolo */
+  /* Si veste da sé invece di appoggiarsi a .btn: quella classe è definita in
+     un foglio della sola mappa Transurfing (mappe/transurfing/stile/10-banco.css),
+     quindi su Risveglio e su Vesica il bottone restava senza stile — un
+     bottone nudo del browser appoggiato in un angolo. Ora è un tondo con la
+     sola freccia, della stessa famiglia visiva delle linguette sul bordo
+     destro: superficie, bordo sottile, ombra. La parola «Su» resta nel
+     markup per chi naviga con un lettore di schermo, solo non si vede. */
   .su {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
+    right: 22px;
+    bottom: 22px;
     z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
     background: var(--surface);
     box-shadow: var(--shadow);
+    font-size: 0;
+    color: var(--ink-dim);
+    cursor: pointer;
     opacity: 0;
     pointer-events: none;
     transform: translateY(8px);
@@ -20,23 +36,30 @@
     transform: none
   }
 
+  .su:hover {
+    border-color: var(--amber);
+    color: var(--ink)
+  }
+
+  .su:focus-visible {
+    outline: 2px solid var(--amber);
+    outline-offset: 2px
+  }
+
   .su b {
-    font-family: var(--f-body);
-    font-size: 14px;
+    font-family: var(--f-mono);
+    font-size: 17px;
     font-weight: 400;
-    margin-right: 7px;
+    line-height: 1;
+    margin: 0;
     color: var(--amber)
   }
 
-  /* sotto i 560px la linguetta del vocabolario scende in basso a destra:
-     il bottone si sposta a sinistra invece di finirci sotto */
+  /* il bottone resta nell'angolo in basso a destra a ogni larghezza: le
+     linguette del vocabolario e delle sezioni stanno ora a metà del bordo
+     destro, non più in quell'angolo, quindi non si accavallano più. Resta
+     alzata la targhetta dell'evidenziazione, che è centrata in basso. */
   @media (max-width:560px) {
-    .su {
-      right: auto;
-      left: 20px;
-      bottom: 20px
-    }
-
     .ric-eco-via {
       bottom: 78px
     }

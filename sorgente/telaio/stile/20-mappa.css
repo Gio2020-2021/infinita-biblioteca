@@ -406,19 +406,27 @@
       background: var(--surface-2)
     }
 
+    /* Linguetta agganciata al bordo destro, non un tondo che galleggia in un
+       angolo: sta a metà altezza, dove arriva il pollice, e i due bordi
+       arrotondati solo a sinistra la fanno leggere come una linguetta che
+       esce dal bordo. Fa coppia con quella del vocabolario (30-glossario.css),
+       che sta subito sotto: insieme sono centrate sul bordo — questa occupa
+       da -58 a -4, quella da +4 a +58. */
     .sez-tab {
       display: flex;
       align-items: center;
       justify-content: center;
       position: fixed;
-      right: 18px;
-      /* sopra la linguetta del vocabolario, che sta nello stesso angolo */
-      bottom: calc(max(18px, env(safe-area-inset-bottom)) + 62px);
+      right: 0;
+      top: 50%;
+      margin-top: -58px;
       z-index: 50;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+      width: 34px;
+      height: 54px;
+      padding: 0;
       border: 1px solid var(--line);
+      border-right: 0;
+      border-radius: 7px 0 0 7px;
       background: var(--surface);
       box-shadow: var(--shadow);
       color: var(--pc, var(--amber));
@@ -430,19 +438,20 @@
 
     .sez-tab::before {
       content: "§";
-      font-size: 22px;
+      font-size: 20px;
       line-height: 1
     }
 
-    /* aperta la tendina, il tasto le scivola accanto e diventa la chiusura:
-       così non resta sepolto sotto il pannello e non serve un secondo bottone */
+    /* aperta la tendina, la linguetta ci scivola accanto e diventa la
+       chiusura: resta attaccata al suo bordo invece di finire sepolta sotto
+       il pannello, e non serve un secondo bottone dentro */
     .sez-tab.aperto {
-      right: calc(min(300px, 82vw) + 14px)
+      right: min(300px, 82vw)
     }
 
     .sez-tab.aperto::before {
       content: "✕";
-      font-size: 15px
+      font-size: 14px
     }
 
     .sez-tab:focus-visible {

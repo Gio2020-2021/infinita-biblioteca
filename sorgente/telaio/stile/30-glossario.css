@@ -127,24 +127,30 @@
   /* Sotto gli 820px il tasto verticale finiva sempre sopra il testo in corso
      di lettura, qualunque fosse la sua posizione: la colonna è troppo stretta
      perché una fascia lunga quanto "VOCABOLARIO" scritto in verticale non
-     tocchi mai una riga. Diventa invece un cerchio piccolo, ancorato in un
-     angolo fisso (non a metà colonna): lì non copre mai una riga di testo,
-     qualunque sia la lunghezza della pagina. Il testo del bottone resta nel
-     markup (per chi naviga con lettore di schermo), solo non è più visibile:
-     al suo posto un'icona. */
-  @media (max-width: 820px) {
+     tocchi mai una riga. Diventa invece una linguetta corta agganciata al
+     bordo destro, a metà altezza, in coppia con quella delle sezioni che le
+     sta sopra (20-mappa.css): sporge di 34px invece di una fascia lunga
+     quanto la parola, quindi il testo resta leggibile, e sul bordo si legge
+     come una linguetta da tirare. Il testo del bottone resta nel markup (per
+     chi naviga con lettore di schermo), solo non è più visibile: al suo
+     posto un'icona. */
+  @media (max-width: 1079.98px) {
     .gloss-tab {
-      top: auto;
-      bottom: max(18px, env(safe-area-inset-bottom));
-      right: 18px;
+      top: 50%;
+      /* subito sotto la linguetta delle sezioni (20-mappa.css): le due sono
+         gemelle e centrate insieme sul bordo destro */
+      margin-top: 4px;
+      bottom: auto;
+      right: 0;
       left: auto;
       transform: none;
       writing-mode: horizontal-tb;
-      width: 50px;
-      height: 50px;
+      width: 34px;
+      height: 54px;
       padding: 0;
-      border-radius: 50%;
       border: 1px solid var(--line);
+      border-right: 0;
+      border-radius: 7px 0 0 7px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -154,7 +160,7 @@
 
     .gloss-tab::before {
       content: "📖";
-      font-size: 21px;
+      font-size: 18px;
       line-height: 1
     }
   }
