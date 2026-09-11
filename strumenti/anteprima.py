@@ -50,7 +50,7 @@ GUSCIO = """<!doctype html>
   // così (come fa "anteprima.py --apri" su un computer), la registrazione
   // semplicemente non parte, senza errori visibili: è previsto, non un guasto.
   if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {{
-    navigator.serviceWorker.register("/pwa/service-worker.js").catch(() => {{}});
+    navigator.serviceWorker.register("/service-worker.js").catch(() => {{}});
   }}
 </script>
 </body>
@@ -90,9 +90,15 @@ def main():
         shutil.copytree(cartella, LOCALE / cartella.name)
 
     # manifest, service worker e icone della PWA: servono solo qui, in locale.
+    # service-worker.js sta alla radice (vedi costruisci.py:copia_pwa) perché
+    # il suo scope di default è la cartella dello script: da /pwa/ non
+    # controllerebbe le pagine delle mappe, che stanno fuori da quella cartella.
     pwa = SITO / "pwa"
     if pwa.is_dir():
         shutil.copytree(pwa, LOCALE / "pwa")
+    sw = SITO / "service-worker.js"
+    if sw.is_file():
+        shutil.copy2(sw, LOCALE / "service-worker.js")
 
     indice = LOCALE / "index.html"
     print(f"\npronto  {n} pagine in {LOCALE.relative_to(RADICE)}/")

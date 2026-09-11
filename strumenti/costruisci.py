@@ -224,7 +224,14 @@ def copia_pwa():
     dest = SITO / "pwa"
     if dest.exists():
         shutil.rmtree(dest)
-    shutil.copytree(origine, dest, ignore=shutil.ignore_patterns(".DS_Store"))
+    shutil.copytree(origine, dest, ignore=shutil.ignore_patterns(".DS_Store", "service-worker.js"))
+    # service-worker.js va alla radice del sito, non sotto pwa/: lo scope di
+    # un service worker è per default la cartella dello script, e senza
+    # dichiararlo esplicitamente in fase di registrazione un worker servito
+    # da /pwa/service-worker.js non controlla mai /index.html, /vesica.html
+    # eccetera, che stanno fuori da quella cartella — il fetch handler non
+    # scatta mai su di loro e la cache non li aggiorna mai.
+    shutil.copy2(origine / "service-worker.js", SITO / "service-worker.js")
     return dest
 
 

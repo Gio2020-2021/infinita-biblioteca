@@ -12,7 +12,7 @@
 // volta dopo. Le 907 immagini di Risveglio non vengono precaricate tutte:
 // entrano in cache una per una, alla prima apertura di ciascuna pagina.
 
-const CACHE = "biblioteca-v2";
+const CACHE = "biblioteca-v3";
 
 const PRECARICA = [
   "/index.html",
