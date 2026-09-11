@@ -27,16 +27,19 @@
       glossClose = $("gloss-panel-close"), glossQ2 = $("gloss-q2");
     function apriGlossario() {
       if (!glossPanel) return;
+      /* i due pannelli entrano dallo stesso lato: aperti insieme si
+         coprirebbero. Il contrario lo fa già apri() in 60-menu-sezioni.js */
+      if (typeof chiudiSezioni === "function") chiudiSezioni();
       glossPanel.classList.add("open");
       if (glossBackdrop) glossBackdrop.classList.add("open");
-      if (glossTab) glossTab.setAttribute("aria-expanded", "true");
+      if (glossTab) { glossTab.classList.add("aperto"); glossTab.setAttribute("aria-expanded", "true"); }
       if (glossQ2) glossQ2.focus();
     }
     function chiudiGlossario() {
       if (!glossPanel) return;
       glossPanel.classList.remove("open");
       if (glossBackdrop) glossBackdrop.classList.remove("open");
-      if (glossTab) { glossTab.setAttribute("aria-expanded", "false"); glossTab.focus(); }
+      if (glossTab) { glossTab.classList.remove("aperto"); glossTab.setAttribute("aria-expanded", "false"); glossTab.focus(); }
     }
     if (glossTab) glossTab.addEventListener("click", function () {
       if (glossPanel && glossPanel.classList.contains("open")) chiudiGlossario();

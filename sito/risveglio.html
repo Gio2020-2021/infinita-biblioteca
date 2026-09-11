@@ -544,7 +544,7 @@
       bottom: 0;
       right: 0;
       width: min(300px, 82vw);
-      z-index: 49;
+      z-index: 51;
       gap: 0;
       /* la colonna su desktop compare e sparisce con l'opacità, guidata dallo
          scroll; qui invece è la tendina a scorrere, quindi quella logica va
@@ -600,7 +600,7 @@
       position: fixed;
       right: 0;
       bottom: calc(50% + 5px);
-      z-index: 50;
+      z-index: 52;
       writing-mode: vertical-rl;
       text-orientation: mixed;
       /* mezzo giro: col solo vertical-rl la parola scende dall'alto e si legge
@@ -645,7 +645,7 @@
       border-right: 0;
       border-radius: 7px 0 0 7px;
       padding: 0;
-      width: 34px;
+      width: 24px;
       height: 46px;
       font-size: 0
     }
@@ -1034,15 +1034,52 @@
     border-color: var(--blue)
   }
 
+  /* Col pannello aperto la linguetta gli scivola accanto e diventa la sua
+     chiusura, esattamente come quella delle sezioni (20-mappa.css): resta
+     attaccata al bordo del pannello invece di finirci sotto. Niente
+     rotazione qui, quindi bordo e angoli tornano scritti nel verso naturale;
+     lo z-index sale sopra il pannello (54), che altrimenti la coprirebbe. */
+  .gloss-tab.aperto {
+    right: min(400px, 88vw);
+    z-index: 55;
+    writing-mode: horizontal-tb;
+    transform: translateY(-50%);
+    border: 1px solid var(--blue);
+    border-right: 0;
+    border-radius: 7px 0 0 7px;
+    padding: 0;
+    width: 24px;
+    height: 46px;
+    font-size: 0
+  }
+
+  .gloss-tab.aperto::before {
+    content: "✕";
+    font-size: 13px;
+    line-height: 1;
+    color: var(--blue)
+  }
+
   .gloss-tab:focus-visible {
     outline: 2px solid var(--amber);
     outline-offset: 2px
   }
 
+  /* La scala degli strati, tenuta tutta qui perché a spezzarla si sbaglia:
+       45  linguette a riposo (dizionario)
+       47  velo delle sezioni
+       50  tasto «Su»
+       51  tendina delle sezioni      — copre il tasto «Su»
+       52  linguetta delle sezioni    — resta sopra la propria tendina: da
+                                        aperta è la sua ✕
+       53  velo del dizionario        — copre anche le linguette
+       54  pannello del dizionario    — copre tutto: ha una ✕ propria
+     Il pannello stava a 46, sotto la linguetta delle sezioni (50) e sotto il
+     tasto «Su» (50): aprendo il dizionario quei due gli restavano sopra. */
   .gloss-backdrop {
     position: fixed;
     inset: 0;
-    z-index: 44;
+    z-index: 53;
     background: rgba(8, 8, 12, .35);
     opacity: 0;
     pointer-events: none;
@@ -1058,7 +1095,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 46;
+    z-index: 54;
     height: 100vh;
     width: min(400px, 88vw);
     display: flex;
@@ -1163,6 +1200,13 @@
 
     .gloss-tab:hover {
       background: var(--blue-soft)
+    }
+
+    /* qui la linguetta è ancorata con top, non centrata con translateY:
+       da aperta la transform va azzerata del tutto, non riportata a
+       translateY(-50%) come sul desktop */
+    .gloss-tab.aperto {
+      transform: none
     }
   }
 
@@ -11347,16 +11391,19 @@
       glossClose = $("gloss-panel-close"), glossQ2 = $("gloss-q2");
     function apriGlossario() {
       if (!glossPanel) return;
+      /* i due pannelli entrano dallo stesso lato: aperti insieme si
+         coprirebbero. Il contrario lo fa già apri() in 60-menu-sezioni.js */
+      if (typeof chiudiSezioni === "function") chiudiSezioni();
       glossPanel.classList.add("open");
       if (glossBackdrop) glossBackdrop.classList.add("open");
-      if (glossTab) glossTab.setAttribute("aria-expanded", "true");
+      if (glossTab) { glossTab.classList.add("aperto"); glossTab.setAttribute("aria-expanded", "true"); }
       if (glossQ2) glossQ2.focus();
     }
     function chiudiGlossario() {
       if (!glossPanel) return;
       glossPanel.classList.remove("open");
       if (glossBackdrop) glossBackdrop.classList.remove("open");
-      if (glossTab) { glossTab.setAttribute("aria-expanded", "false"); glossTab.focus(); }
+      if (glossTab) { glossTab.classList.remove("aperto"); glossTab.setAttribute("aria-expanded", "false"); glossTab.focus(); }
     }
     if (glossTab) glossTab.addEventListener("click", function () {
       if (glossPanel && glossPanel.classList.contains("open")) chiudiGlossario();
