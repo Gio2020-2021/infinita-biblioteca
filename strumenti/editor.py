@@ -110,6 +110,11 @@ GUSCIO = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#12131A">
+<!-- l'icona della biblioteca nella scheda del browser: senza, la modalità
+     modifica mostrava il foglio bianco di sistema, mentre l'anteprima no -->
+<link rel="icon" href="/pwa/icone/icona-192.png">
+<link rel="apple-touch-icon" href="/pwa/icone/icona-192.png">
 <style>
   :root {{ color-scheme: light dark }}
   body {{ margin: 0; font: 14px system-ui, -apple-system, sans-serif }}
@@ -698,10 +703,27 @@ STILE_SCHEDA = """
   .sc-avviso { font-size: 12px; color: var(--muted, #8B8D9E); margin: 0 0 8px;
     font-family: var(--f-mono, monospace) }
   .sc-agg { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px }
-  #sc-esiti { padding: 10px 16px; border-top: 1px solid var(--line, #2E3140);
-    font-family: var(--f-mono, monospace); font-size: 11.5px; white-space: pre-wrap;
-    max-height: 150px; overflow-y: auto; color: var(--muted, #8B8D9E) }
-  #sc-esiti.male { color: var(--rust, #C4574B) }
+  /* la riga di esito: quando è vuota sparisce del tutto, quando parla si vede.
+     Prima era grigio piccolo su fondo uguale al resto, in fondo al pannello:
+     il «salvato» passava senza che nessuno se ne accorgesse */
+  #sc-esiti { padding: 12px 16px; border-top: 2px solid var(--line, #2E3140);
+    font-family: var(--f-mono, monospace); font-size: 12.5px; line-height: 1.55;
+    white-space: pre-wrap; max-height: 150px; overflow-y: auto;
+    background: var(--surface, #1B1D27); color: var(--ink-dim, #B4B3AC) }
+  #sc-esiti:empty { display: none }
+  #sc-esiti.attesa { color: var(--amber, #E8A33D); border-top-color: var(--amber, #E8A33D) }
+  #sc-esiti.bene { color: var(--sage, #8AA878); border-top-color: var(--sage, #8AA878);
+    font-weight: 600 }
+  #sc-esiti.male { color: var(--rust, #C4574B); border-top-color: var(--rust, #C4574B) }
+  /* la conferma sopravvive alla ricostruzione della pagina: il salvataggio la
+     ricarica, e un messaggio dentro il pannello se ne andrebbe con lui */
+  #sc-briciola { position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
+    z-index: 320; font-family: var(--f-mono, monospace); font-size: 12.5px;
+    padding: 11px 20px; border-radius: 4px; background: var(--surface, #1B1D27);
+    border: 1px solid var(--sage, #8AA878); color: var(--ink, #E6E4DC);
+    box-shadow: 0 18px 40px -20px #000;
+    opacity: 0; pointer-events: none; transition: opacity .25s ease }
+  #sc-briciola.on { opacity: 1 }
   /* il cercasezioni per i collegamenti */
   #sc-scelta { position: fixed; z-index: 340; width: 300px; max-height: 280px;
     overflow-y: auto; background: var(--surface, #1B1D27); border-radius: 4px;
@@ -759,17 +781,33 @@ SCRIPT_SCHEDA = r"""
   </div>
 </div>
 <div id="sc-scelta"><input type="search" placeholder="cerca una sezione…" id="sc-scelta-q"><div id="sc-scelta-elenco"></div></div>
+<div id="sc-briciola"></div>
 <script>
 (function () {
   var PAGINA = "__PAGINA__";
   var scheda = null, sezioneAperta = null, SEZIONI = [];
 
   var $ = function (id) { return document.getElementById(id); };
-  function esiti(t, male) {
+  /* tipo: "attesa" mentre lavora, "bene" quando è andata, "male" quando no.
+     Il vecchio secondo argomento booleano vale ancora come "male". */
+  function esiti(t, tipo) {
     var e = $("sc-esiti");
     e.textContent = t || "";
-    e.className = male ? "male" : "";
+    e.className = tipo === true ? "male" : (tipo || "");
   }
+  /* la targhetta che resta dopo la ricarica: il salvataggio ricostruisce la
+     pagina, e una conferma scritta dentro il pannello se ne andrebbe con lui */
+  function briciola(t) {
+    var b = $("sc-briciola");
+    if (!b) return;
+    b.textContent = t;
+    b.classList.add("on");
+    setTimeout(function () { b.classList.remove("on"); }, 3200);
+  }
+  try {
+    var lasciato = sessionStorage.getItem("sc.salvato");
+    if (lasciato) { sessionStorage.removeItem("sc.salvato"); briciola(lasciato); }
+  } catch (e) { }
 
   /* ---------- ripulitura: dal contenteditable esce solo il vocabolario del
      progetto. Senza questo, incollando da un'altra pagina entrerebbero <span
@@ -1021,7 +1059,7 @@ SCRIPT_SCHEDA = r"""
     $("sc-dove").textContent = "#" + sez.id;
     $("sc-modulo").innerHTML = "";
     $("sc-anteprima").innerHTML = "";
-    esiti("caricamento…");
+    esiti("caricamento…", "attesa");
     $("sc-velo").classList.add("on");
     fetch("/scheda?pagina=" + encodeURIComponent(PAGINA) + "&sezione=" + encodeURIComponent(sez.id))
       .then(function (r) { return r.json(); })
@@ -1234,15 +1272,19 @@ SCRIPT_SCHEDA = r"""
   });
 
   function salva() {
-    esiti("salvataggio…");
+    esiti("salvataggio in corso…", "attesa");
     fetch("/salva-scheda", {
       method: "POST", headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ pagina: PAGINA, sezione: sezioneAperta, scheda: raccogli() })
     }).then(function (r) { return r.json(); }).then(function (r) {
       if (!r.ok) { esiti((r.errori || ["non salvato"]).join("\n"), true); return; }
-      if (r.invariata) { esiti("niente da salvare: non è cambiato nulla."); return; }
-      esiti("salvato in " + r.file + "\n" + (r.verifica || ""));
-      setTimeout(function () { location.reload(); }, 500);
+      if (r.invariata) { esiti("niente da salvare: non è cambiato nulla.", "attesa"); return; }
+      var dove = "✓ salvato in " + r.file;
+      esiti(dove + "\n" + (r.verifica || ""), "bene");
+      /* la conferma viaggia oltre la ricarica, e la ricarica aspetta un attimo:
+         con mezzo secondo il «salvato» spariva prima di poter essere letto */
+      try { sessionStorage.setItem("sc.salvato", dove); } catch (e) { }
+      setTimeout(function () { location.reload(); }, 1400);
     }).catch(function () { esiti("il server locale non risponde", true); });
   }
 
@@ -1286,14 +1328,16 @@ SCRIPT_SCHEDA = r"""
     $("sc-salva").onclick = function () {
       var titolo = leggiCampo(fTitolo.scrivi).replace(/<[^>]+>/g, "").trim();
       if (!titolo) { esiti("serve un titolo", true); return; }
-      esiti("creazione…");
+      esiti("creazione in corso…", "attesa");
       fetch("/nuova-sezione", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ pagina: PAGINA, parte: parte.id, dopo: scelta.value, titolo: titolo })
       }).then(function (r) { return r.json(); }).then(function (r) {
         if (!r.ok) { esiti((r.errori || ["non creata"]).join("\n"), true); return; }
-        esiti("creata #" + r.sezione + "\n" + (r.verifica || ""));
-        setTimeout(function () { location.hash = "#" + r.sezione; location.reload(); }, 600);
+        var fatta = "\u2713 creata la sezione #" + r.sezione;
+        esiti(fatta + "\n" + (r.verifica || ""), "bene");
+        try { sessionStorage.setItem("sc.salvato", fatta); } catch (e) { }
+        setTimeout(function () { location.hash = "#" + r.sezione; location.reload(); }, 1400);
       }).catch(function () { esiti("il server locale non risponde", true); });
     };
   }
@@ -1843,7 +1887,9 @@ class ManoDiPagina(BaseHTTPRequestHandler):
         # le immagini vere di una mappa (es. risveglio-immagini/pNNN-k.png):
         # copiate da costruisci.py in sito/<id>-immagini/, non tenute in memoria
         # come le pagine — vanno servite come file statici, non c'è pronte[...].
-        if re.fullmatch(r"[a-z][a-z0-9-]*-immagini/[A-Za-z0-9_.-]+\.png", pezzi.path.lstrip("/")):
+        # le icone della PWA: servono all'icona nella scheda del browser
+        if re.fullmatch(r"pwa/icone/[A-Za-z0-9_.-]+\.png", pezzi.path.lstrip("/")) \
+           or re.fullmatch(r"[a-z][a-z0-9-]*-immagini/[A-Za-z0-9_.-]+\.png", pezzi.path.lstrip("/")):
             f = (SITO / pezzi.path.lstrip("/")).resolve()
             if not str(f).startswith(str(SITO.resolve())) or not f.is_file():
                 self.send_response(404)
