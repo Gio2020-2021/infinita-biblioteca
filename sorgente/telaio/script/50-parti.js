@@ -1,6 +1,10 @@
     /* ---------- commutatore delle parti ---------- */
     var PARTI = {{PARTI}};
-    var bottoni = Array.prototype.slice.call(document.querySelectorAll("nav.parts button"));
+    /* [data-part]: nav.parts contiene anche l'hamburger e il bottone Cerca,
+       che non selezionano una parte — senza il filtro un click su uno dei
+       due chiamava mostra(null), spegnendo tutte le parti (nessuna ha nome
+       "null") e rompendo la pagina finché non si sceglieva una parte vera. */
+    var bottoni = Array.prototype.slice.call(document.querySelectorAll("nav.parts button[data-part]"));
     var barra = document.querySelector("nav.parts");
 
     function partediEl(el) {
