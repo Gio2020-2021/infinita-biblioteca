@@ -169,6 +169,47 @@ Vedere la pagina in locale prima di pubblicare:
 python3 strumenti/anteprima.py --apri
 ```
 
+### La scheda: modificare e aggiungere sezioni senza toccare l'HTML
+
+Passando il mouse su una sezione compare la **matita**, che apre una **scheda a
+campi**: i cinque campi della colonna di sinistra (etichetta, titolo, sommario,
+citazione, fonte) e i blocchi di quella di destra come carte che si aggiungono,
+si cancellano e si spostano. Dentro ai testi una barretta dà grassetto, corsivo,
+virgolette di citazione e un collegamento scelto da un elenco cercabile delle
+sezioni — **nessun tag a vista**. Un rigo vuoto separa un paragrafo dal
+successivo: è l'unica convenzione da sapere. A destra, l'anteprima dal vivo.
+
+Il tasto in testa a ogni parte (**+ sezione in questa parte**) crea una sezione
+nuova: si sceglie il punto, si dà il titolo, e l'editor scrive la sezione,
+aggiunge la voce nel sommario, rinumera, ricostruisce e verifica. L'indirizzo si
+ricava dal titolo e **non si cambia più**: i rimandi di tutta la biblioteca ci
+girano sopra, e un id già usato viene rifiutato.
+
+**`strumenti/scheda.py` è il motore, e la sua regola è che non ricostruisce:
+innesta.** Ogni pezzo si porta dietro i propri indici nel frammento, e la
+ricomposizione sostituisce solo ciò che è stato davvero toccato — tutto il resto
+resta identico byte per byte. È ciò che impedisce a un salvataggio di
+riformattare una sezione scritta a mano. Il parser inoltre **si mette alla prova
+da sé**: rigenera ogni blocco dai campi estratti e controlla di riottenere lo
+stesso testo *e* la stessa sequenza di tag; ciò che non riproduce fedelmente lo
+declassa a blocco «codice», conservato tale e quale. Per questo una modifica
+dalla scheda non può mangiarsi del contenuto.
+
+```bash
+python3 strumenti/scheda.py --prova    # il giro completo su tutte le sezioni
+```
+
+Va lanciato dopo ogni modifica al motore: dice quante sezioni tornano identiche
+senza modifiche (devono essere **tutte**) e quanti blocchi restano rappresentabili
+a campi. Al 11-9-2026: 373/373 identiche, 95% dei blocchi e 96% delle voci a
+campi. Se un giorno la copertura cala di colpo, è il segno che è comparso un
+componente nuovo che il modello non conosce — si aggiunge a `TIPI` e ai
+generatori, non si forza.
+
+Il server **non si fida dei dati che tornano dal browser**: rilegge la sezione
+dal disco e ci innesta i soli valori dei campi. Il salvataggio passa poi per
+`salva_sezione`, con le stesse quattro reti di sicurezza dell'editor di codice.
+
 ### La modalità modifica: correggere e ampliare una sezione dalla pagina
 
 ```bash
