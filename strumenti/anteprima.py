@@ -30,6 +30,10 @@ GUSCIO = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#12131A">
+<link rel="manifest" href="/pwa/manifest.json">
+<link rel="icon" href="/pwa/icone/icona-192.png">
+<link rel="apple-touch-icon" href="/pwa/icone/icona-192.png">
 <style>
   :root {{ color-scheme: light dark }}
   body {{ margin: 0; font: 14px system-ui, -apple-system, sans-serif }}
@@ -39,6 +43,16 @@ GUSCIO = """<!doctype html>
 </head>
 <body>
 {corpo}
+<script>
+  // Il service worker esiste solo per l'uso in locale (Termux, o un server
+  // sulla stessa rete): richiede un "contesto sicuro" — https, o
+  // http://localhost/127.0.0.1 — che file:// non è. Se la pagina è aperta
+  // così (come fa "anteprima.py --apri" su un computer), la registrazione
+  // semplicemente non parte, senza errori visibili: è previsto, non un guasto.
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {{
+    navigator.serviceWorker.register("/pwa/service-worker.js").catch(() => {{}});
+  }}
+</script>
 </body>
 </html>
 """
@@ -74,6 +88,11 @@ def main():
     # identici sia in sito/ sia in sito/locale/.
     for cartella in SITO.glob("*-immagini"):
         shutil.copytree(cartella, LOCALE / cartella.name)
+
+    # manifest, service worker e icone della PWA: servono solo qui, in locale.
+    pwa = SITO / "pwa"
+    if pwa.is_dir():
+        shutil.copytree(pwa, LOCALE / "pwa")
 
     indice = LOCALE / "index.html"
     print(f"\npronto  {n} pagine in {LOCALE.relative_to(RADICE)}/")

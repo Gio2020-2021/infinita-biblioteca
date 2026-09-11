@@ -1,0 +1,18 @@
+{
+  "name": "La Biblioteca",
+  "short_name": "Biblioteca",
+  "description": "Transurfing, Rapporto Vesica, Risveglio — le mappe di lettura, in locale.",
+  "id": "/",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#12131A",
+  "theme_color": "#12131A",
+  "lang": "it",
+  "icons": [
+    { "src": "/pwa/icone/icona-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/pwa/icone/icona-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/pwa/icone/icona-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

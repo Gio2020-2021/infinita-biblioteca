@@ -210,6 +210,24 @@ def copia_immagini(d, cfg):
     return dest
 
 
+# --------------------------------------------------------------------- la PWA
+# manifest, service worker e icone per l'uso in locale (Termux o un server
+# sulla stessa rete): non sono composti da pezzi, sono statici e uguali per
+# tutta la biblioteca, quindi si copiano una volta sola da telaio/pwa/ a
+# sito/pwa/. anteprima.py li ricopia poi dentro sito/locale/pwa/, e aggiunge
+# i tag che li richiamano solo lì — non nei file "nudi" di sito/, che restano
+# quelli che l'Artifact avvolge in pubblicazione.
+def copia_pwa():
+    origine = TELAIO / "pwa"
+    if not origine.is_dir():
+        return None
+    dest = SITO / "pwa"
+    if dest.exists():
+        shutil.rmtree(dest)
+    shutil.copytree(origine, dest, ignore=shutil.ignore_patterns(".DS_Store"))
+    return dest
+
+
 def elenco_mappe(argv):
     voluti = [a for a in argv[1:] if not a.startswith("--")]
     tutte = sorted(d for d in MAPPE.iterdir() if (d / "mappa.json").exists())
@@ -285,6 +303,8 @@ def main():
     if not controlla and len(mappe) == len(tutte):
         p = costruisci_portale(schede)
         print(f"scritta  sito/index.html  ({len(p) // 1024} KB, {len(schede)} mappe)")
+        if copia_pwa() is not None:
+            print("copiata  sito/pwa/  (manifest, service worker, icone)")
 
     if errori:
         print("\nRIMANDI ROTTI:")
