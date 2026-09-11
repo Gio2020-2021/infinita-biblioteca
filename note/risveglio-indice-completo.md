@@ -156,10 +156,10 @@ Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
 ## Sesso, energia e leggi universali (Parte XII, pagg. 112-118)
 
-- [ ] pag. 112 — SEX - SACRED ENERGY EXCHANGE
-- [ ] pag. 113 — SEX - SACRED ENERGY EXCHANGE
-- [ ] pag. 114 — SAVE YOUR SEED
-- [ ] pag. 115 — SEX
-- [ ] pag. 116 — GENDER
-- [ ] pag. 117 — SEVEN UNIVERSAL LAWS
-- [ ] pag. 118 — MY MESSAGE TO THE WORLD (chiusura del libro)
+- [x] pag. 112 — SEX - SACRED ENERGY EXCHANGE → #leggi-energia-sacra
+- [x] pag. 113 — SEX - SACRED ENERGY EXCHANGE → #leggi-energia-sacra
+- [x] pag. 114 — SAVE YOUR SEED → #leggi-seme
+- [x] pag. 115 — SEX → #leggi-lettere-genere
+- [x] pag. 116 — GENDER → #leggi-lettere-genere
+- [x] pag. 117 — SEVEN UNIVERSAL LAWS → #leggi-sette-leggi
+- [x] pag. 118 — MY MESSAGE TO THE WORLD (chiusura del libro) → #leggi-messaggio
