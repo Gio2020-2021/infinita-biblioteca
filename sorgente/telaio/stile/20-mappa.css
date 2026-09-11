@@ -346,6 +346,127 @@
     background: var(--surface-2)
   }
 
+  /* ============ TENDINA DELLE SEZIONI (sotto i 1080px) ============
+     Dove non c'è spazio per la colonna fissa il capitolo resterebbe senza
+     indice, perché le pillole sotto il titolo non ci sono più: lo stesso
+     #part-nav — stesso contenuto, stesso evidenziatore della sezione in
+     corso — diventa una tendina che entra da destra, aperta e chiusa dal
+     tasto §. Il tasto e il velo sono fratelli di #part-nav nel corpo della
+     pagina (04-pannelli.html): stesso contesto di impilamento, così i loro
+     z-index si confrontano davvero fra loro invece che con l'antenato —
+     vedi la nota sul velo del menu delle parti in 40-parti.css. */
+  .sez-tab,
+  .sez-backdrop {
+    display: none
+  }
+
+  @media (max-width:1079.98px) {
+    .part-nav {
+      display: flex;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: min(300px, 82vw);
+      z-index: 49;
+      gap: 0;
+      /* la colonna su desktop compare e sparisce con l'opacità, guidata dallo
+         scroll; qui invece è la tendina a scorrere, quindi quella logica va
+         neutralizzata o il pannello resterebbe invisibile da aperto */
+      opacity: 1;
+      pointer-events: auto;
+      background: var(--surface);
+      border-left: 1px solid var(--line);
+      box-shadow: -18px 0 44px -30px rgba(0, 0, 0, .8);
+      transform: translateX(100%);
+      transition: transform .25s ease;
+      padding: max(14px, env(safe-area-inset-top)) 0 max(20px, env(safe-area-inset-bottom))
+    }
+
+    .part-nav.aperto {
+      transform: translateX(0)
+    }
+
+    /* da tendina le voci sono righe piene, non pastiglie: il titolo va a capo
+       invece di essere troncato (in Vesica alcuni sono lunghi) */
+    .part-nav a {
+      border: 0;
+      border-bottom: 1px solid var(--line-soft);
+      border-left: 3px solid transparent;
+      border-radius: 0;
+      background: transparent;
+      padding: 13px 20px;
+      font-size: 11.5px;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip
+    }
+
+    .part-nav a.cur {
+      border-left-color: var(--pc, var(--amber));
+      background: var(--surface-2)
+    }
+
+    .sez-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: 18px;
+      /* sopra la linguetta del vocabolario, che sta nello stesso angolo */
+      bottom: calc(max(18px, env(safe-area-inset-bottom)) + 62px);
+      z-index: 50;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      color: var(--pc, var(--amber));
+      /* il testo resta nel markup per chi naviga con lettore di schermo */
+      font-size: 0;
+      cursor: pointer;
+      transition: right .25s ease, border-color .15s
+    }
+
+    .sez-tab::before {
+      content: "§";
+      font-size: 22px;
+      line-height: 1
+    }
+
+    /* aperta la tendina, il tasto le scivola accanto e diventa la chiusura:
+       così non resta sepolto sotto il pannello e non serve un secondo bottone */
+    .sez-tab.aperto {
+      right: calc(min(300px, 82vw) + 14px)
+    }
+
+    .sez-tab.aperto::before {
+      content: "✕";
+      font-size: 15px
+    }
+
+    .sez-tab:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 2px
+    }
+
+    .sez-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 47;
+      background: rgba(8, 8, 12, .5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s
+    }
+
+    .sez-backdrop.aperto {
+      opacity: 1;
+      pointer-events: auto
+    }
+  }
+
   ul.tree {
     list-style: none;
     margin: 0;

@@ -523,6 +523,127 @@
     background: var(--surface-2)
   }
 
+  /* ============ TENDINA DELLE SEZIONI (sotto i 1080px) ============
+     Dove non c'è spazio per la colonna fissa il capitolo resterebbe senza
+     indice, perché le pillole sotto il titolo non ci sono più: lo stesso
+     #part-nav — stesso contenuto, stesso evidenziatore della sezione in
+     corso — diventa una tendina che entra da destra, aperta e chiusa dal
+     tasto §. Il tasto e il velo sono fratelli di #part-nav nel corpo della
+     pagina (04-pannelli.html): stesso contesto di impilamento, così i loro
+     z-index si confrontano davvero fra loro invece che con l'antenato —
+     vedi la nota sul velo del menu delle parti in 40-parti.css. */
+  .sez-tab,
+  .sez-backdrop {
+    display: none
+  }
+
+  @media (max-width:1079.98px) {
+    .part-nav {
+      display: flex;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: min(300px, 82vw);
+      z-index: 49;
+      gap: 0;
+      /* la colonna su desktop compare e sparisce con l'opacità, guidata dallo
+         scroll; qui invece è la tendina a scorrere, quindi quella logica va
+         neutralizzata o il pannello resterebbe invisibile da aperto */
+      opacity: 1;
+      pointer-events: auto;
+      background: var(--surface);
+      border-left: 1px solid var(--line);
+      box-shadow: -18px 0 44px -30px rgba(0, 0, 0, .8);
+      transform: translateX(100%);
+      transition: transform .25s ease;
+      padding: max(14px, env(safe-area-inset-top)) 0 max(20px, env(safe-area-inset-bottom))
+    }
+
+    .part-nav.aperto {
+      transform: translateX(0)
+    }
+
+    /* da tendina le voci sono righe piene, non pastiglie: il titolo va a capo
+       invece di essere troncato (in Vesica alcuni sono lunghi) */
+    .part-nav a {
+      border: 0;
+      border-bottom: 1px solid var(--line-soft);
+      border-left: 3px solid transparent;
+      border-radius: 0;
+      background: transparent;
+      padding: 13px 20px;
+      font-size: 11.5px;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip
+    }
+
+    .part-nav a.cur {
+      border-left-color: var(--pc, var(--amber));
+      background: var(--surface-2)
+    }
+
+    .sez-tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      right: 18px;
+      /* sopra la linguetta del vocabolario, che sta nello stesso angolo */
+      bottom: calc(max(18px, env(safe-area-inset-bottom)) + 62px);
+      z-index: 50;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      color: var(--pc, var(--amber));
+      /* il testo resta nel markup per chi naviga con lettore di schermo */
+      font-size: 0;
+      cursor: pointer;
+      transition: right .25s ease, border-color .15s
+    }
+
+    .sez-tab::before {
+      content: "§";
+      font-size: 22px;
+      line-height: 1
+    }
+
+    /* aperta la tendina, il tasto le scivola accanto e diventa la chiusura:
+       così non resta sepolto sotto il pannello e non serve un secondo bottone */
+    .sez-tab.aperto {
+      right: calc(min(300px, 82vw) + 14px)
+    }
+
+    .sez-tab.aperto::before {
+      content: "✕";
+      font-size: 15px
+    }
+
+    .sez-tab:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 2px
+    }
+
+    .sez-backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      z-index: 47;
+      background: rgba(8, 8, 12, .5);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s
+    }
+
+    .sez-backdrop.aperto {
+      opacity: 1;
+      pointer-events: auto
+    }
+  }
+
   ul.tree {
     list-style: none;
     margin: 0;
@@ -1248,15 +1369,13 @@
     margin-right: 7px
   }
 
-  /* Da 1080px in su il .part-nav a destra (20-mappa.css) copre lo stesso
-     ruolo restando a vista mentre si scorre, invece di stare fermo sotto
-     al titolo: due indici delle stesse voci sarebbero ridondanti. .part-toc
-     resta nel DOM (è la fonte da cui popolaPartNav() clona i link, e la
-     numerazione che rinumera.py aggiorna) — si nasconde, non si toglie. */
-  @media (min-width:1080px) {
-    .part-toc {
-      display: none
-    }
+  /* L'indice delle sezioni sta sempre a destra: colonna fissa sopra i 1080px,
+     tendina apribile sotto (20-mappa.css). Le pillole sotto il titolo sono
+     quindi ridondanti a ogni larghezza. .part-toc resta però nel DOM — è la
+     fonte da cui popolaPartNav() clona i link e la numerazione su cui lavora
+     rinumera.py: si nasconde, non si toglie. */
+  .part-toc {
+    display: none
   }
 
   /* ============ MENU DELLE PARTI A TENDINA (schermi stretti) ============
@@ -1268,7 +1387,11 @@
      duplicato) si trasforma in un cassetto verticale che scorre da sinistra;
      sopra gli 820px resta quello di sempre e .rail-toggle/.rail-backdrop
      restano invisibili. */
-  .rail-toggle,
+  /* `nav.parts .rail-toggle`, non `.rail-toggle` e basta: il toggle è un
+     <button> dentro nav.parts, quindi la regola generica `nav.parts button`
+     qui sopra ha specificità (0,1,1) e batterebbe una classe sola (0,1,0) —
+     l'hamburger del mobile restava visibile anche su desktop, sopra la barra. */
+  nav.parts .rail-toggle,
   .rail-backdrop {
     display: none
   }
@@ -1285,7 +1408,7 @@
       backdrop-filter: none
     }
 
-    .rail-toggle {
+    nav.parts .rail-toggle {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -18357,8 +18480,14 @@ fatti?»</b> — a proposito
   </div>
 </footer>
 
-<!-- mini-indice della parte, fisso a destra per tutto lo scroll -->
+<!-- mini-indice della parte: colonna fissa a destra sopra i 1080px, tendina
+     apribile dallo stesso lato sotto (vedi 20-mappa.css). Il contenuto lo
+     scrive popolaPartNav() a ogni cambio di parte, perciò qui dentro non va
+     messo nulla di statico: verrebbe cancellato. -->
 <nav class="part-nav" id="part-nav" aria-label="Sezioni di questa parte"></nav>
+<button type="button" class="sez-tab" id="sez-tab" aria-expanded="false" aria-controls="part-nav"
+  aria-label="Sezioni di questo capitolo" hidden>Sezioni</button>
+<div class="sez-backdrop" id="sez-backdrop"></div>
 
 <!-- vocabolario sempre a portata -->
 <button type="button" class="btn su" id="su" aria-label="Torna in cima al capitolo"><b aria-hidden="true">&uarr;</b>Su</button>
@@ -18516,17 +18645,24 @@ fatti?»</b> — a proposito
         });
       }
       aggiornaPartNav();
+      aggiornaTastoSezioni();
     }
     /* il pannello si accende solo quando i badge in testa alla parte sono
        usciti sopra la barra: si ricalcola sempre dalla posizione reale, così
        non resta spento dopo un click su una sua voce */
+    /* Si misura .part-head, non il .part-toc che ci sta dentro: le pillole
+       ora sono display:none a ogni larghezza (restano solo come sorgente dei
+       link), e un elemento nascosto ha rettangolo tutto a zero — la condizione
+       «l'intestazione è uscita di scena» risultava quindi sempre vera e il
+       pannello restava acceso anche in cima alla pagina, sovrapposto al testo
+       della testata. */
     function aggiornaPartNav() {
       var partNav = $("part-nav");
       if (!partNav) return;
       var parte = document.querySelector(".part.on");
-      var toc = parte && parte.querySelector(".part-head .part-toc");
-      var acceso = !!toc && partNav.children.length > 0 &&
-        toc.getBoundingClientRect().bottom < 104;
+      var testa = parte && parte.querySelector(".part-head");
+      var acceso = !!testa && partNav.children.length > 0 &&
+        testa.getBoundingClientRect().bottom < 104;
       partNav.classList.toggle("on", acceso);
     }
     function segna(hash) {
@@ -18633,6 +18769,59 @@ fatti?»</b> — a proposito
       document.querySelectorAll(".branch").forEach(function (sec) { osservaSezioni.observe(sec); });
 
     }
+
+    /* ---------- la stessa lista, da tendina, sotto i 1080px ----------
+       Sotto la soglia della colonna fissa il pannello diventa un cassetto che
+       entra da destra (20-mappa.css) e si apre col tasto §. Nessun contenuto
+       proprio: è sempre #part-nav, riempito da popolaPartNav() a ogni cambio
+       di parte — per questo il tasto va aggiornato da lì, non una volta sola
+       all'avvio. Gli elementi si cercano ogni volta invece di tenerli in una
+       var: popolaPartNav() gira anche prima che questo file sia stato letto
+       (gli script della mappa finiscono in un unico <script>, e le funzioni
+       dichiarate sono sollevate mentre le var no). */
+    function aggiornaTastoSezioni() {
+      var tasto = $("sez-tab"), pannello = $("part-nav");
+      if (!tasto || !pannello) return;
+      /* una parte senza sommario (il banco, la galleria delle storie) non ha
+         sezioni da elencare: niente tasto invece di un cassetto vuoto */
+      tasto.hidden = pannello.children.length === 0;
+      tasto.style.setProperty("--pc", pannello.style.getPropertyValue("--pc"));
+      if (tasto.hidden) chiudiSezioni();
+    }
+    function chiudiSezioni() {
+      var tasto = $("sez-tab"), pannello = $("part-nav"), velo = $("sez-backdrop");
+      if (pannello) pannello.classList.remove("aperto");
+      if (velo) velo.classList.remove("aperto");
+      if (tasto) {
+        tasto.classList.remove("aperto");
+        tasto.setAttribute("aria-expanded", "false");
+      }
+    }
+    (function () {
+      var tasto = $("sez-tab"), pannello = $("part-nav"), velo = $("sez-backdrop");
+      if (!tasto || !pannello) return;
+      function apri() {
+        pannello.classList.add("aperto");
+        if (velo) velo.classList.add("aperto");
+        tasto.classList.add("aperto");
+        tasto.setAttribute("aria-expanded", "true");
+        /* il vocabolario occupa lo stesso lato: aperti insieme si coprirebbero */
+        if (typeof chiudiGlossario === "function") chiudiGlossario();
+      }
+      tasto.addEventListener("click", function () {
+        if (pannello.classList.contains("aperto")) chiudiSezioni(); else apri();
+      });
+      if (velo) velo.addEventListener("click", chiudiSezioni);
+      /* scegliere una sezione chiude il cassetto: il salto all'ancora avviene
+         comunque, ed è quello che si vuole vedere subito dopo */
+      pannello.addEventListener("click", function (ev) {
+        if (ev.target.closest("a")) chiudiSezioni();
+      });
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key === "Escape" && pannello.classList.contains("aperto")) chiudiSezioni();
+      });
+    })();
+    aggiornaTastoSezioni();
 
     /* accensione del pannello: ricalcolata a ogni scroll dalla posizione dei
        badge, non da un osservatore che scatta solo sui cambi di stato */

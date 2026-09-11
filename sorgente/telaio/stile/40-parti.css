@@ -155,15 +155,13 @@
     margin-right: 7px
   }
 
-  /* Da 1080px in su il .part-nav a destra (20-mappa.css) copre lo stesso
-     ruolo restando a vista mentre si scorre, invece di stare fermo sotto
-     al titolo: due indici delle stesse voci sarebbero ridondanti. .part-toc
-     resta nel DOM (è la fonte da cui popolaPartNav() clona i link, e la
-     numerazione che rinumera.py aggiorna) — si nasconde, non si toglie. */
-  @media (min-width:1080px) {
-    .part-toc {
-      display: none
-    }
+  /* L'indice delle sezioni sta sempre a destra: colonna fissa sopra i 1080px,
+     tendina apribile sotto (20-mappa.css). Le pillole sotto il titolo sono
+     quindi ridondanti a ogni larghezza. .part-toc resta però nel DOM — è la
+     fonte da cui popolaPartNav() clona i link e la numerazione su cui lavora
+     rinumera.py: si nasconde, non si toglie. */
+  .part-toc {
+    display: none
   }
 
   /* ============ MENU DELLE PARTI A TENDINA (schermi stretti) ============
@@ -175,7 +173,11 @@
      duplicato) si trasforma in un cassetto verticale che scorre da sinistra;
      sopra gli 820px resta quello di sempre e .rail-toggle/.rail-backdrop
      restano invisibili. */
-  .rail-toggle,
+  /* `nav.parts .rail-toggle`, non `.rail-toggle` e basta: il toggle è un
+     <button> dentro nav.parts, quindi la regola generica `nav.parts button`
+     qui sopra ha specificità (0,1,1) e batterebbe una classe sola (0,1,0) —
+     l'hamburger del mobile restava visibile anche su desktop, sopra la barra. */
+  nav.parts .rail-toggle,
   .rail-backdrop {
     display: none
   }
@@ -192,7 +194,7 @@
       backdrop-filter: none
     }
 
-    .rail-toggle {
+    nav.parts .rail-toggle {
       display: flex;
       align-items: center;
       gap: 10px;

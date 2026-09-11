@@ -49,17 +49,24 @@
         });
       }
       aggiornaPartNav();
+      aggiornaTastoSezioni();
     }
     /* il pannello si accende solo quando i badge in testa alla parte sono
        usciti sopra la barra: si ricalcola sempre dalla posizione reale, così
        non resta spento dopo un click su una sua voce */
+    /* Si misura .part-head, non il .part-toc che ci sta dentro: le pillole
+       ora sono display:none a ogni larghezza (restano solo come sorgente dei
+       link), e un elemento nascosto ha rettangolo tutto a zero — la condizione
+       «l'intestazione è uscita di scena» risultava quindi sempre vera e il
+       pannello restava acceso anche in cima alla pagina, sovrapposto al testo
+       della testata. */
     function aggiornaPartNav() {
       var partNav = $("part-nav");
       if (!partNav) return;
       var parte = document.querySelector(".part.on");
-      var toc = parte && parte.querySelector(".part-head .part-toc");
-      var acceso = !!toc && partNav.children.length > 0 &&
-        toc.getBoundingClientRect().bottom < 104;
+      var testa = parte && parte.querySelector(".part-head");
+      var acceso = !!testa && partNav.children.length > 0 &&
+        testa.getBoundingClientRect().bottom < 104;
       partNav.classList.toggle("on", acceso);
     }
     function segna(hash) {

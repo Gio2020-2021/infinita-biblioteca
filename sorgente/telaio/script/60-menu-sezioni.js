@@ -14,6 +14,59 @@
 
     }
 
+    /* ---------- la stessa lista, da tendina, sotto i 1080px ----------
+       Sotto la soglia della colonna fissa il pannello diventa un cassetto che
+       entra da destra (20-mappa.css) e si apre col tasto §. Nessun contenuto
+       proprio: è sempre #part-nav, riempito da popolaPartNav() a ogni cambio
+       di parte — per questo il tasto va aggiornato da lì, non una volta sola
+       all'avvio. Gli elementi si cercano ogni volta invece di tenerli in una
+       var: popolaPartNav() gira anche prima che questo file sia stato letto
+       (gli script della mappa finiscono in un unico <script>, e le funzioni
+       dichiarate sono sollevate mentre le var no). */
+    function aggiornaTastoSezioni() {
+      var tasto = $("sez-tab"), pannello = $("part-nav");
+      if (!tasto || !pannello) return;
+      /* una parte senza sommario (il banco, la galleria delle storie) non ha
+         sezioni da elencare: niente tasto invece di un cassetto vuoto */
+      tasto.hidden = pannello.children.length === 0;
+      tasto.style.setProperty("--pc", pannello.style.getPropertyValue("--pc"));
+      if (tasto.hidden) chiudiSezioni();
+    }
+    function chiudiSezioni() {
+      var tasto = $("sez-tab"), pannello = $("part-nav"), velo = $("sez-backdrop");
+      if (pannello) pannello.classList.remove("aperto");
+      if (velo) velo.classList.remove("aperto");
+      if (tasto) {
+        tasto.classList.remove("aperto");
+        tasto.setAttribute("aria-expanded", "false");
+      }
+    }
+    (function () {
+      var tasto = $("sez-tab"), pannello = $("part-nav"), velo = $("sez-backdrop");
+      if (!tasto || !pannello) return;
+      function apri() {
+        pannello.classList.add("aperto");
+        if (velo) velo.classList.add("aperto");
+        tasto.classList.add("aperto");
+        tasto.setAttribute("aria-expanded", "true");
+        /* il vocabolario occupa lo stesso lato: aperti insieme si coprirebbero */
+        if (typeof chiudiGlossario === "function") chiudiGlossario();
+      }
+      tasto.addEventListener("click", function () {
+        if (pannello.classList.contains("aperto")) chiudiSezioni(); else apri();
+      });
+      if (velo) velo.addEventListener("click", chiudiSezioni);
+      /* scegliere una sezione chiude il cassetto: il salto all'ancora avviene
+         comunque, ed è quello che si vuole vedere subito dopo */
+      pannello.addEventListener("click", function (ev) {
+        if (ev.target.closest("a")) chiudiSezioni();
+      });
+      document.addEventListener("keydown", function (ev) {
+        if (ev.key === "Escape" && pannello.classList.contains("aperto")) chiudiSezioni();
+      });
+    })();
+    aggiornaTastoSezioni();
+
     /* accensione del pannello: ricalcolata a ogni scroll dalla posizione dei
        badge, non da un osservatore che scatta solo sui cambi di stato */
     var inAttesa = false;

@@ -1,6 +1,12 @@
 
-<!-- mini-indice della parte, fisso a destra per tutto lo scroll -->
+<!-- mini-indice della parte: colonna fissa a destra sopra i 1080px, tendina
+     apribile dallo stesso lato sotto (vedi 20-mappa.css). Il contenuto lo
+     scrive popolaPartNav() a ogni cambio di parte, perciò qui dentro non va
+     messo nulla di statico: verrebbe cancellato. -->
 <nav class="part-nav" id="part-nav" aria-label="Sezioni di questa parte"></nav>
+<button type="button" class="sez-tab" id="sez-tab" aria-expanded="false" aria-controls="part-nav"
+  aria-label="Sezioni di questo capitolo" hidden>Sezioni</button>
+<div class="sez-backdrop" id="sez-backdrop"></div>
 
 <!-- vocabolario sempre a portata -->
 <button type="button" class="btn su" id="su" aria-label="Torna in cima al capitolo"><b aria-hidden="true">&uarr;</b>Su</button>
