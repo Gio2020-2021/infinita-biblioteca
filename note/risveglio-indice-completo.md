@@ -131,13 +131,13 @@ Totale pagine: **118**, in undici gruppi tematici più l'introduzione.
 
 ## Cristianesimo e culto solare (Parte X, pagg. 93-99)
 
-- [ ] pag. 93 — CHRISTIANITY - SUN WORSHIP
-- [ ] pag. 94 — CHRISTIANITY - ASTROLOGY
-- [ ] pag. 95 — CHRISTIANITY - SUN WORSHIP
-- [ ] pag. 96 — CHRISTIANITY - SUN WORSHIP
-- [ ] pag. 97 — EGYPTIAN - SUN WORSHIP
-- [ ] pag. 98 — THE HEART
-- [ ] pag. 99 — MENTALISM AND ENERGY
+- [x] pag. 93 — CHRISTIANITY - SUN WORSHIP → #solare-gesu-sole
+- [x] pag. 94 — CHRISTIANITY - ASTROLOGY → #solare-ultima-cena
+- [x] pag. 95 — CHRISTIANITY - SUN WORSHIP → #solare-solstizio
+- [x] pag. 96 — CHRISTIANITY - SUN WORSHIP → #solare-vaticano-giuda
+- [x] pag. 97 — EGYPTIAN - SUN WORSHIP → #solare-egitto
+- [x] pag. 98 — THE HEART → #solare-cuore
+- [x] pag. 99 — MENTALISM AND ENERGY → #solare-mentalismo
 
 ## Mente, mudra e simbolismo massonico (Parte XI, pagg. 100-111)
 
